@@ -67,7 +67,7 @@ namespace OpenCart414Test
         //[TestCase(65, 'A')]
         //[TestCase(97, 'a')]
         //[Test, TestCaseSource(nameof(ConverterData))]
-        [Test, TestCaseSource("ConverterData")]
+        //[Test, TestCaseSource("ConverterData")]
         public void TestMethod3(int x, char c)
         {
             char expexted = c;
