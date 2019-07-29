@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace OpenCart414Test
 {
     [TestFixture]
-    public class SeleniumSecond
+    class SeleniumOpenCartSearch
     {
         private IWebDriver driver;
 
@@ -36,7 +36,7 @@ namespace OpenCart414Test
         {
             // Precondition
             // Goto Application Start Page
-            driver.Navigate().GoToUrl("https://www.google.com.ua/");
+            driver.Navigate().GoToUrl("http://10.26.34.230/opencart/upload/");
             Thread.Sleep(1000); // BAD Practic, don't use.
         }
 
@@ -47,29 +47,41 @@ namespace OpenCart414Test
             // Check if Loggined and logout driver.Navigate().GoToUrl(".../logout");
         }
 
-        //[Test]
+        [Test]
         public void TheFirstTest()
         {
             // Test Steps
-            driver.FindElement(By.Name("q")).Clear();
-            driver.FindElement(By.Name("q")).SendKeys("Selenium" + Keys.Enter);
+            // Search Field
+            driver.FindElement(By.CssSelector("#search input")).Clear();
+            driver.FindElement(By.CssSelector("#search input")).SendKeys("mac");
             Thread.Sleep(1000); // BAD Practic
+            Console.WriteLine("Search Field DONE");
             //
-            //driver.FindElement(By.Name("btnK")).Click();
-            //Thread.Sleep(1000); // BAD Practic
-            //
-            //driver.FindElement(By.LinkText("Selenium - Web Browser Automation")).Click();
-            driver.FindElement(By.PartialLinkText("Web Browser Automation")).Click();
+            // Click Button
+            driver.FindElement(By.CssSelector(".btn.btn-default.btn-lg")).Click();
             Thread.Sleep(1000); // BAD Practic
+            Console.WriteLine("Button DONE");
             //
-            driver.FindElement(By.LinkText("Download")).Click();
+            // Search Block
+            // $("div.caption:has(> p:contains('Intel Core 2 Duo processor'))")
+            // Search Price
+            // $("div.caption > p:contains('Intel Core 2 Duo processor') + p")
+            IWebElement currentSearch = driver.FindElement(By.CssSelector("div.caption > p:contains(\"Intel Core 2 Duo processor\") + p"));
+            Thread.Sleep(1000); // BAD Practic
+            Console.WriteLine("Button DONE");
+            String allPrice = currentSearch.Text;
+            Console.WriteLine("allPrice = " + allPrice);
             //
+            // Get Price
+            int position = allPrice.IndexOf("$");
+            String price = allPrice.Substring(position + 1, 6);
+            Console.WriteLine("price = " + price);
+            // 
             // Check
-            IWebElement actual = driver.FindElement(By.CssSelector("a[name='selenium_ide'] > p"));
-            Assert.AreEqual("Selenium I1DE is a Chrome and Firefox plugin which records and plays back user interactions with the browser. Use this to either create simple scripts or assist in exploratory testing.",
-                actual.Text);
+            //Assert.AreEqual("", price);
             Thread.Sleep(1000); // BAD Practic
             //
         }
+
     }
 }
