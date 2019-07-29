@@ -15,8 +15,7 @@ namespace OpencartWishlistTests
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
-        private bool acceptNextAlert = true;
-
+        
         [OneTimeSetUp]
         public void BeforeAllMethods()
         {
@@ -57,66 +56,37 @@ namespace OpencartWishlistTests
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Navigate().GoToUrl("http://192.168.20.128/opencart/upload/");
+            Thread.Sleep(2000);
+            driver.FindElement(By.LinkText("My Account")).Click();
+            Thread.Sleep(2000);
+            driver.FindElement(By.LinkText("Login")).Click();
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("input-email")).Clear();
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("input-email")).SendKeys("roman_my@ukr.net");
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("input-password")).Clear();
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("input-password")).SendKeys("performingtesting");
+            Thread.Sleep(2000);
+            driver.FindElement(By.CssSelector("input.btn.btn-primary")).Click();
+            Thread.Sleep(2000);
             driver.FindElement(By.LinkText("Desktops")).Click();
+            Thread.Sleep(2000);
             driver.FindElement(By.LinkText("Show All Desktops")).Click();
+            Thread.Sleep(2000);
             driver.FindElement(By.XPath("(//button[@type='button'])[22]")).Click();
-            driver.FindElement(By.CssSelector("i.fa.fa-heart")).Click();
-            
-                Assert.AreEqual("iPhone", driver.FindElement(By.LinkText("iPhone")).Text);
-            
-                Assert.AreEqual("product 11", driver.FindElement(By.CssSelector("tbody .text-left:nth-child(3)")).Text);
-            
-                Assert.AreEqual("In Stock", driver.FindElement(By.CssSelector("tbody .text-right:nth-child(4)")).Text);
-            
-                Assert.AreEqual("$101.00", driver.FindElement(By.CssSelector(".price")).Text);
-            
-        }
-        private bool IsElementPresent(By by)
-        {
-            try
-            {
-                driver.FindElement(by);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }
-
-        private bool IsAlertPresent()
-        {
-            try
-            {
-                driver.SwitchTo().Alert();
-                return true;
-            }
-            catch (NoAlertPresentException)
-            {
-                return false;
-            }
-        }
-
-        private string CloseAlertAndGetItsText()
-        {
-            try
-            {
-                IAlert alert = driver.SwitchTo().Alert();
-                string alertText = alert.Text;
-                if (acceptNextAlert)
-                {
-                    alert.Accept();
-                }
-                else
-                {
-                    alert.Dismiss();
-                }
-                return alertText;
-            }
-            finally
-            {
-                acceptNextAlert = true;
-            }
+            Thread.Sleep(2000);
+            driver.FindElement(By.LinkText("wish list")).Click();
+            Thread.Sleep(2000);
+            Assert.AreEqual("iPhone", driver.FindElement(By.LinkText("iPhone")).Text);
+            Thread.Sleep(2000);
+            Assert.AreEqual("product 11", driver.FindElement(By.CssSelector("tbody .text-left:nth-child(3)")).Text);
+            Thread.Sleep(2000);
+            Assert.AreEqual("In Stock", driver.FindElement(By.CssSelector("tbody .text-right:nth-child(4)")).Text);
+            Thread.Sleep(2000);
+            Assert.AreEqual("$101.00", driver.FindElement(By.CssSelector(".price")).Text);
+            Thread.Sleep(2000);
         }
     }
 }
