@@ -64,6 +64,7 @@
     <Compile Include="SeleniumFirst.cs" />
     <Compile Include="SeleniumOpenCartSearch.cs" />
     <Compile Include="SeleniumSecond.cs" />
+    <Compile Include="SimpleTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
