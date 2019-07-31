@@ -12,6 +12,28 @@ namespace OpencartWishlistTests
     {
         private IWebDriver driver;
         
+        private void LoggingIn()
+        {
+            IWebElement listUpperRight = driver.FindElement(By.ClassName("list-inline"));
+            listUpperRight.FindElement(By.ClassName("dropdown-toggle")).Click();
+            Thread.Sleep(1000); // for presentation only
+            listUpperRight.FindElement(By.LinkText("Login")).Click();
+            Thread.Sleep(1000); // for presentation only
+            driver.FindElement(By.Id("input-email")).Clear();
+            driver.FindElement(By.Id("input-email")).SendKeys("roman_my@ukr.net");
+            driver.FindElement(By.Id("input-password")).Clear();
+            driver.FindElement(By.Id("input-password")).SendKeys("performingtesting");
+            driver.FindElement(By.CssSelector("input.btn.btn-primary")).Click();
+        }
+        private void AddingIPhoneToWishlist()
+        {
+            driver.FindElement(By.LinkText("Phones & PDAs")).Click();
+            Thread.Sleep(1000); // for presentation only
+            driver.FindElement(By.XPath("//div[contains(@class, 'product-layout')]" +
+                "//h4/a[contains(text(), 'iPhone')]/../../following-sibling::div/" +
+                "button[contains(@onclick, 'wishlist')]")).Click();
+        }
+
         [OneTimeSetUp]
         public void BeforeAllMethods()
         {
@@ -40,35 +62,49 @@ namespace OpencartWishlistTests
         [Test]
         public void TheOpencartWishlistAddTest()
         {
-            IWebElement select1 = driver.FindElement(By.ClassName("list-inline"));
-            select1.FindElement(By.ClassName("dropdown-toggle")).Click();
-            Thread.Sleep(1000);
-            select1.FindElement(By.LinkText("Login")).Click();
-            Thread.Sleep(1000);
-            driver.FindElement(By.Id("input-email")).Clear();
-            Thread.Sleep(1000);
-            driver.FindElement(By.Id("input-email")).SendKeys("roman_my@ukr.net");
-            Thread.Sleep(1000);
-            driver.FindElement(By.Id("input-password")).Clear();
-            Thread.Sleep(1000);
-            driver.FindElement(By.Id("input-password")).SendKeys("performingtesting");
-            Thread.Sleep(1000);
-            driver.FindElement(By.CssSelector("input.btn.btn-primary")).Click();
-            Thread.Sleep(1000);
-            driver.FindElement(By.LinkText("Desktops")).Click();
-            Thread.Sleep(1000);
-            driver.FindElement(By.LinkText("Show All Desktops")).Click();
-            Thread.Sleep(1000);
-            driver.FindElement(By.XPath("(//button[@type='button'])[22]")).Click();
-            Thread.Sleep(1000);
+            LoggingIn();
+            Thread.Sleep(1000); // for presentation only
+            AddingIPhoneToWishlist();
+            Thread.Sleep(1000); // for presentation only
+            Assert.IsTrue(driver.FindElement(By.CssSelector(".alert.alert-success")).Displayed);
             driver.FindElement(By.LinkText("wish list")).Click();
-            Thread.Sleep(1000);
-            Assert.AreEqual("iPhone", driver.FindElement(By.LinkText("iPhone")).Text);
-            Assert.AreEqual("product 11", driver.FindElement(By.CssSelector("tbody .text-left:nth-child(3)")).Text);
-            Assert.AreEqual("In Stock", driver.FindElement(By.CssSelector("tbody .text-right:nth-child(4)")).Text);
-            Assert.AreEqual("$101.00", driver.FindElement(By.CssSelector(".price")).Text);
-            Thread.Sleep(1000);
-            driver.FindElement(By.CssSelector(".btn.btn-danger")).Click();
+            Thread.Sleep(1000); // for presentation only
+            IWebElement wishlistTableContent = driver.FindElement(By.XPath("//div[@id='content']/div[@class='table-responsive']/table/tbody/tr"));
+            Assert.IsTrue(wishlistTableContent.FindElement(By.XPath("td/a/img[@src='http://192.168.20.128/opencart/upload/image/cache/catalog/demo/iphone_1-47x47.jpg']")).Displayed);
+            Assert.IsTrue(wishlistTableContent.FindElement(By.LinkText("iPhone")).Displayed);
+            Assert.IsTrue(wishlistTableContent.FindElement(By.XPath("td[contains(text(), 'product 11')]")).Displayed);
+            Assert.IsTrue(wishlistTableContent.FindElement(By.XPath("td[contains(text(), 'In Stock')]")).Displayed);
+            Assert.AreEqual("$101.00", wishlistTableContent.FindElement(By.CssSelector(".price")).Text);
+            Thread.Sleep(1000); // for presentation only
+            wishlistTableContent.FindElement(By.CssSelector(".btn.btn-danger")).Click();
+        }
+        [Test]
+        public void TheOpencartWishlistRemoveTest()
+        {
+            //LoggingIn();
+            Thread.Sleep(1000); // for presentation only
+            AddingIPhoneToWishlist();
+            Thread.Sleep(1000); // for presentation only
+            driver.FindElement(By.LinkText("wish list")).Click();
+            Thread.Sleep(1000); // for presentation only
+            IWebElement wishlistTableContent = driver.FindElement(By.XPath("//div[@id='content']/div[@class='table-responsive']/table/tbody/tr"));
+            wishlistTableContent.FindElement(By.CssSelector(".btn.btn-danger")).Click();
+            Assert.IsTrue(driver.FindElement(By.CssSelector(".alert.alert-success")).Displayed);
+        }
+        [Test]
+        public void TheOpencartWishlistToCartTest()
+        {
+            //LoggingIn();
+            Thread.Sleep(1000); // for presentation only
+            AddingIPhoneToWishlist();
+            Thread.Sleep(1000); // for presentation only
+            driver.FindElement(By.LinkText("wish list")).Click();
+            Thread.Sleep(1000); // for presentation only
+            IWebElement wishlistTableContent = driver.FindElement(By.XPath("//div[@id='content']/div[@class='table-responsive']/table/tbody/tr"));
+            wishlistTableContent.FindElement(By.CssSelector(".btn.btn-primary")).Click();
+            Assert.IsTrue(driver.FindElement(By.CssSelector(".alert.alert-success")).Displayed);
+            Thread.Sleep(1000); // for presentation only
+            wishlistTableContent.FindElement(By.CssSelector(".btn.btn-danger")).Click();
         }
     }
 }
