@@ -8,12 +8,13 @@ using OpenQA.Selenium.Chrome;
 namespace OpencartWishlistTests
 {
     [TestFixture]
-    public class OpencartWishlistAdd
+    public class OpencartWishlistTest
     {
         private IWebDriver driver;
         
         private void LoggingIn()
         {
+            string testerPassword = Environment.GetEnvironmentVariable("TESTER_PASWORD");
             IWebElement listUpperRight = driver.FindElement(By.ClassName("list-inline"));
             listUpperRight.FindElement(By.ClassName("dropdown-toggle")).Click();
             Thread.Sleep(1000); // for presentation only
@@ -22,7 +23,7 @@ namespace OpencartWishlistTests
             driver.FindElement(By.Id("input-email")).Clear();
             driver.FindElement(By.Id("input-email")).SendKeys("roman_my@ukr.net");
             driver.FindElement(By.Id("input-password")).Clear();
-            driver.FindElement(By.Id("input-password")).SendKeys("performingtesting");
+            driver.FindElement(By.Id("input-password")).SendKeys(testerPassword);
             driver.FindElement(By.CssSelector("input.btn.btn-primary")).Click();
         }
         private void AddingIPhoneToWishlist()
@@ -60,7 +61,7 @@ namespace OpencartWishlistTests
         }
 
         [Test]
-        public void TheOpencartWishlistAddTest()
+        public void TheOpencartWishlistAddCheck()
         {
             LoggingIn();
             Thread.Sleep(1000); // for presentation only
@@ -70,16 +71,16 @@ namespace OpencartWishlistTests
             driver.FindElement(By.LinkText("wish list")).Click();
             Thread.Sleep(1000); // for presentation only
             IWebElement wishlistTableContent = driver.FindElement(By.XPath("//div[@id='content']/div[@class='table-responsive']/table/tbody/tr"));
-            Assert.IsTrue(wishlistTableContent.FindElement(By.XPath("td/a/img[@src='http://192.168.20.128/opencart/upload/image/cache/catalog/demo/iphone_1-47x47.jpg']")).Displayed);
+            Assert.IsTrue(wishlistTableContent.FindElement(By.XPath(".//td/a/img[@src='http://192.168.20.128/opencart/upload/image/cache/catalog/demo/iphone_1-47x47.jpg']")).Displayed);
             Assert.IsTrue(wishlistTableContent.FindElement(By.LinkText("iPhone")).Displayed);
-            Assert.IsTrue(wishlistTableContent.FindElement(By.XPath("td[contains(text(), 'product 11')]")).Displayed);
-            Assert.IsTrue(wishlistTableContent.FindElement(By.XPath("td[contains(text(), 'In Stock')]")).Displayed);
+            Assert.IsTrue(wishlistTableContent.FindElement(By.XPath(".//td[contains(text(), 'product 11')]")).Displayed);
+            Assert.IsTrue(wishlistTableContent.FindElement(By.XPath(".//td[contains(text(), 'In Stock')]")).Displayed);
             Assert.AreEqual("$101.00", wishlistTableContent.FindElement(By.CssSelector(".price")).Text);
             Thread.Sleep(1000); // for presentation only
             wishlistTableContent.FindElement(By.CssSelector(".btn.btn-danger")).Click();
         }
         [Test]
-        public void TheOpencartWishlistRemoveTest()
+        public void TheOpencartWishlistRemoveCheck()
         {
             //LoggingIn();
             Thread.Sleep(1000); // for presentation only
@@ -92,7 +93,7 @@ namespace OpencartWishlistTests
             Assert.IsTrue(driver.FindElement(By.CssSelector(".alert.alert-success")).Displayed);
         }
         [Test]
-        public void TheOpencartWishlistToCartTest()
+        public void TheOpencartWishlistToCartCheck()
         {
             //LoggingIn();
             Thread.Sleep(1000); // for presentation only
