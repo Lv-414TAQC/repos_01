@@ -38,6 +38,149 @@ namespace OpenCart414Test.Pages
         public TopPart(IWebDriver driver)
         {
             this.driver = driver;
+            CheckElements();
+        }
+
+        private void CheckElements()
+        {
+            // TODO Develop Custom Exception
+            IWebElement temp = Currency; // TODO All Web Elements
+        }
+
+        // PageObject
+
+        // Currency
+        public string GetCurrencyText()
+        {
+            return Currency.Text;
+        }
+
+        public void ClickCurrency()
+        {
+            Currency.Click();
+        }
+
+        // MyAccount
+        public string GetMyAccountText()
+        {
+            return MyAccount.Text;
+        }
+
+        public void ClickMyAccount()
+        {
+            MyAccount.Click();
+        }
+
+        // WishList
+        public string GetWishListText()
+        {
+            return WishList.Text;
+        }
+
+        public void ClickWishList()
+        {
+            WishList.Click();
+        }
+
+        // ShoppingCart
+        public string GetShoppingCartText()
+        {
+            return ShoppingCart.Text;
+        }
+
+        public void ClickShoppingCart()
+        {
+            ShoppingCart.Click();
+        }
+
+        // Checkout
+        public string GetCheckoutText()
+        {
+            return Checkout.Text;
+        }
+
+        public void ClickCheckout()
+        {
+            Checkout.Click();
+        }
+
+        // Logo
+        public void ClickLogo()
+        {
+            Logo.Click();
+        }
+
+        // SearchField
+        public string GetSearchFieldText()
+        {
+            return SearchField.GetAttribute(TAG_ATTRIBUTE_VALUE);
+        }
+
+        public void SetSearchField(string text)
+        {
+            SearchField.SendKeys(text);
+        }
+
+        public void ClearSearchField()
+        {
+            SearchField.Clear();
+        }
+
+        public void ClickSearchField()
+        {
+            SearchField.Click();
+        }
+
+        // SearchButton
+        public void ClickSearchButton()
+        {
+            SearchButton.Click();
+        }
+
+        // CartButton
+        public string GetCartButtonText()
+        {
+            return CartButton.Text;
+        }
+
+        public void ClickCartButton()
+        {
+            CartButton.Click();
+        }
+
+        // TopMenu
+
+        // Functional
+        protected void MakeTopSearch(string searchText)
+        {
+            ClickSearchField();
+            ClearSearchField();
+            SetSearchField(searchText);
+            ClickSearchButton();
+        }
+
+        // Business Logic
+
+        public HomePage GotoHomePage()
+        {
+            ClickLogo();
+            return new HomePage(driver);
+        }
+
+        public SearchSuccessPage SearchSuccessfully(string searchText)
+        //public SearchCriteriaPage SearchItems(Product searchProduct)
+        {
+            //MakeTopSearch(searchProduct.SearchKeyword);
+            MakeTopSearch(searchText);
+            return new SearchSuccessPage(driver);
+        }
+
+        public SearchUnsuccessPage SearchUnsuccessfully(string searchText)
+        //public SearchCriteriaPage SearchItems(Product searchProduct)
+        {
+            //MakeTopSearch(searchProduct.SearchKeyword);
+            MakeTopSearch(searchText);
+            return new SearchUnsuccessPage(driver);
         }
 
     }
