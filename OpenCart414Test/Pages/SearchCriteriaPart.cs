@@ -108,11 +108,11 @@ namespace OpenCart414Test.Pages
 
         // Functional
         // TODO Choose/Click WebElements
-        //protected void MakeCriteriaSearch(Product...)
+        //protected void MakeCriteriaSearch(SearchCriteria searchCriteria...)
 
         // Business Logic
 
-        //public SearchSuccessPage SearchSuccessfully(Product string searchText)
-        //public SearchUnsuccessPage SearchUnsuccessfully(Product string searchText) // TODO
+        //public SearchSuccessPage SearchSuccessfully(SearchCriteria searchCriteria Product string searchText)
+        //public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria Product string searchText) // TODO
     }
 }

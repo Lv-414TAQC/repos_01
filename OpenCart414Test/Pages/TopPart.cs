@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using OpenCart414Test.Data;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -167,19 +168,19 @@ namespace OpenCart414Test.Pages
             return new HomePage(driver);
         }
 
-        public SearchSuccessPage SearchSuccessfully(string searchText)
-        //public SearchCriteriaPage SearchItems(Product searchProduct)
+        //public SearchSuccessPage SearchSuccessfully(string searchText)
+        public SearchSuccessPage SearchSuccessfully(SearchCriteria searchCriteria)
         {
-            //MakeTopSearch(searchProduct.SearchKeyword);
-            MakeTopSearch(searchText);
+            MakeTopSearch(searchCriteria.SearchValue);
+            //MakeTopSearch(searchText);
             return new SearchSuccessPage(driver);
         }
 
-        public SearchUnsuccessPage SearchUnsuccessfully(string searchText)
-        //public SearchCriteriaPage SearchItems(Product searchProduct)
+        //public SearchUnsuccessPage SearchUnsuccessfully(string searchText)
+        public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria)
         {
-            //MakeTopSearch(searchProduct.SearchKeyword);
-            MakeTopSearch(searchText);
+            MakeTopSearch(searchCriteria.SearchValue);
+            //MakeTopSearch(searchText);
             return new SearchUnsuccessPage(driver);
         }
 

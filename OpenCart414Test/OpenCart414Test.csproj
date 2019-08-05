@@ -61,7 +61,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Currency.cs" />
     <Compile Include="Data\Product.cs" />
+    <Compile Include="Data\ProductRepository.cs" />
+    <Compile Include="Data\SearchCriteria.cs" />
+    <Compile Include="Data\SearchCriteriaRepository.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Pages\BreadCrumPart.cs" />
     <Compile Include="Pages\HomePage.cs" />
@@ -77,6 +81,7 @@
     <Compile Include="SeleniumSecond.cs" />
     <Compile Include="SimpleTest.cs" />
     <Compile Include="Tests\SearchTest.cs" />
+    <Compile Include="Tests\TestRunner.cs" />
     <Compile Include="Tools\ListUtils.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,7 +10,7 @@ namespace OpenCart414Test.Pages
 {
     public class SearchSuccessPage : SearchCriteriaPart
     {
-        private ProductsCriteriaComponent ProductsCriteria;
+        public ProductsCriteriaComponent ProductsCriteria { get; private set; }
 
         public SearchSuccessPage(IWebDriver driver) : base(driver)
         {
