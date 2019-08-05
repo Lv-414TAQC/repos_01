@@ -11,6 +11,13 @@ namespace OpenCart414Test.Pages
     {
         public SearchUnsuccessPage(IWebDriver driver) : base(driver)
         {
+            CheckElements();
+        }
+
+        private void CheckElements()
+        {
+            // TODO Develop Custom Exception
+            //IWebElement temp = CriteriaSearchField; // TODO All Web Elements
         }
     }
 }
