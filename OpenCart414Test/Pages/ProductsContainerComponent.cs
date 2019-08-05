@@ -12,7 +12,7 @@ namespace OpenCart414Test.Pages
         public const string PRODUCT_NOT_FOUND = "There is no product that matches the search criteria.";
         private const string PRODUCT_COMPONENT_CSSSELECTOR = ".product-layout";
 
-        private IWebDriver driver;
+        protected IWebDriver driver;
         //
         // TODO
         public IWebElement EmptyListMessage
@@ -29,7 +29,6 @@ namespace OpenCart414Test.Pages
         }
         //
         private IList<ProductComponent> productComponents;
-
 
         public ProductsContainerComponent(IWebDriver driver)
         {

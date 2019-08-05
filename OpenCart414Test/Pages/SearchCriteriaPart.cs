@@ -91,7 +91,7 @@ namespace OpenCart414Test.Pages
         public void ClickCriteriaSubCategory(string subcategory)
         {
             SetCriteriaCategory(subcategory);
-            ClickCriteriaSubCategory();
+            ClickCriteriaSubCategory(); // TODO for first
         }
 
         // CriteriaDescription

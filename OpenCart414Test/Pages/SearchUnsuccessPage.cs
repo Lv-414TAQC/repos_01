@@ -9,6 +9,9 @@ namespace OpenCart414Test.Pages
 {
     public class SearchUnsuccessPage : SearchCriteriaPart
     {
+        public IWebElement InfoMessage
+        { get { return driver.FindElement(By.CssSelector("#button-search + h2 + p")); } }
+
         public SearchUnsuccessPage(IWebDriver driver) : base(driver)
         {
             CheckElements();
@@ -17,7 +20,19 @@ namespace OpenCart414Test.Pages
         private void CheckElements()
         {
             // TODO Develop Custom Exception
-            //IWebElement temp = CriteriaSearchField; // TODO All Web Elements
+            IWebElement temp = InfoMessage; // TODO All Web Elements
         }
+
+        // Page Object
+
+        // InfoMessage
+        public string GetInfoMessageText()
+        {
+            return InfoMessage.Text;
+        }
+
+        // Functional
+
+        // Business Logic
     }
 }
