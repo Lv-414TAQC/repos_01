@@ -1,0 +1,20 @@
+Named Convention
+
+classes
+...Repository  for data
+...Test        for tests
+...Page        for work pages
+...Component   for components
+...Part        for abstract classes (Part/Unit)
+
+TopPart
+HomePage
+ProductComponent
+ProductsContainerComponent
+ProductsCriteriaComponent
+
+BreadCrumPart
+SearchCriteriaPart
+SearchSuccessPage
+SearchUnsuccessPage
+
