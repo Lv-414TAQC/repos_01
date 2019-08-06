@@ -33,7 +33,7 @@ namespace OpenCart414Test.Pages
             IWebElement temp = CriteriaSearchField; // TODO All Web Elements
         }
 
-        // Page Object f5
+        // Page Object
 
         // CriteriaSearchField
         public string GetCriteriaSearchFieldText()
