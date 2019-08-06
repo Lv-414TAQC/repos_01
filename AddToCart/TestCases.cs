@@ -5,14 +5,16 @@ using OpenQA.Selenium.Chrome;
 using NUnit.Framework;
 using System.Threading;
 using System.Collections.Generic;
+using OpenQA.Selenium.Support.UI;
 
-namespace AddToCart
+namespace AddToCart 
 {
     [TestFixture]
     class TestCases
     {
+       
         private static IWebDriver driver;
-        public static string ShoppingCartButton = "button.btn.btn-inverse.btn-block.btn-lg.dropdown-toggle";
+        public const string ShoppingCartButton = "#cart > button";
 
         [OneTimeSetUp]
         public void BeforeAllMethods()
@@ -55,6 +57,7 @@ namespace AddToCart
             //Pre-condition
             Assert.True(driver.FindElement(By.CssSelector("div#logo a img.img-responsive")).GetAttribute("src").Contains("http://192.168.61.128/opencart/upload/image/catalog/logo.png"));
 
+            driver.FindElement(By.Name("search")).Clear();
             driver.FindElement(By.Name("search")).SendKeys("%" + Keys.Enter);
 
             //Add the first product(iPod Touch)
@@ -79,8 +82,7 @@ namespace AddToCart
 
             Assert.IsFalse(IsElementPresent(By.CssSelector("table.table-bordered td > strong")));
 
-            IWebElement CartButtonText = driver.FindElement(By.Id("cart-total"));
-            Assert.IsTrue(CartButtonText.Text.Contains("1 item(s)"));
+            Assert.IsTrue(driver.FindElement(By.Id("cart-total")).Text.Contains("1 item(s)"));
 
             //step 3
             driver.FindElement(By.CssSelector(ShoppingCartButton)).Click();
@@ -118,16 +120,15 @@ namespace AddToCart
 
             Assert.IsTrue(IsElementPresent(By.CssSelector("div.alert.alert-success")));
 
-            IWebElement name_product = driver.FindElement(By.XPath(IMacAddButton + "/parent::div/parent::div//h4//a"));
-            IWebElement name_message = driver.FindElement(By.CssSelector("div.alert.alert-success"));
-            Assert.IsTrue(name_message.Text.Contains(name_product.Text));
+            Assert.IsTrue(driver.FindElement(By.CssSelector("div.alert.alert-success")).Text.Contains(driver.FindElement(By.XPath(IMacAddButton + "/parent::div/parent::div//h4//a")).Text));
         }
 
         [Test]
         public static void ReopenBrowser() //ATQCNET_171
         {
+            driver.FindElement(By.Name("search")).Clear();
             driver.FindElement(By.Name("search")).SendKeys("%" + Keys.Enter);
-            
+
             //Add the first product
             string SamsungGalaxyTabAddButton = "//div[contains(@class, 'product-layout')]//h4/a[contains(text(),'Samsung Galaxy Tab 10.1')]/../../following-sibling::div/button[contains(@onclick,'cart')]";
             driver.FindElement(By.XPath(SamsungGalaxyTabAddButton)).Click();
@@ -156,7 +157,7 @@ namespace AddToCart
                 driver.Manage().Cookies.AddCookie(cookie);
             }
 
-            driver.Navigate().GoToUrl("http://192.168.61.128/opencart/upload/");
+            driver.Navigate().Refresh();
 
             driver.FindElement(By.CssSelector(ShoppingCartButton)).Click();
 
@@ -164,6 +165,55 @@ namespace AddToCart
             Assert.AreEqual(before_close, after_close);
             Thread.Sleep(1000);
         }
+
+        [Test]
+        public static void AddProduct() //ATQCNET_166()
+        {
+            driver.FindElement(By.XPath("//li[contains(@class,'dropdown')]//a[text()='Desktops']")).Click();
+            driver.FindElement(By.XPath("//div[contains(@class,'dropdown-menu')]/a[text()='Show All Desktops']")).Click();
+            Thread.Sleep(2000);
+
+            //Add the first product(iPod Classic)
+            string IPodClassicAddButton = "//div[contains(@class, 'product-layout')]//h4/a[contains(text(),'iPod Classic')]/../../following-sibling::div/button[contains(@onclick,'cart')]";
+            driver.FindElement(By.XPath(IPodClassicAddButton)).Click();
+            Thread.Sleep(1500);
+
+            driver.FindElement(By.CssSelector(ShoppingCartButton)).Click();
+            Thread.Sleep(1500);
+
+            Assert.IsTrue(IsElementPresent(By.XPath("//td[contains(@class,'text-left')]/a[contains(text(),'iPod Classic')]")));
+
+
+            driver.FindElement(By.CssSelector(ShoppingCartButton)).Click();
+            driver.FindElement(By.XPath("//ul[contains(@class,'nav')]/li/a[text()='Cameras']")).Click();
+            Thread.Sleep(2000);
+
+            //Add the second product(iPod Classic)
+            string CanonEOSAddButton = "//div[contains(@class, 'product-layout')]//h4/a[contains(text(),'Canon EOS 5D')]/../../following-sibling::div/button[contains(@onclick,'cart')]";
+            driver.FindElement(By.XPath(CanonEOSAddButton)).Click();
+            Thread.Sleep(1500);
+
+            
+            driver.FindElement(By.Id("input-option226")).Click();
+            SelectElement select = new SelectElement(driver.FindElement(By.CssSelector("#input-option226")));
+            select.SelectByText("Red");
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("input-quantity")).Clear();
+            driver.FindElement(By.Id("input-quantity")).SendKeys("1" + Keys.Enter);
+
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("button-cart")).Click();
+            Thread.Sleep(1500);
+
+            driver.FindElement(By.CssSelector(ShoppingCartButton)).Click();
+            Thread.Sleep(1500);
+
+             //to do verify if two products are equals to previous added
+        }
+
+
     }
+
 }
 
