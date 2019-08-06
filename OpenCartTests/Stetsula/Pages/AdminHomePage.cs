@@ -82,6 +82,8 @@ namespace OpenCartTests.Stetsula
             TaxClasses.MenuButton.Click();
         }
 
+
+
         public void ClickSubMenu(string submenu)
         {
             MenuComponent Submenu = new MenuComponent(Driver);
@@ -89,6 +91,15 @@ namespace OpenCartTests.Stetsula
             Submenu.MenuButton = Driver.FindElement(By.XPath(path));
             Submenu.MenuLabel = Submenu.MenuButton.Text;
             Submenu.MenuButton.Click();
+        }
+
+        public void ClickCurrenciesMenu()
+        {
+            ClickLocalizationMenu();
+            MenuComponent Currencies = new MenuComponent(Driver);
+            Currencies.MenuButton = Driver.FindElement(By.XPath("//a[contains(text(), 'Currencies')]"));
+            Currencies.MenuLabel = Currencies.MenuButton.Text;
+            Currencies.MenuButton.Click();
         }
 
 

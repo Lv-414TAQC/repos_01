@@ -27,16 +27,7 @@ namespace OpenCartTests.Stetsula
             AdminLoginPage Page = new AdminLoginPage(Driver);
             Page.LogInAdmin();
             AdminHomePage HomePage = new AdminHomePage(Driver);
-            //HomePage.MenuButton.Click();
-            //IWebElement text =  Driver.FindElement(By.XPath("//li[@id='menu-catalog']/a[@class='parent']/span"));
-            //Console.WriteLine(text.Text);
-            //HomePage.ClickMenu("System");
-            //Thread.Sleep(1000);
-            //HomePage.ClickSubMenu("Users");
-            //Thread.Sleep(1000);
-            //HomePage.ClickSubMenu("API");
-            HomePage.ClickTaxClassesMenu();
-            //Console.WriteLine(HomePage.SideMenu.Menus["System"].MenuLabel);
+            HomePage.ClickCurrenciesMenu();
 
         }
 
