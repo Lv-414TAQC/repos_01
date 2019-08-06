@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace OpenCart414Test.Pages
         { get { return product.FindElement(By.CssSelector("button.btn.btn-danger.btn-xs")); } }
 
 
-        public ProductComponent(IWebElement product)
+        public ShoppingCartContainerComponent(IWebElement product)
         {
             this.product = product;
             CheckElements();
@@ -38,5 +39,39 @@ namespace OpenCart414Test.Pages
             temp = ProductRemoveButton;
             // TODO All Web Elements
         }
+
+        // Page Object
+
+        //TODO ProductImage
+
+        //ProductName
+        public string GetProductNameText()
+        {
+            return ProductName.Text;
+        }
+
+        // ProductPrice
+        public string GetProductPriceText()
+        {
+            return ProductPrice.Text;
+        }
+
+        //ProductQuantity
+        public string GetProductQuantityText()
+        {
+            return ProductQuantity.Text;
+        }
+
+        //ProductRemoveButton
+        public void ClickProductRemoveButton()
+        {
+            ProductRemoveButton.Click();
+        }
+
+       
+        // Functional
+
+        // Business Logic
+
     }
 }
