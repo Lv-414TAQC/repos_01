@@ -32,10 +32,7 @@ namespace OpenCart414Test.Pages
             //CheckElements();
         }
 
-        public ??? GetWishListComponentImage()
-        {
-
-        }
+        //public ??? GetWishListComponentImage() { }
         public void ClickWishListComponentImage()
         {
             WishListComponentImage.Click();
