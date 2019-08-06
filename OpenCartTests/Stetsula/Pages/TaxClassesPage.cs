@@ -6,5 +6,6 @@ namespace OpenCartTests.Stetsula.Pages
 {
     class TaxClassesPage
     {
+
     }
 }
