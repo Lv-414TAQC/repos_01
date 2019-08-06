@@ -15,6 +15,8 @@ namespace OpenCart414Test.Pages
         { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Address Book']")); } }
         public IWebElement RightMenuWishList
         { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Wish List']")); } }
+        public IWebElement RightMenuOrderHistory
+        { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Order History']")); } }
         public IWebElement RightMenuDownloads
         { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Downloads']")); } }
         public IWebElement RightMenuRecurringPayments
@@ -55,6 +57,14 @@ namespace OpenCart414Test.Pages
         public void ClickRightMenuWishList()
         {
             RightMenuWishList.Click();
+        }
+        public string GetRightMenuOrderHistoryText()
+        {
+            return RightMenuOrderHistory.Text;
+        }
+        public void ClickRightMenuOrderHistory()
+        {
+            RightMenuOrderHistory.Click();
         }
         public string GetRightMenuDownloadsText()
         {
