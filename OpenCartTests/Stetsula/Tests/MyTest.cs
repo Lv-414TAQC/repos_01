@@ -30,8 +30,7 @@ namespace OpenCartTests.Stetsula
             AdminHomePage HomePage = new AdminHomePage(Driver);
             HomePage.ClickGeoZonesMenu();
             GeoZonesPage GZ = new GeoZonesPage(Driver);
-            Console.WriteLine(GZ.GeoZones.Count);
-            GZ.SelectGeoZone("UA Tax Zone");
+            GZ.DeleteGeoZone("UA Tax Zone");
 
 
         }

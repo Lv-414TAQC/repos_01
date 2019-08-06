@@ -11,8 +11,8 @@ namespace OpenCartTests.Stetsula.Pages
     {
         SideMenuComponent SideMenu;
         public IWebElement AddNewButton { get { return Driver.FindElement(By.CssSelector("a[data-original-title='Add New']")); } }
-        public IWebElement DeleteButtton { get { return Driver.FindElement(By.CssSelector("a[data-original-title='Delete']")); } }
-        public IList<GeoZoneComponent> GeoZones;
+        public IWebElement DeleteButtton { get { return Driver.FindElement(By.CssSelector("button[data-original-title='Delete']")); } }
+        public IList<GeoZoneComponent> GeoZones = new List<GeoZoneComponent>();
 
         public GeoZonesPage(IWebDriver driver) : base (driver)
         {
@@ -24,7 +24,6 @@ namespace OpenCartTests.Stetsula.Pages
         {
             foreach (IWebElement item in Driver.FindElements(By.CssSelector("form tbody tr")))
             {
-                GeoZones = new List<GeoZoneComponent>();
                 GeoZoneComponent GeoZone = new GeoZoneComponent();
                 GeoZone.Checkbox = item.FindElement(By.XPath("./td/input"));
                 GeoZone.Name = item.FindElement(By.XPath("./td/following-sibling::td")).Text;
@@ -39,11 +38,17 @@ namespace OpenCartTests.Stetsula.Pages
         {
             foreach (var item in GeoZones)
             {
-                Console.WriteLine(item.Name);
                 if (item.Name == geoZone)
                     item.Checkbox.Click();
             }
 
+        }
+
+        public void DeleteGeoZone(string geoZone)
+        {
+            SelectGeoZone(geoZone);
+            DeleteButtton.Click();
+            Driver.SwitchTo().Alert().Accept();
         }
     }
 }
