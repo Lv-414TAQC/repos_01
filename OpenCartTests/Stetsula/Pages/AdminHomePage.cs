@@ -24,7 +24,7 @@ namespace OpenCartTests.Stetsula
                 MenuComponent menu = new MenuComponent(Driver);
                 menu.MenuButton = item;
                 menu.MenuLabel = item.FindElement(By.XPath("./span")).Text;
-                Console.WriteLine(menu.MenuLabel);
+                //Console.WriteLine(menu.MenuLabel);
                 SideMenu.Menus.Add(menu.MenuLabel, menu);
 
             }

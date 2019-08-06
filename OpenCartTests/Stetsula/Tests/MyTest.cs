@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenCartTests.Stetsula.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -27,7 +28,11 @@ namespace OpenCartTests.Stetsula
             AdminLoginPage Page = new AdminLoginPage(Driver);
             Page.LogInAdmin();
             AdminHomePage HomePage = new AdminHomePage(Driver);
-            HomePage.ClickCurrenciesMenu();
+            HomePage.ClickGeoZonesMenu();
+            GeoZonesPage GZ = new GeoZonesPage(Driver);
+            Console.WriteLine(GZ.GeoZones.Count);
+            GZ.SelectGeoZone("UA Tax Zone");
+
 
         }
 
