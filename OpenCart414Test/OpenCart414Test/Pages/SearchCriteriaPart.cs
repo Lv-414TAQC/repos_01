@@ -30,7 +30,12 @@ namespace OpenCart414Test.Pages
         private void CheckElements()
         {
             // TODO Develop Custom Exception
-            IWebElement temp = CriteriaSearchField; // TODO All Web Elements
+            IWebElement temp = CriteriaSearchField;
+            SelectElement tempS = CriteriaCategory;
+            temp = CriteriaSubCategory;
+            temp = CriteriaDescription;
+            temp = CriteriaSearchButton;          
+            // TODO All Web Elements
         }
 
         // Page Object TestCommitOne
