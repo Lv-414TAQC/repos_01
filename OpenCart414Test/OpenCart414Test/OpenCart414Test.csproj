@@ -84,6 +84,8 @@
     <Compile Include="Pages\ShoppingCartPageComponent.cs" />
     <Compile Include="Pages\TablePriceComponent.cs" />
     <Compile Include="Pages\TopPart.cs" />
+    <Compile Include="Pages\WishListComponent.cs" />
+    <Compile Include="Pages\WishListComponentContainer.cs" />
     <Compile Include="Pages\WishListEmptyPage.cs" />
     <Compile Include="Pages\WishListPage.cs" />
     <Compile Include="Pages\WishListPart.cs" />
