@@ -22,7 +22,7 @@ namespace OpenCart414Test.Pages
         {
             return WishListTitle.Text;
         }
-        public string GetWishListAlertMessage()
+        public string GetWishListAlertMessageText()
         {
             return WishListAlertMessage.Text;
         }
