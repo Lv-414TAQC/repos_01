@@ -12,18 +12,17 @@ namespace OpenCart414Test.Pages
     {
         private const string ITEMS_TABLE_CSSSELECTOR = "table.table-striped";
 
-        private IWebElement cartContainer;
+        protected IWebDriver driver;
 
         public IWebElement ViewCartLink
-        { get { return cartContainer.FindElement(By.XPath("//p[@class='text-right']//strong/i[@class='fa fa-shopping-cart']//..")); } }
+        { get { return driver.FindElement(By.XPath("//p[@class='text-right']//strong/i[@class='fa fa-shopping-cart']//..")); } }
         public IWebElement CheckOutLink
-        { get { return cartContainer.FindElement(By.XPath("//p[@class='text-right']//strong/i[@class='fa fa-share']//..")); } }
-
+        { get { return driver.FindElement(By.XPath("//p[@class='text-right']//strong/i[@class='fa fa-share']//..")); } }
         IList<ShoppingCartContainerComponent> itemsTable;
 
-        public CartProductContainer(IWebElement cartContainer)
+        public CartProductContainer(IWebDriver driver)
         {
-            this.cartContainer = cartContainer;
+            this.driver = driver;
             CheckElements();
             InitElements();
         }
@@ -32,7 +31,7 @@ namespace OpenCart414Test.Pages
         {
             // TODO Develop Custom Exception
             IWebElement temp = ViewCartLink; 
-            IWebElement temp = CheckOutLink; // TODO All Web Elements
+            temp = CheckOutLink; // TODO All Web Elements
         }
 
         private void InitElements()
@@ -44,6 +43,10 @@ namespace OpenCart414Test.Pages
             }
         }
         // Page Object
+        public IList<ShoppingCartContainerComponent> GetItemsTable()
+        {
+            return itemsTable;
+        }
 
         //ViewCartLink
         public string GetViewCartLinkText()
