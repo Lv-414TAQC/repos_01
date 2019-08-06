@@ -9,8 +9,8 @@ namespace OpenCart414Test.Pages
 {
     class WishListPage : WishListPart
     {
-        public IWebElement WishListTable
-        { get { return driver.FindElement(By.CssSelector(".table.table-bordered.table-hover")); } }
+        public WishListComponentContainer WishListTable;
+        //{ get { return driver.FindElement(By.CssSelector(".table.table-bordered.table-hover")); } }
         public WishListPage(IWebDriver driver) : base(driver)
         {
         }

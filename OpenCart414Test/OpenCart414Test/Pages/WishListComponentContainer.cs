@@ -9,6 +9,8 @@ namespace OpenCart414Test.Pages
 {
     class WishListComponentContainer
     {
+        protected IWebDriver driver;
+
         public IWebElement TableHeadImage
         { get { return driver.FindElement(By.XPath("//td[text()='Image']")); } }
         public IWebElement TableHeadProductName
