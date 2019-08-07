@@ -38,7 +38,7 @@ namespace OpenCart414Test.Pages
             // TODO All Web Elements
         }
 
-        // Page Object TestCommitOne
+        // Page Object
 
         // CriteriaSearchField
         public string GetCriteriaSearchFieldText()

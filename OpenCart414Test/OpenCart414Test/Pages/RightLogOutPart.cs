@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    public class RightLogOutPart : RightMenuPart
+    public class RightLogoutPart : RightMenuPart
     {
         public IWebElement RightMenuLogin
         { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Login']")); } }
         public IWebElement RightMenuRegister
         { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Register']")); } }
-        public RightLogOutPart(IWebDriver driver) : base(driver)
+        public RightLogoutPart(IWebDriver driver) : base(driver)
         {
         }
+        // Page Object
         public string GetRightMenuLoginText()
         {
             return RightMenuLogin.Text;
@@ -32,5 +33,9 @@ namespace OpenCart414Test.Pages
         {
             RightMenuRegister.Click();
         }
+
+        // Functional
+
+        // Business Logic
     }
 }
