@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,11 @@ namespace OpenCart414Test.Pages
 {
     class ShoppingCartPage : BreadCrumPart
     {
-        public const string CART_IS_EMPTY = "Your shopping cart is empty!";
+        public ShoppingCartPage(IWebDriver driver) : base(driver)
+        {
+        }
+
+        //
 
         public IWebElement ContinueShoppingButton
         { get { return driver.FindElement(By.CssSelector("button.btn.btn-primary")); } }
@@ -16,24 +21,22 @@ namespace OpenCart414Test.Pages
         { get { return driver.FindElement(By.CssSelector("a.btn.btn-primary")); } }
         public IWebElement DiscountCode
         { get { return driver.FindElement(By.Id("accordion")); } }
-
+        private TablePriceComponent tablePrice;
         private IList<ShoppingCartPageComponent> shopppingcartComponents;
         public IList<ShoppingCartPageComponent> GetShoppingCartComponents()
         {
             return shopppingcartComponents;
         }
-        public IWebElement EmptyListMessage
-        {
-            get
-            {
-                if (GetShoppingCartComponentsCount() > 0)
-                {
-                    // TODO Develop Custom Exception 
-                    throw new Exception("Message not Found.");
-                }
-                return driver.FindElement(By.XPath("//div[@id = 'content']/p"));
-            }
-        }
+        //private void InitElements()
+        //{
+        //    shopppingcartComponents = new List<ShoppingCartPageComponent>();
+        //    foreach (IWebElement current in driver.FindElements(By.CssSelector(ITEMS_TABLE_CSSSELECTOR)))
+        //    {
+        //        shopppingcartComponents.Add(new ShoppingCartPageComponent(current));
+        //    }
+        //}
+        //Page Object
+
 
         public int GetShoppingCartComponentsCount()
         {
@@ -48,6 +51,26 @@ namespace OpenCart414Test.Pages
         {
             ChecoutButton.Click();
         }
-
+        //Functional
+        public ShoppingCartPageComponent GetShoppingCartComponentByName(string productName)
+        {
+            ShoppingCartPageComponent result = null;
+            foreach (ShoppingCartPageComponent current in shopppingcartComponents)
+            {
+                if (current.GetProductName().ToLower()
+                        .Equals(productName.ToLower()))
+                {
+                    result = current;
+                    break;
+                }
+            }
+            if (result == null)
+            {
+                // TODO Develop Custom Exception
+                throw new Exception("ProductName: " + productName + " not Found.");
+            }
+            return result;
+        }
+        
     }
 }
