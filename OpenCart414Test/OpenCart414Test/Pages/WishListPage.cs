@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    class WishListPage : WishListPart
+    public class WishListPage : WishListPart
     {
         private WishListComponentContainer wishListTable;
         //{ get { return driver.FindElement(By.CssSelector(".table.table-bordered.table-hover")); } }

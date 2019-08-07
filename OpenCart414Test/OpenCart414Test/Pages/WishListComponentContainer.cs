@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    class WishListComponentContainer
+    public class WishListComponentContainer
     {
         private const string WISHLIST_COMPONENT_XPATH = "//div[@class='table-responsive']/table/tbody/tr";
 
