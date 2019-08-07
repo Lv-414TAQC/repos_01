@@ -81,7 +81,7 @@ namespace OpenCart414Test.Pages
         public void ClickCriteriaSubCategory()
         {
             if (!CriteriaSubCategory.Enabled)
-            {
+            {x`
                 // TODO Develop Custom Exception
                 throw new Exception("Error, CriteriaSubCategory had disabled");
             }
