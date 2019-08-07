@@ -33,8 +33,8 @@ namespace OpenCart414Test.Pages
         { get { return driver.FindElement(By.Id("input-password")); } }
         public IWebElement PasswordConfimField
         { get { return driver.FindElement(By.Id("input-confim")); } }
-        public IWebElement PrivaceAgreement
-        { get { return driver.FindElement(By.("input-confim")); } }
+       // public IWebElement PrivaceAgreement
+        //{ get { return driver.FindElement(By.("input-confim")); } }
 
 
         public RegisterUserPage(IWebDriver driver) :base(driver)
