@@ -61,17 +61,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ApplicationRepository.cs" />
     <Compile Include="Data\Currency.cs" />
+    <Compile Include="Data\SearchDTO.cs" />
+    <Compile Include="Data\LoggedMyAccount.cs" />
     <Compile Include="Data\Product.cs" />
     <Compile Include="Data\ProductRepository.cs" />
     <Compile Include="Data\SearchCriteria.cs" />
     <Compile Include="Data\SearchCriteriaRepository.cs" />
+    <Compile Include="Data\UnloggedMyAccount.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="Pages\AccountLogoutPage.cs" />
     <Compile Include="Pages\BreadCrumPart.cs" />
+    <Compile Include="Pages\DropdownComponent.cs" />
     <Compile Include="Pages\HomePage.cs" />
+    <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\ProductComponent.cs" />
     <Compile Include="Pages\ProductsContainerComponent.cs" />
     <Compile Include="Pages\ProductsCriteriaComponent.cs" />
+    <Compile Include="Pages\RegisterPage.cs" />
+    <Compile Include="Pages\RightLogoutPart.cs" />
+    <Compile Include="Pages\RightMenuPart.cs" />
     <Compile Include="Pages\SearchCriteriaPart.cs" />
     <Compile Include="Pages\SearchSuccessPage.cs" />
     <Compile Include="Pages\SearchUnsuccessPage.cs" />

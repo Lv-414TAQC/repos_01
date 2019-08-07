@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using OpenCart414Test.Data;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,12 @@ namespace OpenCart414Test.Pages
         // Functional
 
         // Business Logic
+        public SearchSuccessPage ChooseCurrency(Currency currency)
+        {
+            ClickCurrencyByPartialName(currency);
+            return new SearchSuccessPage(driver);
+        }
+
         public SearchSuccessPage SortProductsByCriteria(string text) // TODO Use Enum
         {
             ProductsCriteria.SetInputSort(text);
