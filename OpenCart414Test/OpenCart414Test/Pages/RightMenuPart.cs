@@ -34,6 +34,7 @@ namespace OpenCart414Test.Pages
         {
         }
 
+        // Page Object
         public string GetRightMenuMyAccountText()
         {
             return RightMenuMyAccount.Text;
@@ -114,5 +115,9 @@ namespace OpenCart414Test.Pages
         {
             RightMenuNewsletter.Click();
         }
+
+        // Functional
+
+        // Business Logic
     }
 }
