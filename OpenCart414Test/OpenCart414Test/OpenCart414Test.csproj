@@ -93,6 +93,7 @@
     <Compile Include="SeleniumOpenCartSearch.cs" />
     <Compile Include="SeleniumSecond.cs" />
     <Compile Include="SimpleTest.cs" />
+    <Compile Include="Tests\WishListTest.cs" />
     <Compile Include="Tests\SearchTest.cs" />
     <Compile Include="Tests\TestRunner.cs" />
     <Compile Include="Tools\ListUtils.cs" />
