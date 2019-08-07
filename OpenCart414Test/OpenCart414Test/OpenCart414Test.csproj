@@ -75,18 +75,32 @@
     <Compile Include="Pages\ProductsCriteriaComponent.cs" />
     <Compile Include="Pages\RightLogInPart.cs" />
     <Compile Include="Pages\RightLogOutPart.cs" />
+
+   
+    
+    
+    <Compile Include="Pages\ShoppingCartEmptyPage.cs" />
+=======
+    <Compile Include="Pages\RightMenuPart.cs" />
     <Compile Include="Pages\SearchCriteriaPart.cs" />
     <Compile Include="Pages\SearchSuccessPage.cs" />
     <Compile Include="Pages\SearchUnsuccessPage.cs" />
+    <Compile Include="Pages\ShoppingCartContainerComponent.cs" />
     <Compile Include="Pages\ShoppingCartPage.cs" />
     <Compile Include="Pages\ShoppingCartPageComponent.cs" />
-    <Compile Include="Pages\ShoppingCartEmptyPage.cs" />
+>>>>>>> 910fdc61ed5d32eac21bc6e3076d0ad461e5cc1c
     <Compile Include="Pages\TablePriceComponent.cs" />
     <Compile Include="Pages\TopPart.cs" />
+    <Compile Include="Pages\WishListComponent.cs" />
+    <Compile Include="Pages\WishListComponentContainer.cs" />
+    <Compile Include="Pages\WishListEmptyPage.cs" />
+    <Compile Include="Pages\WishListPage.cs" />
+    <Compile Include="Pages\WishListPart.cs" />
     <Compile Include="SeleniumFirst.cs" />
     <Compile Include="SeleniumOpenCartSearch.cs" />
     <Compile Include="SeleniumSecond.cs" />
     <Compile Include="SimpleTest.cs" />
+    <Compile Include="Tests\WishListTest.cs" />
     <Compile Include="Tests\SearchTest.cs" />
     <Compile Include="Tests\TestRunner.cs" />
     <Compile Include="Tools\ListUtils.cs" />
