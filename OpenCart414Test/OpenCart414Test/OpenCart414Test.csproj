@@ -104,6 +104,7 @@
     <Compile Include="SeleniumSecond.cs" />
     <Compile Include="SimpleTest.cs" />
     <Compile Include="Tests\SearchByDefaultCategoryTest.cs" />
+    <Compile Include="Tests\AddToCartTests.cs" />
     <Compile Include="Tests\WishListTest.cs" />
     <Compile Include="Tests\SearchTest.cs" />
     <Compile Include="Tests\TestRunner.cs" />
