@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using OpenCart414Test.Data;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,11 +52,11 @@ namespace OpenCart414Test.Pages
         // Functional
 
         // Business Logic
-        //public HomePage chooseCurrency(Currencies currency)
-        //{
-        //    ClickCurrencyByPartialName(currency);
-        //    return new HomePage(driver);
-        //}
+        public HomePage ChooseCurrency(Currency currency)
+        {
+            ClickCurrencyByPartialName(currency);
+            return new HomePage(driver);
+        }
 
     }
 }
