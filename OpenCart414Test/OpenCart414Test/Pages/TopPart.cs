@@ -143,11 +143,21 @@ namespace OpenCart414Test.Pages
             SearchField.Click();
         }
 
+
         // SearchButton
         public void ClickSearchButton()
         {
             SearchButton.Click();
+            
         }
+        public SearchUnsuccessPage ClickSearchButtonD()
+        {
+            SearchButton.Click();
+            return new SearchUnsuccessPage(driver);
+
+        }
+
+
 
         // CartButton
         public string GetCartButtonText()
@@ -272,7 +282,7 @@ namespace OpenCart414Test.Pages
         public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria)
         {
             MakeTopSearch(searchCriteria.SearchValue);
-            //MakeTopSearch(searchText);
+            //MakeTopSearch(searchText);               
             return new SearchUnsuccessPage(driver);
         }
 

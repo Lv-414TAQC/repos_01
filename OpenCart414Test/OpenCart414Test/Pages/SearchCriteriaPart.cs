@@ -20,13 +20,13 @@ namespace OpenCart414Test.Pages
         public IWebElement CriteriaDescription
         { get { return driver.FindElement(By.Id("description")); } }
         public IWebElement CriteriaSearchButton
-        { get { return driver.FindElement(By.Id("description")); } }
+        { get { return driver.FindElement(By.Id("button-search")); } }
 
         public SearchCriteriaPart(IWebDriver driver) : base(driver)
         {
             CheckElements();
         }
-
+         
         private void CheckElements()
         {
             // TODO Develop Custom Exception
