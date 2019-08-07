@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    class WishListPart : RightLogInPart
+    public class WishListPart : RightLogInPart
     {
         public IWebElement WishListTitle
         { get { return driver.FindElement(By.XPath("//div[@id='content']/h2")); } }

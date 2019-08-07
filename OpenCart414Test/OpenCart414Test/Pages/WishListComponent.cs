@@ -7,22 +7,32 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    class WishListComponent
+    public class WishListComponent
     {
-        protected IWebDriver driver;
-
-        public IWebElement WishListComponentImage;
-        public IWebElement WishListComponentProductName;
-        public IWebElement WishListComponentModel;
-        public IWebElement WishListComponentStock;
-        public IWebElement WishListComponentUnitPrice;
-        public IWebElement WishListComponentAddToCartButton;
-        public IWebElement WishListComponentRemoveButton;
+        private IWebElement wishListComponentLayout;
         
-        public ??? GetWishListComponentImage()
-        {
+        public IWebElement WishListComponentImage
+        { get { return wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-center']/a/img")); } }
+        public IWebElement WishListComponentProductName
+        { get { return wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-left']/a")); } }
+        public IWebElement WishListComponentModel
+        { get { return WishListComponentProductName.FindElement(By.XPath("./../following-sibling::td[@class='text-left']")); } }
+        public IWebElement WishListComponentStock
+        { get { return wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-right']")); } }
+        public IWebElement WishListComponentUnitPrice
+        { get { return wishListComponentLayout.FindElement(By.CssSelector(".price")); } }
+        public IWebElement WishListComponentAddToCartButton
+        { get { return wishListComponentLayout.FindElement(By.CssSelector(".btn.btn-primary")); } }
+        public IWebElement WishListComponentRemoveButton
+        { get { return wishListComponentLayout.FindElement(By.CssSelector(".btn.btn-danger")); } }
 
+        public WishListComponent(IWebElement wishListComponentLayout)
+        {
+            this.wishListComponentLayout = wishListComponentLayout;
+            //CheckElements();
         }
+
+        //public ??? GetWishListComponentImage() { }
         public void ClickWishListComponentImage()
         {
             WishListComponentImage.Click();

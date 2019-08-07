@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    class WishListEmptyPage : WishListPart
+    public class WishListEmptyPage : WishListPart
     {
         public IWebElement WishListIsEmptyParagraph
         { get { return driver.FindElement(By.XPath("//div[@id='content']/p")); } }
