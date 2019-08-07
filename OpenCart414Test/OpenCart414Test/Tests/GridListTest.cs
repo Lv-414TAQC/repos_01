@@ -14,17 +14,13 @@ using OpenCart414Test.Pages;
 namespace OpenCart414Test.Tests
 {
     [TestFixture]
-    public class SearchTest : TestRunner
+    public class GridListTest : TestRunner
     {
         // DataProvider
         private static readonly object[] ProductSearch =
         {
             new object[] { ProductRepository.GetMacBook(),
-                SearchCriteriaRepository.GetMacBook(),
-                Currency.EURO },
-            new object[] { ProductRepository.GetMacBook(),
-                SearchCriteriaRepository.GetMacBook(),
-                Currency.POUND_STERLING },
+                SearchCriteriaRepository.GetMacBook() }
         };
 
         [Test, TestCaseSource(nameof(ProductSearch))]
@@ -60,25 +56,6 @@ namespace OpenCart414Test.Tests
                 .Contains(HomePage.IPHONE6));
             //
             Thread.Sleep(3000); // For Presentation ONLY
-        }
-
-        //[Test]
-        public void CheckLogin()
-        {
-            // Steps
-            //HomePage homePage = LoadApplication();
-            //LoginPage loginPage = homePage.GotoLoginPage();
-            LoginPage loginPage = LoadApplication()
-                .GotoLoginPage();
-                //.Login(user);
-            //
-            // Check
-            //
-            // Return to Previous State
-            //
-            // Check (optional)
-            //
-            Thread.Sleep(5000); // For Presentation ONLY
         }
     }
 }

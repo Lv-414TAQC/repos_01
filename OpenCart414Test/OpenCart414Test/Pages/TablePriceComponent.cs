@@ -36,7 +36,7 @@ namespace OpenCart414Test.Pages
         {
             this.driver = driver;
             CheckElements();
-            InitElements();
+            //InitElements();
         }
 
         private void CheckElements()
