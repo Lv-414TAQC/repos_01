@@ -34,7 +34,8 @@ namespace OpenCart414Test.Tests
         public void SetUp()
         {
             // TODO
-            driver.Navigate().GoToUrl("http://10.26.34.118/opencart/upload/");
+            //driver.Navigate().GoToUrl("http://10.26.34.118/opencart/upload/");
+            driver.Navigate().GoToUrl("http://192.168.20.128/opencart/upload/");
         }
 
         [TearDown]

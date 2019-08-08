@@ -38,7 +38,7 @@ namespace OpenCart414Test.Pages
         public IWebElement FieldValue
         { get { return product.FindElement(By.CssSelector(".input-group.btn-block > input")); } }
        
-            ;
+            
         private void CheckElements()
         {
             // TODO Develop Custom Exception
@@ -87,7 +87,7 @@ namespace OpenCart414Test.Pages
         public void SandKeysQuantityField(string text)
         {
             QuantityField.Clear();
-            QuantityField.SendKeys(text)
+            QuantityField.SendKeys(text);
 
         }
         public string UpdateMessage()

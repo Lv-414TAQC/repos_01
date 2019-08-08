@@ -14,11 +14,11 @@ namespace OpenCart414Test.Tests
     public class WishListTest : TestRunner
     {
         // DataProvider
-        private static readonly object[] ProductToAdd =
+        private static readonly object[] ProductToTestOn =
         {
             new object[] { ProductRepository.GetIPhone() },
         };
-        [Test, TestCaseSource(nameof(ProductToAdd))]
+        [Test, TestCaseSource(nameof(ProductToTestOn))]
         public void CheckAdding(Product addingProduct)
         {
             HomePage homePage = LoadApplication()
@@ -39,6 +39,58 @@ namespace OpenCart414Test.Tests
                 .getWishListComponentsContainer()
                 .GetWishListComponentNames()
                 .Contains(addingProduct.Title));
+            wishListPage.removeLastItemFromWishList(addingProduct);
+            AccountLogoutPage accountLogoutPage = wishListPage
+                .Logout();
+        }
+
+        [Test, TestCaseSource(nameof(ProductToTestOn))]
+        public void CheckRemoving(Product productToRemove)
+        {
+            HomePage homePage = LoadApplication()
+                .GotoLoginPage()
+                .LoggingIn("roman_my@ukr.net", "TESTER_PASWORD")
+                .GotoHomePage();
+            Thread.Sleep(2000); //for presentation only
+            ProductComponent productComponent = homePage
+                .getProductComponentsContainer()
+                .GetProductComponentByName(productToRemove.Title);
+            Thread.Sleep(2000); //for presentation only
+            productComponent.AddItemToWishList();
+            Thread.Sleep(2000); //for presentation only
+            WishListEmptyPage wishListEmptyPage = homePage
+                .GotoWishListPage()
+                .removeLastItemFromWishList(productToRemove);
+            Thread.Sleep(2000); //for presentation only
+            Assert.IsTrue(wishListEmptyPage.WishListIsEmptyParagraph.Displayed);
+            AccountLogoutPage accountLogoutPage = wishListEmptyPage
+                .Logout();
+        }
+
+        [Test, TestCaseSource(nameof(ProductToTestOn))]
+        public void CheckToCartFromWishList(Product productToCart)
+        {
+            HomePage homePage = LoadApplication()
+                .GotoLoginPage()
+                .LoggingIn("roman_my@ukr.net", "TESTER_PASWORD")
+                .GotoHomePage();
+            Thread.Sleep(2000); //for presentation only
+            ProductComponent productComponent = homePage
+                .getProductComponentsContainer()
+                .GetProductComponentByName(productToCart.Title);
+            Thread.Sleep(2000); //for presentation only
+            productComponent.AddItemToWishList();
+            Thread.Sleep(2000); //for presentation only
+            WishListPage wishListPage = homePage
+                .GotoWishListPage();
+            WishListComponent wishListComponent = wishListPage
+                .getWishListComponentsContainer()
+                .GetWishListComponentByName(productToCart.Title);
+            wishListComponent.ClickWishListComponentAddToCartButton();
+            Thread.Sleep(2000); //for presentation only
+            Assert.IsTrue(wishListPage.WishListAlertMessage.Displayed);
+            AccountLogoutPage accountLogoutPage = wishListPage
+                .Logout();
         }
     }
 }

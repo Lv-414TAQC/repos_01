@@ -305,7 +305,7 @@ namespace OpenCart414Test.Pages
         public RegisterUserPage GotoRegisterPage()
         {
             ClickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
-            return new RegisterPage(driver);
+            return new RegisterUserPage(driver);
         }
 
         public AccountLogoutPage Logout()

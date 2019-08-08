@@ -24,7 +24,7 @@ namespace OpenCart414Test.Pages
         public IWebElement WishListComponentAddToCartButton
         { get { return wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-right']/button[@class='btn btn-primary']")); } }
         public IWebElement WishListComponentRemoveButton
-        { get { return wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-right']/button[@class='btn btn-danger']")); } }
+        { get { return wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-right']/a[@class='btn btn-danger']")); } }
 
         public WishListComponent(IWebElement wishListComponentLayout)
         {
@@ -32,10 +32,6 @@ namespace OpenCart414Test.Pages
             //CheckElements();
         }
 
-        //public string GetWishListComponentImage()
-        //{
-        //    return WishListComponentImage.FindElement(By.XPath(".//")); ;
-        //}
         public void ClickWishListComponentImage()
         {
             WishListComponentImage.Click();
@@ -68,5 +64,8 @@ namespace OpenCart414Test.Pages
         {
             WishListComponentRemoveButton.Click();
         }
+
+        // Functional
+        
     }
 }
