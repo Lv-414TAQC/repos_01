@@ -11,10 +11,13 @@ namespace OpenCart414Test.Pages
     {
         public ShoppingCartPage(IWebDriver driver) : base(driver)
         {
+            this.driver = driver;
+            CheckElements();
+            InitElements();
         }
-
+        private const string TABLE_PRICE_COMPONENT_XPATH= "//div[@class='row']/div/table/tbody";
         //
-
+        
         public IWebElement ContinueShoppingButton
         { get { return driver.FindElement(By.CssSelector("button.btn.btn-primary")); } }
         public IWebElement ChecoutButton
@@ -22,19 +25,31 @@ namespace OpenCart414Test.Pages
         public IWebElement DiscountCode
         { get { return driver.FindElement(By.Id("accordion")); } }
         private TablePriceComponent tablePrice;
+        private void InitElements()
+        {
+            tablePrice = new TablePriceComponent(driver);
+            shopppingcartComponents = new List<ShoppingCartPageComponent>();
+            foreach (IWebElement current in shopppingcartComponents)
+            {
+                shopppingcartComponents.Add(new ShoppingCartPageComponent());
+            }
+        }
         private IList<ShoppingCartPageComponent> shopppingcartComponents;
         public IList<ShoppingCartPageComponent> GetShoppingCartComponents()
         {
             return shopppingcartComponents;
         }
-        //private void InitElements()
-        //{
-        //    shopppingcartComponents = new List<ShoppingCartPageComponent>();
-        //    foreach (IWebElement current in driver.FindElements(By.CssSelector(ITEMS_TABLE_CSSSELECTOR)))
-        //    {
-        //        shopppingcartComponents.Add(new ShoppingCartPageComponent(current));
-        //    }
-        //}
+       
+
+        private void CheckElements()
+        {
+            // TODO Develop Custom Exception
+            IWebElement temp = ContinueShoppingButton;
+            temp = ChecoutButton;
+
+        }
+
+        
         //Page Object
 
 
