@@ -17,8 +17,9 @@ namespace OpenCart414Test.Pages
         public TablePriceComponent(IWebDriver driver, By searchLocator)
         {
             this.driver = driver;
-            CheckElements();
-            //InitElements();
+       
+            InitElements(searchLocator);
+
         }
 
         private void InitElements(By searchLocator)
