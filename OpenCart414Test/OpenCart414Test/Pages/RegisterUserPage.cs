@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
+<<<<<<< HEAD
     class RegisterUserPage : RightLogoutPart
+=======
+    public class RegisterUserPage : RightLogoutPart
+>>>>>>> ac79fbb0f15842808d67a882ad24b3d1bb8b0132
     {
         public IWebElement FirstNameField
         { get { return driver.FindElement(By.Id("input-firstname")); } }
