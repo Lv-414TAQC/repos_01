@@ -15,5 +15,10 @@ namespace OpenCart414Test.Data
             return new SearchCriteria("MacBook",
                 "Laptops & Notebooks", true, false);
         }
+        public static SearchCriteria GetMacBookD()
+        {
+            return new SearchCriteria("Mac",
+                "All Categories", false, false);
+        }
     }
 }
