@@ -146,6 +146,7 @@ namespace OpenCart414Test.Pages
             double previous = 0;
             foreach (var current in list)
             {
+                Console.WriteLine(current);
                 if (current < previous)
                 {
                     result = false;

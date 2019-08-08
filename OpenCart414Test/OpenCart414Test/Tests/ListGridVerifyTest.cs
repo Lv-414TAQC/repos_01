@@ -30,8 +30,9 @@ namespace OpenCart414Test.Tests
         {
             HomePage homePage = LoadApplication(); //open home
             SearchSuccessPage searchSuccessPage = homePage.SearchAllProductsSuccessfully();
-            searchSuccessPage.ProductsCriteria.SetSortLowHigh();
-            bool actual = searchSuccessPage.ProductsCriteria.IsSortedList(searchSuccessPage.ProductsCriteria.GetProductComponentIntPrices());
+            SearchSuccessPage searchSuccessSortedPage = searchSuccessPage.ProductsCriteria.SetSortLowHigh();
+            bool actual = searchSuccessSortedPage.ProductsCriteria.IsSortedList(searchSuccessSortedPage.
+                ProductsCriteria.GetProductComponentIntPrices());
             Assert.IsTrue(actual);
         }
     }
