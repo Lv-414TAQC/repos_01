@@ -11,7 +11,7 @@ using OpenCart414Test.Pages;
 namespace OpenCart414Test.Tests
 {
     [TestFixture]
-    class SearchByDefaultCategoryTest:TestRunner
+    class SearchByDefaultCategoryTest : TestRunner
     {
         // DataProvider
         private static readonly object[] ProductSearch =
@@ -21,8 +21,8 @@ namespace OpenCart414Test.Tests
                 },
         };
 
-       // [Test, TestCaseSource(nameof(ProductSearch))]
-       [Test]
+        // [Test, TestCaseSource(nameof(ProductSearch))]
+        //[Test]
         public void CheckSearchByDefaultCategory(/*SearchCriteria searchCriteria*/)
         {
             //Переробити , забрати атомарні методи і переробити в бізнес логіку
@@ -31,7 +31,7 @@ namespace OpenCart414Test.Tests
             Thread.Sleep(2000);
             SearchSuccessPage searchSuccessPage = searchUnsuccessPage.MakeCriteriaSearch();
             Thread.Sleep(2000);
-            
+
             bool temp = true;
             foreach (var a in searchSuccessPage.ProductsCriteria.GetProductComponentNames())
             {
@@ -57,16 +57,18 @@ namespace OpenCart414Test.Tests
             //Console.WriteLine(searchSuccessPage.ProductsCriteria.GetProductComponentsCount());
             //Thread.Sleep(2000);
 
+        }
+        [Test]
+        public void CheckSearchBySeparateCategory(/*SearchCriteria searchCriteria*/)
+        {
+            //Переробити , забрати атомарні методи і переробити в бізнес логіку
+            HomePage homePage = LoadApplication();
+            SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
+            Thread.Sleep(2000);
+            SearchSuccessPage searchSuccessPage = searchUnsuccessPage.MakeSearchBySeparateCategory();
+            Thread.Sleep(2000);
 
-            //SearchUnsuccessPage searchUnsuccessPage = LoadApplication().ClickSearchButtonD();
-            //searchUnsuccessPage.ClearCriteriaSearchField();
-            //searchUnsuccessPage.ClickCriteriaSearchField();
-            //searchUnsuccessPage.SetCriteriaSearchField("Mac");
-            //Thread.Sleep(1000);  //Only for presentation
-            //searchUnsuccessPage.ClickCriteriaSearchButton();
 
-            //SearchSuccessPage searchSuccessPage 
-            //Thread.Sleep(5000);  //Only for presentation
         }
     }
 }

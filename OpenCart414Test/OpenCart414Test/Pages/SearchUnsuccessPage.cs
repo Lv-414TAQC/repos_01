@@ -42,5 +42,16 @@ namespace OpenCart414Test.Pages
             ClickCriteriaSearchButton();
             return new SearchSuccessPage(driver);
         }
+        public SearchSuccessPage MakeSearchBySeparateCategory()
+        {
+            ClickCriteriaCategory();
+            SetCriteriaCategory("Laptops & Notebooks");
+            ClickCriteriaSearchField();
+            ClearCriteriaSearchField();
+            SetCriteriaSearchField("Mac");
+            ClickCriteriaSearchButton();
+            return new SearchSuccessPage(driver);
+        }
+
     }
 }
