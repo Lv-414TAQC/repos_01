@@ -14,7 +14,7 @@ namespace OpenCart414Test.Pages
         public IWebElement WishListAlertMessage
         { get { return driver.FindElement(By.CssSelector(".alert.alert-success")); } }
         public IWebElement ContinueButton
-        { get { return driver.FindElement(By.CssSelector(".btn.btn-primary")); } }
+        { get { return driver.FindElement(By.XPath("//div[@class='buttons clearfix']//a[@class='btn btn-primary']")); } }
         public WishListPart(IWebDriver driver) : base(driver)
         {
         }

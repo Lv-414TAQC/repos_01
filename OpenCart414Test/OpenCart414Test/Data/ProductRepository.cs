@@ -23,7 +23,7 @@ namespace OpenCart414Test.Data
 
         public static Product GetIPhone()
         {
-            return new Product("IPhone",
+            return new Product("iPhone",
                 "iPhone is a revolutionary new mobile phone that allows you to make a call by simply" +
                 "tapping a name or number in your address book, a favorites list, or a call log." +
                 "It also automatically syncs all your contacts from a PC, Mac, or Internet service." +

@@ -9,23 +9,29 @@ namespace OpenCart414Test.Pages
 {
     class ShoppingCartEmptyPage : BreadCrumPart
     {
+        
+        public const string CART_IS_EMPTY = "Your shopping cart is empty!";
+        public IWebElement CartEmptyMessage
+        { get { return driver.FindElement(By.XPath("//div[@id = 'content']/p")); } }
+
         public ShoppingCartEmptyPage(IWebDriver driver) : base(driver)
         {
+            CheckElements();
         }
-        public const string CART_IS_EMPTY = "Your shopping cart is empty!";
 
-        //public IWebElement EmptyListMessage
-        //{
-        //    get
-        //    {
-        //        if (GetShoppingCartComponentsCount() > 0)
-        //        {
-        //            // TODO Develop Custom Exception 
-        //            throw new Exception("Message not Found.");
-        //}
-        //        return driver.FindElement(By.XPath("//div[@id = 'content']/p"));
-        //    }
-        //}
+        private void CheckElements()
+        {
+            // TODO Develop Custom Exception
+            IWebElement temp = CartEmptyMessage; 
+        }
+
+        // Page Object
+
+        // InfoMessage
+        public string GetInfoMessageText()
+        {
+            return CartEmptyMessage.Text;
+        }
 
     }
 }

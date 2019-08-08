@@ -19,6 +19,9 @@ namespace OpenCart414Test.Pages
             this.driver = driver;
           //  CheckElements();
             //InitElements();
+
+            InitElements(searchLocator);
+
         }
 
         private void InitElements(By searchLocator)
