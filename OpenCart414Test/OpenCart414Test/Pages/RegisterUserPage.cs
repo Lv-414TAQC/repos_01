@@ -13,13 +13,13 @@ namespace OpenCart414Test.Pages
         public IWebElement FirstNameField
         { get { return driver.FindElement(By.Id("input-firstname")); } }
         public IWebElement LastNameField
-        { get { return driver.FindElement(By.Name("input-lastname")); } }
+        { get { return driver.FindElement(By.Id("input-lastname")); } }
         public IWebElement EMailField
         { get { return driver.FindElement(By.Id("input-email")); } }
         public IWebElement TelephoneField
         { get { return driver.FindElement(By.Id("input-telephone")); } }
         public IWebElement Address1Field
-        { get { return driver.FindElement(By.Id("input-address1")); } }
+        { get { return driver.FindElement(By.Id("input-address-1")); } }
         public IWebElement CityField
         { get { return driver.FindElement(By.Id("input-city")); } }
         public IWebElement PostCodeField
@@ -31,10 +31,12 @@ namespace OpenCart414Test.Pages
         { get { return new SelectElement(driver.FindElement(By.Id("input-zone"))); } }
         public IWebElement PasswordField
         { get { return driver.FindElement(By.Id("input-password")); } }
-        public IWebElement PasswordConfimField
-        { get { return driver.FindElement(By.Id("input-confim")); } }
-       // public IWebElement PrivaceAgreement
-        //{ get { return driver.FindElement(By.("input-confim")); } }
+        public IWebElement PasswordConfirmField
+        { get { return driver.FindElement(By.Id("input-confirm")); } }
+        public IWebElement PrivacyAgreement
+        { get { return driver.FindElement(By.CssSelector("input[type=checkbox]")); } }
+        public IWebElement SubmitButton
+        { get { return driver.FindElement(By.CssSelector("input.btn.btn-primary")); } }
 
 
         public RegisterUserPage(IWebDriver driver) :base(driver)
@@ -45,9 +47,8 @@ namespace OpenCart414Test.Pages
         private void CheckElements()
         {
             // TODO Develop Custom Exception
-            IWebElement temp = FirstNameField; //TODO
+            IWebElement temp = FirstNameField, LastNameField, EMailField; //TODO
         }
-
         //First Name Field
         public string GetRegisterFirstNameFieldText()
         {
@@ -260,24 +261,69 @@ namespace OpenCart414Test.Pages
         }
 
         // PasswordConfim Field
-        public string GetRegisterPasswordConfimFieldText()
+        public string GetRegisterPasswordConfirmFieldText()
         {
-            return PasswordConfimField.GetAttribute(TAG_ATTRIBUTE_VALUE);
+            return PasswordConfirmField.GetAttribute(TAG_ATTRIBUTE_VALUE);
         }
 
-        public void SetRegisterPasswordConfimField(string text)
+        public void SetRegisterPasswordConfirmField(string text)
         {
-            PasswordConfimField.SendKeys(text);
+            PasswordConfirmField.SendKeys(text);
         }
 
-        public void ClearRegisterPasswordConfimField()
+        public void ClearRegisterPasswordConfirmField()
         {
-            PasswordConfimField.Clear();
+            PasswordConfirmField.Clear();
         }
 
-        public void ClickRegisterPasswordConfimField()
+        public void ClickRegisterPasswordConfirmField()
         {
-            PasswordConfimField.Click();
+            PasswordConfirmField.Click();
         }
+
+        // PrivacyAgreement
+        public void ClickPrivacyAgreement()
+        {
+            PrivacyAgreement.Click();
+        }
+
+        // SubmitButton
+        public void ClickSubmitButton()
+        {
+            SubmitButton.Click();
+        }
+
+        //Functional
+
+        public void InitElements(string FirstNameField, string LastNameField,
+            string Email,string Telephone,string Address1,string City,string PostCode,string Country,
+            string Region,string Password,string ConfirmPassword)
+        {
+            ClearRegisterFirstNameField();
+            SetRegisterFirstNameField(FirstNameField);
+            ClearRegisterLastNameField();
+            SetRegisterLastNameField(LastNameField);
+            ClearRegisterEmailField();
+            SetRegisterEmailField(Email);
+            ClearRegisterTelephoneField();
+            SetRegisterTelephoneField(Telephone);
+            ClearRegisterAddress1Field();
+            SetRegisterAddress1Field(Address1);
+            ClearRegisterCityField();
+            SetRegisterCityField(City);
+            ClearRegisterPostCodeField();
+            SetRegisterPostCodeField(PostCode);
+            ClickCountryCategory();
+            SetCountryCategory(Country);
+            ClickRegionCategory();
+            SetRegionCategory(Region);
+            ClearRegisterPasswordField();
+            SetRegisterPasswordField(Password);
+            ClearRegisterPasswordConfirmField();
+            SetRegisterPasswordConfirmField(ConfirmPassword);
+            ClickPrivacyAgreement();
+            ClickSubmitButton();
+        }
+
     }
 }

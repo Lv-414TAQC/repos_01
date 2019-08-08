@@ -27,7 +27,7 @@ namespace OpenCart414Test.Pages
         private TablePriceComponent tablePrice;
         private void InitElements()
         {
-            tablePrice = new TablePriceComponent(driver);
+        //    tablePrice = new TablePriceComponent(driver);
             shopppingcartComponents = new List<ShoppingCartPageComponent>();
             foreach (IWebElement current in shopppingcartComponents)
             {
