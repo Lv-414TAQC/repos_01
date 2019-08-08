@@ -13,12 +13,15 @@ namespace OpenCart414Test.Pages
         protected const string TAG_ATTRIBUTE_VALUE = "value";
         protected const string TAG_ATTRIBUTE_SRC = "src";
         //
+        protected const string LIST_CURENCIES_CSSSELECTOR = "div.btn-group.open ul.dropdown-menu li";
+        protected const string DROPDOWN_MYACCOUNT_CSSSELECTOR = ".dropdown-menu-right li";
+        //
         protected IWebDriver driver;
         //
         public IWebElement Currency
         { get { return driver.FindElement(By.CssSelector(".btn.btn-link.dropdown-toggle")); } }
         public IWebElement MyAccount
-        { get { return driver.FindElement(By.CssSelector(".list - inline > li > a.dropdown - toggle")); } }
+        { get { return driver.FindElement(By.CssSelector(".list-inline > li > a.dropdown-toggle")); } }
         public IWebElement WishList
         { get { return driver.FindElement(By.Id("wishlist-total")); } }
         public IWebElement ShoppingCart
@@ -34,12 +37,20 @@ namespace OpenCart414Test.Pages
         public IWebElement CartButton
         { get { return driver.FindElement(By.CssSelector("#cart > button")); } }
         //
-        public IList<IWebElement> TopMenu;  // TODO
+        private DropdownComponent dropdownComponent;
+        public IList<IWebElement> TopMenu;  // TODO { get; private set; }
 
         public TopPart(IWebDriver driver)
         {
             this.driver = driver;
+            InitElements();
             CheckElements();
+        }
+
+        private void InitElements()
+        {
+            dropdownComponent = null;
+            // TopMenu =... // TODO
         }
 
         private void CheckElements()
@@ -132,11 +143,21 @@ namespace OpenCart414Test.Pages
             SearchField.Click();
         }
 
+
         // SearchButton
         public void ClickSearchButton()
         {
             SearchButton.Click();
+            
         }
+        public SearchUnsuccessPage ClickSearchButtonD()
+        {
+            SearchButton.Click();
+            return new SearchUnsuccessPage(driver);
+
+        }
+
+
 
         // CartButton
         public string GetCartButtonText()
@@ -149,6 +170,40 @@ namespace OpenCart414Test.Pages
             CartButton.Click();
         }
 
+        // DropdownComponent
+        protected DropdownComponent GetDropdownComponent()
+        {
+            if (dropdownComponent == null)
+            {
+                // TODO Develop Custom Exception 
+                throw new Exception("DropdownComponent is null.");
+            }
+            return dropdownComponent;
+        }
+
+        private DropdownComponent CreateDropdownComponent(By searchLocator)
+        {
+            dropdownComponent = new DropdownComponent(driver, searchLocator);
+            return GetDropdownComponent();
+        }
+
+        private void ClickDropdownComponentByPartialName(string optionName)
+        {
+            if (!GetDropdownComponent().IsExistDropdownOptionByPartialName(optionName))
+            {
+                // TODO Develop Custom Exception 
+                throw new Exception("OptionName not found.");
+            }
+            GetDropdownComponent().ClickDropdownOptionByPartialName(optionName);
+            dropdownComponent = null;
+        }
+
+        private void CloseDropdownOption()
+        {
+            ClickSearchField();
+            dropdownComponent = null;
+        }
+
         // TopMenu
 
         // Functional
@@ -159,6 +214,53 @@ namespace OpenCart414Test.Pages
             SetSearchField(searchText);
             ClickSearchButton();
         }
+
+        // CurrencyDropdownComponent
+        private void OpenCurrencyDropdownComponent()
+        {
+            ClickSearchField();
+            ClickCurrency();
+            CreateDropdownComponent(By.CssSelector(LIST_CURENCIES_CSSSELECTOR));
+        }
+
+        protected void ClickCurrencyByPartialName(Currency currency)
+        {
+            OpenCurrencyDropdownComponent();
+            ClickDropdownComponentByPartialName(ApplicationRepository
+                .GetCurrencyDTO(currency).UIPartialName);
+        }
+
+        public IList<string> GetListCurrencyNames()
+        {
+            OpenCurrencyDropdownComponent();
+            IList<string> result = GetDropdownComponent().GetListOptionsText();
+            CloseDropdownOption();
+            return result;
+        }
+
+        // MyAccountDropdownComponent
+        private void ClickDropdownMyAccountByPartialName(string optionName)
+        {
+            ClickSearchField();
+            ClickMyAccount();
+            CreateDropdownComponent(By.CssSelector(DROPDOWN_MYACCOUNT_CSSSELECTOR));
+            ClickDropdownComponentByPartialName(optionName);
+        }
+
+        protected void ClickUnloggedMyAccountByPartialName(UnloggedMyAccount optionName)
+        {
+            // TODO Check if Unlogged
+            ClickDropdownMyAccountByPartialName(ApplicationRepository
+                .GetUnloggedMyAccountDTO(optionName).UIPartialName);
+        }
+
+        protected void ClickLoggedMyAccountByPartialName(LoggedMyAccount optionName)
+        {
+            // TODO Check if loggined
+            ClickDropdownMyAccountByPartialName(ApplicationRepository
+                .GetLoggedMyAccountDTO(optionName).UIPartialName);
+        }
+
 
         // Business Logic
 
@@ -180,8 +282,26 @@ namespace OpenCart414Test.Pages
         public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria)
         {
             MakeTopSearch(searchCriteria.SearchValue);
-            //MakeTopSearch(searchText);
+            //MakeTopSearch(searchText);               
             return new SearchUnsuccessPage(driver);
+        }
+
+        public LoginPage GotoLoginPage()
+        {
+            ClickUnloggedMyAccountByPartialName(UnloggedMyAccount.LOGIN);
+            return new LoginPage(driver);
+        }
+
+        public RegisterPage GotoRegisterPage()
+        {
+            ClickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
+            return new RegisterPage(driver);
+        }
+
+        public AccountLogoutPage Logout()
+        {
+            ClickLoggedMyAccountByPartialName(LoggedMyAccount.LOGOUT);
+            return new AccountLogoutPage(driver);
         }
 
     }

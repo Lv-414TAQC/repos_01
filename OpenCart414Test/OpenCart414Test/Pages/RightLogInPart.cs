@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    class RightLogInPart : RightMenuPart
+    public class RightLoginPart : RightMenuPart
     {
         public IWebElement RightMenuEditAccount
         { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Edit Account']")); } }
@@ -15,7 +15,7 @@ namespace OpenCart414Test.Pages
         { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Password']")); } }
         public IWebElement RightMenuLogout
         { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Logout']")); } }
-        public RightLogInPart(IWebDriver driver) : base(driver)
+        public RightLoginPart(IWebDriver driver) : base(driver)
         {
         }
         public string GetRightMenuEditAccountText()

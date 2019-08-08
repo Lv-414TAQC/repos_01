@@ -50,5 +50,13 @@ namespace OpenCartTests.Stetsula.Pages
             DeleteButtton.Click();
             Driver.SwitchTo().Alert().Accept();
         }
+
+        public void AddNewGeoZone(string name, string description, string country)
+        {
+            AddNewButton.Click();
+            AddGeoZonePage GeoZone = new AddGeoZonePage(Driver);
+            GeoZone.AddNewGeoZone(name, description, country);
+
+        }
     }
 }

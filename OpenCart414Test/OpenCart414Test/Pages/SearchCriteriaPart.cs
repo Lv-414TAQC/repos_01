@@ -20,20 +20,25 @@ namespace OpenCart414Test.Pages
         public IWebElement CriteriaDescription
         { get { return driver.FindElement(By.Id("description")); } }
         public IWebElement CriteriaSearchButton
-        { get { return driver.FindElement(By.Id("description")); } }
+        { get { return driver.FindElement(By.Id("button-search")); } }
 
         public SearchCriteriaPart(IWebDriver driver) : base(driver)
         {
             CheckElements();
         }
-
+         
         private void CheckElements()
         {
             // TODO Develop Custom Exception
-            IWebElement temp = CriteriaSearchField; // TODO All Web Elements
+            IWebElement temp = CriteriaSearchField;
+            SelectElement tempS = CriteriaCategory;
+            temp = CriteriaSubCategory;
+            temp = CriteriaDescription;
+            temp = CriteriaSearchButton;          
+            // TODO All Web Elements
         }
 
-        // Page Object TestCommitOne
+        // Page Object
 
         // CriteriaSearchField
         public string GetCriteriaSearchFieldText()

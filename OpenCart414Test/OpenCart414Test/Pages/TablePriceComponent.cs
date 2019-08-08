@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,31 +9,36 @@ namespace OpenCart414Test.Pages
 {
     class TablePriceComponent
     {
-        public IWebElement Sub_total
-        { get { return driver.FindElement(By.XPath("//div[@class='row']/div/table/tbody/tr/td/strong[text() ='Sub-Total:']/../following-sibling::td")); } }
-        public IWebElement Eco_tax
-        { get { return driver.FindElement(By.XPath("//div[@class='row']/div/table/tbody/tr/td/strong[text() ='Eco Tax (-2.00):']/../following-sibling::td")); } }
-        public IWebElement Vat
-        { get { return driver.FindElement(By.XPath("//div[@class='row']/div/table/tbody/tr/td/strong[text() ='VAT (20%):']/../following-sibling::td")); } }
-        public IWebElement total
-        { get { return driver.FindElement(By.XPath("//div[@class='row']/div/table/tbody/tr/td/strong[text() ='Total:']/../following-sibling::td")); } }
+        protected IWebDriver driver;
+
+        public IList<IWebElement> TablePriceList
+        { get; private set; }
+
+        public TablePriceComponent(IWebDriver driver, By searchLocator)
+        {
+            this.driver = driver;
+            CheckElements();
+
+            InitElements(searchLocator);
+        }
+
+        private void InitElements(By searchLocator)
+        {
+            TablePriceList = driver.FindElements(searchLocator);
+        }
+
 
         //Page Object
-        public string GetSub_totalText()
+
+
+        public IList<string> GetTablePriceListText()
         {
-            return Sub_total.Text;
-        }
-        public string GetEco_taxText()
-        {
-            return Eco_tax.Text;
-        }
-        public string GetVatText()
-        {
-            return Vat.Text;
-        }
-        public string GetTotalText()
-        {
-            return total.Text;
+            IList<string> result = new List<string>();
+            foreach (IWebElement current in TablePriceList)
+            {
+                result.Add(current.Text);
+            }
+            return result;
         }
     }
 }

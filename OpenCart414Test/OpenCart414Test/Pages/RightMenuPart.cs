@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    class RightMenuPart : BreadCrumPart
+    public class RightMenuPart : BreadCrumPart
     {
         public IWebElement RightMenuMyAccount
         { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='My Account']")); } }
@@ -34,6 +34,7 @@ namespace OpenCart414Test.Pages
         {
         }
 
+        // Page Object
         public string GetRightMenuMyAccountText()
         {
             return RightMenuMyAccount.Text;
@@ -114,5 +115,9 @@ namespace OpenCart414Test.Pages
         {
             RightMenuNewsletter.Click();
         }
+
+        // Functional
+
+        // Business Logic
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    class WishListComponent
+    public class WishListComponent
     {
         private IWebElement wishListComponentLayout;
         
