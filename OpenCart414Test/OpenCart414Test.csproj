@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Data\ApplicationRepository.cs" />
     <Compile Include="Data\Currency.cs" />
+    <Compile Include="Data\IUser.cs" />
     <Compile Include="Data\SearchDTO.cs" />
     <Compile Include="Data\LoggedMyAccount.cs" />
     <Compile Include="Data\Product.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Data\SearchCriteriaRepository.cs" />
     <Compile Include="Data\UnloggedMyAccount.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Pages\AccountLogoutPage.cs" />
     <Compile Include="Pages\BreadCrumPart.cs" />
     <Compile Include="Pages\DropdownComponent.cs" />
