@@ -27,7 +27,7 @@ namespace OpenCart414Test.Tests
                 Currency.POUND_STERLING },
         };
 
-       // [Test, TestCaseSource(nameof(ProductSearch))]
+        [Test, TestCaseSource(nameof(ProductSearch))]
         public void CheckSearch(Product expectedProduct, SearchCriteria searchCriteria, Currency currency)
         {
             // Steps
@@ -59,7 +59,7 @@ namespace OpenCart414Test.Tests
                 .GetSlideshow0FirstImageAttributeSrcText()
                 .Contains(HomePage.IPHONE6));
             //
-            Thread.Sleep(5000); // For Presentation ONLY
+            Thread.Sleep(3000); // For Presentation ONLY
         }
 
         //[Test]

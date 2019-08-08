@@ -72,6 +72,7 @@
     <Compile Include="Data\UnloggedMyAccount.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Pages\AccountLogoutPage.cs" />
+    <Compile Include="Pages\AccountPage.cs" />
     <Compile Include="Pages\BreadCrumPart.cs" />
     <Compile Include="Pages\CartProductContainer.cs" />
     <Compile Include="Pages\DropdownComponent.cs" />
@@ -83,7 +84,6 @@
     <Compile Include="Pages\RegisterUserPage.cs" />
     <Compile Include="Pages\RightLogInPart.cs" />
     <Compile Include="Pages\RightLogOutPart.cs" />
-
     <Compile Include="Pages\ShoppingCartEmptyPage.cs" />
     <Compile Include="Pages\RightMenuPart.cs" />
     <Compile Include="Pages\SearchCriteriaPart.cs" />
