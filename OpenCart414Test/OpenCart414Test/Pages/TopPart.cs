@@ -143,11 +143,21 @@ namespace OpenCart414Test.Pages
             SearchField.Click();
         }
 
+
         // SearchButton
         public void ClickSearchButton()
         {
             SearchButton.Click();
+            
         }
+        //public SearchUnsuccessPage ClickSearchButtonD() //Доробити як бізнес логіку
+        //{
+        //    SearchButton.Click();
+        //    return new SearchUnsuccessPage(driver);
+
+        //}
+
+
 
         // CartButton
         public string GetCartButtonText()
@@ -259,7 +269,13 @@ namespace OpenCart414Test.Pages
             ClickLogo();
             return new HomePage(driver);
         }
-
+        //public SearchSuccessPage SearchSuccessfully(string searchText)
+        //public SearchSuccessPage SearchSuccessfully()
+        //{
+        //    //MakeTopSearch(searchCriteria.SearchValue);
+        //    //MakeTopSearch(searchText);
+        //    return new SearchSuccessPage(driver);
+        //}
         //public SearchSuccessPage SearchSuccessfully(string searchText)
         public SearchSuccessPage SearchSuccessfully(SearchCriteria searchCriteria)
         {
@@ -276,7 +292,7 @@ namespace OpenCart414Test.Pages
         public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria)
         {
             MakeTopSearch(searchCriteria.SearchValue);
-            //MakeTopSearch(searchText);
+            //MakeTopSearch(searchText);               
             return new SearchUnsuccessPage(driver);
         }
 
@@ -297,6 +313,10 @@ namespace OpenCart414Test.Pages
             ClickLoggedMyAccountByPartialName(LoggedMyAccount.LOGOUT);
             return new AccountLogoutPage(driver);
         }
-
+        public WishListPage GotoWishListPage()
+        {
+            ClickWishList();
+            return new WishListPage(driver);
+        }
     }
 }

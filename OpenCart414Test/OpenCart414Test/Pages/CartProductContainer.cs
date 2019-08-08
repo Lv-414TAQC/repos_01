@@ -11,13 +11,15 @@ namespace OpenCart414Test.Pages
     class CartProductContainer
     {
         private const string ITEMS_TABLE_CSSSELECTOR = "table.table-striped";
+        private const string TABLE_PRICE_COMPONENT_CSSSELECTOR = "ul.dropdown-menu.pull-right table.table-bordered td.text-right";
 
-        protected IWebDriver driver;
+        public IWebDriver driver;
 
         public IWebElement ViewCartLink
         { get { return driver.FindElement(By.XPath("//p[@class='text-right']//strong/i[@class='fa fa-shopping-cart']//..")); } }
         public IWebElement CheckOutLink
         { get { return driver.FindElement(By.XPath("//p[@class='text-right']//strong/i[@class='fa fa-share']//..")); } }
+        private TablePriceComponent tablePriceComponent;
         IList<ShoppingCartContainerComponent> itemsTable;
 
         public CartProductContainer(IWebDriver driver)
@@ -31,7 +33,7 @@ namespace OpenCart414Test.Pages
         {
             // TODO Develop Custom Exception
             IWebElement temp = ViewCartLink; 
-            temp = CheckOutLink; // TODO All Web Elements
+            temp = CheckOutLink;
         }
 
         private void InitElements()
@@ -70,10 +72,37 @@ namespace OpenCart414Test.Pages
             CheckOutLink.Click();
         }
 
+      
+
+        protected TablePriceComponent GetTablePriceComponent()
+        {
+            if (tablePriceComponent == null)
+            {
+                // TODO Develop Custom Exception 
+                throw new Exception("TablePriceComponent is null.");
+            }
+            return tablePriceComponent;
+        }
+
+        private TablePriceComponent CreateTablePriceComponent(By searchLocator)
+        {
+            tablePriceComponent = new TablePriceComponent(driver, searchLocator);
+            return GetTablePriceComponent();
+        }
+
         // Functional
 
+        public IList<string> GetAllTablePriceComponents()
+        {
+            CreateTablePriceComponent(By.CssSelector(TABLE_PRICE_COMPONENT_CSSSELECTOR));
+
+            //Click on Button Shopping cart or in test click ?
+            IList<string> result = GetTablePriceComponent().GetTablePriceListText();
+            return result;
+        }
+
         // Business Logic
-       
+
 
     }
 }
