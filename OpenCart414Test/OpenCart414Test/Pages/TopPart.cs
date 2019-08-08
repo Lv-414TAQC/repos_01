@@ -288,6 +288,11 @@ namespace OpenCart414Test.Pages
             MakeTopSearch("Mac");
             return new SearchSuccessPage(driver);
         }
+        public SearchSuccessPage SearchAllProductsSuccessfully()
+        {
+            MakeTopSearch("%");
+            return new SearchSuccessPage(driver);
+        }
         //public SearchUnsuccessPage SearchUnsuccessfully(string searchText)
         public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria)
         {
@@ -302,11 +307,11 @@ namespace OpenCart414Test.Pages
             return new LoginPage(driver);
         }
 
-        public RegisterUserPage GotoRegisterPage()
+        /*public RegisterUserPage GotoRegisterPage()
         {
             ClickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
             return new RegisterPage(driver);
-        }
+        }*/
 
         public AccountLogoutPage Logout()
         {

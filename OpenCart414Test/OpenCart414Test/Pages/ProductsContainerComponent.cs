@@ -64,6 +64,15 @@ namespace OpenCart414Test.Pages
             }
             return productComponentNames;
         }
+        public IList<string> GetProductComponentPrices()
+        {
+            IList<string> productComponentPrices = new List<string>();
+            foreach (ProductComponent current in GetProductComponents())
+            {
+                productComponentPrices.Add(current.GetPriceText());
+            }
+            return productComponentPrices;
+        }
 
         public ProductComponent GetProductComponentByName(string productName)
         {
@@ -121,6 +130,30 @@ namespace OpenCart414Test.Pages
         //{
         //    return GetProductComponentDescriptionByName(product.getName());
         //}
+        public IList<int> GetProductComponentIntPrices()
+        {
+            IList<int> getProductComponentIntPrices = new List<int>();
+            foreach (string current in GetProductComponentPrices())
+            {
+                int indexOfDolar = current.IndexOf('$');
+                getProductComponentIntPrices.Add(Convert.ToInt32(current.Substring(indexOfDolar + 1, current.Length - indexOfDolar - 4)));
+            }
+            return getProductComponentIntPrices;
+        }
+        public bool IsSortedList(IList<int> list)
+        {
+            bool result = true;
+            double previous = 0;
+            foreach (var current in list)
+            {
+                if (current < previous)
+                {
+                    result = false;
+                }
+                previous = current;
+            }
+            return result;
+        }
 
     }
 }

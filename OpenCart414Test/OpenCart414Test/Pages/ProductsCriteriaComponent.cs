@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
@@ -70,6 +71,7 @@ namespace OpenCart414Test.Pages
         public void SetInputSort(string text)
         {
             InputSort.SelectByText(text);
+            Thread.Sleep(2000); // for presentation only
         }
 
         public void ClickInputSort()
@@ -105,7 +107,11 @@ namespace OpenCart414Test.Pages
         // Functional
 
         // Business Logic
-        
+        public SearchSuccessPage SetSortLowHigh()
+        {
+            SetInputSort("Price (Low > High)");
+            return new SearchSuccessPage(driver);
+        }
         public ProductsCriteriaComponent ViewProductsByList()
         {
             ClickListViewButton();
