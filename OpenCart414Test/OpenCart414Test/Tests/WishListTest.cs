@@ -18,7 +18,7 @@ namespace OpenCart414Test.Tests
             new object[] { ProductRepository.GetIPhone(),
                 Currency.US_DOLLAR },
         };
-        [Test, TestCaseSource(nameof(ProductToAdd))]
+        //[Test, TestCaseSource(nameof(ProductToAdd))]
         public void CheckAdding(Product addingProduct, Currency currency)
         {
             HomePage homePage = LoadApplication();
