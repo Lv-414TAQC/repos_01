@@ -150,12 +150,12 @@ namespace OpenCart414Test.Pages
             SearchButton.Click();
             
         }
-        public SearchUnsuccessPage ClickSearchButtonD()
-        {
-            SearchButton.Click();
-            return new SearchUnsuccessPage(driver);
+        //public SearchUnsuccessPage ClickSearchButtonD() //Доробити як бізнес логіку
+        //{
+        //    SearchButton.Click();
+        //    return new SearchUnsuccessPage(driver);
 
-        }
+        //}
 
 
 
@@ -269,7 +269,13 @@ namespace OpenCart414Test.Pages
             ClickLogo();
             return new HomePage(driver);
         }
-
+        //public SearchSuccessPage SearchSuccessfully(string searchText)
+        //public SearchSuccessPage SearchSuccessfully()
+        //{
+        //    //MakeTopSearch(searchCriteria.SearchValue);
+        //    //MakeTopSearch(searchText);
+        //    return new SearchSuccessPage(driver);
+        //}
         //public SearchSuccessPage SearchSuccessfully(string searchText)
         public SearchSuccessPage SearchSuccessfully(SearchCriteria searchCriteria)
         {
@@ -277,7 +283,11 @@ namespace OpenCart414Test.Pages
             //MakeTopSearch(searchText);
             return new SearchSuccessPage(driver);
         }
-
+        public SearchSuccessPage SearchTopSuccessfully()
+        {
+            MakeTopSearch("Mac");
+            return new SearchSuccessPage(driver);
+        }
         //public SearchUnsuccessPage SearchUnsuccessfully(string searchText)
         public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria)
         {
@@ -292,7 +302,7 @@ namespace OpenCart414Test.Pages
             return new LoginPage(driver);
         }
 
-        public RegisterPage GotoRegisterPage()
+        public RegisterUserPage GotoRegisterPage()
         {
             ClickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
             return new RegisterPage(driver);
@@ -303,6 +313,10 @@ namespace OpenCart414Test.Pages
             ClickLoggedMyAccountByPartialName(LoggedMyAccount.LOGOUT);
             return new AccountLogoutPage(driver);
         }
-
+        public WishListPage GotoWishListPage()
+        {
+            ClickWishList();
+            return new WishListPage(driver);
+        }
     }
 }

@@ -110,6 +110,11 @@ namespace OpenCart414Test.Pages
         {
             CriteriaSearchButton.Click();
         }
+        //public SearchSuccessPage ClickCriteriaSearchButtonD()
+        //{
+        //    CriteriaSearchButton.Click();
+        //    return new SearchSuccessPage(driver);
+        //}
 
         // Functional
         // TODO Choose/Click WebElements

@@ -57,6 +57,12 @@ namespace OpenCart414Test.Pages
             ClickCurrencyByPartialName(currency);
             return new HomePage(driver);
         }
+        public SearchUnsuccessPage GetUnsuccessPage()
+        {
+            ClickSearchButton();
+            return new SearchUnsuccessPage(driver);
+        }
+
 
     }
 }

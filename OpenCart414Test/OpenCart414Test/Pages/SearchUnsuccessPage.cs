@@ -34,5 +34,13 @@ namespace OpenCart414Test.Pages
         // Functional
 
         // Business Logic
+        public SearchSuccessPage MakeCriteriaSearch()
+        {
+            ClickCriteriaSearchField();
+            ClearCriteriaSearchField();
+            SetCriteriaSearchField("Mac");
+            ClickCriteriaSearchButton();
+            return new SearchSuccessPage(driver);
+        }
     }
 }
