@@ -89,10 +89,9 @@ namespace OpenCart414Test.Pages
             return WishList.Text;
         }
 
-        public WishListPage ClickWishList()
+        public void ClickWishList()
         {
             WishList.Click();
-            return new WishListPage(driver);
         }
 
         // ShoppingCart
@@ -304,6 +303,10 @@ namespace OpenCart414Test.Pages
             ClickLoggedMyAccountByPartialName(LoggedMyAccount.LOGOUT);
             return new AccountLogoutPage(driver);
         }
-
+        public WishListPage GotoWishListPage()
+        {
+            ClickWishList();
+            return new WishListPage(driver);
+        }
     }
 }
