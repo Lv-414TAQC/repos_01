@@ -13,6 +13,10 @@ namespace OpenCart414Test.Pages
         //{ get { return driver.FindElement(By.CssSelector(".table.table-bordered.table-hover")); } }
         public WishListPage(IWebDriver driver) : base(driver)
         {
+            InitElements();
+        }
+        private void InitElements()
+        {
             wishListTable = new WishListComponentContainer(driver);
         }
         public WishListComponentContainer getWishListComponentsContainer()

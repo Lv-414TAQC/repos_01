@@ -36,7 +36,7 @@ namespace OpenCart414Test.Pages
         private void InitElements()
         {
             TableRows = new List<WishListComponent>();
-            foreach (IWebElement current in driver.FindElements(By.CssSelector(WISHLIST_COMPONENT_XPATH)))
+            foreach (IWebElement current in driver.FindElements(By.XPath(WISHLIST_COMPONENT_XPATH)))
             {
                 TableRows.Add(new WishListComponent(current));
             }
