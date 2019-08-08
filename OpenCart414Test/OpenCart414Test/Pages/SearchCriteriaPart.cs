@@ -132,7 +132,9 @@ namespace OpenCart414Test.Pages
         // Functional
         // TODO Choose/Click WebElements
         //protected void MakeCriteriaSearch(SearchCriteria searchCriteria...)
-
+        //
+ 
+        //
         public void MakeCriteriaSearchByDefault(string searchText)
         {
             ClickCriteriaSearchField();

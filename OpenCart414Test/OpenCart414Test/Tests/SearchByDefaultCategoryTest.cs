@@ -74,7 +74,7 @@ namespace OpenCart414Test.Tests
             }
             Assert.IsTrue(temp);
         }
-        //[Test, TestCaseSource(nameof(ProductSearch1))]
+        [Test, TestCaseSource(nameof(ProductSearch1))]
         public void CheckSearchByDescription(SearchCriteria searchCriteria)
         {
             HomePage homePage = LoadApplication();
@@ -83,10 +83,11 @@ namespace OpenCart414Test.Tests
             SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByDescription(searchCriteria);
             Thread.Sleep(2000);  //Only for Presentation
             //
+
             bool temp = true;
             for(int a=0; a < searchSuccessPage.ProductsCriteria.GetProductComponentsCount(); a++) 
             {
-                if (!searchSuccessPage.ProductsCriteria.GetProductComponentDescriptionByName("HP LP3065").Contains("with the stunning new 30-inch diagonal"))
+                if (!searchSuccessPage.ProductsCriteria.GetProductComponentDescriptionByName("HP LP3065").Contains(searchSuccessPage.GetCriteriaSearchFieldText()))
                 {
                     temp = false;
                 }
