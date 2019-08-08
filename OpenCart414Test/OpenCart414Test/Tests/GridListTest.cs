@@ -23,39 +23,14 @@ namespace OpenCart414Test.Tests
                 SearchCriteriaRepository.GetMacBook() }
         };
 
-        [Test, TestCaseSource(nameof(ProductSearch))]
-        public void CheckSearch(Product expectedProduct, SearchCriteria searchCriteria, Currency currency)
+        [Test]
+        public void CheckSearch()
         {
-            // Steps
-            SearchSuccessPage searchSuccessPage = LoadApplication()
-                .SearchSuccessfully(searchCriteria)
-                .ChooseCurrency(currency);
-            ProductComponent actualPoductComponent = searchSuccessPage
-                .ProductsCriteria
-                .ProductsContainer
-                .GetProductComponentByName(expectedProduct.Title);
-            //
-            // Check
-            Assert.IsTrue(actualPoductComponent
-                .GetPartialDescriptionText()
-                .Contains(expectedProduct.Description));
-            Assert.IsTrue(actualPoductComponent
-                .GetPriceText()
-                .Contains(expectedProduct.GetPrice(currency)));
-            //
-            Thread.Sleep(5000); // For Presentation ONLY
-            //
-            // Continue Searching. Use SearchCriteria from SearchCriteriaPart
-            //
-            // Return to Previous State
-            HomePage homePage = searchSuccessPage.GotoHomePage();
-            //
-            // Check (optional)
-            Assert.IsTrue(homePage
-                .GetSlideshow0FirstImageAttributeSrcText()
-                .Contains(HomePage.IPHONE6));
-            //
-            Thread.Sleep(3000); // For Presentation ONLY
+            HomePage homePage = LoadApplication(); //open home
+            SearchSuccessPage searchSuccessPage = homePage.SearchTopSuccessfully();
+
+            Assert.AreEqual(searchSuccessPage.SwitchToGrid(), searchSuccessPage.SwitchToList());
+
         }
     }
 }

@@ -105,6 +105,7 @@ namespace OpenCart414Test.Pages
         // Functional
 
         // Business Logic
+        
         public ProductsCriteriaComponent ViewProductsByList()
         {
             ClickListViewButton();
