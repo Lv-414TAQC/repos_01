@@ -316,6 +316,10 @@ namespace OpenCart414Test.Pages
             ClickLoggedMyAccountByPartialName(LoggedMyAccount.LOGOUT);
             return new AccountLogoutPage(driver);
         }
-
+        public WishListPage GotoWishListPage()
+        {
+            ClickWishList();
+            return new WishListPage(driver);
+        }
     }
 }
