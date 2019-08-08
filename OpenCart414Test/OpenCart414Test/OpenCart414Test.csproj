@@ -85,6 +85,7 @@
     <Compile Include="Pages\SearchSuccessPage.cs" />
     <Compile Include="Pages\SearchUnsuccessPage.cs" />
     <Compile Include="Pages\ShoppingCartContainerComponent.cs" />
+    <Compile Include="Pages\ShoppingCartEmptyPage.cs" />
     <Compile Include="Pages\ShoppingCartPage.cs" />
     <Compile Include="Pages\ShoppingCartPageComponent.cs" />
     <Compile Include="Pages\TablePriceComponent.cs" />
