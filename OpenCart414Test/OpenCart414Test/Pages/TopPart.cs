@@ -150,12 +150,12 @@ namespace OpenCart414Test.Pages
             SearchButton.Click();
             
         }
-        public SearchUnsuccessPage ClickSearchButtonD()
-        {
-            SearchButton.Click();
-            return new SearchUnsuccessPage(driver);
+        //public SearchUnsuccessPage ClickSearchButtonD() //Доробити як бізнес логіку
+        //{
+        //    SearchButton.Click();
+        //    return new SearchUnsuccessPage(driver);
 
-        }
+        //}
 
 
 
@@ -269,7 +269,13 @@ namespace OpenCart414Test.Pages
             ClickLogo();
             return new HomePage(driver);
         }
-
+        //public SearchSuccessPage SearchSuccessfully(string searchText)
+        //public SearchSuccessPage SearchSuccessfully()
+        //{
+        //    //MakeTopSearch(searchCriteria.SearchValue);
+        //    //MakeTopSearch(searchText);
+        //    return new SearchSuccessPage(driver);
+        //}
         //public SearchSuccessPage SearchSuccessfully(string searchText)
         public SearchSuccessPage SearchSuccessfully(SearchCriteria searchCriteria)
         {
@@ -277,6 +283,13 @@ namespace OpenCart414Test.Pages
             //MakeTopSearch(searchText);
             return new SearchSuccessPage(driver);
         }
+       // public SearchSuccessPage SearchSuccessfully(string searchText)
+       //// public SearchSuccessPage SearchSuccessfully(SearchCriteria searchCriteria)
+       // {
+       //    // MakeTopSearch(searchCriteria.SearchValue);
+       //     MakeTopSearch(searchText);
+       //     return new SearchSuccessPage(driver);
+       // }
 
         //public SearchUnsuccessPage SearchUnsuccessfully(string searchText)
         public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria)

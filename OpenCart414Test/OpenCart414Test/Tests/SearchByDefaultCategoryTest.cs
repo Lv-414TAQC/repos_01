@@ -21,14 +21,42 @@ namespace OpenCart414Test.Tests
                 },
         };
 
-        [Test, TestCaseSource(nameof(ProductSearch))]
-        public void CheckSearchByDefaultCategory(SearchCriteria searchCriteria)
+       // [Test, TestCaseSource(nameof(ProductSearch))]
+       [Test]
+        public void CheckSearchByDefaultCategory(/*SearchCriteria searchCriteria*/)
         {
-            SearchSuccessPage searchSuccessPage = LoadApplication().SearchSuccessfully(searchCriteria);
-            searchSuccessPage.ProductsCriteria.GetProductComponentsCount();
-
-            Console.WriteLine(searchSuccessPage.ProductsCriteria.GetProductComponentsCount());
+            //Переробити , забрати атомарні методи і переробити в бізнес логіку
+            HomePage homePage = LoadApplication();
+            SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
             Thread.Sleep(2000);
+            SearchSuccessPage searchSuccessPage = searchUnsuccessPage.MakeCriteriaSearch();
+            Thread.Sleep(2000);
+            
+            bool temp = true;
+            foreach (var a in searchSuccessPage.ProductsCriteria.GetProductComponentNames())
+            {
+                Console.WriteLine(a);
+                Console.WriteLine(searchSuccessPage.GetCriteriaSearchFieldText());
+                if (!a.Contains(searchSuccessPage.GetCriteriaSearchFieldText()))
+                {
+                    temp = false;
+                }
+            }
+            Assert.IsTrue(temp);
+            //searchUnsuccessPage.ClickCriteriaSearchField();
+            //searchUnsuccessPage.ClearCriteriaSearchField();
+            //searchUnsuccessPage.SetCriteriaSearchField("Mac");
+
+            //SearchSuccessPage searchSuccessPage = searchUnsuccessPage.ClickCriteriaSearchButtonD();
+            //Thread.Sleep(2000);
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            //SearchSuccessPage searchSuccessPage = LoadApplication().SearchSuccessfully(searchCriteria);
+            //searchSuccessPage.ProductsCriteria.GetProductComponentsCount();
+
+            //Console.WriteLine(searchSuccessPage.ProductsCriteria.GetProductComponentsCount());
+            //Thread.Sleep(2000);
+
 
             //SearchUnsuccessPage searchUnsuccessPage = LoadApplication().ClickSearchButtonD();
             //searchUnsuccessPage.ClearCriteriaSearchField();

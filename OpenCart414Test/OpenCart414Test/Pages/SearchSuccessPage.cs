@@ -54,6 +54,5 @@ namespace OpenCart414Test.Pages
             ProductsCriteria.SetInputLimit(text);
             return new SearchSuccessPage(driver);
         }
-
     }
 }
