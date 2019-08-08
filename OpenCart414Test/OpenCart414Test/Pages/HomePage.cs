@@ -63,6 +63,5 @@ namespace OpenCart414Test.Pages
             return new SearchUnsuccessPage(driver);
         }
 
-
     }
 }

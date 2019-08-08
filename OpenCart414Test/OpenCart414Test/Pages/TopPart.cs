@@ -157,8 +157,6 @@ namespace OpenCart414Test.Pages
 
         //}
 
-
-
         // CartButton
         public string GetCartButtonText()
         {
@@ -215,6 +213,7 @@ namespace OpenCart414Test.Pages
             ClickSearchButton();
         }
 
+
         // CurrencyDropdownComponent
         private void OpenCurrencyDropdownComponent()
         {
@@ -270,13 +269,6 @@ namespace OpenCart414Test.Pages
             return new HomePage(driver);
         }
         //public SearchSuccessPage SearchSuccessfully(string searchText)
-        //public SearchSuccessPage SearchSuccessfully()
-        //{
-        //    //MakeTopSearch(searchCriteria.SearchValue);
-        //    //MakeTopSearch(searchText);
-        //    return new SearchSuccessPage(driver);
-        //}
-        //public SearchSuccessPage SearchSuccessfully(string searchText)
         public SearchSuccessPage SearchSuccessfully(SearchCriteria searchCriteria)
         {
             MakeTopSearch(searchCriteria.SearchValue);
@@ -302,11 +294,11 @@ namespace OpenCart414Test.Pages
             return new LoginPage(driver);
         }
 
-        public RegisterUserPage GotoRegisterPage()
-        {
-            ClickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
-            return new RegisterPage(driver);
-        }
+        //public RegisterUserPage GotoRegisterPage()
+        //{
+        //    ClickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
+        //    return new RegisterPage(driver);
+        //}
 
         public AccountLogoutPage Logout()
         {

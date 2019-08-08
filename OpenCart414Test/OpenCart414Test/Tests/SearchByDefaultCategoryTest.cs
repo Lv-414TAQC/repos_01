@@ -13,24 +13,28 @@ namespace OpenCart414Test.Tests
     [TestFixture]
     class SearchByDefaultCategoryTest : TestRunner
     {
-        // DataProvider
+        //DataProvider
         private static readonly object[] ProductSearch =
         {
             new object[] {
                 SearchCriteriaRepository.GetMacBookD(),
-                },
+                }
+        };
+        private static readonly object[] ProductSearch1 =
+        {
+            new object[] {
+                SearchCriteriaRepository.GetHp(),
+                }
         };
 
-        // [Test, TestCaseSource(nameof(ProductSearch))]
-        //[Test]
-        public void CheckSearchByDefaultCategory(/*SearchCriteria searchCriteria*/)
+        //[Test, TestCaseSource(nameof(ProductSearch))]
+        public void CheckSearchByDefaultCategory(SearchCriteria searchCriteria)
         {
-            //Переробити , забрати атомарні методи і переробити в бізнес логіку
             HomePage homePage = LoadApplication();
             SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
-            Thread.Sleep(2000);
-            SearchSuccessPage searchSuccessPage = searchUnsuccessPage.MakeCriteriaSearch();
-            Thread.Sleep(2000);
+            Thread.Sleep(2000);  //Only for Presentation
+            SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByDefault(searchCriteria);
+            Thread.Sleep(2000);  //Only for Presentation
 
             bool temp = true;
             foreach (var a in searchSuccessPage.ProductsCriteria.GetProductComponentNames())
@@ -43,32 +47,51 @@ namespace OpenCart414Test.Tests
                 }
             }
             Assert.IsTrue(temp);
-            //searchUnsuccessPage.ClickCriteriaSearchField();
-            //searchUnsuccessPage.ClearCriteriaSearchField();
-            //searchUnsuccessPage.SetCriteriaSearchField("Mac");
-
-            //SearchSuccessPage searchSuccessPage = searchUnsuccessPage.ClickCriteriaSearchButtonD();
-            //Thread.Sleep(2000);
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////
             //SearchSuccessPage searchSuccessPage = LoadApplication().SearchSuccessfully(searchCriteria);
             //searchSuccessPage.ProductsCriteria.GetProductComponentsCount();
-
             //Console.WriteLine(searchSuccessPage.ProductsCriteria.GetProductComponentsCount());
             //Thread.Sleep(2000);
 
         }
-        [Test]
-        public void CheckSearchBySeparateCategory(/*SearchCriteria searchCriteria*/)
+        //[Test, TestCaseSource(nameof(ProductSearch))]
+        public void CheckSearchBySeparateCategory(SearchCriteria searchCriteria)
         {
-            //Переробити , забрати атомарні методи і переробити в бізнес логіку
             HomePage homePage = LoadApplication();
             SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
-            Thread.Sleep(2000);
-            SearchSuccessPage searchSuccessPage = searchUnsuccessPage.MakeSearchBySeparateCategory();
-            Thread.Sleep(2000);
-
-
+            Thread.Sleep(2000);  //Only for Presentation
+            SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByCategory(searchCriteria);
+            Thread.Sleep(2000);  //Only for Presentation
+            //
+            bool temp = true;
+            foreach (var a in searchSuccessPage.ProductsCriteria.GetProductComponentNames())
+            {
+                if (!a.Contains(searchSuccessPage.GetCriteriaSearchFieldText()))
+                {
+                    temp = false;
+                }
+            }
+            Assert.IsTrue(temp);
+        }
+        //[Test, TestCaseSource(nameof(ProductSearch1))]
+        public void CheckSearchByDescription(SearchCriteria searchCriteria)
+        {
+            HomePage homePage = LoadApplication();
+            SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
+            Thread.Sleep(2000);  //Only for Presentation
+            SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByDescription(searchCriteria);
+            Thread.Sleep(2000);  //Only for Presentation
+            //
+            bool temp = true;
+            for(int a=0; a < searchSuccessPage.ProductsCriteria.GetProductComponentsCount(); a++) 
+            {
+                if (!searchSuccessPage.ProductsCriteria.GetProductComponentDescriptionByName("HP LP3065").Contains("with the stunning new 30-inch diagonal"))
+                {
+                    temp = false;
+                }
+            }
+            Assert.IsTrue(temp);
         }
     }
 }

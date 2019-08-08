@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using OpenCart414Test.Data;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -104,6 +105,18 @@ namespace OpenCart414Test.Pages
         {
             CriteriaDescription.Click();
         }
+        public void GetCriteriaDescription(bool temp)
+        {
+            if (!temp == true)
+            {
+                Console.WriteLine("eror");
+            }
+            else
+            {
+                ClickCriteriaDescription();
+            }
+            
+        }
 
         // CriteriaSearchButton
         public void ClickCriteriaSearchButton()
@@ -120,8 +133,59 @@ namespace OpenCart414Test.Pages
         // TODO Choose/Click WebElements
         //protected void MakeCriteriaSearch(SearchCriteria searchCriteria...)
 
+        public void MakeCriteriaSearchByDefault(string searchText)
+        {
+            ClickCriteriaSearchField();
+            ClearCriteriaSearchField();
+            SetCriteriaSearchField(searchText);
+            ClickCriteriaSearchButton();
+        }
+        //public SearchSuccessPage SearchSuccessfully(string searchText)
+        public SearchSuccessPage SearchSuccessfullyByDefault(SearchCriteria searchCriteria)
+        {
+            //MakeTopSearch(searchCriteria.SearchValue);
+            MakeCriteriaSearchByDefault(searchCriteria.SearchValue);
+            //MakeTopSearch(searchText);
+            return new SearchSuccessPage(driver);
+        }
+        //
+        public void MakeCriteriaSearchByCategory(string searchText, string searchCategory)
+        {
+            ClickCriteriaSearchField();
+            ClearCriteriaSearchField();
+            SetCriteriaSearchField(searchText);
+            ClickCriteriaCategory();
+            SetCriteriaCategory(searchCategory);
+            ClickCriteriaSearchButton();
+        }
+        //public SearchSuccessPage SearchSuccessfully(string searchText)
+        public SearchSuccessPage SearchSuccessfullyByCategory(SearchCriteria searchCriteria)
+        {
+            //MakeTopSearch(searchCriteria.SearchValue);
+            MakeCriteriaSearchByCategory(searchCriteria.SearchValue,searchCriteria.SearchCategory);
+            //MakeTopSearch(searchText);
+            return new SearchSuccessPage(driver);
+        }
+        //
+        public void MakeCriteriaSearchByDescription(string searchText, string searchCategory,bool IsSearchInDescription)
+        {
+            ClickCriteriaSearchField();
+            ClearCriteriaSearchField();
+            SetCriteriaSearchField(searchText);
+            ClickCriteriaCategory();
+            SetCriteriaCategory(searchCategory);
+            GetCriteriaDescription(IsSearchInDescription);
+            ClickCriteriaSearchButton();
+        }
+        //public SearchSuccessPage SearchSuccessfully(string searchText)
+        public SearchSuccessPage SearchSuccessfullyByDescription(SearchCriteria searchCriteria)
+        {
+            //MakeTopSearch(searchCriteria.SearchValue);
+            MakeCriteriaSearchByDescription(searchCriteria.SearchValue, searchCriteria.SearchCategory,searchCriteria.IsSearchInDescription);
+            //MakeTopSearch(searchText);
+            return new SearchSuccessPage(driver);
+        }
         // Business Logic
-
         //public SearchSuccessPage SearchSuccessfully(SearchCriteria searchCriteria Product string searchText)
         //public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria Product string searchText) // TODO
     }

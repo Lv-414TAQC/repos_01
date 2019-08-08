@@ -18,7 +18,12 @@ namespace OpenCart414Test.Data
         public static SearchCriteria GetMacBookD()
         {
             return new SearchCriteria("Mac",
-                "All Categories", false, false);
+                "Laptops & Notebooks", false, false);
+        }
+        public static SearchCriteria GetHp()
+        {
+            return new SearchCriteria("with the stunning new 30-inch diagonal",
+                "Laptops & Notebooks", false, true);
         }
     }
 }
