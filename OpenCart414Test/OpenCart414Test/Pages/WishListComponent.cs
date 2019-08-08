@@ -12,7 +12,7 @@ namespace OpenCart414Test.Pages
         private IWebElement wishListComponentLayout;
         
         public IWebElement WishListComponentImage
-        { get { return wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-center']/a/img")); } }
+        { get { return wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-center']/a/img/..")); } }
         public IWebElement WishListComponentProductName
         { get { return wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-left']/a")); } }
         public IWebElement WishListComponentModel
@@ -32,7 +32,10 @@ namespace OpenCart414Test.Pages
             //CheckElements();
         }
 
-        //public ??? GetWishListComponentImage() { }
+        //public string GetWishListComponentImage()
+        //{
+        //    return WishListComponentImage.FindElement(By.XPath(".//")); ;
+        //}
         public void ClickWishListComponentImage()
         {
             WishListComponentImage.Click();

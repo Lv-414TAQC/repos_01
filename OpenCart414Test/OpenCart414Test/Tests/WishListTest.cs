@@ -22,13 +22,13 @@ namespace OpenCart414Test.Tests
         public void CheckAdding(Product addingProduct, Currency currency)
         {
             HomePage homePage = LoadApplication();
-            //homePage.LoggingIn("roman_my@ukr.nrt", "TESTER_PASWORD").GotoHomePage();
+            //homePage.GotoLoginPage().LoggingIn().GotoHomePage();
             ProductsContainerComponent productsContainerComponent = homePage.getProductComponentsContainer();
             ProductComponent productComponent = productsContainerComponent.GetProductComponentByName(addingProduct.Title);
             productComponent.ClickAddToWishButton();
-            //WishListPage wishListPage = homePage.ClickWishList();
-            //Assert.IsTrue(wishListPage.getWishListComponentsContainer().GetWishListComponentByName(addingProduct.Title)
-            //    .GetWishListComponentProductNameText().Contains(productComponent.Name.Text));
+            WishListPage wishListPage = homePage.ClickWishList();
+            Assert.IsTrue(wishListPage.getWishListComponentsContainer().GetWishListComponentByName(addingProduct.Title)
+                .GetWishListComponentProductNameText().Contains(productComponent.Name.Text));
         }
     }
 }

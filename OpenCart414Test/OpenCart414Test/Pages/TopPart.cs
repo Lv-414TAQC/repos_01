@@ -89,9 +89,10 @@ namespace OpenCart414Test.Pages
             return WishList.Text;
         }
 
-        public void ClickWishList()
+        public WishListPage ClickWishList()
         {
             WishList.Click();
+            return new WishListPage(driver);
         }
 
         // ShoppingCart
