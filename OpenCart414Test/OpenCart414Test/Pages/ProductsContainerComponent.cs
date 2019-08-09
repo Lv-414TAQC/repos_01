@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using OpenCart414Test.Data;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -117,10 +118,10 @@ namespace OpenCart414Test.Pages
         //    return GetProductComponentPriceByName(product.getName());
         //}
 
-        //public string GetProductComponentDescriptionByProduct(Product product)
-        //{
-        //    return GetProductComponentDescriptionByName(product.getName());
-        //}
+        public string GetProductComponentDescriptionByProduct(Product product)
+        {
+            return GetProductComponentDescriptionByName(product.GetName());
+        }
 
     }
 }

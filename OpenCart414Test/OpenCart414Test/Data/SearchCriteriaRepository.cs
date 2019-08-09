@@ -20,7 +20,7 @@ namespace OpenCart414Test.Data
             return new SearchCriteria("Mac",
                 "Laptops & Notebooks", false, false);
         }
-        public static SearchCriteria GetHp()
+        public static SearchCriteria GetHpSearchCriteria()
         {
             return new SearchCriteria("with the stunning new 30-inch diagonal",
                 "Laptops & Notebooks", false, true);

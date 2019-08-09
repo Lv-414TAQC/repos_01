@@ -23,9 +23,14 @@ namespace OpenCart414Test.Tests
         private static readonly object[] ProductSearch1 =
         {
             new object[] {
-                SearchCriteriaRepository.GetHp(),
-                }
+                SearchCriteriaRepository.GetHpSearchCriteria(),
+                ProductRepository.GetHP()
+                },
         };
+        //private static readonly object[] ProductToAdd1 =
+        //{
+        //    new object[] { ProductRepository.GetHP() },
+        //};
 
         //[Test, TestCaseSource(nameof(ProductSearch))]
         public void CheckSearchByDefaultCategory(SearchCriteria searchCriteria)
@@ -75,7 +80,7 @@ namespace OpenCart414Test.Tests
             Assert.IsTrue(temp);
         }
         [Test, TestCaseSource(nameof(ProductSearch1))]
-        public void CheckSearchByDescription(SearchCriteria searchCriteria)
+        public void CheckSearchByDescription(SearchCriteria searchCriteria, Product addingProduct)
         {
             HomePage homePage = LoadApplication();
             SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
@@ -83,11 +88,16 @@ namespace OpenCart414Test.Tests
             SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByDescription(searchCriteria);
             Thread.Sleep(2000);  //Only for Presentation
             //
-
             bool temp = true;
             for(int a=0; a < searchSuccessPage.ProductsCriteria.GetProductComponentsCount(); a++) 
             {
-                if (!searchSuccessPage.ProductsCriteria.GetProductComponentDescriptionByName("HP LP3065").Contains(searchSuccessPage.GetCriteriaSearchFieldText()))
+                //if (!searchSuccessPage.ProductsCriteria.GetProductComponentDescriptionByName("HP LP3065").Contains(searchSuccessPage.GetCriteriaSearchFieldText()))
+                //{
+                //    temp = false;
+                //}
+                Console.WriteLine(searchSuccessPage.ProductsCriteria.GetProductComponentDescriptionByProduct(addingProduct));
+                Console.WriteLine(searchSuccessPage.GetCriteriaSearchFieldText());
+                if (!searchSuccessPage.ProductsCriteria.GetProductComponentDescriptionByProduct(addingProduct).Contains(searchSuccessPage.GetCriteriaSearchFieldText()))
                 {
                     temp = false;
                 }
