@@ -20,17 +20,37 @@ namespace OpenCart414Test.Pages
         }
 
         // Page Object
+        public void ClearEmailField()
+        {
+            EmailInputField.Clear();
+        }
+        public void TypeIntoEmailField(string email)
+        {
+            EmailInputField.SendKeys(email);
+        }
+        public void ClearPasswordField()
+        {
+            PasswordInputField.Clear();
+        }
+        public void TypeIntoPasswordField(string passWord)
+        {
+            PasswordInputField.SendKeys(passWord);
+        }
+        public void ClickLoginButton()
+        {
+            LoginButton.Click();
+        }
 
         // Functional
         public void InputEmail(string email)
         {
-            EmailInputField.Clear();
-            EmailInputField.SendKeys(email);
+            ClearEmailField();
+            TypeIntoEmailField(email);
         }
         public void InputPassword(string passWord)
         {
-            PasswordInputField.Clear();
-            PasswordInputField.SendKeys(passWord);
+            ClearPasswordField();
+            TypeIntoPasswordField(passWord);
         }
         // Business Logic
         public AccountPage LoggingIn(string email, string passWord)
@@ -38,7 +58,7 @@ namespace OpenCart414Test.Pages
             string testerPassword = Environment.GetEnvironmentVariable(passWord);
             InputEmail(email);
             InputPassword(testerPassword);
-            LoginButton.Click();
+            ClickLoginButton();
             return new AccountPage(driver);
         }
     }
