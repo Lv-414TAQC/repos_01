@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleAppPractices
+namespace OpenCart414Test.Data
 {
     public sealed class UserRepository
     {
