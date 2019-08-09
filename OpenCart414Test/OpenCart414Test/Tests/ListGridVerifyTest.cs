@@ -20,17 +20,15 @@ namespace OpenCart414Test.Tests
         public void CheckSearch()
         {
             SearchSuccessPage searchSuccessPage = LoadApplication().SearchTopSuccessfully();
-            Assert.AreEqual(searchSuccessPage.SwitchToGrid(), searchSuccessPage.SwitchToList());
-            //CollectionAssert.AreEqual();
+            CollectionAssert.AreEqual(searchSuccessPage.GetListByGrid(), searchSuccessPage.GetListByList());
         }
 
         [Test]
         public void SortTest()
         {
-            SearchSuccessPage searchSuccessPage = LoadApplication().SearchAllProductsSuccessfully();
-            searchSuccessPage = searchSuccessPage.ProductsCriteria.SetSortLowHigh();
-            bool actual = searchSuccessPage.ProductsCriteria.IsSortedList();
-            Assert.IsTrue(actual);
+            SearchSuccessPage searchSuccessPage = LoadApplication().SearchAllProductsSuccessfully()
+                .ProductsCriteria.SetSortLowHigh();
+            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsSortedAscList());
         }
     }
 }

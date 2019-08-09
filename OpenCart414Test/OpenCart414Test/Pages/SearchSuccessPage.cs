@@ -57,17 +57,17 @@ namespace OpenCart414Test.Pages
             ProductsCriteria.SetInputLimit(text);
             return new SearchSuccessPage(driver);
         }
-        public string SwitchToGrid()
+        public IList<string> GetListByGrid()
         {
             ProductsCriteria.ClickGridViewButton();
             Thread.Sleep(3000); // For presentation only
-            return SearchResult.Text;
+            return new SearchSuccessPage(driver).ProductsCriteria.GetProductComponentNames();
         }
-        public string SwitchToList()
+        public IList<string> GetListByList()
         {
             ProductsCriteria.ClickListViewButton();
             Thread.Sleep(3000); // For presentation only
-            return SearchResult.Text;
+            return new SearchSuccessPage(driver).ProductsCriteria.GetProductComponentNames();
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace OpenCart414Test.Pages
 {
@@ -61,6 +63,7 @@ namespace OpenCart414Test.Pages
             foreach (ProductComponent current in GetProductComponents())
             {
                 productComponentNames.Add(current.GetNameText());
+                Console.WriteLine(current.GetNameText()); // For presentation only
             }
             return productComponentNames;
         }
@@ -130,19 +133,20 @@ namespace OpenCart414Test.Pages
         //{
         //    return GetProductComponentDescriptionByName(product.getName());
         //}
-        public bool IsSortedList()
+        public bool IsSortedAscList()
         {
             bool result = true;
-            int previous = 0;
-            IList<int> getProductComponentIntPrices = new List<int>();
-            foreach (string current in GetProductComponentPrices())
+            decimal previous = 0;
+            CultureInfo culture = new CultureInfo("en-US");
+            foreach (string element in GetProductComponentPrices())
             {
-                int indexOfDolar = current.IndexOf('$');
-                if (Convert.ToInt32(current.Substring(indexOfDolar + 1, current.Length - indexOfDolar - 4)) < previous)
+                decimal currentPrice = Convert.ToDecimal(Regex.Match(element, @"\d*[.|,]\d*").Value, culture);
+                if (currentPrice < previous)
                 {
                     result = false;
                 }
-                previous = Convert.ToInt32(current.Substring(indexOfDolar + 1, current.Length - indexOfDolar - 4));
+                previous = currentPrice;
+                Console.WriteLine(currentPrice);
             }
             return result;
         }
