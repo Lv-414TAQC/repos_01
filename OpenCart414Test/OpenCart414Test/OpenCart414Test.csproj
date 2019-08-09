@@ -100,6 +100,8 @@
     <Compile Include="Pages\WishListComponent.cs" />
     <Compile Include="Pages\WishListComponentContainer.cs" />
     <Compile Include="Pages\WishListEmptyPage.cs" />
+    <Compile Include="Pages\WishListMessageEmptyPage.cs" />
+    <Compile Include="Pages\WishListMessagePage.cs" />
     <Compile Include="Pages\WishListPage.cs" />
     <Compile Include="Pages\WishListPart.cs" />
     <Compile Include="SeleniumFirst.cs" />
@@ -111,9 +113,11 @@
     <Compile Include="Tests\RegisterUserTest.cs" />
     <Compile Include="Tests\SearchByDefaultCategoryTest.cs" />
     <Compile Include="Tests\AddToCartTests.cs" />
-    <Compile Include="Tests\WishListTest.cs" />
+    <Compile Include="Tests\WishListAddTest.cs" />
+    <Compile Include="Tests\WishListRemoveTest.cs" />
     <Compile Include="Tests\SearchTest.cs" />
     <Compile Include="Tests\TestRunner.cs" />
+    <Compile Include="Tests\WishListToCartTest.cs" />
     <Compile Include="Tools\ListUtils.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

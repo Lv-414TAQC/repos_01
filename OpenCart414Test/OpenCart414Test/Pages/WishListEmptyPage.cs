@@ -18,5 +18,9 @@ namespace OpenCart414Test.Pages
         {
             return WishListIsEmptyParagraph.Text;
         }
+        public bool IsWishListIsEmptyParagraphDisplayed()
+        {
+            return WishListIsEmptyParagraph.Displayed;
+        }
     }
 }
