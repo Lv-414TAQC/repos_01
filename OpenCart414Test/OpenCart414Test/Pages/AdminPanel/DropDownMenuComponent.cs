@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OpenCart414Test.Pages.AdminPanel
 {
-    class DropDownMenuComponent
+    public class DropDownMenuComponent
     {
     }
 }

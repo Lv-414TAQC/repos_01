@@ -50,6 +50,24 @@ namespace OpenCart414Test.Pages
         }
 
         // Functional
+        public string GetProductOldPrice(string product)
+        {
+            ProductComponent searchedProduct =  productsContainerComponent.GetProductComponentByName(product);
+            return searchedProduct.GetOldPrice();
+        }
+
+        public string GetProductNewPrice(string product)
+        {
+            ProductComponent searchedProduct = productsContainerComponent.GetProductComponentByName(product);
+            return searchedProduct.GetNewPrice();
+        }
+
+        public string GetProductExTax(string product)
+        {
+            ProductComponent searchedProduct = productsContainerComponent.GetProductComponentByName(product);
+            return searchedProduct.GetExTax();
+        }
+
 
         // Business Logic
         public HomePage ChooseCurrency(Currency currency)
@@ -62,7 +80,6 @@ namespace OpenCart414Test.Pages
             ClickSearchButton();
             return new SearchUnsuccessPage(driver);
         }
-
 
     }
 }

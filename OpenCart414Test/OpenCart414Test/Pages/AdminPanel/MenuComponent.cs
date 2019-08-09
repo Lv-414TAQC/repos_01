@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace OpenCart414Test.Pages.AdminPanel
 {
-    class MenuComponent
+    public  class MenuComponent
     {
         IWebDriver Driver;
         public IWebElement MenuButton { get; set; }

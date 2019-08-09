@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OpenCart414Test.Pages.AdminPanel
 {
-    class AdminLoginPage
+    public class AdminLoginPage
     {
         protected IWebDriver driver;
         public static readonly string AdminName = Environment.GetEnvironmentVariable("ADMIN_NAME");
@@ -48,11 +48,12 @@ namespace OpenCart414Test.Pages.AdminPanel
             LoginButton.Click();
         }
 
-        public void LogInAdmin()
+        public AdminHomePage LogInAdmin()
         {
             EnterUserName(AdminName);
             EnterPassword(AdminLoginPage.AdminPassword);
             ClickLoginButton();
+            return new AdminHomePage(driver);
 
         }
     }

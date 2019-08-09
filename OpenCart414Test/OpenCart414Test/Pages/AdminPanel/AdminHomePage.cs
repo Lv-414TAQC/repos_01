@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace OpenCart414Test.Pages.AdminPanel
 {
-    class AdminHomePage : HeaderPart
+    public class AdminHomePage : HeaderPart
     {
         public SideMenuComponent SideMenu;
 
@@ -91,13 +91,14 @@ namespace OpenCart414Test.Pages.AdminPanel
             Submenu.MenuButton.Click();
         }
 
-        public void ClickCurrenciesMenu()
+        public CurrenciesPage ClickCurrenciesMenu()
         {
             ClickLocalizationMenu();
             MenuComponent Currencies = new MenuComponent(Driver);
             Currencies.MenuButton = Driver.FindElement(By.XPath("//a[contains(text(), 'Currencies')]"));
             Currencies.MenuLabel = Currencies.MenuButton.Text;
             Currencies.MenuButton.Click();
+            return new CurrenciesPage(Driver);
         }
 
 

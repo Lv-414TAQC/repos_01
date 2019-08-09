@@ -121,6 +121,7 @@
     <Compile Include="SeleniumOpenCartSearch.cs" />
     <Compile Include="SeleniumSecond.cs" />
     <Compile Include="SimpleTest.cs" />
+    <Compile Include="Tests\CurrencyConversionTests.cs" />
     <Compile Include="Tests\GridListTest.cs" />
     <Compile Include="Tests\SearchByCategoryTest.cs" />
     <Compile Include="Tests\RegisterUserTest.cs" />

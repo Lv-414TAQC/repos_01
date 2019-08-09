@@ -23,6 +23,7 @@ namespace OpenCart414Test.Pages
         { get { return productLayout.FindElement(By.CssSelector(".fa.fa-heart")); } }
         public IWebElement AddToCompareButton
         { get { return productLayout.FindElement(By.CssSelector(".fa.fa-exchange")); } }
+        Dictionary<string, decimal> prices;
 
         public ProductComponent(IWebElement productLayout)
         {
@@ -90,6 +91,24 @@ namespace OpenCart414Test.Pages
         public void AddItemToWishList()
         {
             ClickAddToWishButton();
+        }
+
+        public string GetNewPrice()
+        {
+            string newPrice = Price.FindElement(By.CssSelector("span[class='price-new']")).Text;
+            return newPrice;
+        }
+
+        public string GetOldPrice()
+        {
+            string oldPrice = Price.FindElement(By.CssSelector("span[class='price-old']")).Text;
+            return oldPrice;
+        }
+
+        public string GetExTax()
+        {
+            string exTax = Price.FindElement(By.CssSelector("span[class='price-tax']")).Text;
+            return exTax;
         }
     }
 }

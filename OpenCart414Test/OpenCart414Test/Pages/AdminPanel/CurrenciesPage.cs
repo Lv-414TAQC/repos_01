@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace OpenCart414Test.Pages.AdminPanel
 {
-    class CurrenciesPage : HeaderPart
+    public class CurrenciesPage : HeaderPart
     {
         IWebElement RefrefhButton { get { return Driver.FindElement(By.CssSelector("a[data-original-title='Refresh Currency Values']")); } }
         IWebElement AddButton { get { return Driver.FindElement(By.CssSelector("a[data-original-title='Add New']")); } }

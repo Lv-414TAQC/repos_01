@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OpenCart414Test.Pages.AdminPanel
 {
-    class SideMenuComponent
+    public class SideMenuComponent
     {
         IWebDriver driver;
         public IWebElement ProfileSection { get { return driver.FindElement(By.Id("profile")); } }

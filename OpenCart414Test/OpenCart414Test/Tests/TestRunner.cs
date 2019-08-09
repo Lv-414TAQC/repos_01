@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenCart414Test.Pages;
+using OpenCart414Test.Pages.AdminPanel;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -31,10 +32,10 @@ namespace OpenCart414Test.Tests
         }
 
         [SetUp]
-        public void SetUp()
+        public virtual void SetUp()
         {
             // TODO
-            driver.Navigate().GoToUrl("http://172.20.10.2/opencart/upload/");
+            driver.Navigate().GoToUrl("http://192.168.17.128/opencart/upload/");
 
         }
 
@@ -81,5 +82,16 @@ namespace OpenCart414Test.Tests
             return new HomePage(driver);
         }
 
+        public AdminLoginPage LoadAdminLoginPage()
+        {
+            driver.Navigate().GoToUrl("http://192.168.17.128/opencart/upload/admin");
+            return new AdminLoginPage(driver);
+        }
+
+        public HomePage LoadHomePage()
+        {
+            driver.Navigate().GoToUrl("http://192.168.17.128/opencart/upload/");
+            return new HomePage(driver);
+        }
     }
 }
