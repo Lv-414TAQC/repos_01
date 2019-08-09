@@ -16,23 +16,20 @@ namespace OpenCart414Test.Tests
     [TestFixture]
     public class GridListTest : TestRunner
     {
-        //[Test]
+        [Test]
         public void CheckSearch()
         {
-            HomePage homePage = LoadApplication(); //open home
-            SearchSuccessPage searchSuccessPage = homePage.SearchTopSuccessfully();
-
+            SearchSuccessPage searchSuccessPage = LoadApplication().SearchTopSuccessfully();
             Assert.AreEqual(searchSuccessPage.SwitchToGrid(), searchSuccessPage.SwitchToList());
+            //CollectionAssert.AreEqual();
         }
 
         [Test]
         public void SortTest()
         {
-            HomePage homePage = LoadApplication(); //open home
-            SearchSuccessPage searchSuccessPage = homePage.SearchAllProductsSuccessfully();
-            SearchSuccessPage searchSuccessSortedPage = searchSuccessPage.ProductsCriteria.SetSortLowHigh();
-            bool actual = searchSuccessSortedPage.ProductsCriteria.IsSortedList(searchSuccessSortedPage.
-                ProductsCriteria.GetProductComponentIntPrices());
+            SearchSuccessPage searchSuccessPage = LoadApplication().SearchAllProductsSuccessfully();
+            searchSuccessPage = searchSuccessPage.ProductsCriteria.SetSortLowHigh();
+            bool actual = searchSuccessPage.ProductsCriteria.IsSortedList();
             Assert.IsTrue(actual);
         }
     }

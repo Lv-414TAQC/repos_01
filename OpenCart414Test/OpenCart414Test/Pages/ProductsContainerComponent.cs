@@ -130,31 +130,23 @@ namespace OpenCart414Test.Pages
         //{
         //    return GetProductComponentDescriptionByName(product.getName());
         //}
-        public IList<int> GetProductComponentIntPrices()
+        public bool IsSortedList()
         {
+            bool result = true;
+            int previous = 0;
             IList<int> getProductComponentIntPrices = new List<int>();
             foreach (string current in GetProductComponentPrices())
             {
                 int indexOfDolar = current.IndexOf('$');
-                getProductComponentIntPrices.Add(Convert.ToInt32(current.Substring(indexOfDolar + 1, current.Length - indexOfDolar - 4)));
-            }
-            return getProductComponentIntPrices;
-        }
-        public bool IsSortedList(IList<int> list)
-        {
-            bool result = true;
-            double previous = 0;
-            foreach (var current in list)
-            {
-                Console.WriteLine(current);
-                if (current < previous)
+                if (Convert.ToInt32(current.Substring(indexOfDolar + 1, current.Length - indexOfDolar - 4)) < previous)
                 {
                     result = false;
                 }
-                previous = current;
+                previous = Convert.ToInt32(current.Substring(indexOfDolar + 1, current.Length - indexOfDolar - 4));
             }
             return result;
         }
+        
 
     }
 }
