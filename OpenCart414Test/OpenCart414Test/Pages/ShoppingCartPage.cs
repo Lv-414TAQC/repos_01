@@ -31,6 +31,8 @@ namespace OpenCart414Test.Pages
         
         private void InitElements()
         {
+        //     tablePrice = new TablePriceComponent(driver);
+
             shopppingcartComponents = new List<ShoppingCartPageComponent>();
             foreach (IWebElement current in driver.FindElements(By.XPath(SHOPPING_CART_XPATH)))
             {
