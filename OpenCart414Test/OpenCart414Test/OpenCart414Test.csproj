@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Data\ApplicationRepository.cs" />
     <Compile Include="Data\Currency.cs" />
+    <Compile Include="Data\IUser.cs" />
     <Compile Include="Data\LoggedMyAccount.cs" />
     <Compile Include="Data\Product.cs" />
     <Compile Include="Data\ProductRepository.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Data\SearchDTO.cs" />
     <Compile Include="Data\UnloggedMyAccount.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Pages\AccountLogoutPage.cs" />
     <Compile Include="Pages\AccountPage.cs" />
     <Compile Include="Pages\BreadCrumPart.cs" />
@@ -104,6 +106,8 @@
     <Compile Include="SeleniumOpenCartSearch.cs" />
     <Compile Include="SeleniumSecond.cs" />
     <Compile Include="SimpleTest.cs" />
+    <Compile Include="Tests\GridListTest.cs" />
+    <Compile Include="Tests\SearchByCategoryTest.cs" />
     <Compile Include="Tests\SearchByDefaultCategoryTest.cs" />
     <Compile Include="Tests\AddToCartTests.cs" />
     <Compile Include="Tests\WishListTest.cs" />
