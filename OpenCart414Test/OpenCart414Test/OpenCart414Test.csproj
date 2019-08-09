@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Data\ApplicationRepository.cs" />
     <Compile Include="Data\Currency.cs" />
+    <Compile Include="Data\IUser.cs" />
     <Compile Include="Data\LoggedMyAccount.cs" />
     <Compile Include="Data\Product.cs" />
     <Compile Include="Data\ProductRepository.cs" />

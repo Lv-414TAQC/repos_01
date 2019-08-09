@@ -41,6 +41,7 @@ namespace OpenCart414Test.Pages
 
         public RegisterUserPage(IWebDriver driver) :base(driver)
         {
+
             CheckElements();
         }
 
