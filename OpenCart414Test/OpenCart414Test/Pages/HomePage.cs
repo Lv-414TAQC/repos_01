@@ -58,5 +58,17 @@ namespace OpenCart414Test.Pages
             return new HomePage(driver);
         }
 
+        internal CartProductContainer GetCartProductContainer()
+        {
+            ClickCartButton();
+            return new CartProductContainer(driver);
+        }
+
+        public void AddProductToCart(Product product)
+        {
+            productsContainerComponent.GetProductComponentByName(product.Title)
+                .ClickAddToCartButton();  
+        }
+
     }
 }

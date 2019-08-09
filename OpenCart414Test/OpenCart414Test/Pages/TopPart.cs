@@ -294,5 +294,8 @@ namespace OpenCart414Test.Pages
             return new AccountLogoutPage(driver);
         }
 
+        //CartProductComponent OpenCartButton
+
+
     }
 }
