@@ -63,28 +63,28 @@ namespace OpenCart414Test.Tests
         }
 
         // DataProvider
-        private static readonly object[] UserData =
-        {
-            new object[] { new User() },
-        };
+        //private static readonly object[] UserData =
+        //{
+        //    new object[] { new User() },
+        //};
 
-        [Test, TestCaseSource(nameof(UserData))]
-        public void CheckLogin(User user)
-        {
-            // Steps
-            //HomePage homePage = LoadApplication();
-            //LoginPage loginPage = homePage.GotoLoginPage();
-            LoginPage loginPage = LoadApplication()
-                .GotoLoginPage();
-                //.Login(user);
-            //
-            // Check
-            //
-            // Return to Previous State
-            //
-            // Check (optional)
-            //
-            Thread.Sleep(5000); // For Presentation ONLY
-        }
+        //[Test, TestCaseSource(nameof(UserData))]
+        //public void CheckLogin(User user)
+        //{
+        //    // Steps
+        //    //HomePage homePage = LoadApplication();
+        //    //LoginPage loginPage = homePage.GotoLoginPage();
+        //    LoginPage loginPage = LoadApplication()
+        //        .GotoLoginPage();
+        //        //.Login(user);
+        //    //
+        //    // Check
+        //    //
+        //    // Return to Previous State
+        //    //
+        //    // Check (optional)
+        //    //
+        //    Thread.Sleep(5000); // For Presentation ONLY
+        //}
     }
 }
