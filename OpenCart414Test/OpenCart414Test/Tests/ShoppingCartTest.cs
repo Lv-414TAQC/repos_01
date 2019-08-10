@@ -24,35 +24,36 @@ namespace OpenCart414Test.Tests
         public void Remove(Product addingProduct1)
         {
             HomePage homePage = LoadApplication();
-            ProductsContainerComponent productsContainerComponent = homePage.getProductComponentsContainer();
-            ProductComponent productComponent = productsContainerComponent
-                .GetProductComponentByName(addingProduct1.Title);
+            //ProductsContainerComponent productsContainerComponent = homePage.getProductComponentsContainer();
+            //ProductComponent productComponent = productsContainerComponent
+            //    .GetProductComponentByName(addingProduct1.Title);
             Thread.Sleep(2000);
-            productComponent.ClickAddToCartButton();
+            //productComponent.ClickAddToCartButton();
+            homePage.AddProductToCart(addingProduct1);
             ShoppingCartEmptyPage shoppingCartEmptyPage = homePage
                 .GotoShoppingCartPage()
                 .NotUpdateMessage(addingProduct1, ShoppingCartData.INVALID_CHECK_ZERO);
             Thread.Sleep(2000);
             Assert.IsTrue(shoppingCartEmptyPage.Equal());
             //Thread.Sleep(2000);
-            shoppingCartEmptyPage.GoToHomePage();
-            
-            productComponent.ClickAddToCartButton();
-
-            //Thread.Sleep(1000); // only for presentation
-            //shoppingCartPage.ClearQuantity(addingProduct1);
-            //shoppingCartPage.NotUpdateMessage(addingProduct1);
-            //Assert.IsTrue(shoppingCartPage
-            //   .NotUpdateMessage(addingProduct1)
-            //   .GetInfoMessageText()
-            //   .Contains(shoppingCartPage
-            //   .NotUpdateMessage(addingProduct1)
-            //   .GetConstInfoMessageText()));
-            //homePage = LoadApplication();
-            //Thread.Sleep(2000);
+            homePage = shoppingCartEmptyPage.GoToHomePage();
+            homePage.AddProductToCart(addingProduct1);
             //productComponent.ClickAddToCartButton();
-            ////homePage.GotoShoppingCartPage();
-             shoppingCartEmptyPage = homePage
+            shoppingCartEmptyPage = homePage
+                .GotoShoppingCartPage()
+                .ClearQuantity(addingProduct1);
+            Thread.Sleep(1000); // only for presentation
+            Assert.IsTrue(shoppingCartEmptyPage.Equal());
+            homePage = shoppingCartEmptyPage.GoToHomePage();
+            homePage.AddProductToCart(addingProduct1);
+            shoppingCartEmptyPage = homePage
+                .GotoShoppingCartPage()
+                .NotUpdateMessage(addingProduct1, ShoppingCartData.INVALID_CHECK_SYM);
+            Thread.Sleep(2000);
+            Assert.IsTrue(shoppingCartEmptyPage.Equal());
+            homePage = shoppingCartEmptyPage.GoToHomePage();
+            homePage.AddProductToCart(addingProduct1);
+            shoppingCartEmptyPage = homePage
                 .GotoShoppingCartPage()
                 .GoToEmptyPage(addingProduct1);
             Thread.Sleep(2000);

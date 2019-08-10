@@ -63,11 +63,8 @@
   <ItemGroup>
     <Compile Include="Data\ApplicationRepository.cs" />
     <Compile Include="Data\Currency.cs" />
-<<<<<<< HEAD
     <Compile Include="Data\ShoppingCartData.cs" />
-=======
     <Compile Include="Data\IUser.cs" />
->>>>>>> 06cc0ee49a793feda83055819c415caada4fd5ad
     <Compile Include="Data\LoggedMyAccount.cs" />
     <Compile Include="Data\Product.cs" />
     <Compile Include="Data\ProductRepository.cs" />
@@ -90,7 +87,6 @@
     <Compile Include="Pages\ProductComponent.cs" />
     <Compile Include="Pages\ProductsContainerComponent.cs" />
     <Compile Include="Pages\ProductsCriteriaComponent.cs" />
-    <Compile Include="Pages\RegisterPage.cs" />
     <Compile Include="Pages\RegisterUserPage.cs" />
     <Compile Include="Pages\RightLogInPart.cs" />
     <Compile Include="Pages\RightLogOutPart.cs" />
@@ -117,10 +113,9 @@
     <Compile Include="Tests\RegisterUserTest.cs" />
     <Compile Include="Tests\SearchByDefaultCategoryTest.cs" />
     <Compile Include="Tests\AddToCartTests.cs" />
-
+    <Compile Include="Tests\ShoppingCartTest.cs" />
     <Compile Include="Tests\WishListAddTest.cs" />
     <Compile Include="Tests\WishListRemoveTest.cs" />
->>>>>>> 06cc0ee49a793feda83055819c415caada4fd5ad
     <Compile Include="Tests\SearchTest.cs" />
     <Compile Include="Tests\TestRunner.cs" />
     <Compile Include="Tests\WishListToCartTest.cs" />

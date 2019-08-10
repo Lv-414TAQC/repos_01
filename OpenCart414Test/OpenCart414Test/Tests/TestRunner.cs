@@ -35,17 +35,16 @@ namespace OpenCart414Test.Tests
         [SetUp]
         public void SetUp()
         {
-<<<<<<< HEAD
             // TODO
-            driver.Navigate().GoToUrl("http://192.168.163.130/opencart/upload/");
-=======
+            driver.Navigate().GoToUrl("http://192.168.163.130/opencart/upload/"); //alena
+
             //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");
             //driver.Navigate().GoToUrl("http://10.26.34.118/opencart/upload/");
             //driver.Navigate().GoToUrl("http://192.168.140.131/opencart/upload/");
             //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");
             //driver.Navigate().GoToUrl("http://172.20.10.2/opencart/upload/");
-            driver.Navigate().GoToUrl("http://192.168.20.128/opencart/upload/");
->>>>>>> 06cc0ee49a793feda83055819c415caada4fd5ad
+            //driver.Navigate().GoToUrl("http://192.168.20.128/opencart/upload/");
+
         }
 
         [TearDown]
