@@ -63,10 +63,10 @@ namespace OpenCart414Test.Tests
         }
 
         // DataProvider
-        //private static readonly object[] UserData =
-        //{
-        //    new object[] { new User() },
-        //};
+        private static readonly object[] UserData =
+        {
+            new object[] { new User() },
+        };
 
         //[Test, TestCaseSource(nameof(UserData))]
         //public void CheckLogin(User user)

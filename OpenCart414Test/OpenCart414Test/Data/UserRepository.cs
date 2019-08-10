@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleAppPractices
+namespace OpenCart414Test.Data
 {
     public sealed class UserRepository
     {
@@ -48,5 +48,22 @@ namespace ConsoleAppPractices
               .Build();
         }
 
+        public IUser WishListTester()
+        {
+            return User.Get()
+              .SetFirstname("tester")
+              .SetLastname("tester")
+              .SetEmail("roman_my@ukr.net")
+              .SetTelephone("someNumber")
+              .SetAddress1("someAddress")
+              .SetCity("someCity")
+              .SetPostcode("somePostcode")
+              .SetCountry("someCountry")
+              .SetRegionState("someRegionState")
+              .SetPassword(Environment.GetEnvironmentVariable("TESTER_PASWORD"))
+              .SetSubscribe(true)
+              .SetCompany("someCompany")
+              .Build();
+        }
     }
 }
