@@ -36,10 +36,9 @@ namespace OpenCart414Test.Tests
         [Test]
         public void CheckConversion()
         {
-            Console.WriteLine(euroRate);
+            Console.WriteLine(euroRate);                                    //for presentation ONLY!
             decimal Conversion = Math.Round(usdPrice * euroRate, 2);
-            Console.WriteLine(Conversion);
-            Console.WriteLine(usdPrice);
+            Console.WriteLine(Conversion);                                  //for presentation ONLY!
             Assert.AreEqual(Conversion, euroPrice);
         }
         [Test]

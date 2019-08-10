@@ -80,6 +80,26 @@ namespace OpenCart414Test.Pages
 
         }
 
+        public decimal GetProductOldPriceValue(Product product)
+        {
+            string oldPrice = Regex.Match(GetProductOldPrice(product), @"\d+\.\d{2}").Value;
+            NumberStyles style = NumberStyles.AllowDecimalPoint;
+            CultureInfo provider = new CultureInfo("en-US");
+            decimal value = Decimal.Parse(oldPrice, style, provider);
+            return value;
+
+        }
+
+        public decimal GetProductExTaxValue(Product product)
+        {
+            string exTax = Regex.Match(GetProductExTax(product), @"\d+\.\d{2}").Value;
+            NumberStyles style = NumberStyles.AllowDecimalPoint;
+            CultureInfo provider = new CultureInfo("en-US");
+            decimal value = Decimal.Parse(exTax, style, provider);
+            return value;
+
+        }
+
         // Business Logic
         public HomePage ChooseCurrency(Currency currency)
         {
@@ -91,6 +111,6 @@ namespace OpenCart414Test.Pages
             ClickSearchButton();
             return new SearchUnsuccessPage(driver);
         }
-
+       
     }
 }

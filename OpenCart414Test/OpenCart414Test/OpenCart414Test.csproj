@@ -119,6 +119,9 @@
     <Compile Include="Pages\WishListMessagePage.cs" />
     <Compile Include="Pages\WishListPage.cs" />
     <Compile Include="Pages\WishListPart.cs" />
+    <Compile Include="Tests\CurrencyConversionTests.cs" />
+    <Compile Include="Tests\CurrencyInShoppingCartTests.cs" />
+    <Compile Include="Tests\CurrencyWishListTests.cs" />
     <Compile Include="Tests\GridListTest.cs" />
     <Compile Include="Tests\CurrencyProductPriceFormatTests.cs" />
     <Compile Include="Tests\SearchByCategoryTest.cs" />
@@ -129,8 +132,6 @@
     <Compile Include="Tests\WishListRemoveTest.cs" />
     <Compile Include="Tests\SearchTest.cs" />
     <Compile Include="Tests\TestRunner.cs" />
-    <Compile Include="Tools\ListUtils.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
