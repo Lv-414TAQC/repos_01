@@ -54,19 +54,5 @@ namespace OpenCart414Test.Pages
             ProductsCriteria.SetInputLimit(text);
             return new SearchSuccessPage(driver);
         }
-
-        public string SwitchToGrid()
-        {
-            ProductsCriteria.ClickGridViewButton();
-            Thread.Sleep(3000); // For presentation only
-            return SearchResult.Text;
-        }
-        public string SwitchToList()
-        {
-            ProductsCriteria.ClickListViewButton();
-            Thread.Sleep(3000); // For presentation only
-            return SearchResult.Text;
-        }
-
     }
 }

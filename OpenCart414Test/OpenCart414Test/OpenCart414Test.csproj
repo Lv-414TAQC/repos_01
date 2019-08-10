@@ -106,10 +106,6 @@
     <Compile Include="Pages\WishListMessagePage.cs" />
     <Compile Include="Pages\WishListPage.cs" />
     <Compile Include="Pages\WishListPart.cs" />
-    <Compile Include="SeleniumFirst.cs" />
-    <Compile Include="SeleniumOpenCartSearch.cs" />
-    <Compile Include="SeleniumSecond.cs" />
-    <Compile Include="SimpleTest.cs" />
     <Compile Include="Tests\ListGridVerifyTest.cs" />
     <Compile Include="Tests\SearchByCategoryTest.cs" />
     <Compile Include="Tests\RegisterUserTest.cs" />
