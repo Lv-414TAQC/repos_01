@@ -7,14 +7,14 @@ using OpenQA.Selenium;
 
 namespace OpenCart414Test.Pages
 {
-    class CartProductEmptyContainer
+    class CartEmptyContainerComponent
     {
          private IWebDriver driver;
 
         public IWebElement InfoMessage
         { get { return driver.FindElement(By.CssSelector("li p.text-center")); } }
 
-        public CartProductEmptyContainer(IWebDriver driver)
+        public CartEmptyContainerComponent(IWebDriver driver)
         {
             this.driver = driver;
             CheckElements();

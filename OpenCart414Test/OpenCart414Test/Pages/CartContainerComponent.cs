@@ -6,7 +6,7 @@ using OpenCart414Test.Tools;
 
 namespace OpenCart414Test.Pages
 {
-     class CartProductContainer
+     class CartContainerComponent
     {
         private const string ITEMS_TABLE_CSSSELECTOR = "table.table-striped tr";
         private const string TABLE_PRICE_COMPONENT_CSSSELECTOR = "ul.dropdown-menu.pull-right table.table-bordered td.text-right";
@@ -18,9 +18,9 @@ namespace OpenCart414Test.Pages
         public IWebElement CheckOutLink
         { get { return driver.FindElement(By.XPath("//p[@class='text-right']//strong/i[@class='fa fa-share']//..")); } }
         private TablePriceComponent tablePriceComponent;
-        IList<ShoppingCartContainerComponent> itemsTable;
+        IList<ProductListContainerComponent> productList;
 
-          public CartProductContainer(IWebDriver driver)
+          public CartContainerComponent(IWebDriver driver)
         {
             this.driver = driver;
             CheckElements();
@@ -36,16 +36,16 @@ namespace OpenCart414Test.Pages
 
         private void InitElements()
         {
-            itemsTable = new List<ShoppingCartContainerComponent>();
+            productList = new List<ProductListContainerComponent>();
             foreach (IWebElement current in driver.FindElements(By.CssSelector(ITEMS_TABLE_CSSSELECTOR)))
             {
-                itemsTable.Add(new ShoppingCartContainerComponent(current));
+                productList.Add(new ProductListContainerComponent(current));
             }
         }
         // Page Object
-        public IList<ShoppingCartContainerComponent> GetItemsTable()
+        public IList<ProductListContainerComponent> GetProductList()
         {
-            return itemsTable;
+            return productList;
         }
 
         //ViewCartLink
@@ -112,7 +112,7 @@ namespace OpenCart414Test.Pages
 
         public void RemoveProductByName(Product product)
          {
-            foreach (ShoppingCartContainerComponent cur in GetItemsTable())
+            foreach (ProductListContainerComponent cur in GetProductList())
             {
                  if (cur.GetProductNameText() == product.Title)
                  {
@@ -122,9 +122,9 @@ namespace OpenCart414Test.Pages
             }
          }
 
-        public ShoppingCartContainerComponent GetItemByName(Product product)
+        public ProductListContainerComponent GetItemByName(Product product)
         {
-            foreach (ShoppingCartContainerComponent currency in GetItemsTable())
+            foreach (ProductListContainerComponent currency in GetProductList())
             {
                 if (currency.GetProductNameText() == product.Title)
                 {
@@ -138,7 +138,7 @@ namespace OpenCart414Test.Pages
         public decimal GetTotalSumProducts()
         {
             decimal total = 0;
-            foreach (ShoppingCartContainerComponent cur in GetItemsTable())
+            foreach (ProductListContainerComponent cur in GetProductList())
             {
                total += GetRegularExpressions().RegexCurrency(cur.GetProductPriceText());
             }
