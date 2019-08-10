@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using OpenCart414Test.Data;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -103,9 +104,26 @@ namespace OpenCart414Test.Pages
         // Pagination
 
         // Functional
+        public SearchSuccessPage IputLimitShow25()
+        {
+            ClickInputLimit();
+            SetInputLimit("25");
+            return new SearchSuccessPage(driver);
+        }
+        protected void MakeSortAndShow(string SortValue, string ShowValue)
+        {
+            ClickInputLimit();
+            SetInputSort(SortValue);
+            SetInputLimit(ShowValue);
+        }
+        public SearchSuccessPage SortAndShowSuccessfully(SortShowCriteria searchCriteria)
+        {
+            MakeSortAndShow(searchCriteria.SortValue, searchCriteria.ShowValue);
+            return new SearchSuccessPage(driver);
+        }
 
         // Business Logic
-        
+
         public ProductsCriteriaComponent ViewProductsByList()
         {
             ClickListViewButton();

@@ -26,6 +26,7 @@ namespace OpenCart414Test.Pages
         { get { return productLayout.FindElement(By.CssSelector(".fa.fa-exchange")); } }
         Dictionary<string, decimal> prices;
 
+        
         public ProductComponent(IWebElement productLayout)
         {
             this.productLayout = productLayout;

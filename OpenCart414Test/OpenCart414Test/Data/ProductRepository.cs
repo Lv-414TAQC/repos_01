@@ -41,6 +41,18 @@ namespace OpenCart414Test.Data
                 .AddPrice(Currency.EURO, "106.04")
                 .AddPrice(Currency.POUND_STERLING, "92.93");
         }
+        public static Product GetHP()
+        {
+            return new Product("HP LP3065",
+                "Stop your co-workers in their tracks with the stunning new 30-inch " +
+                "diagonal HP LP3065 Flat Panel Monitor. This flagship monitor " +
+                "features best-in-class performance and presentation features " +
+                "on a huge wide-aspect screen while letting you work as comfortably as " +
+                "possible - you might even forget you're at the office ", "100")
+                .AddPrice(Currency.US_DOLLAR, "122.00")
+                .AddPrice(Currency.EURO, "105.01")
+                .AddPrice(Currency.POUND_STERLING, "92.03");
+        }
         //public static IList<Product> GetFromExternal() { }
     }
 }

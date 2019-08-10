@@ -27,6 +27,7 @@ namespace OpenCart414Test.Tests
                 Currency.POUND_STERLING },
         };
 
+
         //[Test, TestCaseSource(nameof(ProductSearch))]
         public void CheckSearch(Product expectedProduct, SearchCriteria searchCriteria, Currency currency)
         {

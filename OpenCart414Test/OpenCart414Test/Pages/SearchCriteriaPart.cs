@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using OpenCart414Test.Data;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -37,9 +38,7 @@ namespace OpenCart414Test.Pages
             temp = CriteriaSearchButton;          
             // TODO All Web Elements
         }
-
         // Page Object
-
         // CriteriaSearchField
         public string GetCriteriaSearchFieldText()
         {
@@ -60,7 +59,6 @@ namespace OpenCart414Test.Pages
         {
             CriteriaSearchField.Click();
         }
-
         // CriteriaCategory
         public IWebElement GetCriteriaCategoryIWebElement()
         {
@@ -81,7 +79,6 @@ namespace OpenCart414Test.Pages
         {
             GetCriteriaCategoryIWebElement().Click();
         }
-
         // CriteriaSubCategory
         public void ClickCriteriaSubCategory()
         {
@@ -93,35 +90,112 @@ namespace OpenCart414Test.Pages
             CriteriaSubCategory.Click();
         }
 
-        public void ClickCriteriaSubCategory(string subcategory)
+        public void ClickCriteriaSubCategory(bool temp)
         {
-            SetCriteriaCategory(subcategory);
-            ClickCriteriaSubCategory(); // TODO for first
+            if (!temp == true)
+            {
+                Console.WriteLine("eror");
+            }
+            else
+            {
+                ClickCriteriaSubCategory();
+            }
         }
-
         // CriteriaDescription
         public void ClickCriteriaDescription()
         {
             CriteriaDescription.Click();
         }
 
+        public void GetCriteriaDescription(bool temp)
+        {
+            if (!temp == true)
+            {
+                Console.WriteLine("eror");
+            }
+            else
+            {
+                ClickCriteriaDescription();
+            }
+            
+        }
         // CriteriaSearchButton
         public void ClickCriteriaSearchButton()
         {
             CriteriaSearchButton.Click();
         }
-        //public SearchSuccessPage ClickCriteriaSearchButtonD()
-        //{
-        //    CriteriaSearchButton.Click();
-        //    return new SearchSuccessPage(driver);
-        //}
 
         // Functional
+        protected void MakeCriteriaSearchByDefault(string searchText)
+        {
+            ClickCriteriaSearchField();
+            ClearCriteriaSearchField();
+            SetCriteriaSearchField(searchText);
+            ClickCriteriaSearchButton();
+        }
+
+        protected void MakeCriteriaSearchByCategory(string searchText, string searchCategory)
+        {
+            ClickCriteriaSearchField();
+            ClearCriteriaSearchField();
+            SetCriteriaSearchField(searchText);
+            ClickCriteriaCategory();
+            SetCriteriaCategory(searchCategory);
+            ClickCriteriaSearchButton();
+        }
+
+        protected void MakeCriteriaSearchByDescription(string searchText, string searchCategory, bool IsSearchInDescription)
+        {
+            ClickCriteriaSearchField();
+            ClearCriteriaSearchField();
+            SetCriteriaSearchField(searchText);
+            ClickCriteriaCategory();
+            SetCriteriaCategory(searchCategory);
+            GetCriteriaDescription(IsSearchInDescription);
+            ClickCriteriaSearchButton();
+        }
+
+        protected void MakeCriteriaSearchBySubCategory(string searchText, string searchCategory, bool isSearchInSubcategories)
+        {
+            ClickCriteriaSearchField();
+            ClearCriteriaSearchField();
+            SetCriteriaSearchField(searchText);
+            ClickCriteriaCategory();
+            SetCriteriaCategory(searchCategory);
+            ClickCriteriaSubCategory(isSearchInSubcategories);
+            ClickCriteriaSearchButton();
+        }
         // TODO Choose/Click WebElements
         //protected void MakeCriteriaSearch(SearchCriteria searchCriteria...)
 
         // Business Logic
 
+        //public SearchSuccessPage SearchSuccessfully(string searchText)
+        public SearchSuccessPage SearchSuccessfullyByDefault(SearchCriteria searchCriteria)
+        {
+            //MakeTopSearch(searchCriteria.SearchValue);
+            MakeCriteriaSearchByDefault(searchCriteria.SearchValue);
+            //MakeTopSearch(searchText);
+            return new SearchSuccessPage(driver);
+        }    
+
+        public SearchSuccessPage SearchSuccessfullyByCategory(SearchCriteria searchCriteria)
+        {
+            MakeCriteriaSearchByCategory(searchCriteria.SearchValue,searchCriteria.SearchCategory);
+            return new SearchSuccessPage(driver);
+        }
+
+        public SearchSuccessPage SearchSuccessfullyByDescription(SearchCriteria searchCriteria)
+        {
+            MakeCriteriaSearchByDescription(searchCriteria.SearchValue, searchCriteria.SearchCategory,searchCriteria.IsSearchInDescription);
+            return new SearchSuccessPage(driver);
+        }
+
+        public SearchSuccessPage SearchSuccessfullyBySubCategory(SearchCriteria searchCriteria)
+        {
+            MakeCriteriaSearchBySubCategory(searchCriteria.SearchValue, searchCriteria.SearchCategory,searchCriteria.IsSearchInSubcategories);
+            return new SearchSuccessPage(driver);
+        }
         //public SearchSuccessPage SearchSuccessfully(SearchCriteria searchCriteria Product string searchText)
         //public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria Product string searchText) // TODO
     }
