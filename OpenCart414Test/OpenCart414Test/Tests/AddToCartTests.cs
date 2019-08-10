@@ -23,19 +23,29 @@ namespace OpenCart414Test.Tests
         {
             HomePage homePage = LoadApplication();
             homePage.AddProductToCart(addingProduct1);
-
             Thread.Sleep(2000);        //Only for presentation
-
             homePage.AddProductToCart(addingProduct2);
+
+            Thread.Sleep(2000);
+            /*
+            Assert.AreEqual(addingProduct1.Title, homePage.GetCartProductContainer()
+               .GetItemByName(addingProduct1).GetProductNameText());
+
+            homePage.GetCartProductContainer(); //for reopen page
+
+            Assert.AreEqual(addingProduct2.Title, homePage.GetCartProductContainer()
+                .GetItemByName(addingProduct2).GetProductNameText());
+            */
 
             Thread.Sleep(2000);          //Only for presentation
             homePage.GetCartProductContainer().RemoveProductByName(addingProduct2);
+
             Thread.Sleep(2000);          //Only for presentation
 
             homePage.GetCartProductContainer().RemoveProductByName(addingProduct1);
-         
-            Thread.Sleep(2000);         //Only for presentation
-
+           //Only for presentation
+            //Add assert on EmptyPage
+            Thread.Sleep(5000);
         }
 
 
@@ -71,6 +81,12 @@ namespace OpenCart414Test.Tests
 
             Thread.Sleep(5000);    //Only for presentation
             homePage.GetCartProductContainer().GetTotalSumProducts();
+
+            homePage.GetCartProductContainer(); //for reopen page
+
+            homePage.GetCartProductContainer().GetTablePriceTotal();
+
+            //Add assert compare total and GetTotalSumProduct
         }
     }
 }

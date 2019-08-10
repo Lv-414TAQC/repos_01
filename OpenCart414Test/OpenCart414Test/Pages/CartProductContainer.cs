@@ -96,8 +96,16 @@ namespace OpenCart414Test.Pages
             return result;
         }
 
+        public string GetTablePriceTotal()
+        {
+            CreateTablePriceComponent(By.CssSelector(TABLE_PRICE_COMPONENT_CSSSELECTOR));
+            string result = GetTablePriceComponent().GetTotal();
+            Console.WriteLine(result);
+            return result;
+        }
 
-         public void RemoveProductByName(Product product)
+
+        public void RemoveProductByName(Product product)
          {
             foreach (ShoppingCartContainerComponent cur in GetItemsTable())
             {
@@ -143,7 +151,6 @@ namespace OpenCart414Test.Pages
             return totalSum;
 
         }
-
 
             // Business Logic
 

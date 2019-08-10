@@ -39,6 +39,26 @@ namespace OpenCart414Test.Pages
             return result;
         }
 
+        public string GetTotal()
+        {
+            string result = string.Empty;
+            int i = 0;
+            foreach (IWebElement current in TablePriceList)
+            {
+                if (current.Text == "Total")
+                {
+                    i++;
+                    continue;
+                }
+                if(i == 1)
+                {
+                    result = current.Text;
+                }
+                
+            }
+            return result;
+        }
+
 
     }
 }

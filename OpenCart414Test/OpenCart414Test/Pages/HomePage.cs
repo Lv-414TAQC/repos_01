@@ -60,7 +60,7 @@ namespace OpenCart414Test.Pages
 
         internal CartProductContainer GetCartProductContainer()
         {
-            ClickCartButton();
+            ClickCartButton(); // mauby change
             return new CartProductContainer(driver);
         }
 
