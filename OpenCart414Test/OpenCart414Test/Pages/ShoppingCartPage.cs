@@ -10,7 +10,11 @@ using System.Threading;
 
 namespace OpenCart414Test.Pages
 {
+<<<<<<< HEAD
     public class ShoppingCartPage : BreadCrumPart
+=======
+    class ShoppingCartPage : BreadCrumbsPart
+>>>>>>> 06cc0ee49a793feda83055819c415caada4fd5ad
     {
         private const string SHOPPING_CART_XPATH = "//div[@class = 'table-responsive']/table/tbody";
         private const string TABLE_PRICE_COMPONENT_XPATH = "//div[@class='row']/div/table/tbody";
@@ -37,7 +41,13 @@ namespace OpenCart414Test.Pages
 
         private void InitElements()
         {
+<<<<<<< HEAD
             shopppingcartComponents = new List<ShoppingCartComponent>();
+=======
+        //     tablePrice = new TablePriceComponent(driver);
+
+            shopppingcartComponents = new List<ShoppingCartPageComponent>();
+>>>>>>> 06cc0ee49a793feda83055819c415caada4fd5ad
             foreach (IWebElement current in driver.FindElements(By.XPath(SHOPPING_CART_XPATH)))
             {
                 shopppingcartComponents.Add(new ShoppingCartComponent(current));

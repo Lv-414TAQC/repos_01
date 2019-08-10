@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
+<<<<<<< HEAD
     public class ShoppingCartEmptyPage : BreadCrumPart
+=======
+    class ShoppingCartEmptyPage : BreadCrumbsPart
+>>>>>>> 06cc0ee49a793feda83055819c415caada4fd5ad
     {
         
         public const string CART_IS_EMPTY = "Your shopping cart is empty!";

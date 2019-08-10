@@ -17,16 +17,19 @@ namespace OpenCart414Test.Pages
         public TablePriceComponent(IWebDriver driver, By searchLocator)
         {
             this.driver = driver;
-       
+            CheckElements();
             InitElements(searchLocator);
 
         }
-
+        private void CheckElements()
+        {
+            // TODO Develop Custom Exception
+            IList<IWebElement> temp = TablePriceList;
+        }
         private void InitElements(By searchLocator)
         {
             TablePriceList = driver.FindElements(searchLocator);
         }
-
 
         //Page Object
 
@@ -40,5 +43,27 @@ namespace OpenCart414Test.Pages
             }
             return result;
         }
+
+        public string GetTotal()
+        {
+            string result = string.Empty;
+            int i = 0;
+            foreach (IWebElement current in TablePriceList)
+            {
+                if (current.Text == "Total")
+                {
+                    i++;
+                    continue;
+                }
+                if(i == 1)
+                {
+                    result = current.Text;
+                }
+                
+            }
+            return result;
+        }
+
+
     }
 }

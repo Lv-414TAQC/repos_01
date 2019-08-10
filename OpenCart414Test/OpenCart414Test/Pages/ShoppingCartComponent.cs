@@ -32,8 +32,14 @@ namespace OpenCart414Test.Pages
         { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/a[contains(text(),'iPhone')]/../following-sibling::td[@class ='text-right']/following-sibling::td")); } }
         public IWebElement FieldValue
         { get { return product.FindElement(By.CssSelector(".input-group.btn-block > input")); } }
+<<<<<<< HEAD:OpenCart414Test/OpenCart414Test/Pages/ShoppingCartComponent.cs
 
         public ShoppingCartComponent(IWebElement product)
+=======
+       
+            
+        private void CheckElements()
+>>>>>>> 06cc0ee49a793feda83055819c415caada4fd5ad:OpenCart414Test/OpenCart414Test/Pages/ShoppingCartPageComponent.cs
         {
             this.product = product;
             //CheckElements();
@@ -84,7 +90,13 @@ namespace OpenCart414Test.Pages
         }
         public double GetUnitPrice()
         {
+<<<<<<< HEAD:OpenCart414Test/OpenCart414Test/Pages/ShoppingCartComponent.cs
             return Convert.ToDouble(UnitPrice.Text.Substring(1, 5).Replace('.', ','));//TODO localization
+=======
+            QuantityField.Clear();
+            QuantityField.SendKeys(text);
+
+>>>>>>> 06cc0ee49a793feda83055819c415caada4fd5ad:OpenCart414Test/OpenCart414Test/Pages/ShoppingCartPageComponent.cs
         }
         public double GetTotal()
         {

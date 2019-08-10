@@ -157,8 +157,6 @@ namespace OpenCart414Test.Pages
 
         //}
 
-
-
         // CartButton
         public string GetCartButtonText()
         {
@@ -215,6 +213,7 @@ namespace OpenCart414Test.Pages
             ClickSearchButton();
         }
 
+
         // CurrencyDropdownComponent
         private void OpenCurrencyDropdownComponent()
         {
@@ -270,24 +269,13 @@ namespace OpenCart414Test.Pages
             return new HomePage(driver);
         }
         //public SearchSuccessPage SearchSuccessfully(string searchText)
-        //public SearchSuccessPage SearchSuccessfully()
-        //{
-        //    //MakeTopSearch(searchCriteria.SearchValue);
-        //    //MakeTopSearch(searchText);
-        //    return new SearchSuccessPage(driver);
-        //}
-        //public SearchSuccessPage SearchSuccessfully(string searchText)
         public SearchSuccessPage SearchSuccessfully(SearchCriteria searchCriteria)
         {
             MakeTopSearch(searchCriteria.SearchValue);
             //MakeTopSearch(searchText);
             return new SearchSuccessPage(driver);
         }
-        public SearchSuccessPage SearchTopSuccessfully()
-        {
-            MakeTopSearch("Mac");
-            return new SearchSuccessPage(driver);
-        }
+
         //public SearchUnsuccessPage SearchUnsuccessfully(string searchText)
         public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria)
         {
@@ -313,15 +301,27 @@ namespace OpenCart414Test.Pages
             ClickLoggedMyAccountByPartialName(LoggedMyAccount.LOGOUT);
             return new AccountLogoutPage(driver);
         }
+
         public WishListPage GotoWishListPage()
         {
             ClickWishList();
             return new WishListPage(driver);
         }
+<<<<<<< HEAD
         public ShoppingCartPage GotoShoppingCartPage()
         {
             ClickShoppingCart();
             return new ShoppingCartPage(driver);
         }
+=======
+
+    
+
+
+
+
+
+
+>>>>>>> 06cc0ee49a793feda83055819c415caada4fd5ad
     }
 }

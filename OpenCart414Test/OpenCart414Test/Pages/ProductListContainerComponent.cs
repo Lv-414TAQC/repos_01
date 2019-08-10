@@ -1,29 +1,29 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    class ShoppingCartContainerComponent
+     class ProductListContainerComponent
     {
+        private const string PRODUCT_PRICE_CSSSELECTOR = "table.table.table-striped td.text-right:nth-child(4)";     //By.XPath("//table[@class='table table-striped']//td[contains(text(),'.')]")
+        private const string PRODUCT_QUANTITY_CSSSELECTOR = "table.table.table-striped td.text-right:nth-child(3)";  //By.XPath("//table[@class='table table-striped']//td[contains(text(),'x')]")
+
         private IWebElement product;
 
         public IWebElement ProductImage
         { get { return product.FindElement(By.CssSelector("table.table-striped .text-center > a > img.img-thumbnail")); } }
         public IWebElement ProductName
         { get { return product.FindElement(By.CssSelector("table.table-striped .text-left > a")); } }
+
         public IWebElement ProductPrice
-        { get { return product.FindElement(By.XPath("//table[@class='table table-striped']//td[contains(text(),'.')]")); } }
+        { get { return product.FindElement(By.CssSelector(PRODUCT_PRICE_CSSSELECTOR)); } }
         public IWebElement ProductQuantity
-        { get { return product.FindElement(By.XPath("//table[@class='table table-striped']//td[contains(text(),'x')]")); } }
+        { get { return product.FindElement(By.CssSelector(PRODUCT_QUANTITY_CSSSELECTOR)); } }
+
         public IWebElement ProductRemoveButton
         { get { return product.FindElement(By.CssSelector("button.btn.btn-danger.btn-xs")); } }
 
 
-        public ShoppingCartContainerComponent(IWebElement product)
+        public ProductListContainerComponent(IWebElement product)
         {
             this.product = product;
             CheckElements();

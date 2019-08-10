@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading;
-//using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using OpenCart414Test.Data;
 using OpenCart414Test.Pages;
-//using OpenQA.Selenium;
-//using OpenQA.Selenium.Chrome;
-//using OpenQA.Selenium.Firefox;
-//using OpenQA.Selenium.Interactions;
+
 
 namespace OpenCart414Test.Tests
 {
@@ -20,46 +16,84 @@ namespace OpenCart414Test.Tests
         // DataProvider
         private static readonly object[] ProductToAdd =
         {
-            new object[] { ProductRepository.GetIPhone(), ProductRepository.GetMacBook() }   
+            new object[] { ProductRepository.GetIPhone(), ProductRepository.GetMacBook() }
         };
-       // [Test, TestCaseSource(nameof(ProductToAdd))]
-        public void AddToCart(Product addingProduct1, Product addingProduct2)
+        [Test, TestCaseSource(nameof(ProductToAdd))]
+        public void DeleteProduct(Product addingProduct1, Product addingProduct2)
         {
-            //Example test!!!!!!!!!!!!!!!
             HomePage homePage = LoadApplication();
-
-            ProductsContainerComponent productsContainerComponent = homePage.getProductComponentsContainer();
-            ProductComponent productComponent1 = productsContainerComponent.GetProductComponentByName(addingProduct1.Title);
-            Thread.Sleep(2000);
-            productComponent1.ClickAddToCartButton();
-
-            ProductComponent productComponent2 = productsContainerComponent.GetProductComponentByName(addingProduct2.Title);
-            Thread.Sleep(2000);
-            productComponent2.ClickAddToCartButton();
+            homePage.AddProductToCart(addingProduct1);
+            Thread.Sleep(2000);        //Only for presentation
+            homePage.AddProductToCart(addingProduct2);
 
             Thread.Sleep(2000);
-            homePage.ClickCartButton();
-            Thread.Sleep(2000);
+            
+            Assert.AreEqual(addingProduct1.Title, homePage.GetCartContainerComponent()
+               .GetItemByName(addingProduct1).GetProductNameText());
 
-            CartProductContainer cartProductContainer = new CartProductContainer(driver);
+            homePage.GetCartContainerComponent(); //for reopen page
+            
+            Assert.AreEqual(addingProduct2.Title, homePage.GetCartContainerComponent()
+                .GetItemByName(addingProduct2).GetProductNameText());
 
-            IList<string> a = cartProductContainer.GetAllTablePriceComponents();
-            foreach(string cur in a)
-            {
-                Console.WriteLine(cur);
-            }
-            Console.WriteLine("____________________________");
+            homePage.GetCartContainerComponent(); //for reopen page
 
-            IList<ShoppingCartContainerComponent> b = cartProductContainer.GetItemsTable();
-            foreach (ShoppingCartContainerComponent cur in b)
-            {
-                Console.WriteLine(cur.GetProductPriceText());
-            }
+            Thread.Sleep(2000);          //Only for presentation
+            homePage.GetCartContainerComponent().RemoveProductByName(addingProduct2);
 
-           // ShoppingCartContainerComponent shoppingCartContainerComponent = new ShoppingCartContainerComponent();
+            Thread.Sleep(2000);          //Only for presentation
 
+            homePage.GetCartContainerComponent().RemoveProductByName(addingProduct1);
 
+            homePage.GetCartEmptyContainerComponent(); //for reopen page
+
+            Assert.IsTrue(homePage.GetCartEmptyContainerComponent().GetInfoMessageText().Length > 0);
+            //Add assert on EmptyPage
+            Thread.Sleep(3000);
         }
 
+
+        [Test, TestCaseSource(nameof(ProductToAdd))]
+        public void AddProduct(Product addingProduct1, Product addingProduct2)
+        {
+            HomePage homePage = LoadApplication();
+
+            homePage.AddProductToCart(addingProduct1);
+            Thread.Sleep(2000);
+            homePage.AddProductToCart(addingProduct2);
+
+            Thread.Sleep(2000);   //Only for presentation
+
+            Assert.AreEqual(addingProduct1.Title, homePage.GetCartContainerComponent()
+                 .GetItemByName(addingProduct1).GetProductNameText());
+
+            homePage.GetCartContainerComponent(); //for reopen page
+
+            Assert.AreEqual(addingProduct2.Title, homePage.GetCartContainerComponent()
+                .GetItemByName(addingProduct2).GetProductNameText());
+
+            Thread.Sleep(2000);  //Only for presentation
+        }
+
+        [Test, TestCaseSource(nameof(ProductToAdd))]
+        public void CheckTotalSum(Product addingProduct1, Product addingProduct2)
+        {
+            HomePage homePage = LoadApplication();
+            homePage.AddProductToCart(addingProduct1);
+            Thread.Sleep(2000);    //Only for presentation
+            homePage.AddProductToCart(addingProduct2);
+
+            Thread.Sleep(2000);    //Only for presentation
+            decimal a = homePage.GetCartContainerComponent().GetTotalSumProducts();
+           
+            homePage.GetCartContainerComponent(); //for reopen page
+
+            decimal b = homePage.GetCartContainerComponent().GetTablePriceTotal();
+
+            Assert.AreEqual(a, b);
+           // Assert.AreEqual(homePage.GetCartContainerComponent().GetTotalSumProducts(),
+           //  homePage.OpenCartButton().GetTablePriceTotal());
+            Thread.Sleep(3000);
+        }
     }
 }
