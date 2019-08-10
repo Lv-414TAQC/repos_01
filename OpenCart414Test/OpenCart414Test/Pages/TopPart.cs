@@ -290,21 +290,30 @@ namespace OpenCart414Test.Pages
             return new LoginPage(driver);
         }
 
-        //public RegisterUserPage GotoRegisterPage()
-        //{
-        //    ClickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
-        //    return new RegisterPage(driver);
-        //}
+        public RegisterUserPage GotoRegisterPage()
+        {
+            ClickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
+            return new RegisterUserPage(driver);
+        }
 
         public AccountLogoutPage Logout()
         {
             ClickLoggedMyAccountByPartialName(LoggedMyAccount.LOGOUT);
             return new AccountLogoutPage(driver);
         }
+
         public WishListPage GotoWishListPage()
         {
             ClickWishList();
             return new WishListPage(driver);
         }
+
+
+
+
+
+
+
+        //CartProductComponent OpenCartButton
     }
 }

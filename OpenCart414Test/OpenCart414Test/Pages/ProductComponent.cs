@@ -87,7 +87,12 @@ namespace OpenCart414Test.Pages
 
         // Functional
 
-        // Business Logic
 
+
+        // Business Logic
+        public void AddItemToWishList()
+        {
+            ClickAddToWishButton();
+        }
     }
 }

@@ -2,9 +2,6 @@
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
@@ -156,9 +153,32 @@ namespace OpenCart414Test.Pages
                 // TODO Develop Custom Exception
                 throw new Exception("ProductName: " + productName + " not Found.");
             }
+            
             return result;
         }
 
+        //___________
+       /* public ProductComponent GetProductComponentByName1(Data.Product productName)
+        {
+            ProductComponent result = null;
+            foreach (ProductComponent current in GetProductComponents())
+            {
+                if (current.GetNameText().ToLower()
+                        .Equals(productName.ToLower()))
+                {
+                    result = current;
+                    break;
+                }
+            }
+            if (result == null)
+            {
+                // TODO Develop Custom Exception
+                throw new Exception("ProductName: " + productName + " not Found.");
+            }
+            return result;
+        }
+        //______________________________
+        */
         public string GetProductComponentPriceByName(string productName)
         {
             return GetProductComponentByName(productName).GetPriceText();
@@ -184,6 +204,9 @@ namespace OpenCart414Test.Pages
             return GetProductComponents().Count;
         }
 
+     
+
+
         // Business Logic
 
         //public string GetProductComponentPriceByProduct(Product product)
@@ -195,6 +218,10 @@ namespace OpenCart414Test.Pages
         {
             return GetProductComponentDescriptionByName(product.GetName());
         }
+
+        //void AddToCart(Product)
+
+        //GetProductComponent(Product)  
 
     }
 }

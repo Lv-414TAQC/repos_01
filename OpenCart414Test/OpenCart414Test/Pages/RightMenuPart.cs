@@ -1,34 +1,29 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
     public class RightMenuPart : BreadCrumPart
     {
-        public IWebElement RightMenuMyAccount
-        { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='My Account']")); } }
-        public IWebElement RightMenuAddressBook
-        { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Address Book']")); } }
-        public IWebElement RightMenuWishList
-        { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Wish List']")); } }
-        public IWebElement RightMenuOrderHistory
-        { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Order History']")); } }
-        public IWebElement RightMenuDownloads
-        { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Downloads']")); } }
-        public IWebElement RightMenuRecurringPayments
-        { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Recurring payments']")); } }
-        public IWebElement RightMenuRewardPoints
-        { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Reward Points']")); } }
-        public IWebElement RightMenuReturns
-        { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Returns']")); } }
-        public IWebElement RightMenuTransactions
-        { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Transactions']")); } }
-        public IWebElement RightMenuNewsletter
-        { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Newsletter']")); } }
+        public IWebElement RightMenuMyAccount =>
+        driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='My Account']"));
+        public IWebElement RightMenuAddressBook =>
+        driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Address Book']"));
+        public IWebElement RightMenuWishList =>
+        driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Wish List']"));
+        public IWebElement RightMenuOrderHistory =>
+        driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Order History']"));
+        public IWebElement RightMenuDownloads =>
+        driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Downloads']"));
+        public IWebElement RightMenuRecurringPayments =>
+        driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Recurring payments']"));
+        public IWebElement RightMenuRewardPoints =>
+        driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Reward Points']"));
+        public IWebElement RightMenuReturns =>
+        driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Returns']"));
+        public IWebElement RightMenuTransactions =>
+        driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Transactions']"));
+        public IWebElement RightMenuNewsletter =>
+        driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Newsletter']"));
                 
         public RightMenuPart(IWebDriver driver) : base(driver)
         {
@@ -115,9 +110,5 @@ namespace OpenCart414Test.Pages
         {
             RightMenuNewsletter.Click();
         }
-
-        // Functional
-
-        // Business Logic
     }
 }
