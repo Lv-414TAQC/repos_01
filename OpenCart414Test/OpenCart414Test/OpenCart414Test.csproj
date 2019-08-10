@@ -70,6 +70,8 @@
     <Compile Include="Data\SearchCriteria.cs" />
     <Compile Include="Data\SearchCriteriaRepository.cs" />
     <Compile Include="Data\SearchDTO.cs" />
+    <Compile Include="Data\SortShowCriteria.cs" />
+    <Compile Include="Data\SortShowRepository.cs" />
     <Compile Include="Data\UnloggedMyAccount.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\UserRepository.cs" />
@@ -84,7 +86,6 @@
     <Compile Include="Pages\ProductComponent.cs" />
     <Compile Include="Pages\ProductsContainerComponent.cs" />
     <Compile Include="Pages\ProductsCriteriaComponent.cs" />
-    <Compile Include="Pages\RegisterPage.cs" />
     <Compile Include="Pages\RegisterUserPage.cs" />
     <Compile Include="Pages\RightLogInPart.cs" />
     <Compile Include="Pages\RightLogOutPart.cs" />
@@ -105,7 +106,7 @@
     <Compile Include="Pages\WishListMessagePage.cs" />
     <Compile Include="Pages\WishListPage.cs" />
     <Compile Include="Pages\WishListPart.cs" />
-    <Compile Include="Tests\GridListTest.cs" />
+    <Compile Include="Tests\ListGridVerifyTest.cs" />
     <Compile Include="Tests\SearchByCategoryTest.cs" />
     <Compile Include="Tests\RegisterUserTest.cs" />
     <Compile Include="Tests\SearchByDefaultCategoryTest.cs" />
