@@ -32,6 +32,15 @@ namespace OpenCart414Test.Data
                 .AddPrice(Currency.EURO, "106.04")
                 .AddPrice(Currency.POUND_STERLING, "92.93");
         }
+
+        public static Product GetCanonEos5D()
+        {
+            return new Product("Canon EOS 5D",
+                "Canon's press material for the EOS 5D states that it 'defines (a) new D-SLR category', while we're not typically too concerned with marketing talk this particular statement is clearly pretty accurate", "98.00")
+                .AddPrice(Currency.US_DOLLAR, "123.20")
+                .AddPrice(Currency.EURO, "106.04")
+                .AddPrice(Currency.POUND_STERLING, "92.93");
+        }
         //public static IList<Product> GetFromExternal() { }
     }
 }

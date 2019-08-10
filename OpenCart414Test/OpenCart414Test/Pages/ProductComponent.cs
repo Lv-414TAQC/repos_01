@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
@@ -107,7 +108,8 @@ namespace OpenCart414Test.Pages
 
         public string GetExTax()
         {
-            string exTax = Price.FindElement(By.CssSelector("span[class='price-tax']")).Text;
+            string exTax = Regex.Match( Price.FindElement(By.CssSelector("span[class='price-tax']")).Text, @"[\$£]?\d+\.\d{2}\€?").Value;
+
             return exTax;
         }
     }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenCart414Test.Pages;
 using OpenCart414Test.Pages.AdminPanel;
@@ -13,11 +9,11 @@ namespace OpenCart414Test.Tests
     [TestFixture]
     class CurrencyConversionTests : TestRunner
     {
-        decimal EuroRate;
-        decimal GbpRate;
-        string  UsdPrice;
-        string  EuroPrice;
-        string  GbpPrice;
+        decimal euroRate;
+        decimal gbpRate;
+        decimal  usdPrice;
+        decimal  euroPrice;
+        decimal  gbpPrice;
 
         [SetUp]
         public override void SetUp()
@@ -25,26 +21,32 @@ namespace OpenCart414Test.Tests
             AdminLoginPage ALoginPage = LoadAdminLoginPage();
             AdminHomePage AHomePage = ALoginPage.LogInAdmin();
             CurrenciesPage CurrencyPage = AHomePage.ClickCurrenciesMenu();
-            EuroRate = CurrencyPage.GetCurrencyRate("Euro");
-            GbpRate = CurrencyPage.GetCurrencyRate("Pound Sterling");
+            euroRate = CurrencyPage.GetCurrencyRate("Euro");
+            gbpRate = CurrencyPage.GetCurrencyRate("Pound Sterling");
             HomePage UserHomePage = LoadHomePage();
             UserHomePage = UserHomePage.ChooseCurrency(Currency.US_DOLLAR);
-            UsdPrice = UserHomePage.GetProductNewPrice("Canon EOS 5D");
+            usdPrice = UserHomePage.GetProductNewPriceValue(ProductRepository.GetCanonEos5D());
             UserHomePage = UserHomePage.ChooseCurrency(Currency.EURO);
-            EuroPrice = UserHomePage.GetProductNewPrice("Canon EOS 5D");
+            euroPrice = UserHomePage.GetProductNewPriceValue(ProductRepository.GetCanonEos5D());
             UserHomePage = UserHomePage.ChooseCurrency(Currency.POUND_STERLING);
-            GbpPrice = UserHomePage.GetProductNewPrice("Canon EOS 5D");
+            gbpPrice = UserHomePage.GetProductNewPriceValue(ProductRepository.GetCanonEos5D());
 
         }
 
         [Test]
-        public void CheckCurrenciesConvertion()
+        public void CheckConversion()
         {
-            Console.WriteLine(EuroRate);
-            Console.WriteLine(GbpRate);
-            Console.WriteLine(EuroPrice);
-            Console.WriteLine(UsdPrice);
-            Console.WriteLine(GbpPrice);
+            Console.WriteLine(euroRate);
+            decimal Conversion = Math.Round(usdPrice * euroRate, 2);
+            Console.WriteLine(Conversion);
+            Console.WriteLine(usdPrice);
+            Assert.AreEqual(Conversion, euroPrice);
+        }
+        [Test]
+        public void CheckGbpConversion()
+        {
+            decimal Conversion = Math.Round(usdPrice * gbpRate, 2);
+            Assert.AreEqual(Conversion, gbpPrice);
         }
     }
 }

@@ -2,9 +2,11 @@
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace OpenCart414Test.Pages
 {
@@ -50,24 +52,33 @@ namespace OpenCart414Test.Pages
         }
 
         // Functional
-        public string GetProductOldPrice(string product)
+        public string GetProductOldPrice(Product product)
         {
-            ProductComponent searchedProduct =  productsContainerComponent.GetProductComponentByName(product);
+            ProductComponent searchedProduct =  productsContainerComponent.GetProductComponentByName(product.Title);
             return searchedProduct.GetOldPrice();
         }
 
-        public string GetProductNewPrice(string product)
+        public string GetProductNewPrice(Product product)
         {
-            ProductComponent searchedProduct = productsContainerComponent.GetProductComponentByName(product);
+            ProductComponent searchedProduct = productsContainerComponent.GetProductComponentByName(product.Title);
             return searchedProduct.GetNewPrice();
         }
 
-        public string GetProductExTax(string product)
+        public string GetProductExTax(Product product)
         {
-            ProductComponent searchedProduct = productsContainerComponent.GetProductComponentByName(product);
+            ProductComponent searchedProduct = productsContainerComponent.GetProductComponentByName(product.Title);
             return searchedProduct.GetExTax();
         }
 
+        public decimal GetProductNewPriceValue(Product product)
+        {
+            string newPrice = Regex.Match(GetProductNewPrice(product), @"\d+\.\d{2}").Value;
+            NumberStyles style = NumberStyles.AllowDecimalPoint;
+            CultureInfo provider = new CultureInfo("en-US");
+            decimal value = Decimal.Parse(newPrice, style, provider);
+            return value;
+
+        }
 
         // Business Logic
         public HomePage ChooseCurrency(Currency currency)
