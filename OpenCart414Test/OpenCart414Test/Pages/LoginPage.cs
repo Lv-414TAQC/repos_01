@@ -55,9 +55,8 @@ namespace OpenCart414Test.Pages
         // Business Logic
         public AccountPage LoggingIn(string email, string passWord)
         {
-            string testerPassword = Environment.GetEnvironmentVariable(passWord);
             InputEmail(email);
-            InputPassword(testerPassword);
+            InputPassword(passWord);
             ClickLoginButton();
             return new AccountPage(driver);
         }

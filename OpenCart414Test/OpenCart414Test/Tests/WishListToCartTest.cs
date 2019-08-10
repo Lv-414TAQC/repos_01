@@ -25,17 +25,17 @@ namespace OpenCart414Test.Tests
         }
 
         // DataProvider
-        private static readonly object[] ProductToTestOn =
+        private static readonly object[] DataToTestOn =
         {
-            new object[] { ProductRepository.GetIPhone() },
+            new object[] { ProductRepository.GetIPhone(), UserRepository.Get().WishListTester() },
         };
 
-        [Test, TestCaseSource(nameof(ProductToTestOn))]
-        public void CheckToCartFromWishList(Product productToCart)
+        [Test, TestCaseSource(nameof(DataToTestOn))]
+        public void CheckToCartFromWishList(Product productToCart, IUser user)
         {
             HomePage homePage = LoadApplication()
                 .GotoLoginPage()
-                .LoggingIn("roman_my@ukr.net", "TESTER_PASWORD")
+                .LoggingIn(user.Email, user.Password)
                 .GotoHomePage();
             Thread.Sleep(2000); //for presentation only
             homePage.getProductComponentsContainer()
