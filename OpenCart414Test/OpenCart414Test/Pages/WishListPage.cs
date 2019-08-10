@@ -1,4 +1,5 @@
-﻿using OpenCart414Test.Data;
+﻿using System;
+using OpenCart414Test.Data;
 using OpenQA.Selenium;
 
 namespace OpenCart414Test.Pages
@@ -35,5 +36,6 @@ namespace OpenCart414Test.Pages
                 .ClickWishListComponentAddToCartButtonByName(toCartProduct.Title);
             return new WishListMessagePage(driver);
         }
+
     }
 }

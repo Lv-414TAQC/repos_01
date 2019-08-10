@@ -2,7 +2,7 @@
 
 namespace OpenCart414Test.Pages
 {
-    public class RightMenuPart : BreadCrumPart
+    public class RightMenuPart : BreadCrumbsPart
     {
         public IWebElement RightMenuMyAccount =>
         driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='My Account']"));
@@ -29,7 +29,7 @@ namespace OpenCart414Test.Pages
         {
         }
 
-        // Page Object
+        // Atomic
         public string GetRightMenuMyAccountText()
         {
             return RightMenuMyAccount.Text;
