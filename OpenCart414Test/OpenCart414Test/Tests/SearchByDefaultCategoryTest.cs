@@ -24,85 +24,98 @@ namespace OpenCart414Test.Tests
         {
             new object[] {
                 SearchCriteriaRepository.GetHpSearchCriteria(),
-                ProductRepository.GetHP()
                 },
         };
-        //private static readonly object[] ProductToAdd1 =
-        //{
-        //    new object[] { ProductRepository.GetHP() },
-        //};
+        private static readonly object[] ProductSearch2 =
+        {
+            new object[] {
+                SearchCriteriaRepository.GetImac(),
+                },
+        };
+        private static readonly object[] ProductSearch3 =
+        {
+            new object[] {
+                SearchCriteriaRepository.GetAllProducts(),
+                },
+        };
+        private static readonly object[] ProductSearch4 =
+    {
+            new object[] {
+                SearchCriteriaRepository.GetAllProducts(),
+                SortShowRepository.ShowBy25()
+                },
+        };
 
+        //
         //[Test, TestCaseSource(nameof(ProductSearch))]
         public void CheckSearchByDefaultCategory(SearchCriteria searchCriteria)
         {
-            HomePage homePage = LoadApplication();
-            SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
+            SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyByDefault(searchCriteria);
             Thread.Sleep(2000);  //Only for Presentation
-            SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByDefault(searchCriteria);
+            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainTextByDefaultCategory(searchCriteria));
             Thread.Sleep(2000);  //Only for Presentation
-
-            bool temp = true;
-            foreach (var a in searchSuccessPage.ProductsCriteria.GetProductComponentNames())
-            {
-                Console.WriteLine(a);
-                Console.WriteLine(searchSuccessPage.GetCriteriaSearchFieldText());
-                if (!a.Contains(searchSuccessPage.GetCriteriaSearchFieldText()))
-                {
-                    temp = false;
-                }
-            }
-            Assert.IsTrue(temp);
-
-            ///////////////////////////////////////////////////////////////////////////////////////////////////
-            //SearchSuccessPage searchSuccessPage = LoadApplication().SearchSuccessfully(searchCriteria);
-            //searchSuccessPage.ProductsCriteria.GetProductComponentsCount();
-            //Console.WriteLine(searchSuccessPage.ProductsCriteria.GetProductComponentsCount());
-            //Thread.Sleep(2000);
-
         }
+        //
         //[Test, TestCaseSource(nameof(ProductSearch))]
         public void CheckSearchBySeparateCategory(SearchCriteria searchCriteria)
         {
-            HomePage homePage = LoadApplication();
-            SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
-            Thread.Sleep(2000);  //Only for Presentation
-            SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByCategory(searchCriteria);
-            Thread.Sleep(2000);  //Only for Presentation
-            //
-            bool temp = true;
-            foreach (var a in searchSuccessPage.ProductsCriteria.GetProductComponentNames())
-            {
-                if (!a.Contains(searchSuccessPage.GetCriteriaSearchFieldText()))
-                {
-                    temp = false;
-                }
-            }
-            Assert.IsTrue(temp);
+            SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyByCategory(searchCriteria);
+            Thread.Sleep(2000);  //Only for Presentation            
+            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainTextBySeparateCategory(searchCriteria));
+            Thread.Sleep(2000);  //Only for Presentation 
+
+            //HomePage homePage = LoadApplication();
+            //SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
+            //SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByCategory(searchCriteria);
         }
-        [Test, TestCaseSource(nameof(ProductSearch1))]
-        public void CheckSearchByDescription(SearchCriteria searchCriteria, Product addingProduct)
+        //
+        //[Test, TestCaseSource(nameof(ProductSearch1))]
+        public void CheckSearchByDescription(SearchCriteria searchCriteria)
         {
-            HomePage homePage = LoadApplication();
-            SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
-            Thread.Sleep(2000);  //Only for Presentation
-            SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByDescription(searchCriteria);
-            Thread.Sleep(2000);  //Only for Presentation
+            SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyByDescription(searchCriteria);     
+            Thread.Sleep(2000);  //Only for Presentation                        
             //
-            bool temp = true;
-            for(int a=0; a < searchSuccessPage.ProductsCriteria.GetProductComponentsCount(); a++) 
-            {
-                //if (!searchSuccessPage.ProductsCriteria.GetProductComponentDescriptionByName("HP LP3065").Contains(searchSuccessPage.GetCriteriaSearchFieldText()))
-                //{
-                //    temp = false;
-                //}
-                Console.WriteLine(searchSuccessPage.ProductsCriteria.GetProductComponentDescriptionByProduct(addingProduct));
-                Console.WriteLine(searchSuccessPage.GetCriteriaSearchFieldText());
-                if (!searchSuccessPage.ProductsCriteria.GetProductComponentDescriptionByProduct(addingProduct).Contains(searchSuccessPage.GetCriteriaSearchFieldText()))
-                {
-                    temp = false;
-                }
-            }
-            Assert.IsTrue(temp);
+            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainTextByDescription(searchCriteria));
+            Thread.Sleep(2000);  //Only for Presentation  
+
+            //HomePage homePage = LoadApplication();
+            //SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
+            //SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByDescription(searchCriteria);
+            //bool temp = true;
+            //for (int a = 0; a < searchSuccessPage.ProductsCriteria.GetProductComponentsCount(); a++)
+            //{
+            //    if (!searchSuccessPage.ProductsCriteria.GetProductComponentDescriptionByProduct(addingProduct).Contains(searchSuccessPage.GetCriteriaSearchFieldText()))
+            //    {
+            //        temp = false;
+            //    }
+            //}
+        }
+        //
+        //[Test, TestCaseSource(nameof(ProductSearch2))]
+        public void CheckSearchBySubCategory(SearchCriteria searchCriteria)
+        {
+            SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyBySubCategory(searchCriteria);
+            Thread.Sleep(2000);  //Only for Presentation                        
+            //
+            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainTextBySubCategory(searchCriteria));
+            Thread.Sleep(2000);  //Only for Presentation
+        }
+        [Test, TestCaseSource(nameof(ProductSearch4))]
+        public void ShowElementsTest(SearchCriteria searchCriteria,SortShowCriteria sortShowCriteria)
+        {
+            SearchSuccessPage searchSuccessPage = LoadApplication().SearchSuccessfully(searchCriteria);
+            Thread.Sleep(2000);  //Only for Presentation
+            searchSuccessPage.ProductsCriteria.SortAndShowSuccessfully(sortShowCriteria);
+            Thread.Sleep(2000);  //Only for Presentation
+
+
+            //SearchSuccessPage searchSuccessPage = LoadApplication().SearchSuccessfully(searchCriteria);
+            //Thread.Sleep(2000);  //Only for Presentation
+            //Assert.AreEqual(15,searchSuccessPage.ProductsCriteria.GetProductComponentsCount());
+            ////
+            //searchSuccessPage=searchSuccessPage.ProductsCriteria.IputLimitShow25();
+            //Assert.AreEqual(25, searchSuccessPage.ProductsCriteria.GetProductComponentsCount());
+            //Thread.Sleep(2000);  //Only for Presentation
         }
     }
 }

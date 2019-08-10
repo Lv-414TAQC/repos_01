@@ -36,5 +36,9 @@ namespace OpenCart414Test.Data
         {
             return Title;
         }
+        public string GetDescription()
+        {
+            return Description;
+        }
     }
 }

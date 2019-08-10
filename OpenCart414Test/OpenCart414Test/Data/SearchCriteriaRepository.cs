@@ -25,5 +25,15 @@ namespace OpenCart414Test.Data
             return new SearchCriteria("with the stunning new 30-inch diagonal",
                 "Laptops & Notebooks", false, true);
         }
+        public static SearchCriteria GetImac()
+        {
+            return new SearchCriteria("iM",
+                "Desktops", true, false);
+        }
+        public static SearchCriteria GetAllProducts()
+        {
+            return new SearchCriteria("%",
+                "", false, false);
+        }
     }
 }

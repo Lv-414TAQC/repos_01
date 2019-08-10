@@ -275,11 +275,7 @@ namespace OpenCart414Test.Pages
             //MakeTopSearch(searchText);
             return new SearchSuccessPage(driver);
         }
-        public SearchSuccessPage SearchTopSuccessfully()
-        {
-            MakeTopSearch("Mac");
-            return new SearchSuccessPage(driver);
-        }
+
         //public SearchUnsuccessPage SearchUnsuccessfully(string searchText)
         public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria)
         {

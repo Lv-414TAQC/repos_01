@@ -69,6 +69,8 @@
     <Compile Include="Data\SearchCriteria.cs" />
     <Compile Include="Data\SearchCriteriaRepository.cs" />
     <Compile Include="Data\SearchDTO.cs" />
+    <Compile Include="Data\SortShowCriteria.cs" />
+    <Compile Include="Data\SortShowRepository.cs" />
     <Compile Include="Data\UnloggedMyAccount.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Pages\AccountLogoutPage.cs" />
