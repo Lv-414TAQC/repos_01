@@ -143,11 +143,21 @@ namespace OpenCart414Test.Pages
             SearchField.Click();
         }
 
+
         // SearchButton
         public void ClickSearchButton()
         {
             SearchButton.Click();
+            
         }
+        //public SearchUnsuccessPage ClickSearchButtonD() //Доробити як бізнес логіку
+        //{
+        //    SearchButton.Click();
+        //    return new SearchUnsuccessPage(driver);
+
+        //}
+
+
 
         // CartButton
         public string GetCartButtonText()
@@ -259,7 +269,13 @@ namespace OpenCart414Test.Pages
             ClickLogo();
             return new HomePage(driver);
         }
-
+        //public SearchSuccessPage SearchSuccessfully(string searchText)
+        //public SearchSuccessPage SearchSuccessfully()
+        //{
+        //    //MakeTopSearch(searchCriteria.SearchValue);
+        //    //MakeTopSearch(searchText);
+        //    return new SearchSuccessPage(driver);
+        //}
         //public SearchSuccessPage SearchSuccessfully(string searchText)
         public SearchSuccessPage SearchSuccessfully(SearchCriteria searchCriteria)
         {
@@ -267,12 +283,16 @@ namespace OpenCart414Test.Pages
             //MakeTopSearch(searchText);
             return new SearchSuccessPage(driver);
         }
-
+        public SearchSuccessPage SearchTopSuccessfully()
+        {
+            MakeTopSearch("Mac");
+            return new SearchSuccessPage(driver);
+        }
         //public SearchUnsuccessPage SearchUnsuccessfully(string searchText)
         public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria)
         {
             MakeTopSearch(searchCriteria.SearchValue);
-            //MakeTopSearch(searchText);
+            //MakeTopSearch(searchText);               
             return new SearchUnsuccessPage(driver);
         }
 
@@ -282,10 +302,10 @@ namespace OpenCart414Test.Pages
             return new LoginPage(driver);
         }
 
-        public RegisterPage GotoRegisterPage()
+        public RegisterUserPage GotoRegisterPage()
         {
             ClickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
-            return new RegisterPage(driver);
+            return new RegisterUserPage(driver);
         }
 
         public AccountLogoutPage Logout()
@@ -294,8 +314,18 @@ namespace OpenCart414Test.Pages
             return new AccountLogoutPage(driver);
         }
 
+        public WishListPage GotoWishListPage()
+        {
+            ClickWishList();
+            return new WishListPage(driver);
+        }
+
+
+
+
+
+
+
         //CartProductComponent OpenCartButton
-
-
     }
 }

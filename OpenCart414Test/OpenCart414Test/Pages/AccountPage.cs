@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    public class AccountLogoutPage : RightLogoutPart
+    public class AccountPage : RightLoginPart
     {
-        public AccountLogoutPage(IWebDriver driver) : base(driver)
+        public AccountPage(IWebDriver driver) : base(driver)
         {
         }
     }

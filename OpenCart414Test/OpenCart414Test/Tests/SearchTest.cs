@@ -62,8 +62,14 @@ namespace OpenCart414Test.Tests
             Thread.Sleep(5000); // For Presentation ONLY
         }
 
-        [Test]
-        public void CheckLogin()
+        // DataProvider
+        private static readonly object[] UserData =
+        {
+            //new object[] { new User() },
+        };
+
+        [Test, TestCaseSource(nameof(UserData))]
+        public void CheckLogin(User user)
         {
             // Steps
             //HomePage homePage = LoadApplication();

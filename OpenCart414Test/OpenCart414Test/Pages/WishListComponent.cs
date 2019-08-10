@@ -1,9 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
@@ -11,28 +6,27 @@ namespace OpenCart414Test.Pages
     {
         private IWebElement wishListComponentLayout;
         
-        public IWebElement WishListComponentImage
-        { get { return wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-center']/a/img")); } }
-        public IWebElement WishListComponentProductName
-        { get { return wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-left']/a")); } }
-        public IWebElement WishListComponentModel
-        { get { return WishListComponentProductName.FindElement(By.XPath("./../following-sibling::td[@class='text-left']")); } }
-        public IWebElement WishListComponentStock
-        { get { return wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-right']")); } }
-        public IWebElement WishListComponentUnitPrice
-        { get { return wishListComponentLayout.FindElement(By.CssSelector(".price")); } }
-        public IWebElement WishListComponentAddToCartButton
-        { get { return wishListComponentLayout.FindElement(By.CssSelector(".btn.btn-primary")); } }
-        public IWebElement WishListComponentRemoveButton
-        { get { return wishListComponentLayout.FindElement(By.CssSelector(".btn.btn-danger")); } }
+        public IWebElement WishListComponentImage =>
+        wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-center']/a/img/.."));
+        public IWebElement WishListComponentProductName =>
+        wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-left']/a"));
+        public IWebElement WishListComponentModel =>
+        WishListComponentProductName.FindElement(By.XPath("//../following-sibling::td[@class='text-left']"));
+        public IWebElement WishListComponentStock =>
+        wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-right']"));
+        public IWebElement WishListComponentUnitPrice =>
+        wishListComponentLayout.FindElement(By.CssSelector(".price"));
+        public IWebElement WishListComponentAddToCartButton =>
+        wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-right']/button[@class='btn btn-primary']"));
+        public IWebElement WishListComponentRemoveButton =>
+        wishListComponentLayout.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-right']/a[@class='btn btn-danger']"));
 
         public WishListComponent(IWebElement wishListComponentLayout)
         {
             this.wishListComponentLayout = wishListComponentLayout;
-            //CheckElements();
         }
 
-        //public ??? GetWishListComponentImage() { }
+        // Atomic
         public void ClickWishListComponentImage()
         {
             WishListComponentImage.Click();
