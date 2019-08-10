@@ -28,7 +28,7 @@ namespace OpenCart414Test.Tests
         [OneTimeTearDown]
         public void AfterAllMethods()
         {
-            driver.Quit();
+            //driver.Quit();
         }
 
         [SetUp]

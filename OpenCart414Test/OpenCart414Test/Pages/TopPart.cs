@@ -320,7 +320,11 @@ namespace OpenCart414Test.Pages
             return new WishListPage(driver);
         }
 
-
+        public ShoppingCartPage OpenShoppingCartPage()
+        {
+            ClickShoppingCart();
+            return new ShoppingCartPage(driver);
+        }
 
 
 

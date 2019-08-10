@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    class TablePriceComponent
+    public class TablePriceComponent
     {
         protected IWebDriver driver;
 

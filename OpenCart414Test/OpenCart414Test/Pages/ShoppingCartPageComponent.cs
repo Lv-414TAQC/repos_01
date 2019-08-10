@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    class ShoppingCartPageComponent
+    public class ShoppingCartPageComponent
     {
         private const string UPDATE_MESSAGE = "Success: You have modified your shopping cart!";
         private IWebElement product;

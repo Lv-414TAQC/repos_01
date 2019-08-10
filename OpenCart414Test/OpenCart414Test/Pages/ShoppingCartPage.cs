@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    class ShoppingCartPage : BreadCrumPart
+    public class ShoppingCartPage : BreadCrumPart
     {
         public ShoppingCartPage(IWebDriver driver) : base(driver)
         {
