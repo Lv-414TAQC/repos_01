@@ -10,7 +10,7 @@ namespace OpenCart414Test.Pages
 {
     public class TopPart
     {
-        protected const string TAG_ATTRIBUTE_VALUE = "value";
+        public const string TAG_ATTRIBUTE_VALUE = "value";
         protected const string TAG_ATTRIBUTE_SRC = "src";
         //
         protected const string LIST_CURENCIES_CSSSELECTOR = "div.btn-group.open ul.dropdown-menu li";
@@ -305,7 +305,7 @@ namespace OpenCart414Test.Pages
         public RegisterUserPage GotoRegisterPage()
         {
             ClickUnloggedMyAccountByPartialName(UnloggedMyAccount.REGISTER);
-            return new RegisterPage(driver);
+            return new RegisterUserPage(driver);
         }
 
         public AccountLogoutPage Logout()
@@ -317,6 +317,11 @@ namespace OpenCart414Test.Pages
         {
             ClickWishList();
             return new WishListPage(driver);
+        }
+        public ShoppingCartPage GotoShoppingCartPage()
+        {
+            ClickShoppingCart();
+            return new ShoppingCartPage(driver);
         }
     }
 }
