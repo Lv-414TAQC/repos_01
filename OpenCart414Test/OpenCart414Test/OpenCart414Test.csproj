@@ -83,7 +83,6 @@
     <Compile Include="Pages\ProductComponent.cs" />
     <Compile Include="Pages\ProductsContainerComponent.cs" />
     <Compile Include="Pages\ProductsCriteriaComponent.cs" />
-    <Compile Include="Pages\RegisterPage.cs" />
     <Compile Include="Pages\RegisterUserPage.cs" />
     <Compile Include="Pages\RightLogInPart.cs" />
     <Compile Include="Pages\RightLogOutPart.cs" />
