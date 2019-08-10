@@ -40,5 +40,10 @@ namespace OpenCart414Test.Data
             return new SearchCriteria("qweqwe",
                 "", false, false);
         }
+        public static SearchCriteria GetEmptySearch()
+        {
+            return new SearchCriteria("",
+                "", false, false);
+        }
     }
 }
