@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    public class SearchCriteriaPart : BreadCrumPart
+    public class SearchCriteriaPart : BreadCrumbsPart
     {
 
         public IWebElement CriteriaSearchField

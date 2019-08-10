@@ -7,7 +7,7 @@ namespace OpenCart414Test.Tests
 {
     [TestFixture]
     public class WishListToCartTest : TestRunner
-    {/*
+    {
         private WishListPage wishListPage;
         private Product productToCart = ProductRepository.GetIPhone();
 
@@ -43,6 +43,6 @@ namespace OpenCart414Test.Tests
                 .AddWishListComponentToCart(productToCart);
             Thread.Sleep(2000); //for presentation only
             Assert.IsTrue(wishListMessagePage.IsWishListAlertMessageDisplayed());
-        }*/
+        }
     }
 }

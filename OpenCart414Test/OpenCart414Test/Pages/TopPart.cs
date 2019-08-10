@@ -10,7 +10,7 @@ namespace OpenCart414Test.Pages
 {
     public class TopPart
     {
-        protected const string TAG_ATTRIBUTE_VALUE = "value";
+        public const string TAG_ATTRIBUTE_VALUE = "value";
         protected const string TAG_ATTRIBUTE_SRC = "src";
         //
         protected const string LIST_CURENCIES_CSSSELECTOR = "div.btn-group.open ul.dropdown-menu li";
@@ -318,6 +318,13 @@ namespace OpenCart414Test.Pages
             ClickWishList();
             return new WishListPage(driver);
         }
+<<<<<<< HEAD
+        public ShoppingCartPage GotoShoppingCartPage()
+        {
+            ClickShoppingCart();
+            return new ShoppingCartPage(driver);
+        }
+=======
 
     
 
@@ -326,5 +333,6 @@ namespace OpenCart414Test.Pages
 
 
 
+>>>>>>> 06cc0ee49a793feda83055819c415caada4fd5ad
     }
 }
