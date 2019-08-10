@@ -13,7 +13,7 @@ namespace OpenCart414Test.Tests
         public override void SetUp()
         {
             HomePage homePage = LoadHomePage();
-            homePage.AddProductToCart(ProductRepository.GetMacBook());
+            homePage.AddProductToCart(ProductRepository.GetIPhone());
             homePage.ClickShoppingCart();
             ShoppingCartPage cartPage = homePage.OpenShoppingCartPage();
 

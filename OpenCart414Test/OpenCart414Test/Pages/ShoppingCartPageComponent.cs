@@ -24,9 +24,9 @@ namespace OpenCart414Test.Pages
         public IWebElement ProductName
         { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr//td[@class='text-left']/a")); } }
         public IWebElement Modal
-        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/td/following-sibling::td"));} } //??????/
+        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']//table/tbody/tr/td[@class='text-left'][count(*)=0]"); } } //??????/
         public IWebElement QuantityField
-        { get { return product.FindElement(By.CssSelector("input: not(#input-coupon,#input-postcode,#input-voucher).form-control:not(.input-lg)")); } }
+        { get { return product.FindElement(By.CssSelector("input[name*='quantity']")); } }
         public IWebElement UpdateButton
         { get { return product.FindElement(By.CssSelector("button.btn.btn-primary")); } }
         public IWebElement RemoveButton

@@ -108,6 +108,8 @@
     <Compile Include="Pages\SearchCriteriaPart.cs" />
     <Compile Include="Pages\SearchSuccessPage.cs" />
     <Compile Include="Pages\SearchUnsuccessPage.cs" />
+    <Compile Include="Pages\SelectShippingMethodComponent.cs" />
+    <Compile Include="Pages\ShippingAndTaxesComponent.cs" />
     <Compile Include="Pages\ShoppingCartContainerComponent.cs" />
     <Compile Include="Pages\ShoppingCartEmptyPage.cs" />
     <Compile Include="Pages\ShoppingCartPage.cs" />
@@ -121,6 +123,10 @@
     <Compile Include="Pages\WishListMessagePage.cs" />
     <Compile Include="Pages\WishListPage.cs" />
     <Compile Include="Pages\WishListPart.cs" />
+    <Compile Include="Tests\CurrencyConversionTests.cs" />
+    <Compile Include="Tests\CurrencyInShoppingCartTests.cs" />
+    <Compile Include="Tests\CurrencyProductPriceFormatTests.cs" />
+    <Compile Include="Tests\CurrencyWishListTests.cs" />
     <Compile Include="Tests\SearchByCategoryTest.cs" />
     <Compile Include="Tests\RegisterUserTest.cs" />
     <Compile Include="Tests\SearchByDefaultCategoryTest.cs" />
