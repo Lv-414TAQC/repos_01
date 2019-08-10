@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    class ShoppingCartEmptyPage : BreadCrumPart
+    class ShoppingCartEmptyPage : BreadCrumbsPart
     {
         
         public const string CART_IS_EMPTY = "Your shopping cart is empty!";

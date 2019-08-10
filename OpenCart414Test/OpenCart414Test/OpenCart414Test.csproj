@@ -77,7 +77,7 @@
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Pages\AccountLogoutPage.cs" />
     <Compile Include="Pages\AccountPage.cs" />
-    <Compile Include="Pages\BreadCrumPart.cs" />
+    <Compile Include="Pages\BreadCrumbsPart.cs" />
     <Compile Include="Pages\CartProductContainer.cs" />
     <Compile Include="Pages\CartProductEmptyContainer.cs" />
     <Compile Include="Pages\DropdownComponent.cs" />
