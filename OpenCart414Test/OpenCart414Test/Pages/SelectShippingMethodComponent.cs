@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -41,6 +43,15 @@ namespace OpenCart414Test.Pages
         {
             SelectRadioButton();
             ClickApplyButton();
+        }
+
+        public decimal GetShippingRate()
+        {
+            string rate = Regex.Match(label, @"\d+\.\d{2}").Value;
+            NumberStyles style = NumberStyles.AllowDecimalPoint;
+            CultureInfo provider = new CultureInfo("en-US");
+            decimal value = Decimal.Parse(rate, style, provider);
+            return value;
         }
     }
 }
