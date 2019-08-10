@@ -1,13 +1,12 @@
 ﻿using System;
 using NUnit.Framework;
 using OpenCart414Test.Pages;
-using OpenCart414Test.Pages.AdminPanel;
 using OpenCart414Test.Data;
 
 namespace OpenCart414Test.Tests
 {
     [TestFixture]
-    class ProductPriceCurrencyFormatTests : TestRunner
+    class CurrencyProductPriceFormatTests : TestRunner
     {
         [TestCase(Currency.US_DOLLAR, @"^\$\d+\.\d{2}")]
         [TestCase(Currency.EURO, @"\d+\.\d{2}€$")]

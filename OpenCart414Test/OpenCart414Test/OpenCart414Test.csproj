@@ -117,13 +117,10 @@
     <Compile Include="Pages\WishListEmptyPage.cs" />
     <Compile Include="Pages\WishListPage.cs" />
     <Compile Include="Pages\WishListPart.cs" />
-    <Compile Include="SeleniumFirst.cs" />
-    <Compile Include="SeleniumOpenCartSearch.cs" />
-    <Compile Include="SeleniumSecond.cs" />
-    <Compile Include="SimpleTest.cs" />
     <Compile Include="Tests\CurrencyConversionTests.cs" />
+    <Compile Include="Tests\CurrencyInShoppingCartTests.cs" />
     <Compile Include="Tests\GridListTest.cs" />
-    <Compile Include="Tests\ProductPriceCurrencyFormatTests.cs" />
+    <Compile Include="Tests\CurrencyProductPriceFormatTests.cs" />
     <Compile Include="Tests\SearchByCategoryTest.cs" />
     <Compile Include="Tests\RegisterUserTest.cs" />
     <Compile Include="Tests\SearchByDefaultCategoryTest.cs" />
@@ -132,14 +129,12 @@
     <Compile Include="Tests\SearchTest.cs" />
     <Compile Include="Tests\TestRunner.cs" />
     <Compile Include="Tools\ListUtils.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Lv414PageObjArch.png" />
     <Content Include="Resources\Convention.txt" />
   </ItemGroup>
   <ItemGroup />
