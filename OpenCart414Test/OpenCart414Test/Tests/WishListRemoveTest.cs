@@ -43,7 +43,7 @@ namespace OpenCart414Test.Tests
             Thread.Sleep(2000); //for presentation only
             wishListMessageEmptyPage = homePage
                 .GotoWishListPage()
-                .removeLastItemFromWishList(productToRemove);
+                .RemoveLastItemFromWishList(productToRemove);
             Thread.Sleep(2000); //for presentation only
             Assert.IsTrue(wishListMessageEmptyPage.IsWishListAlertMessageDisplayed());
             Assert.IsTrue(wishListMessageEmptyPage.IsWishListIsEmptyParagraphDisplayed());

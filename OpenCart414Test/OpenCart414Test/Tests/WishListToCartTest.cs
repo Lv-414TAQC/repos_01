@@ -19,7 +19,7 @@ namespace OpenCart414Test.Tests
         [TearDown]
         public void InnerTearDown()
         {
-            wishListPage.removeLastItemFromWishList(productToAdd);
+            wishListPage.RemoveLastItemFromWishList(productToAdd);
             AccountLogoutPage accountLogoutPage = wishListPage
                 .Logout();
         }

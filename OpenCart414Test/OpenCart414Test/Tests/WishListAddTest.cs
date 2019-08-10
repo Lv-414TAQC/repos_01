@@ -19,7 +19,7 @@ namespace OpenCart414Test.Tests
         [TearDown]
         public void InnerTearDown()
         {
-            wishListPage.removeLastItemFromWishList(productToAdd);
+            wishListPage.RemoveLastItemFromWishList(productToAdd);
             AccountLogoutPage accountLogoutPage = wishListPage
                 .Logout();
         }
@@ -46,7 +46,7 @@ namespace OpenCart414Test.Tests
                 .GotoWishListPage();
             Thread.Sleep(2000); //for presentation only
             Assert.IsTrue(wishListPage
-                .getWishListComponentsContainer()
+                .GetWishListComponentsContainer()
                 .GetWishListComponentNames()
                 .Contains(addingProduct.Title));
         }

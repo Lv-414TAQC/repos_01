@@ -9,11 +9,13 @@ namespace OpenCart414Test.Pages
 {
     public class WishListMessageEmptyPage : WishListEmptyPage
     {
-        public IWebElement WishListAlertMessage
-        { get { return driver.FindElement(By.CssSelector(".alert.alert-success")); } }
+        public IWebElement WishListAlertMessage =>
+        driver.FindElement(By.CssSelector(".alert.alert-success"));
+
         public WishListMessageEmptyPage(IWebDriver driver) : base(driver)
         {
         }
+
         public string GetWishListAlertMessageText()
         {
             return WishListAlertMessage.Text;
