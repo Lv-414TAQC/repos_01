@@ -1,15 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Text;
-using System.Threading;
-//using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenCart414Test.Data;
 using OpenCart414Test.Pages;
-//using OpenQA.Selenium;
-//using OpenQA.Selenium.Chrome;
-//using OpenQA.Selenium.Firefox;
-//using OpenQA.Selenium.Interactions;
+
 
 namespace OpenCart414Test.Tests
 {
@@ -24,6 +16,10 @@ namespace OpenCart414Test.Tests
             {
                 new object []{SearchCriteriaRepository.GetAllProducts()}
             };
+        private static readonly object[] ProductUnsuccessSearch =
+            {
+                new object []{SearchCriteriaRepository.GetUnsuccessSearch()}
+            };
 
         [Test, TestCaseSource (nameof(ProductSearchMac))]
         public void CheckSearch(SearchCriteria searchCriteria)
@@ -32,6 +28,14 @@ namespace OpenCart414Test.Tests
                 .SearchSuccessfully(searchCriteria);
             CollectionAssert.AreEqual(searchSuccessPage.ProductsCriteria.GetNamesByGrid()
                 ,searchSuccessPage.ProductsCriteria.GetNamesByList());
+        }
+
+        [Test, TestCaseSource(nameof(ProductUnsuccessSearch))]
+        public void CheckUnsuccessSearch(SearchCriteria searchCriteria)
+        {
+            SearchUnsuccessPage searchUnsuccessPage = LoadApplication()
+                .SearchUnsuccessfully(searchCriteria);
+            Assert.NotNull(searchUnsuccessPage.GetInfoMessageText());
         }
 
         [Test, TestCaseSource(nameof(ProductSearchAll))]

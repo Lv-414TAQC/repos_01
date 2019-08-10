@@ -25,5 +25,10 @@ namespace OpenCart414Test.Data
             return new SearchCriteria("%",
                 "", false, false);
         }
+        public static SearchCriteria GetUnsuccessSearch()
+        {
+            return new SearchCriteria("qweqwe",
+                "", false, false);
+        }
     }
 }
