@@ -8,7 +8,7 @@ namespace OpenCart414Test.Tests
 {
     [TestFixture]
     public class WishListRemoveTest : TestRunner
-    {
+    {/*
         private WishListMessageEmptyPage wishListMessageEmptyPage;
 
         [TearDown]
@@ -42,6 +42,6 @@ namespace OpenCart414Test.Tests
             Thread.Sleep(2000); //for presentation only
             Assert.IsTrue(wishListMessageEmptyPage.IsWishListAlertMessageDisplayed());
             Assert.IsTrue(wishListMessageEmptyPage.IsWishListIsEmptyParagraphDisplayed());
-        }
+        }*/
     }
 }

@@ -16,6 +16,7 @@ namespace OpenCart414Test.Pages
 
         public CartProductEmptyContainer(IWebDriver driver)
         {
+            this.driver = driver;
             CheckElements();
         }
 

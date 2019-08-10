@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using OpenCart414Test.Tools;
 
 namespace OpenCart414Test.Pages
 {
@@ -30,8 +30,8 @@ namespace OpenCart414Test.Pages
         private void CheckElements()
         {
             // TODO Develop Custom Exception
-            IWebElement temp = ViewCartLink; 
-            temp = CheckOutLink;
+              IWebElement temp = ViewCartLink; 
+              temp = CheckOutLink;
         }
 
         private void InitElements()
@@ -87,21 +87,26 @@ namespace OpenCart414Test.Pages
             return GetTablePriceComponent();
         }
 
-        // Functional
+        public RegularExpressions GetRegularExpressions()
+        {
+            return new RegularExpressions();
+        }
 
-        public IList<string> GetAllTablePriceComponents()
+            // Functional
+
+            public IList<string> GetAllTablePriceComponents()
         {
             CreateTablePriceComponent(By.CssSelector(TABLE_PRICE_COMPONENT_CSSSELECTOR));
             IList<string> result = GetTablePriceComponent().GetTablePriceListText();
             return result;
         }
 
-        public string GetTablePriceTotal()
+
+        public decimal GetTablePriceTotal()
         {
             CreateTablePriceComponent(By.CssSelector(TABLE_PRICE_COMPONENT_CSSSELECTOR));
-            string result = GetTablePriceComponent().GetTotal();
-            Console.WriteLine(result);
-            return result;
+            Console.WriteLine(GetRegularExpressions().RegexCurrency(GetTablePriceComponent().GetTotal())); //Only for presentation
+            return GetRegularExpressions().RegexCurrency(GetTablePriceComponent().GetTotal());
         }
 
 
@@ -130,30 +135,19 @@ namespace OpenCart414Test.Pages
             return null;
         }
 
-        public double GetTotalSumProducts()
+        public decimal GetTotalSumProducts()
         {
-            double totalSum = 0.0;
-            string toStringVar = string.Empty;
+            decimal total = 0;
             foreach (ShoppingCartContainerComponent cur in GetItemsTable())
             {
-                Regex regex = new Regex(@"\d*[.|,]\d*");  //class in tools
-                MatchCollection matches = regex.Matches(cur.GetProductPriceText());
-
-                foreach (Match match in matches)
-                {
-                   // Console.WriteLine(match.Value);
-                    toStringVar = Convert.ToString(match.Value);
-                }
-
-                totalSum += double.Parse(toStringVar, System.Globalization.CultureInfo.InvariantCulture);
+               total += GetRegularExpressions().RegexCurrency(cur.GetProductPriceText());
             }
-            Console.WriteLine(totalSum); //Only for presentation
-            return totalSum;
-
+            Console.WriteLine(total); //Only for presentation
+            
+            return total;
         }
 
             // Business Logic
-
 
         }
     }
