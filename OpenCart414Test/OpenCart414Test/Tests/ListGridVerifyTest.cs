@@ -8,7 +8,14 @@ namespace OpenCart414Test.Tests
     [TestFixture]
     public class GridListTest : TestRunner
     {
-        private static readonly object[] ProductSearchMac = 
+        private static readonly object[] ValidSearch = 
+            {
+                new object []{SearchCriteriaRepository.GetMacBookD()},
+                new object []{SearchCriteriaRepository.NumbersSearch()},
+                new object []{SearchCriteriaRepository.SpecialCharSearch()}
+            };
+
+        private static readonly object[] ProductSearchMac =
             {
                 new object []{SearchCriteriaRepository.GetMacBookD()}
             };
@@ -23,15 +30,25 @@ namespace OpenCart414Test.Tests
                 new object []{SearchCriteriaRepository.GetEmptySearch()}
             };
 
-        private static readonly object[] ProductSearchAll =
+        private static readonly object[] SearchAllAndSort =
             {
                 new object []{SearchCriteriaRepository.GetAllProducts(),
                 SortShowRepository.SortByAsc()}
             };
+
+        // Alphabetic, numbers, special chars search
+        [Test, TestCaseSource(nameof(ValidSearch))]
+        public void SearchValidDataTest(SearchCriteria searchCriteria)
+        {
+            SearchSuccessPage searchSuccessPage = LoadApplication()
+                .SearchSuccessfully(searchCriteria);
+            Assert.IsTrue(searchSuccessPage.ProductsCriteria
+                .IsContainNameText(searchCriteria));
+        }
         
-        // Mac Search
+        // Grid List Search
         [Test, TestCaseSource (nameof(ProductSearchMac))]
-        public void CheckSearch(SearchCriteria searchCriteria)
+        public void GridList(SearchCriteria searchCriteria)
         {
             SearchSuccessPage searchSuccessPage = LoadApplication()
                 .SearchSuccessfully(searchCriteria);
@@ -58,7 +75,7 @@ namespace OpenCart414Test.Tests
         }
 
         // Sort test
-        [Test, TestCaseSource(nameof(ProductSearchAll))]
+        [Test, TestCaseSource(nameof(SearchAllAndSort))]
         public void SortTest(SearchCriteria searchCriteria , SortShowCriteria sortShowCriteria)
         {
             SearchSuccessPage searchSuccessPage = LoadApplication()
