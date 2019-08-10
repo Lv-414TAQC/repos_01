@@ -125,6 +125,17 @@ namespace OpenCart414Test.Pages
             InitElements();
             return this;
         }
-
+        public IList<string> GetNamesByGrid()
+        {
+            ViewProductsByGrid();
+            Thread.Sleep(3000); // For presentation only
+            return new SearchSuccessPage(driver).ProductsCriteria.GetProductComponentNames();
+        }
+        public IList<string> GetNamesByList()
+        {
+            ViewProductsByList();
+            Thread.Sleep(3000); // For presentation only
+            return new SearchSuccessPage(driver).ProductsCriteria.GetProductComponentNames();
+        }
     }
 }

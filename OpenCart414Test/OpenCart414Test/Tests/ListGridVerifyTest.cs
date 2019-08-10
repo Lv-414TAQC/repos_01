@@ -16,17 +16,29 @@ namespace OpenCart414Test.Tests
     [TestFixture]
     public class GridListTest : TestRunner
     {
-        [Test]
-        public void CheckSearch()
+        private static readonly object[] ProductSearchMac = 
+            {
+                new object []{SearchCriteriaRepository.GetMacBookD()}
+            };
+        private static readonly object[] ProductSearchAll =
+            {
+                new object []{SearchCriteriaRepository.GetAllProducts()}
+            };
+
+        [Test, TestCaseSource (nameof(ProductSearchMac))]
+        public void CheckSearch(SearchCriteria searchCriteria)
         {
-            SearchSuccessPage searchSuccessPage = LoadApplication().SearchTopSuccessfully();
-            CollectionAssert.AreEqual(searchSuccessPage.GetListByGrid(), searchSuccessPage.GetListByList());
+            SearchSuccessPage searchSuccessPage = LoadApplication()
+                .SearchSuccessfully(searchCriteria);
+            CollectionAssert.AreEqual(searchSuccessPage.ProductsCriteria.GetNamesByGrid()
+                ,searchSuccessPage.ProductsCriteria.GetNamesByList());
         }
 
-        [Test]
-        public void SortTest()
+        [Test, TestCaseSource(nameof(ProductSearchAll))]
+        public void SortTest(SearchCriteria searchCriteria)
         {
-            SearchSuccessPage searchSuccessPage = LoadApplication().SearchAllProductsSuccessfully()
+            SearchSuccessPage searchSuccessPage = LoadApplication()
+                .SearchSuccessfully(searchCriteria)
                 .ProductsCriteria.SetSortLowHigh();
             Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsSortedAscList());
         }

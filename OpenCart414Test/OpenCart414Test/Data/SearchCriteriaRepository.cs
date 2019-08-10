@@ -20,5 +20,10 @@ namespace OpenCart414Test.Data
             return new SearchCriteria("Mac",
                 "All Categories", false, false);
         }
+        public static SearchCriteria GetAllProducts()
+        {
+            return new SearchCriteria("%",
+                "", false, false);
+        }
     }
 }

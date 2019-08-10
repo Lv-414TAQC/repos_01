@@ -122,17 +122,6 @@ namespace OpenCart414Test.Pages
             return GetProductComponents().Count;
         }
 
-        // Business Logic
-
-        //public string GetProductComponentPriceByProduct(Product product)
-        //{
-        //    return GetProductComponentPriceByName(product.getName());
-        //}
-
-        //public string GetProductComponentDescriptionByProduct(Product product)
-        //{
-        //    return GetProductComponentDescriptionByName(product.getName());
-        //}
         public bool IsSortedAscList()
         {
             bool result = true;
@@ -150,7 +139,19 @@ namespace OpenCart414Test.Pages
             }
             return result;
         }
-        
+        // Business Logic
+
+        //public string GetProductComponentPriceByProduct(Product product)
+        //{
+        //    return GetProductComponentPriceByName(product.getName());
+        //}
+
+        //public string GetProductComponentDescriptionByProduct(Product product)
+        //{
+        //    return GetProductComponentDescriptionByName(product.getName());
+        //}
+
+
 
     }
 }
