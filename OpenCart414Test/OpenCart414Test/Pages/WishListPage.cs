@@ -36,5 +36,6 @@ namespace OpenCart414Test.Pages
                 .ClickWishListComponentAddToCartButtonByName(toCartProduct.Title);
             return new WishListMessagePage(driver);
         }
+
     }
 }

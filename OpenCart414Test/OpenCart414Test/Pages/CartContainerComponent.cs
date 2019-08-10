@@ -6,9 +6,9 @@ using OpenCart414Test.Tools;
 
 namespace OpenCart414Test.Pages
 {
-     class CartContainerComponent
+    public class CartContainerComponent
     {
-        private const string ITEMS_TABLE_CSSSELECTOR = "table.table-striped tr";
+        private const string PRODUCT_LIST_CSSSELECTOR = "table.table-striped tr";
         private const string TABLE_PRICE_COMPONENT_CSSSELECTOR = "ul.dropdown-menu.pull-right table.table-bordered td.text-right";
 
         public IWebDriver driver;
@@ -37,13 +37,14 @@ namespace OpenCart414Test.Pages
         private void InitElements()
         {
             productList = new List<ProductListContainerComponent>();
-            foreach (IWebElement current in driver.FindElements(By.CssSelector(ITEMS_TABLE_CSSSELECTOR)))
+            foreach (IWebElement current in driver.FindElements(By.CssSelector(PRODUCT_LIST_CSSSELECTOR)))
             {
                 productList.Add(new ProductListContainerComponent(current));
             }
         }
+
         // Page Object
-        public IList<ProductListContainerComponent> GetProductList()
+        internal IList<ProductListContainerComponent> GetProductList()
         {
             return productList;
         }
@@ -70,12 +71,11 @@ namespace OpenCart414Test.Pages
             CheckOutLink.Click();
         }
 
-      
+        //tablePriceComponent
         protected TablePriceComponent GetTablePriceComponent()
         {
             if (tablePriceComponent == null)
             {
-                // TODO Develop Custom Exception 
                 throw new Exception("TablePriceComponent is null.");
             }
             return tablePriceComponent;
@@ -87,6 +87,7 @@ namespace OpenCart414Test.Pages
             return GetTablePriceComponent();
         }
 
+
         public RegularExpressions GetRegularExpressions()
         {
             return new RegularExpressions();
@@ -94,13 +95,12 @@ namespace OpenCart414Test.Pages
 
             // Functional
 
-            public IList<string> GetAllTablePriceComponents()
+        public IList<string> GetAllTablePriceComponents()
         {
             CreateTablePriceComponent(By.CssSelector(TABLE_PRICE_COMPONENT_CSSSELECTOR));
             IList<string> result = GetTablePriceComponent().GetTablePriceListText();
             return result;
         }
-
 
         public decimal GetTablePriceTotal()
         {
@@ -109,9 +109,8 @@ namespace OpenCart414Test.Pages
             return GetRegularExpressions().RegexCurrency(GetTablePriceComponent().GetTotal());
         }
 
-
         public void RemoveProductByName(Product product)
-         {
+        {
             foreach (ProductListContainerComponent cur in GetProductList())
             {
                  if (cur.GetProductNameText() == product.Title)
@@ -120,9 +119,10 @@ namespace OpenCart414Test.Pages
                     break;
                  }
             }
-         }
+         
+        }
 
-        public ProductListContainerComponent GetItemByName(Product product)
+        internal ProductListContainerComponent GetProductByName(Product product)
         {
             foreach (ProductListContainerComponent currency in GetProductList())
             {
@@ -147,7 +147,7 @@ namespace OpenCart414Test.Pages
             return total;
         }
 
-            // Business Logic
+        // Business Logic
 
-        }
-    }
+     }
+}

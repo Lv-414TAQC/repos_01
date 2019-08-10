@@ -38,6 +38,7 @@ namespace OpenCart414Test.Pages
         { get { return driver.FindElement(By.CssSelector("#cart > button")); } }
         //
         private DropdownComponent dropdownComponent;
+      
         public IList<IWebElement> TopMenu;  // TODO { get; private set; }
 
         public TopPart(IWebDriver driver)
@@ -50,7 +51,6 @@ namespace OpenCart414Test.Pages
         private void InitElements()
         {
             dropdownComponent = null;
-            // TopMenu =... // TODO
         }
 
         private void CheckElements()
@@ -147,9 +147,10 @@ namespace OpenCart414Test.Pages
         // SearchButton
         public void ClickSearchButton()
         {
-            SearchButton.Click();
-            
+            SearchButton.Click(); 
         }
+
+
         //public SearchUnsuccessPage ClickSearchButtonD() //Доробити як бізнес логіку
         //{
         //    SearchButton.Click();
@@ -202,7 +203,17 @@ namespace OpenCart414Test.Pages
             dropdownComponent = null;
         }
 
-        // TopMenu
+        internal CartContainerComponent GetCartContainerComponent()
+        {
+            ClickCartButton();
+            return new CartContainerComponent(driver);
+        }
+
+        internal CartEmptyContainerComponent GetCartEmptyContainerComponent()
+        {
+            ClickCartButton();
+            return new CartEmptyContainerComponent(driver);
+        }
 
         // Functional
         protected void MakeTopSearch(string searchText)

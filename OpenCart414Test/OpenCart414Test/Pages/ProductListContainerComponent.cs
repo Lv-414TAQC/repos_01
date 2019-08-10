@@ -2,7 +2,7 @@
 
 namespace OpenCart414Test.Pages
 {
-     class ProductListContainerComponent
+    public class ProductListContainerComponent
     {
         private const string PRODUCT_PRICE_CSSSELECTOR = "table.table.table-striped td.text-right:nth-child(4)";     //By.XPath("//table[@class='table table-striped']//td[contains(text(),'.')]")
         private const string PRODUCT_QUANTITY_CSSSELECTOR = "table.table.table-striped td.text-right:nth-child(3)";  //By.XPath("//table[@class='table table-striped']//td[contains(text(),'x')]")
@@ -37,12 +37,14 @@ namespace OpenCart414Test.Pages
             temp = ProductPrice;
             temp = ProductQuantity;
             temp = ProductRemoveButton;
-            // TODO All Web Elements
         }
 
         // Page Object
 
-        //TODO ProductImage
+        public string GetProductImageSrc()
+        {
+            return ProductImage.Text;
+        }
 
         //ProductName
         public string GetProductNameText()

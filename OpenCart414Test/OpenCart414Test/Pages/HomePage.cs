@@ -64,17 +64,17 @@ namespace OpenCart414Test.Pages
         }
 
 
-        internal CartContainerComponent GetCartContainerComponent()
-        {
-            ClickCartButton();
-            return new CartContainerComponent(driver);
-        }
+        //internal CartContainerComponent GetCartContainerComponent()
+        //{
+        //    ClickCartButton();
+        //    return new CartContainerComponent(driver);
+        //}
 
-        internal CartEmptyContainerComponent GetCartEmptyContainerComponent()
-        {
-            ClickCartButton();
-            return new CartEmptyContainerComponent(driver);
-        }
+        //internal CartEmptyContainerComponent GetCartEmptyContainerComponent()
+        //{
+        //    ClickCartButton();
+        //    return new CartEmptyContainerComponent(driver);
+        //}
 
         public void AddProductToCart(Product product)
         {
@@ -82,10 +82,10 @@ namespace OpenCart414Test.Pages
                 .ClickAddToCartButton();  
         }
 
-        internal CartContainerComponent OpenCartButton()
+       /* internal CartContainerComponent OpenCartButton()
         {
             return new CartContainerComponent(driver);
-        }
+        }*/
 
 
     }
