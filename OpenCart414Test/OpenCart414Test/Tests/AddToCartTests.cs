@@ -29,19 +29,22 @@ namespace OpenCart414Test.Tests
             Thread.Sleep(2000);
             
             Assert.AreEqual(addingProduct1.Title, homePage.GetCartContainerComponent()
-               .GetItemByName(addingProduct1).GetProductNameText());
+               .GetProductByName(addingProduct1).GetProductNameText());
 
             homePage.GetCartContainerComponent(); //for reopen page
             
             Assert.AreEqual(addingProduct2.Title, homePage.GetCartContainerComponent()
-                .GetItemByName(addingProduct2).GetProductNameText());
+                .GetProductByName(addingProduct2).GetProductNameText());
 
             homePage.GetCartContainerComponent(); //for reopen page
 
             Thread.Sleep(2000);          //Only for presentation
             homePage.GetCartContainerComponent().RemoveProductByName(addingProduct2);
+            Thread.Sleep(2000);
 
-            Thread.Sleep(2000);          //Only for presentation
+            //Console.WriteLine(homePage.GetCartButtonText());
+            //Assert.IsTrue(homePage.GetCartButtonText().Contains("1 item(s)"));
+            //Thread.Sleep(2000);          //Only for presentation
 
             homePage.GetCartContainerComponent().RemoveProductByName(addingProduct1);
 
@@ -65,12 +68,12 @@ namespace OpenCart414Test.Tests
             Thread.Sleep(2000);   //Only for presentation
 
             Assert.AreEqual(addingProduct1.Title, homePage.GetCartContainerComponent()
-                 .GetItemByName(addingProduct1).GetProductNameText());
+                 .GetProductByName(addingProduct1).GetProductNameText());
 
             homePage.GetCartContainerComponent(); //for reopen page
 
             Assert.AreEqual(addingProduct2.Title, homePage.GetCartContainerComponent()
-                .GetItemByName(addingProduct2).GetProductNameText());
+                .GetProductByName(addingProduct2).GetProductNameText());
 
             Thread.Sleep(2000);  //Only for presentation
         }

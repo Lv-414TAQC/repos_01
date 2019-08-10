@@ -37,9 +37,5 @@ namespace OpenCart414Test.Pages
             return new WishListMessagePage(driver);
         }
 
-        internal object GetWishListComponentsContainer()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
