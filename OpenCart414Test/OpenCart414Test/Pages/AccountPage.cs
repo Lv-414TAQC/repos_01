@@ -11,7 +11,6 @@ namespace OpenCart414Test.Pages
     {
         public AccountPage(IWebDriver driver) : base(driver)
         {
-
         }
     }
 }

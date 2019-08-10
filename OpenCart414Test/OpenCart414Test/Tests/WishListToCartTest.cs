@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading;
 using NUnit.Framework;
 using OpenCart414Test.Data;
 using OpenCart414Test.Pages;
@@ -14,12 +9,12 @@ namespace OpenCart414Test.Tests
     public class WishListToCartTest : TestRunner
     {
         private WishListPage wishListPage;
-        private Product productToAdd = ProductRepository.GetIPhone();
+        private Product productToCart = ProductRepository.GetIPhone();
 
         [TearDown]
         public void InnerTearDown()
         {
-            wishListPage.RemoveLastItemFromWishList(productToAdd);
+            wishListPage.RemoveLastItemFromWishList(productToCart);
             AccountLogoutPage accountLogoutPage = wishListPage
                 .Logout();
         }

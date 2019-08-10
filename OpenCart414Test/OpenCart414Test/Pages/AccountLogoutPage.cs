@@ -12,11 +12,5 @@ namespace OpenCart414Test.Pages
         public AccountLogoutPage(IWebDriver driver) : base(driver)
         {
         }
-
-        // Page Object
-
-        // Functional
-
-        // Business Logic
     }
 }
