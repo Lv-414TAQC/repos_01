@@ -17,7 +17,7 @@ namespace OpenCart414Test.Pages
         public IWebElement PartialDescription
         { get { return productLayout.FindElement(By.CssSelector("h4 + p")); } }
         public IWebElement Price
-        { get { return productLayout.FindElement(By.CssSelector(".price")); } }
+        { get { return productLayout.FindElement(By.CssSelector(".price-tax")); } }
         public IWebElement AddToCartButton
         { get { return productLayout.FindElement(By.CssSelector(".fa.fa-shopping-cart")); } }
         public IWebElement AddToWishButton

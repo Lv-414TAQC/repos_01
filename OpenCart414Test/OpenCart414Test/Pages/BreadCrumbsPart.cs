@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
-    public class BreadCrumPart : TopPart
+    public class BreadCrumbsPart : TopPart
     {
-        public IWebElement BreadCrum
+        public IWebElement BreadCrumbs
         { get { return driver.FindElement(By.CssSelector("ul.breadcrumb")); } }
         //private IList<IWebElement> links;
 
-        public BreadCrumPart(IWebDriver driver) : base(driver)
+        public BreadCrumbsPart(IWebDriver driver) : base(driver)
         {
         }
 
         private void InitElements()
         {
             // TODO Develop Custom Exception
-            IWebElement temp = BreadCrum; // TODO All Web Elements
+            IWebElement temp = BreadCrumbs; // TODO All Web Elements
             //links = new List<ProductComponent>();
             //foreach (IWebElement current in temp.FindElements(By.CssSelector(PRODUCT_COMPONENT_CSSSELECTOR)))
             //{
@@ -31,30 +31,30 @@ namespace OpenCart414Test.Pages
         // Page Object
 
         // BreadCrum
-        public string GetBreadCrumText()
+        public string GetBreadCrumbsText()
         {
-            return BreadCrum.Text;
+            return BreadCrumbs.Text;
         }
 
-        public void ClickBreadCrum(string name) // TODO Develop Enum, List<WebElement>, Check
+        public void ClickBreadCrumbs(string name) // TODO Develop Enum, List<WebElement>, Check
         {
             // $x("//ul[@class='breadcrumb']//a[text()='Search']")
-            BreadCrum.FindElement(By.XPath(".//a[text()='"+ name + "']"));
+            BreadCrumbs.FindElement(By.XPath(".//a[text()='"+ name + "']"));
         }
 
         // Functional
 
         // Business Logic
 
-        public SearchSuccessPage GotoBreadCrumSearchSuccessPage()
+        public SearchSuccessPage GotoBreadCrumbsSearchSuccessPage()
         {
-            ClickBreadCrum("Search");
+            ClickBreadCrumbs("Search");
             return new SearchSuccessPage(driver);
         }
 
-        public SearchUnsuccessPage GotoBreadCrumSearchUnsuccessPage()
+        public SearchUnsuccessPage GotoBreadCrumbsSearchUnsuccessPage()
         {
-            ClickBreadCrum("Search");
+            ClickBreadCrumbs("Search");
             return new SearchUnsuccessPage(driver);
         }
 

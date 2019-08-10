@@ -112,11 +112,18 @@ namespace OpenCart414Test.Pages
             return new SearchUnsuccessPage(driver);
         }
 
-        internal CartProductContainer GetCartProductContainer()
-        {
-            ClickCartButton(); // mauby change
-            return new CartProductContainer(driver);
-        }
+
+        //internal CartContainerComponent GetCartContainerComponent()
+        //{
+        //    ClickCartButton();
+        //    return new CartContainerComponent(driver);
+        //}
+
+        //internal CartEmptyContainerComponent GetCartEmptyContainerComponent()
+        //{
+        //    ClickCartButton();
+        //    return new CartEmptyContainerComponent(driver);
+        //}
 
         public void AddProductToCart(Product product)
         {

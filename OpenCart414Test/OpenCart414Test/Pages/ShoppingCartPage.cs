@@ -4,54 +4,61 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenCart414Test.Data;
+using OpenCart414Test.Pages;
+using System.Threading;
 
 namespace OpenCart414Test.Pages
 {
-    public class ShoppingCartPage : BreadCrumPart
+
+    public class ShoppingCartPage : BreadCrumbsPart
+
     {
-        public ShoppingCartPage(IWebDriver driver) : base(driver)
-        {
-            this.driver = driver;
-            CheckElements();
-            InitElements();
-        }
         private const string SHOPPING_CART_XPATH = "//div[@class = 'table-responsive']/table/tbody";
-        private const string TABLE_PRICE_COMPONENT_XPATH= "//div[@class='row']/div/table/tbody";
+        private const string TABLE_PRICE_COMPONENT_XPATH = "//div[@class='row']/div/table/tbody";
         //
 
-
+        public IWebElement ShoppingCartTitle
+        { get { return driver.FindElement(By.CssSelector("#content > h1")); } }
         public IWebElement ContinueShoppingButton
         { get { return driver.FindElement(By.CssSelector("button.btn.btn-primary")); } }
         public IWebElement ChecoutButton
         { get { return driver.FindElement(By.CssSelector("a.btn.btn-primary")); } }
         public IWebElement DiscountCode //??????????
         { get { return driver.FindElement(By.Id("accordion")); } }
-        private IList<ShoppingCartPageComponent> shopppingcartComponents;
-        private TablePriceComponent tablePrice;
-        
+
+        public IList<ShoppingCartComponent> shopppingcartComponents;
+        public TablePriceComponent tablePrice;
+
+        public ShoppingCartPage(IWebDriver driver) : base(driver)
+        {
+            InitElements();
+            CheckElements();
+        }
+
+
         private void InitElements()
         {
-        //     tablePrice = new TablePriceComponent(driver);
 
-            shopppingcartComponents = new List<ShoppingCartPageComponent>();
+            shopppingcartComponents = new List<ShoppingCartComponent>();
+
             foreach (IWebElement current in driver.FindElements(By.XPath(SHOPPING_CART_XPATH)))
             {
-                shopppingcartComponents.Add(new ShoppingCartPageComponent(current));
+                shopppingcartComponents.Add(new ShoppingCartComponent(current));
             }
         }
-        
-       
+
         private void CheckElements()
         {
             // TODO Develop Custom Exception
             IWebElement temp = ContinueShoppingButton;
             temp = ChecoutButton;
-
+            temp = ShoppingCartTitle;
         }
 
 
         //Page Object
-        public IList<ShoppingCartPageComponent> GetShoppingCartComponents()
+        public IList<ShoppingCartComponent> GetShoppingCartComponents()
         {
             return shopppingcartComponents;
         }
@@ -60,7 +67,10 @@ namespace OpenCart414Test.Pages
         {
             return GetShoppingCartComponents().Count;
         }
-
+        public string GetShoppingCartTitleText()
+        {
+            return ShoppingCartTitle.Text.Substring(0, 13);
+        }
         public string GetContinueShoppingText()
         {
             return ContinueShoppingButton.Text;
@@ -77,19 +87,20 @@ namespace OpenCart414Test.Pages
         {
             ChecoutButton.Click();
         }
+
         // Functional
 
         public IList<string> GetAllTablePriceComponents()
         {
-            CreateTablePriceComponent(By.CssSelector(TABLE_PRICE_COMPONENT_XPATH));
-            IList<string> result = GetTablePriceComponent().GetTablePriceListText();
-            return result;
+            CreateTablePriceComponent(By.XPath(TABLE_PRICE_COMPONENT_XPATH));
+            return GetTablePriceComponent().GetTablePriceListText();
+
         }
 
-        public ShoppingCartPageComponent GetShoppingCartComponentByName(string productName)
+        public ShoppingCartComponent GetShoppingCartComponentByName(string productName)
         {
-            ShoppingCartPageComponent result = null;
-            foreach (ShoppingCartPageComponent current in shopppingcartComponents)
+            ShoppingCartComponent result = null;
+            foreach (ShoppingCartComponent current in shopppingcartComponents)
             {
                 if (current.GetProductName().ToLower()
                         .Equals(productName.ToLower()))
@@ -104,8 +115,8 @@ namespace OpenCart414Test.Pages
             }
             return result;
         }
-        
-        
+
+
 
         protected TablePriceComponent GetTablePriceComponent()
         {
@@ -122,9 +133,44 @@ namespace OpenCart414Test.Pages
             tablePrice = new TablePriceComponent(driver, searchLocator);
             return GetTablePriceComponent();
         }
+        //public void EnterVAlidDataQuantity(Product product)
+        //{
+        //    GetShoppingCartComponentByName(product.Title).SandKeysQuantityField(ShoppingCartData.VALID_CHECK);
 
+        //}
+        //public int EnterZeroQuantity(Product product, string data)
+        //{
+        //    GetShoppingCartComponentByName(product.Title).SandKeysQuantityField(data);
+        //    return GetShoppingCartComponentByName(product.Title).GetTextQuantityField();
+        //}
+        public ShoppingCartEmptyPage ClearQuantity(Product product)
+        {
+            GetShoppingCartComponentByName(product.Title).ClearQuantityField();
+            return NotUpdateMessage(product, GetShoppingCartComponentByName(product.Title).GetTextQuantityFieldString());
+
+        }
         // Business Logic
 
+        public ShoppingCartMessage UpdateMessage(Product product)
+        {
+            GetShoppingCartComponentByName(product.Title).ClickUpdateButton();
+            return new ShoppingCartMessage(driver);
+        }
+
+        public ShoppingCartEmptyPage NotUpdateMessage(Product invalidProduct, string data)
+        {
+            ShoppingCartComponent shoppingCartComponent = GetShoppingCartComponentByName(invalidProduct.Title);
+            shoppingCartComponent.SandKeysQuantityField(data);
+            shoppingCartComponent.ClickUpdateButton();
+            
+            return new ShoppingCartEmptyPage(driver);
+        }
+
+        public ShoppingCartEmptyPage GoToEmptyPage(Product product)
+        {
+            GetShoppingCartComponentByName(product.Title).ClickRemoveButton();
+            return new ShoppingCartEmptyPage(driver);
+        }
 
     }
 }

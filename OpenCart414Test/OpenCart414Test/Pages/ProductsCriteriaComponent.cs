@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
@@ -71,6 +72,7 @@ namespace OpenCart414Test.Pages
         public void SetInputSort(string text)
         {
             InputSort.SelectByText(text);
+            Thread.Sleep(2000); // for presentation only
         }
 
         public void ClickInputSort()
@@ -124,6 +126,7 @@ namespace OpenCart414Test.Pages
 
         // Business Logic
 
+
         public ProductsCriteriaComponent ViewProductsByList()
         {
             ClickListViewButton();
@@ -137,6 +140,17 @@ namespace OpenCart414Test.Pages
             InitElements();
             return this;
         }
-
+        public IList<string> GetNamesByGrid()
+        {
+            ViewProductsByGrid();
+            Thread.Sleep(3000); // For presentation only
+            return new SearchSuccessPage(driver).ProductsCriteria.GetProductComponentNames();
+        }
+        public IList<string> GetNamesByList()
+        {
+            ViewProductsByList();
+            Thread.Sleep(3000); // For presentation only
+            return new SearchSuccessPage(driver).ProductsCriteria.GetProductComponentNames();
+        }
     }
 }

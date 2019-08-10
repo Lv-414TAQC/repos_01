@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
+using System.IO;
 
 namespace OpenCart414Test.Tests
 {
@@ -20,7 +22,7 @@ namespace OpenCart414Test.Tests
         [OneTimeSetUp]
         public void BeforeAllMethods()
         {
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             //driver = new FirefoxDriver();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20); // by default 0
         }
@@ -34,8 +36,20 @@ namespace OpenCart414Test.Tests
         [SetUp]
         public virtual void SetUp()
         {
+
             // TODO
-            driver.Navigate().GoToUrl("http://192.168.17.128/opencart/upload/");
+            driver.Navigate().GoToUrl("http://192.168.163.130/opencart/upload/"); //alena
+
+            //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");
+            //driver.Navigate().GoToUrl("http://10.26.34.118/opencart/upload/");
+            //driver.Navigate().GoToUrl("http://192.168.140.131/opencart/upload/");
+            //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");
+            //driver.Navigate().GoToUrl("http://172.20.10.2/opencart/upload/");
+            //driver.Navigate().GoToUrl("http://192.168.20.128/opencart/upload/");
+
+
+            //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");
+
 
         }
 
