@@ -308,12 +308,12 @@ namespace OpenCart414Test.Pages
             return new WishListPage(driver);
         }
 
+    
 
 
 
 
 
 
-        //CartProductComponent OpenCartButton
     }
 }

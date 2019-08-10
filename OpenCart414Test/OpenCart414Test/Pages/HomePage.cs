@@ -64,10 +64,16 @@ namespace OpenCart414Test.Pages
         }
 
 
-        internal CartProductContainer GetCartProductContainer()
+        internal CartContainerComponent GetCartContainerComponent()
         {
-            ClickCartButton(); // mauby change
-            return new CartProductContainer(driver);
+            ClickCartButton();
+            return new CartContainerComponent(driver);
+        }
+
+        internal CartEmptyContainerComponent GetCartEmptyContainerComponent()
+        {
+            ClickCartButton();
+            return new CartEmptyContainerComponent(driver);
         }
 
         public void AddProductToCart(Product product)
@@ -75,6 +81,12 @@ namespace OpenCart414Test.Pages
             productsContainerComponent.GetProductComponentByName(product.Title)
                 .ClickAddToCartButton();  
         }
+
+        internal CartContainerComponent OpenCartButton()
+        {
+            return new CartContainerComponent(driver);
+        }
+
 
     }
 }

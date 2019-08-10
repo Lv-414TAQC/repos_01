@@ -2,7 +2,7 @@
 
 namespace OpenCart414Test.Pages
 {
-    class ShoppingCartContainerComponent
+     class ProductListContainerComponent
     {
         private const string PRODUCT_PRICE_CSSSELECTOR = "table.table.table-striped td.text-right:nth-child(4)";     //By.XPath("//table[@class='table table-striped']//td[contains(text(),'.')]")
         private const string PRODUCT_QUANTITY_CSSSELECTOR = "table.table.table-striped td.text-right:nth-child(3)";  //By.XPath("//table[@class='table table-striped']//td[contains(text(),'x')]")
@@ -23,7 +23,7 @@ namespace OpenCart414Test.Pages
         { get { return product.FindElement(By.CssSelector("button.btn.btn-danger.btn-xs")); } }
 
 
-        public ShoppingCartContainerComponent(IWebElement product)
+        public ProductListContainerComponent(IWebElement product)
         {
             this.product = product;
             CheckElements();
