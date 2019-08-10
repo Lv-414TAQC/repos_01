@@ -106,6 +106,7 @@
     <Compile Include="Pages\WishListMessagePage.cs" />
     <Compile Include="Pages\WishListPage.cs" />
     <Compile Include="Pages\WishListPart.cs" />
+    <Compile Include="Tests\ListGridVerifyTest.cs" />
     <Compile Include="Tests\SearchByCategoryTest.cs" />
     <Compile Include="Tests\RegisterUserTest.cs" />
     <Compile Include="Tests\SearchByDefaultCategoryTest.cs" />

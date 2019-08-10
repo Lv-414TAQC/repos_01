@@ -2,6 +2,12 @@
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Globalization;
+
 
 namespace OpenCart414Test.Pages
 {
@@ -132,8 +138,18 @@ namespace OpenCart414Test.Pages
             foreach (ProductComponent current in GetProductComponents())
             {
                 productComponentNames.Add(current.GetNameText());
+                Console.WriteLine(current.GetNameText()); // For presentation only
             }
             return productComponentNames;
+        }
+        public IList<string> GetProductComponentPrices()
+        {
+            IList<string> productComponentPrices = new List<string>();
+            foreach (ProductComponent current in GetProductComponents())
+            {
+                productComponentPrices.Add(current.GetPriceText());
+            }
+            return productComponentPrices;
         }
 
         public ProductComponent GetProductComponentByName(string productName)
@@ -204,8 +220,23 @@ namespace OpenCart414Test.Pages
             return GetProductComponents().Count;
         }
 
-     
-
+        public bool IsSortedAscList()
+        {
+            bool result = true;
+            decimal previous = 0;
+            CultureInfo culture = new CultureInfo("en-US");
+            foreach (string element in GetProductComponentPrices())
+            {
+                decimal currentPrice = Convert.ToDecimal(Regex.Match(element, @"\d*[.|,]\d*").Value, culture);
+                if (currentPrice < previous)
+                {
+                    result = false;
+                }
+                previous = currentPrice;
+                Console.WriteLine(currentPrice);
+            }
+            return result;
+        }
 
         // Business Logic
 
@@ -222,6 +253,8 @@ namespace OpenCart414Test.Pages
         //void AddToCart(Product)
 
         //GetProductComponent(Product)  
+
+
 
     }
 }
