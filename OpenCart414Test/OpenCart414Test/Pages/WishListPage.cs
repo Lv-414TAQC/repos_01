@@ -16,22 +16,22 @@ namespace OpenCart414Test.Pages
             wishListTable = new WishListComponentContainer(driver);
         }
 
-        // Page Object
-        public WishListComponentContainer getWishListComponentsContainer()
+        // Atomic
+        public WishListComponentContainer GetWishListComponentsContainer()
         {
             return wishListTable;
         }
 
         // Business Logic
-        public WishListMessageEmptyPage removeLastItemFromWishList(Product removingProduct)
+        public WishListMessageEmptyPage RemoveLastItemFromWishList(Product removingProduct)
         {
-            getWishListComponentsContainer()
+            GetWishListComponentsContainer()
                 .ClickWishListComponentRemoveButtonByName(removingProduct.Title);
             return new WishListMessageEmptyPage(driver);
         }
         public WishListMessagePage AddWishListComponentToCart(Product toCartProduct)
         {
-            getWishListComponentsContainer()
+            GetWishListComponentsContainer()
                 .ClickWishListComponentAddToCartButtonByName(toCartProduct.Title);
             return new WishListMessagePage(driver);
         }
