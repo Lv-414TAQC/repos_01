@@ -111,6 +111,19 @@ namespace OpenCart414Test.Pages
             ClickSearchButton();
             return new SearchUnsuccessPage(driver);
         }
+
+        internal CartProductContainer GetCartProductContainer()
+        {
+            ClickCartButton(); // mauby change
+            return new CartProductContainer(driver);
+        }
+
+        public void AddProductToCart(Product product)
+        {
+            productsContainerComponent.GetProductComponentByName(product.Title)
+                .ClickAddToCartButton();
+        }
+
        
     }
 }
