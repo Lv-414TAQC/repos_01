@@ -10,11 +10,9 @@ using System.Threading;
 
 namespace OpenCart414Test.Pages
 {
-<<<<<<< HEAD
-    public class ShoppingCartPage : BreadCrumPart
-=======
-    class ShoppingCartPage : BreadCrumbsPart
->>>>>>> 06cc0ee49a793feda83055819c415caada4fd5ad
+
+    public class ShoppingCartPage : BreadCrumbsPart
+
     {
         private const string SHOPPING_CART_XPATH = "//div[@class = 'table-responsive']/table/tbody";
         private const string TABLE_PRICE_COMPONENT_XPATH = "//div[@class='row']/div/table/tbody";
@@ -41,13 +39,9 @@ namespace OpenCart414Test.Pages
 
         private void InitElements()
         {
-<<<<<<< HEAD
-            shopppingcartComponents = new List<ShoppingCartComponent>();
-=======
-        //     tablePrice = new TablePriceComponent(driver);
 
-            shopppingcartComponents = new List<ShoppingCartPageComponent>();
->>>>>>> 06cc0ee49a793feda83055819c415caada4fd5ad
+            shopppingcartComponents = new List<ShoppingCartComponent>();
+
             foreach (IWebElement current in driver.FindElements(By.XPath(SHOPPING_CART_XPATH)))
             {
                 shopppingcartComponents.Add(new ShoppingCartComponent(current));
@@ -149,9 +143,10 @@ namespace OpenCart414Test.Pages
         //    GetShoppingCartComponentByName(product.Title).SandKeysQuantityField(data);
         //    return GetShoppingCartComponentByName(product.Title).GetTextQuantityField();
         //}
-        public void ClearQuantity(Product product)
+        public ShoppingCartEmptyPage ClearQuantity(Product product)
         {
             GetShoppingCartComponentByName(product.Title).ClearQuantityField();
+            return NotUpdateMessage(product, GetShoppingCartComponentByName(product.Title).GetTextQuantityFieldString());
 
         }
         // Business Logic

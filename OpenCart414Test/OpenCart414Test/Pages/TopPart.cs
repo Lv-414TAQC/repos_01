@@ -318,21 +318,11 @@ namespace OpenCart414Test.Pages
             ClickWishList();
             return new WishListPage(driver);
         }
-<<<<<<< HEAD
+
         public ShoppingCartPage GotoShoppingCartPage()
         {
             ClickShoppingCart();
             return new ShoppingCartPage(driver);
         }
-=======
-
-    
-
-
-
-
-
-
->>>>>>> 06cc0ee49a793feda83055819c415caada4fd5ad
     }
 }

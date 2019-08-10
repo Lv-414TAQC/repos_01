@@ -113,6 +113,10 @@
     <Compile Include="Tests\RegisterUserTest.cs" />
     <Compile Include="Tests\SearchByDefaultCategoryTest.cs" />
     <Compile Include="Tests\AddToCartTests.cs" />
+
+    <Compile Include="Tests\ShoppingCartTest.cs" />
+
+
     <Compile Include="Tests\WishListAddTest.cs" />
     <Compile Include="Tests\WishListRemoveTest.cs" />
     <Compile Include="Tests\SearchTest.cs" />
