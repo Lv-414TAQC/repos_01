@@ -9,36 +9,58 @@ namespace OpenCart414Test.Pages
 {
     class ShoppingCartPageComponent
     {
+        private const string UPDATE_MESSAGE = "Success: You have modified your shopping cart!";
+        private IWebElement product;
         protected IWebDriver driver;
         //private IWebDriver driver;
-        public ShoppingCartPageComponent()
+        public ShoppingCartPageComponent(IWebElement product)
         {
+            this.product = product;
+            CheckElements();
 
         }
         public IWebElement Image
-        { get { return driver.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-center']/a/img")); } }
+        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-center']/a/img")); } }
         public IWebElement ProductName
-        { get { return driver.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr//td[@class='text-left']/a")); } }
+        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr//td[@class='text-left']/a")); } }
         public IWebElement Modal
-        { get { return driver.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/td/following-sibling::td"));} } //??????/
+        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/td/following-sibling::td"));} } //??????/
         public IWebElement QuantityField
-        { get { return driver.FindElement(By.CssSelector("input: not(#input-coupon,#input-postcode,#input-voucher).form-control:not(.input-lg)")); } }
+        { get { return product.FindElement(By.CssSelector("input: not(#input-coupon,#input-postcode,#input-voucher).form-control:not(.input-lg)")); } }
         public IWebElement UpdateButton
-        { get { return driver.FindElement(By.CssSelector("button.btn.btn-primary")); } }
+        { get { return product.FindElement(By.CssSelector("button.btn.btn-primary")); } }
         public IWebElement RemoveButton
-        { get { return driver.FindElement(By.CssSelector("button.btn.btn-danger:not(.btn-xs)")); } }
+        { get { return product.FindElement(By.CssSelector("button.btn.btn-danger:not(.btn-xs)")); } }
         public IWebElement UnitPrice
-        { get { return driver.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/a[contains(text(),'iPhone')]/../following-sibling::td[@class ='text-right']")); } }
+        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/a[contains(text(),'iPhone')]/../following-sibling::td[@class ='text-right']")); } }
         public IWebElement Total
-        { get { return driver.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/a[contains(text(),'iPhone')]/../following-sibling::td[@class ='text-right']/following-sibling::td")); } }
+        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/a[contains(text(),'iPhone')]/../following-sibling::td[@class ='text-right']/following-sibling::td")); } }
+        public IWebElement FieldValue
+        { get { return product.FindElement(By.CssSelector(".input-group.btn-block > input")); } }
+       
+            
+        private void CheckElements()
+        {
+            // TODO Develop Custom Exception
+            IWebElement temp = Image;
+            temp = ProductName;
+            temp = Modal;
+            temp = UnitPrice;
+            temp = QuantityField;
+            temp = RemoveButton;
+            temp = UpdateButton;
+            temp = Total;
+
+        }
 
         // Page Object
 
-        
+
         //public IWebElement GetImage()
         //{
         //    return Image;
         //}
+        //Functional
         public string GetProductName()
         {
             return ProductName.Text;
@@ -47,11 +69,9 @@ namespace OpenCart414Test.Pages
         {
             return Modal.Text;
         }
-       
-        public void SandKeysQuantityField(string text)
+        public string GetTextQuantityField()
         {
-            QuantityField.Clear();
-            QuantityField.SendKeys(text);
+            return FieldValue.GetAttribute("value");
         }
         public void ClickRemoveButton()
         {
@@ -60,6 +80,25 @@ namespace OpenCart414Test.Pages
         public void ClickUpdateButton()
         {
             UpdateButton.Click();
+        }
+
+
+        //Business logic
+        public void SandKeysQuantityField(string text)
+        {
+            QuantityField.Clear();
+            QuantityField.SendKeys(text);
+
+        }
+        public string UpdateMessage()
+        {
+            ClickUpdateButton();
+            return UPDATE_MESSAGE;
+        }
+        public ShoppingCartEmptyPage GoToEmptyPage()
+        {
+            ClickRemoveButton();
+            return new ShoppingCartEmptyPage(driver);
         }
     }
 

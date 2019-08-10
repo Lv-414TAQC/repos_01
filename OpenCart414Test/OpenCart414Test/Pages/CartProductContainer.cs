@@ -2,15 +2,13 @@
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace OpenCart414Test.Pages
 {
-    class CartProductContainer
+     class CartProductContainer
     {
-        private const string ITEMS_TABLE_CSSSELECTOR = "table.table-striped";
+        private const string ITEMS_TABLE_CSSSELECTOR = "table.table-striped tr";
         private const string TABLE_PRICE_COMPONENT_CSSSELECTOR = "ul.dropdown-menu.pull-right table.table-bordered td.text-right";
 
         public IWebDriver driver;
@@ -22,7 +20,7 @@ namespace OpenCart414Test.Pages
         private TablePriceComponent tablePriceComponent;
         IList<ShoppingCartContainerComponent> itemsTable;
 
-        public CartProductContainer(IWebDriver driver)
+          public CartProductContainer(IWebDriver driver)
         {
             this.driver = driver;
             CheckElements();
@@ -73,7 +71,6 @@ namespace OpenCart414Test.Pages
         }
 
       
-
         protected TablePriceComponent GetTablePriceComponent()
         {
             if (tablePriceComponent == null)
@@ -95,14 +92,68 @@ namespace OpenCart414Test.Pages
         public IList<string> GetAllTablePriceComponents()
         {
             CreateTablePriceComponent(By.CssSelector(TABLE_PRICE_COMPONENT_CSSSELECTOR));
-
-            //Click on Button Shopping cart or in test click ?
             IList<string> result = GetTablePriceComponent().GetTablePriceListText();
             return result;
         }
 
-        // Business Logic
+        public string GetTablePriceTotal()
+        {
+            CreateTablePriceComponent(By.CssSelector(TABLE_PRICE_COMPONENT_CSSSELECTOR));
+            string result = GetTablePriceComponent().GetTotal();
+            Console.WriteLine(result);
+            return result;
+        }
 
 
+        public void RemoveProductByName(Product product)
+         {
+            foreach (ShoppingCartContainerComponent cur in GetItemsTable())
+            {
+                 if (cur.GetProductNameText() == product.Title)
+                 {
+                    cur.ClickProductRemoveButton();
+                    break;
+                 }
+            }
+         }
+
+        public ShoppingCartContainerComponent GetItemByName(Product product)
+        {
+            foreach (ShoppingCartContainerComponent currency in GetItemsTable())
+            {
+                if (currency.GetProductNameText() == product.Title)
+                {
+                    Console.WriteLine(currency.GetProductNameText());
+                    return currency;
+                }
+            }
+            return null;
+        }
+
+        public double GetTotalSumProducts()
+        {
+            double totalSum = 0.0;
+            string toStringVar = string.Empty;
+            foreach (ShoppingCartContainerComponent cur in GetItemsTable())
+            {
+                Regex regex = new Regex(@"\d*[.|,]\d*");  //class in tools
+                MatchCollection matches = regex.Matches(cur.GetProductPriceText());
+
+                foreach (Match match in matches)
+                {
+                   // Console.WriteLine(match.Value);
+                    toStringVar = Convert.ToString(match.Value);
+                }
+
+                totalSum += double.Parse(toStringVar, System.Globalization.CultureInfo.InvariantCulture);
+            }
+            Console.WriteLine(totalSum); //Only for presentation
+            return totalSum;
+
+        }
+
+            // Business Logic
+
+
+        }
     }
-}

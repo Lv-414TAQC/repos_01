@@ -17,7 +17,7 @@ namespace OpenCart414Test.Tests
         {
             new object[] { ProductRepository.GetIPhone() },
         };
-        [Test, TestCaseSource(nameof(ProductToAdd))]
+        //[Test, TestCaseSource(nameof(ProductToAdd))]
         public void CheckAdding(Product addingProduct)
         {
             HomePage homePage = LoadApplication();

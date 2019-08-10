@@ -24,6 +24,7 @@ namespace OpenCart414Test.Pages
         public IWebElement AddToCompareButton
         { get { return productLayout.FindElement(By.CssSelector(".fa.fa-exchange")); } }
 
+        
         public ProductComponent(IWebElement productLayout)
         {
             this.productLayout = productLayout;
@@ -86,7 +87,12 @@ namespace OpenCart414Test.Pages
 
         // Functional
 
-        // Business Logic
 
+
+        // Business Logic
+        public void AddItemToWishList()
+        {
+            ClickAddToWishButton();
+        }
     }
 }

@@ -1,22 +1,19 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
     public class RightLogoutPart : RightMenuPart
     {
-        public IWebElement RightMenuLogin
-        { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Login']")); } }
-        public IWebElement RightMenuRegister
-        { get { return driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Register']")); } }
+        public IWebElement RightMenuLogin =>
+        driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Login']"));
+        public IWebElement RightMenuRegister =>
+        driver.FindElement(By.XPath("//div[@class='list-group']/a[text()='Register']"));
+
         public RightLogoutPart(IWebDriver driver) : base(driver)
         {
         }
-        // Page Object
+
+        // Atomic
         public string GetRightMenuLoginText()
         {
             return RightMenuLogin.Text;
@@ -33,9 +30,5 @@ namespace OpenCart414Test.Pages
         {
             RightMenuRegister.Click();
         }
-
-        // Functional
-
-        // Business Logic
     }
 }

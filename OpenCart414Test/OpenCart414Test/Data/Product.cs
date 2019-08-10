@@ -32,5 +32,13 @@ namespace OpenCart414Test.Data
         {
             return prices[currency];
         }
+        public string GetName()
+        {
+            return Title;
+        }
+        public string GetDescription()
+        {
+            return Description;
+        }
     }
 }
