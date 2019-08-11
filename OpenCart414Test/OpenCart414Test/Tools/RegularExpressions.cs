@@ -22,7 +22,8 @@ namespace OpenCart414Test.Tools
             {
                 toStringVar = Convert.ToString(match.Value);
             }
-            totalSum += decimal.Parse(toStringVar, System.Globalization.CultureInfo.InvariantCulture);
+            //totalSum += decimal.Parse(toStringVar, System.Globalization.CultureInfo.InvariantCulture);
+            totalSum += Convert.ToDecimal(toStringVar, System.Globalization.CultureInfo.InvariantCulture);
             return totalSum;
         }
     }

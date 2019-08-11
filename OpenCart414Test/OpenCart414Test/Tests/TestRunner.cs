@@ -42,6 +42,10 @@ namespace OpenCart414Test.Tests
             // TODO
 
            // driver.Navigate().GoToUrl("http://192.168.20.128/opencart/upload/");
+
+            //driver.Navigate().GoToUrl("http://192.168.163.130/opencart/upload/"); //alena
+           // driver.Navigate().GoToUrl("http://192.168.147.128/opencart/upload/"); // Nazar
+
             //driver.Navigate().GoToUrl("http://192.168.163.130/opencart/upload/"); //alena
             //driver.Navigate().GoToUrl("http://192.168.147.128/opencart/upload/"); // Nazar
             //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");

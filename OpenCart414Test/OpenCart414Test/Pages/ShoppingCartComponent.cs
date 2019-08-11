@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using OpenCart414Test.Tools;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,13 @@ namespace OpenCart414Test.Pages
     public class ShoppingCartComponent
     {
         private IWebElement product;
-        //div[@class='table-responsive']/table/tbody/tr/td[@class='text-left'][last()]/div/input
+        
         public IWebElement Image
         { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-center']/a/img")); } }
         public IWebElement ProductName
         { get { return product.FindElement(By.XPath("//div[@class='table-responsive']//table/tbody/tr/td[@class='text-left'][count(a)=1]")); } }
         public IWebElement Model
         { get { return product.FindElement(By.XPath("//div[@class='table-responsive']//table/tbody/tr/td[@class='text-left'][count(*)=0]"));} } 
-        //public IWebElement QuantityField
-        //{ get { return product.FindElement(By.CssSelector("input:not(#input-coupon,#input-postcode,#input-voucher).form-control:not(.input-lg)")); } }
         public IWebElement QuantityField
         { get { return product.FindElement(By.XPath("//input[contains(@name,'quantity')]")); } }
         public IWebElement UpdateButton
@@ -36,27 +35,12 @@ namespace OpenCart414Test.Pages
         { get { return product.FindElement(By.XPath("//input[contains(@name,'quantity')]")); } }
         
         public ShoppingCartComponent(IWebElement product)
-        
         {
             this.product = product;
-            //CheckElements();
-
+          
         }
 
-        //private void CheckElements()
-        //{
-        //    // TODO Develop Custom Exception
-        //    IWebElement temp = Image;
-        //    temp = ProductName;
-        //    temp = Model;
-        //    temp = UnitPrice;
-        //    temp = QuantityField;
-        //    temp = RemoveButton;
-        //    temp = UpdateButton;
-        //    temp = Total;
-
-        //}
-
+       
         // Page Object
         
         //Functional
@@ -68,14 +52,9 @@ namespace OpenCart414Test.Pages
         {
             return Model.Text;
         }
-        public string GetTextQuantityFieldString()
+        public string GetTextQuantityField()
         {
-            
             return FieldValue.GetAttribute(TopPart.TAG_ATTRIBUTE_VALUE); 
-        }
-        public int GetTextQuantityField()
-        {
-            return Convert.ToInt32(FieldValue.GetAttribute(TopPart.TAG_ATTRIBUTE_VALUE)); 
         }
         
         public void ClickRemoveButton()
@@ -86,15 +65,21 @@ namespace OpenCart414Test.Pages
         {
             UpdateButton.Click();
         }
+        public RegularExpressions GetRegularExpressions()
+        {
+            return new RegularExpressions();
+        }
         public decimal GetUnitPrice()
         {
-            return Convert.ToDecimal(UnitPrice.Text.Substring(1, 5).Replace('.', ','));//TODO localization   
+            return GetRegularExpressions().ConvertStringCurrency(UnitPrice.Text);
+            
         }
         public decimal GetTotal()
         {
-            return Convert.ToDecimal((Total.Text.Substring(1, 5).Replace('.', ',')));
+            return GetRegularExpressions().ConvertStringCurrency(Total.Text);
+           
         }
-        //met convert 
+       
         
         public void SandKeysQuantityField(string text)
         {
