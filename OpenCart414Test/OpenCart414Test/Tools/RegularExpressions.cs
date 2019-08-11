@@ -11,7 +11,7 @@ namespace OpenCart414Test.Tools
 {
     public class RegularExpressions
     {
-        public decimal RegexCurrency(string element)
+        public decimal ConvertStringCurrency(string element)
         {
             decimal totalSum = 0;
             string toStringVar = string.Empty;
