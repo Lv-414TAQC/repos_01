@@ -30,6 +30,25 @@ namespace OpenCart414Test.Data
             return instance;
         }
 
+
+        public IUser ValidUserWithBoundaryValues1()
+        {
+            return User.Get()
+                    .SetFirstname("L")
+                    .SetLastname("V")
+                    .SetEmail("onbvc.201@lpnu.ua")
+                    .SetTelephone("0507591658")
+                    .SetAddress1("Var")
+                    .SetCity("Lv")
+                    .SetPostcode("48")
+                    .SetCountry("Togo")
+                    .SetRegionState("Kara")
+                    .SetPassword("qwer")
+                    .SetSubscribe(true)
+                    .SetFax("41358454")
+                    .SetCompany("Company")
+                    .Build();
+        }
         public IUser Registered()
         {
             return User.Get()

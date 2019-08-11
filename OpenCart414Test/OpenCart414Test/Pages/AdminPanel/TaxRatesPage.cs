@@ -1,27 +1,19 @@
-﻿using CurrencyTests.Stetsula.Pages;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace OpenCartTests.Stetsula.Pages
+namespace OpenCart414Test.Pages.AdminPanel
 {
     class TaxRatesPage : HeaderPart
     {
-        IWebElement AddNewButton { get { return Driver.FindElement(By.CssSelector("a[data-original-title='Add New']")); } } 
-        IWebElement DeleteButton { get { return Driver.FindElement(By.CssSelector("button[data-original-title='Delete']")); } } 
+        IWebElement AddNewButton { get { return Driver.FindElement(By.CssSelector("a[data-original-title='Add New']")); } }
+        IWebElement DeleteButton { get { return Driver.FindElement(By.CssSelector("button[data-original-title='Delete']")); } }
         IList<IWebElement> TaxRates = new List<IWebElement>();
 
-        public TaxRatesPage(IWebDriver driver) : base(driver)
-        {
-            
+        public TaxRatesPage(IWebDriver driver) : base(driver){ }
 
-        }
-
-        public void GetTaxrates()
-        {
-
-        }
+        public void GetTaxrates() { }
 
         public void AddNewTaxRate(string name, double rate, string type, string geoZone)
         {

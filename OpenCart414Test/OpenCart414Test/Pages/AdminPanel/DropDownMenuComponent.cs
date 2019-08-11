@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OpenCartTests.Stetsula.Pages
+namespace OpenCart414Test.Pages.AdminPanel
 {
-    class CurrenciesPage
+    public class DropDownMenuComponent
     {
     }
 }

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CurrencyTests.Stetsula.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace OpenCartTests.Stetsula.Pages
+namespace OpenCart414Test.Pages.AdminPanel
 {
     class GeoZonesPage : HeaderPart
     {
@@ -14,7 +13,7 @@ namespace OpenCartTests.Stetsula.Pages
         public IWebElement DeleteButtton { get { return Driver.FindElement(By.CssSelector("button[data-original-title='Delete']")); } }
         public IList<GeoZoneComponent> GeoZones = new List<GeoZoneComponent>();
 
-        public GeoZonesPage(IWebDriver driver) : base (driver)
+        public GeoZonesPage(IWebDriver driver) : base(driver)
         {
             GetGeoZones();
 
@@ -60,3 +59,4 @@ namespace OpenCartTests.Stetsula.Pages
         }
     }
 }
+

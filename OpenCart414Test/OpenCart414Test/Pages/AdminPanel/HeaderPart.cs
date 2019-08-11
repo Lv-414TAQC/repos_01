@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace OpenCartTests.Stetsula
+namespace OpenCart414Test.Pages.AdminPanel
 {
-    abstract class HeaderPart
+    public abstract class HeaderPart
     {
         protected IWebDriver Driver;
         public IWebElement MenuButton { get { return Driver.FindElement(By.Id("button-menu")); } }
@@ -21,5 +21,5 @@ namespace OpenCartTests.Stetsula
         }
     }
 
-    
+
 }

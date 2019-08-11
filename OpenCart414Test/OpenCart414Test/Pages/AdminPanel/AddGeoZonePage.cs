@@ -1,19 +1,18 @@
-﻿using OpenCartTests.Stetsula;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CurrencyTests.Stetsula.Pages
+namespace OpenCart414Test.Pages.AdminPanel
 {
     class AddGeoZonePage : HeaderPart
     {
         public IWebElement GeoZoneName { get { return Driver.FindElement(By.Id("input-name")); } }
         public IWebElement Description { get { return Driver.FindElement(By.Id("input-description")); } }
-        
-        
-        
+
+
+
 
         public AddGeoZonePage(IWebDriver driver) : base(driver)
         {
@@ -29,6 +28,7 @@ namespace CurrencyTests.Stetsula.Pages
             SelectElement Country = new SelectElement(Driver.FindElement(By.Name("zone_to_geo_zone[0][country_id]")));
             Country.SelectByText(country);
             Driver.FindElement(By.CssSelector("button[data-original-title='Save']")).Click();
-    }
+        }
     }
 }
+

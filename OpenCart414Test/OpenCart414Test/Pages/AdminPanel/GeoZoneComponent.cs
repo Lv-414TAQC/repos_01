@@ -4,7 +4,7 @@ using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace CurrencyTests.Stetsula.Pages
+namespace OpenCart414Test.Pages.AdminPanel
 {
     public class GeoZoneComponent
     {

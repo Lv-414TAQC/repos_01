@@ -122,6 +122,16 @@ namespace OpenCart414Test.Pages
          
         }
 
+        public IList<string> GetCartComponentNames()
+        {
+            IList<string> cartComponentNames = new List<string>();
+            foreach (ProductListContainerComponent current in GetProductList())
+            {
+                cartComponentNames.Add(current.GetProductNameText());
+            }
+            return cartComponentNames;
+        }
+
         internal ProductListContainerComponent GetProductByName(Product product)
         {
             foreach (ProductListContainerComponent currency in GetProductList())

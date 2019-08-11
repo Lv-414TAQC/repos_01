@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace OpenCartTests.Stetsula
+namespace OpenCart414Test.Pages.AdminPanel
 {
-     class MenuComponent
+    public  class MenuComponent
     {
         IWebDriver Driver;
         public IWebElement MenuButton { get; set; }
@@ -24,7 +24,7 @@ namespace OpenCartTests.Stetsula
         //    Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         //    Driver.FindElement(By.XPath(Path)).Click();
         //}
-       
+
         public MenuComponent(IWebDriver driver)
         {
             Driver = driver;

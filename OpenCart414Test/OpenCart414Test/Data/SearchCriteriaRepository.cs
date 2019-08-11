@@ -20,6 +20,18 @@ namespace OpenCart414Test.Data
             return new SearchCriteria("Mac",
                 "Laptops & Notebooks", false, false);
         }
+        public static SearchCriteria NumbersSearch()
+        {
+            return new SearchCriteria("941",
+                "Laptops & Notebooks", false, false);
+        }
+
+        public static SearchCriteria SpecialCharSearch()
+        {
+            return new SearchCriteria(".",
+                "Laptops & Notebooks", false, false);
+        }
+
         public static SearchCriteria GetHpSearchCriteria()
         {
             return new SearchCriteria("with the stunning new 30-inch diagonal",
@@ -38,6 +50,11 @@ namespace OpenCart414Test.Data
         public static SearchCriteria GetUnsuccessSearch()
         {
             return new SearchCriteria("qweqwe",
+                "", false, false);
+        }
+        public static SearchCriteria GetEmptySearch()
+        {
+            return new SearchCriteria("",
                 "", false, false);
         }
     }

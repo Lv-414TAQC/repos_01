@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace OpenCartTests.Stetsula
+namespace OpenCart414Test.Pages.AdminPanel
 {
-    class AdminHomePage : HeaderPart
+    public class AdminHomePage : HeaderPart
     {
         public SideMenuComponent SideMenu;
 
@@ -33,8 +33,8 @@ namespace OpenCartTests.Stetsula
 
         public void ClickMenu(string targetMenu)
         {
-            
-            SideMenu.Menus[targetMenu].MenuButton.Click();            
+
+            SideMenu.Menus[targetMenu].MenuButton.Click();
         }
 
         public void ClickLocalizationMenu()
@@ -82,8 +82,6 @@ namespace OpenCartTests.Stetsula
             TaxClasses.MenuButton.Click();
         }
 
-
-
         public void ClickSubMenu(string submenu)
         {
             MenuComponent Submenu = new MenuComponent(Driver);
@@ -93,13 +91,14 @@ namespace OpenCartTests.Stetsula
             Submenu.MenuButton.Click();
         }
 
-        public void ClickCurrenciesMenu()
+        public CurrenciesPage ClickCurrenciesMenu()
         {
             ClickLocalizationMenu();
             MenuComponent Currencies = new MenuComponent(Driver);
             Currencies.MenuButton = Driver.FindElement(By.XPath("//a[contains(text(), 'Currencies')]"));
             Currencies.MenuLabel = Currencies.MenuButton.Text;
             Currencies.MenuButton.Click();
+            return new CurrenciesPage(Driver);
         }
 
 
@@ -141,5 +140,6 @@ namespace OpenCartTests.Stetsula
 
     }
 
- 
+
 }
+

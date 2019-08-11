@@ -8,14 +8,17 @@ namespace OpenCart414Test.Tests
     [TestFixture]
     public class WishListToCartTest : TestRunner
     {
-        private WishListPage wishListPage;
+        private WishListMessagePage wishListMessagePage;
         private Product productToCart = ProductRepository.GetIPhone();
 
         [TearDown]
         public void InnerTearDown()
         {
-            wishListPage.RemoveLastItemFromWishList(productToCart);
-            AccountLogoutPage accountLogoutPage = wishListPage
+            WishListEmptyPage wishListEmptyPage = wishListMessagePage
+                .RemoveLastItemFromWishList(productToCart);
+            wishListEmptyPage.GetCartContainerComponent()
+                .RemoveProductByName(productToCart);
+            AccountLogoutPage accountLogoutPage = wishListEmptyPage
                 .Logout();
         }
 
@@ -37,12 +40,13 @@ namespace OpenCart414Test.Tests
                 .GetProductComponentByName(productToCart.Title)
                 .AddItemToWishList();
             Thread.Sleep(2000); //for presentation only
-            wishListPage = homePage
-                .GotoWishListPage();
-            WishListMessagePage wishListMessagePage = wishListPage
+            wishListMessagePage = homePage
+                .GotoWishListPage()
                 .AddWishListComponentToCart(productToCart);
             Thread.Sleep(2000); //for presentation only
             Assert.IsTrue(wishListMessagePage.IsWishListAlertMessageDisplayed());
+            Assert.IsTrue(wishListMessagePage.GetCartContainerComponent()
+                .GetCartComponentNames().Contains(productToCart.Title));
         }
     }
 }

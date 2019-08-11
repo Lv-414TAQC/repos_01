@@ -1,14 +1,13 @@
-﻿using OpenCartTests.Stetsula;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CurrencyTests.Stetsula.Pages
+namespace OpenCart414Test.Pages.AdminPanel
 {
     class TaxClassesPage : HeaderPart
     {
-        IWebElement EditTaxableGoodsButton { get {return  Driver.FindElement(By.XPath("//td[contains(text(), 'Taxable Goods')]/following-sibling::td/a")); } }
+        IWebElement EditTaxableGoodsButton { get { return Driver.FindElement(By.XPath("//td[contains(text(), 'Taxable Goods')]/following-sibling::td/a")); } }
         IWebElement EditDownloadableProductsButton { get { return Driver.FindElement(By.XPath("//td[contains(text(), 'Downloadable Products')]/following-sibling::td/a")); } }
 
         IList<TaxClassComponent> TaxClasses = new List<TaxClassComponent>();
@@ -25,7 +24,7 @@ namespace CurrencyTests.Stetsula.Pages
                 TaxClassComponent TaxClass = new TaxClassComponent();
                 TaxClass.CheckBox = item.FindElement(By.XPath("./td[@class='text-center']"));
                 TaxClass.ClassTitle = item.FindElement(By.XPath("./td[@class='text-left']")).Text;
-                TaxClass.Action = item.FindElement(By.XPath("./td[@class='text-right']"));
+                TaxClass.Action = item.FindElement(By.XPath("./td[@class='text-right']/a"));
                 TaxClasses.Add(TaxClass);
             }
         }
@@ -34,8 +33,9 @@ namespace CurrencyTests.Stetsula.Pages
         {
             foreach (TaxClassComponent item in TaxClasses)
             {
-                if (item.ClassTitle == taxClass)
-                    item.Action.Click();
+                if (item.ClassTitle.Contains(taxClass))
+                    Console.WriteLine(item.ClassTitle);
+                item.Action.Click();
             }
         }
 
@@ -45,5 +45,6 @@ namespace CurrencyTests.Stetsula.Pages
         }
     }
 
-   
+
 }
+
