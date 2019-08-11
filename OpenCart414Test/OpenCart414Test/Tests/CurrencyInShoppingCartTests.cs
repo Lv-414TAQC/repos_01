@@ -15,7 +15,7 @@ namespace OpenCart414Test.Tests
             HomePage homePage = LoadHomePage();
             homePage.AddProductToCart(ProductRepository.GetIPhone());
             homePage.ClickShoppingCart();
-            ShoppingCartPage cartPage = homePage.OpenShoppingCartPage();
+            ShoppingCartPage cartPage = homePage.GotoShoppingCartPage();
 
         }
 
