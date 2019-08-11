@@ -105,8 +105,8 @@ namespace OpenCart414Test.Pages
         public decimal GetTablePriceTotal()
         {
             CreateTablePriceComponent(By.CssSelector(TABLE_PRICE_COMPONENT_CSSSELECTOR));
-            Console.WriteLine(GetRegularExpressions().RegexCurrency(GetTablePriceComponent().GetTotal())); //Only for presentation
-            return GetRegularExpressions().RegexCurrency(GetTablePriceComponent().GetTotal());
+            Console.WriteLine(GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetTotal())); //Only for presentation
+            return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetTotal());
         }
 
         public void RemoveProductByName(Product product)
@@ -150,7 +150,7 @@ namespace OpenCart414Test.Pages
             decimal total = 0;
             foreach (ProductListContainerComponent cur in GetProductList())
             {
-               total += GetRegularExpressions().RegexCurrency(cur.GetProductPriceText());
+               total += GetRegularExpressions().ConvertStringCurrency(cur.GetProductPriceText());
             }
             Console.WriteLine(total); //Only for presentation
             

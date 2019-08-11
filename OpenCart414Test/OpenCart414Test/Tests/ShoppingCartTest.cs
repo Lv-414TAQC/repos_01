@@ -10,7 +10,7 @@ using OpenCart414Test.Pages;
 
 namespace OpenCart414Test.Tests
 {
-    
+
     [TestFixture]
     class ShoppingCartTest : TestRunner
     {
@@ -60,72 +60,60 @@ namespace OpenCart414Test.Tests
             Assert.IsTrue(shoppingCartEmptyPage.Equal());
         }
 
-        //[Test, TestCaseSource(nameof(ProductToAdd))]
-        //public void Update(Product addingProduct1)
-        //{
-        //    HomePage homePage = LoadApplication();
-        //    ProductsContainerComponent productsContainerComponent = homePage.getProductComponentsContainer();
-        //    ProductComponent productComponent = productsContainerComponent.GetProductComponentByName(addingProduct1.Title);
-        //    Thread.Sleep(2000);sh
-        //    productComponent.ClickAddToCartButton();
-        //    homePage.ClickShoppingCart();
-        //    ShoppingCartPage s = new ShoppingCartPage(driver);
-        //    Assert.IsTrue(s.GetShoppingCartTitleText().Contains(ShoppingCartMessage.CART_IS_OPEN));
-        //    ShoppingCartComponent component = new ShoppingCartComponent();
-        //    Thread.Sleep(2000);
-        //    component.ClearQuantityField();
-        //    Thread.Sleep(1000); //for update page
-        //    Assert.IsTrue(component.GetTextQuantityField().Equals(null));
-        //    component.SandKeysQuantityField("2");
-        //    Thread.Sleep(1000); // only for presentation 
-        //    component.UpdateMessage();
-        //    Thread.Sleep(1000); // only for presentation
-        //    Assert.IsTrue(component.GetUpdateMessage().Contains(ShoppingCartMessage.UPDATE_MESSAGE));
-        //    Assert.IsTrue(component.GetTextQuantityField() == 2);
-        //    component.ClearQuantityField();
-        //    Thread.Sleep(1000); //for update page
-        //    component.SandKeysQuantityField("job");
-        //    Thread.Sleep(2000);
-        //    component.UpdateMessage();
-        //    Thread.Sleep(2000);
-        //    ShoppingCartEmptyPage em = new ShoppingCartEmptyPage(driver);
-        //    Assert.IsTrue(em.GetInfoMessageText().Contains(ShoppingCartMessage.CART_IS_EMPTY));
-        //}
-        //[Test, TestCaseSource(nameof(ProductToAdd))]
-        //public void Price(Product addingProduct1)
-        //{
-        //    HomePage homePage = LoadApplication();
-        //    ProductsContainerComponent productsContainerComponent = homePage.getProductComponentsContainer();
-        //    ProductComponent productComponent = productsContainerComponent.GetProductComponentByName(addingProduct1.Title);
-        //    Thread.Sleep(2000);
-        //    productComponent.ClickAddToCartButton();
-        //    homePage.ClickShoppingCart();
-        //    ShoppingCartPage s = new ShoppingCartPage(driver);
-        //    Assert.IsTrue(s.GetShoppingCartTitleText().Contains(ShoppingCartMessage.CART_IS_OPEN));
-        //    ShoppingCartComponent component = new ShoppingCartComponent();
-        //    Thread.Sleep(2000);
-        //    Assert.IsTrue(component.GetUnitPrice().Equals(component.GetTotal()));
-        //    component.SandKeysQuantityField("2");
-        //    Thread.Sleep(1000); // only for presentation 
-        //    component.UpdateMessage();
-        //    Thread.Sleep(1000); // only for presentation
-        //    Assert.IsTrue(component.GetTextQuantityField() == 2);
-        //    Assert.IsTrue((component.GetUnitPrice() * component.GetTextQuantityField()) == component.GetTotal());
+        [Test, TestCaseSource(nameof(ProductToAdd))]
+        public void Update(Product addingProduct1)
+        {
+            HomePage homePage = LoadApplication();
+            homePage.AddProductToCart(addingProduct1);
+            Thread.Sleep(2000);
+            ShoppingCartMessage shoppingCartPageMessage = homePage
+                .GotoShoppingCartPage()
+                .UpdateMessage(addingProduct1, ShoppingCartData.VALID_CHECK);
+            Assert.IsTrue(shoppingCartPageMessage.GetUpdateMessage().Contains(ShoppingCartData.UPDATE_MESSAGE));
+            Thread.Sleep(2000);
+        }
+        [Test, TestCaseSource(nameof(ProductToAdd))]
+        public void Price(Product addingProduct1)
+        {
+            HomePage homePage = LoadApplication();
+            homePage.AddProductToCart(addingProduct1);
+            Thread.Sleep(2000);
+            shoppingCartPage = homePage
+                .GotoShoppingCartPage();
+            Assert.IsTrue(shoppingCartPage
+                .GetShoppingCartTitleText()
+                .Contains(ShoppingCartData.CART_IS_OPEN));
+            Console.WriteLine("1");
+            Assert.AreEqual(shoppingCartPage
+                .GetShoppingCartComponentByName(addingProduct1.Title)
+                .GetUnitPrice(),
+                shoppingCartPage
+                .GetShoppingCartComponentByName(addingProduct1.Title).GetTotal());
+            shoppingCartPage = shoppingCartPage.UpdateMessage(addingProduct1, ShoppingCartData.VALID_CHECK);
+            Thread.Sleep(1000); // only for presentation
+            Assert.IsTrue(shoppingCartPage.GetShoppingCartComponentByName(addingProduct1.Title)
+                .GetTextQuantityFieldString() == ShoppingCartData.VALID_CHECK);
+            Console.WriteLine("3");
+            Assert.IsTrue((shoppingCartPage
+                .GetShoppingCartComponentByName(addingProduct1.Title)
+                .GetUnitPrice() * shoppingCartPage
+                .GetShoppingCartComponentByName(addingProduct1.Title)
+                .GetTextQuantityField()) == shoppingCartPage
+                .GetShoppingCartComponentByName(addingProduct1.Title).GetTotal());
+            Console.WriteLine("4");
+            Assert.IsTrue(shoppingCartPage
+                .GetShoppingCartComponentByName(addingProduct1.Title)
+                .GetTotal() == shoppingCartPage.GetTablePriceTotal());
+            Console.WriteLine("5");
 
-        //    ////??????????/
-           
-            //double subtotal = Convert.ToDouble(driver.FindElement(By.XPath("//div[@class='row']/div/table/tbody/tr/td/strong[text() ='Sub-Total:']/../following-sibling::td")).Text.Substring(1, 5).Replace('.', ','));
-            ////Console.WriteLine(driver.FindElement(By.XPath("//div[@class='row']/div/table/tbody/tr/td/strong[text() ='Flat Shipping Rate:']/../following-sibling::td")).Text);
-            //double ecotax = Convert.ToDouble(driver.FindElement(By.XPath("//div[@class='row']/div/table/tbody/tr/td/strong[text() ='Eco Tax (-2.00):']/../following-sibling::td")).Text.Substring(1, 3).Replace('.', ','));
-            //double vat = Convert.ToDouble(driver.FindElement(By.XPath("//div[@class='row']/div/table/tbody/tr/td/strong[text() ='VAT (20%):']/../following-sibling::td")).Text.Substring(1, 4).Replace('.', ','));
-            //double total = Convert.ToDouble(driver.FindElement(By.XPath("//div[@class='row']/div/table/tbody/tr/td/strong[text() ='Total:']/../following-sibling::td")).Text.Substring(1, 5).Replace('.', ','));
-            //Console.WriteLine(ecotax + subtotal + vat + total);
+
+
             //Assert.IsTrue(ecotax + subtotal + vat == total);
             //Console.WriteLine(total + " == " + Convert.ToDouble(totalprice.Substring(1, 5).Replace('.', ',')));
-            //Assert.IsTrue(total == Convert.ToDouble(totalprice.Substring(1, 5).Replace('.', ',')));
-            //Console.WriteLine(vat + " == " + subtotal * 0.2);
+
             //Assert.IsTrue(vat == ((subtotal * 20) / 100));
-            
+
         }
     }
+}
 

@@ -43,7 +43,6 @@ namespace OpenCart414Test.Pages
             }
             return result;
         }
-
         public string GetTotal()
         {
             string result = string.Empty;
@@ -63,7 +62,5 @@ namespace OpenCart414Test.Pages
             }
             return result;
         }
-
-
     }
 }

@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.IO;
+using OpenQA.Selenium.Support.UI;
 
 namespace OpenCart414Test.Tests
 {
@@ -18,13 +19,14 @@ namespace OpenCart414Test.Tests
     public abstract class TestRunner
     {
         protected IWebDriver driver;
-
+        protected WebDriverWait wait;
         [OneTimeSetUp]
         public void BeforeAllMethods()
         {
             driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             //driver = new FirefoxDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20); // by default 0
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2); // by default 0
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
         [OneTimeTearDown]

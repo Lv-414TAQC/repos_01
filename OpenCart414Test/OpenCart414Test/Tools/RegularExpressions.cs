@@ -15,7 +15,7 @@ namespace OpenCart414Test.Tools
         {
             decimal totalSum = 0;
             string toStringVar = string.Empty;
-            Regex regex = new Regex(@"\d*[.|,]\d*");
+            Regex regex = new Regex(@"\d+[.|,]\d*");
             MatchCollection matches = regex.Matches(element);
 
             foreach (Match match in matches)
