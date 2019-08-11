@@ -2,13 +2,13 @@
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using OpenCart414Test.Tools;
 
 namespace OpenCart414Test.Pages
 {
-     class CartProductContainer
+    public class CartContainerComponent
     {
-        private const string ITEMS_TABLE_CSSSELECTOR = "table.table-striped tr";
+        private const string PRODUCT_LIST_CSSSELECTOR = "table.table-striped tr";
         private const string TABLE_PRICE_COMPONENT_CSSSELECTOR = "ul.dropdown-menu.pull-right table.table-bordered td.text-right";
 
         public IWebDriver driver;
@@ -18,9 +18,9 @@ namespace OpenCart414Test.Pages
         public IWebElement CheckOutLink
         { get { return driver.FindElement(By.XPath("//p[@class='text-right']//strong/i[@class='fa fa-share']//..")); } }
         private TablePriceComponent tablePriceComponent;
-        IList<ShoppingCartContainerComponent> itemsTable;
+        IList<ProductListContainerComponent> productList;
 
-          public CartProductContainer(IWebDriver driver)
+          public CartContainerComponent(IWebDriver driver)
         {
             this.driver = driver;
             CheckElements();
@@ -30,22 +30,23 @@ namespace OpenCart414Test.Pages
         private void CheckElements()
         {
             // TODO Develop Custom Exception
-            IWebElement temp = ViewCartLink; 
-            temp = CheckOutLink;
+              IWebElement temp = ViewCartLink; 
+              temp = CheckOutLink;
         }
 
         private void InitElements()
         {
-            itemsTable = new List<ShoppingCartContainerComponent>();
-            foreach (IWebElement current in driver.FindElements(By.CssSelector(ITEMS_TABLE_CSSSELECTOR)))
+            productList = new List<ProductListContainerComponent>();
+            foreach (IWebElement current in driver.FindElements(By.CssSelector(PRODUCT_LIST_CSSSELECTOR)))
             {
-                itemsTable.Add(new ShoppingCartContainerComponent(current));
+                productList.Add(new ProductListContainerComponent(current));
             }
         }
+
         // Page Object
-        public IList<ShoppingCartContainerComponent> GetItemsTable()
+        internal IList<ProductListContainerComponent> GetProductList()
         {
-            return itemsTable;
+            return productList;
         }
 
         //ViewCartLink
@@ -70,12 +71,11 @@ namespace OpenCart414Test.Pages
             CheckOutLink.Click();
         }
 
-      
+        //tablePriceComponent
         protected TablePriceComponent GetTablePriceComponent()
         {
             if (tablePriceComponent == null)
             {
-                // TODO Develop Custom Exception 
                 throw new Exception("TablePriceComponent is null.");
             }
             return tablePriceComponent;
@@ -87,7 +87,13 @@ namespace OpenCart414Test.Pages
             return GetTablePriceComponent();
         }
 
-        // Functional
+
+        public RegularExpressions GetRegularExpressions()
+        {
+            return new RegularExpressions();
+        }
+
+            // Functional
 
         public IList<string> GetAllTablePriceComponents()
         {
@@ -96,18 +102,16 @@ namespace OpenCart414Test.Pages
             return result;
         }
 
-        public string GetTablePriceTotal()
+        public decimal GetTablePriceTotal()
         {
             CreateTablePriceComponent(By.CssSelector(TABLE_PRICE_COMPONENT_CSSSELECTOR));
-            string result = GetTablePriceComponent().GetTotal();
-            Console.WriteLine(result);
-            return result;
+            Console.WriteLine(GetRegularExpressions().RegexCurrency(GetTablePriceComponent().GetTotal())); //Only for presentation
+            return GetRegularExpressions().RegexCurrency(GetTablePriceComponent().GetTotal());
         }
 
-
         public void RemoveProductByName(Product product)
-         {
-            foreach (ShoppingCartContainerComponent cur in GetItemsTable())
+        {
+            foreach (ProductListContainerComponent cur in GetProductList())
             {
                  if (cur.GetProductNameText() == product.Title)
                  {
@@ -115,11 +119,22 @@ namespace OpenCart414Test.Pages
                     break;
                  }
             }
-         }
+         
+        }
 
-        public ShoppingCartContainerComponent GetItemByName(Product product)
+        public IList<string> GetCartComponentNames()
         {
-            foreach (ShoppingCartContainerComponent currency in GetItemsTable())
+            IList<string> cartComponentNames = new List<string>();
+            foreach (ProductListContainerComponent current in GetProductList())
+            {
+                cartComponentNames.Add(current.GetProductNameText());
+            }
+            return cartComponentNames;
+        }
+
+        internal ProductListContainerComponent GetProductByName(Product product)
+        {
+            foreach (ProductListContainerComponent currency in GetProductList())
             {
                 if (currency.GetProductNameText() == product.Title)
                 {
@@ -130,30 +145,19 @@ namespace OpenCart414Test.Pages
             return null;
         }
 
-        public double GetTotalSumProducts()
+        public decimal GetTotalSumProducts()
         {
-            double totalSum = 0.0;
-            string toStringVar = string.Empty;
-            foreach (ShoppingCartContainerComponent cur in GetItemsTable())
+            decimal total = 0;
+            foreach (ProductListContainerComponent cur in GetProductList())
             {
-                Regex regex = new Regex(@"\d*[.|,]\d*");  //class in tools
-                MatchCollection matches = regex.Matches(cur.GetProductPriceText());
-
-                foreach (Match match in matches)
-                {
-                   // Console.WriteLine(match.Value);
-                    toStringVar = Convert.ToString(match.Value);
-                }
-
-                totalSum += double.Parse(toStringVar, System.Globalization.CultureInfo.InvariantCulture);
+               total += GetRegularExpressions().RegexCurrency(cur.GetProductPriceText());
             }
-            Console.WriteLine(totalSum); //Only for presentation
-            return totalSum;
-
+            Console.WriteLine(total); //Only for presentation
+            
+            return total;
         }
 
-            // Business Logic
+        // Business Logic
 
-
-        }
-    }
+     }
+}

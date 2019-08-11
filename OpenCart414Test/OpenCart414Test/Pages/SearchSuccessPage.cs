@@ -13,9 +13,6 @@ namespace OpenCart414Test.Pages
     public class SearchSuccessPage : SearchCriteriaPart
     {
         public ProductsCriteriaComponent ProductsCriteria { get; private set; }
-
-        public IWebElement SearchResult
-        { get { return driver.FindElement(By.CssSelector(".col-sm-6.text-right")); } }
         public SearchSuccessPage(IWebDriver driver) : base(driver)
         {
             CheckElements();
@@ -57,18 +54,5 @@ namespace OpenCart414Test.Pages
             ProductsCriteria.SetInputLimit(text);
             return new SearchSuccessPage(driver);
         }
-        public string SwitchToGrid()
-        {
-            ProductsCriteria.ClickGridViewButton();
-            Thread.Sleep(3000); // For presentation only
-            return SearchResult.Text;
-        }
-        public string SwitchToList()
-        {
-            ProductsCriteria.ClickListViewButton();
-            Thread.Sleep(3000); // For presentation only
-            return SearchResult.Text;
-        }
-
     }
 }

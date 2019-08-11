@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using OpenCart414Test.Data;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -39,15 +40,16 @@ namespace OpenCart414Test.Pages
         { get { return driver.FindElement(By.CssSelector("input.btn.btn-primary")); } }
 
 
-        public RegisterUserPage(IWebDriver driver) :base(driver)
+        public RegisterUserPage(IWebDriver driver) : base(driver)
         {
+
             CheckElements();
         }
 
         private void CheckElements()
         {
             // TODO Develop Custom Exception
-            IWebElement temp = FirstNameField, LastNameField, EMailField; //TODO
+          //  IWebElement temp = FirstNameField, LastNameField, EMailField; //TODO
         }
         //First Name Field
         public string GetRegisterFirstNameFieldText()
@@ -88,7 +90,7 @@ namespace OpenCart414Test.Pages
 
         public void ClickRegisterLastNameField()
         {
-           LastNameField.Click();
+            LastNameField.Click();
         }
 
         // Email Field
@@ -96,7 +98,7 @@ namespace OpenCart414Test.Pages
         {
             return EMailField.GetAttribute(TAG_ATTRIBUTE_VALUE);
         }
-        
+
         public void SetRegisterEmailField(string text)
         {
             EMailField.SendKeys(text);
@@ -126,7 +128,7 @@ namespace OpenCart414Test.Pages
 
         public void ClearRegisterTelephoneField()
         {
-           TelephoneField.Clear();
+            TelephoneField.Clear();
         }
 
         public void ClickRegisterTelephoneField()
@@ -293,37 +295,133 @@ namespace OpenCart414Test.Pages
             SubmitButton.Click();
         }
 
-        //Functional
+        //Functional --------------------------------------
 
-        public void InitElements(string FirstNameField, string LastNameField,
-            string Email,string Telephone,string Address1,string City,string PostCode,string Country,
-            string Region,string Password,string ConfirmPassword)
+
+        //Fill FirstName.
+         
+        public void FillFirstName(IUser user)
         {
+            ClickRegisterFirstNameField();
             ClearRegisterFirstNameField();
-            SetRegisterFirstNameField(FirstNameField);
-            ClearRegisterLastNameField();
-            SetRegisterLastNameField(LastNameField);
-            ClearRegisterEmailField();
-            SetRegisterEmailField(Email);
-            ClearRegisterTelephoneField();
-            SetRegisterTelephoneField(Telephone);
-            ClearRegisterAddress1Field();
-            SetRegisterAddress1Field(Address1);
-            ClearRegisterCityField();
-            SetRegisterCityField(City);
-            ClearRegisterPostCodeField();
-            SetRegisterPostCodeField(PostCode);
-            ClickCountryCategory();
-            SetCountryCategory(Country);
-            ClickRegionCategory();
-            SetRegionCategory(Region);
-            ClearRegisterPasswordField();
-            SetRegisterPasswordField(Password);
-            ClearRegisterPasswordConfirmField();
-            SetRegisterPasswordConfirmField(ConfirmPassword);
-            ClickPrivacyAgreement();
-            ClickSubmitButton();
+            SetRegisterFirstNameField(user.Firstname);
         }
 
+        // Fill LastName.
+       
+        public void FillLastName(IUser user)
+        {
+            ClickRegisterLastNameField();
+            ClearRegisterLastNameField();
+            SetRegisterLastNameField(user.Lastname);
+        }
+
+        /**
+         * Fill Email.
+         * @param user user.
+         */
+        public void FillEmail(IUser user)
+        {
+            ClickRegisterEmailField();
+            ClearRegisterEmailField();
+            SetRegisterEmailField(user.Email);
+        }
+
+        // Fill Telephone
+
+        public void FillTelephone(IUser user)
+        {
+            ClickRegisterTelephoneField();
+            ClearRegisterTelephoneField();
+            SetRegisterTelephoneField(user.Telephone);
+        }
+
+        //Adress1.
+
+        public void FillAddress1(IUser user)
+        {
+            ClickRegisterAddress1Field();
+            ClearRegisterAddress1Field();
+            SetRegisterAddress1Field(user.Address1);
+        }
+        
+        //Fill City
+        public void FillCity(IUser user)
+        {
+            ClickRegisterCityField();
+            ClearRegisterCityField();
+            SetRegisterCityField(user.City);
+        }
+
+        // Fill Postcode
+        public void FillPostcode(IUser user)
+        {
+            ClickRegisterPostCodeField();
+            ClearRegisterPostCodeField();
+            SetRegisterPostCodeField(user.Postcode);
+        }
+
+        // Fill Country.
+
+        public void FillCountry(IUser user)
+        {
+            ClickCountryCategory();
+            SetCountryCategory(user.Country);
+        }
+        
+     //Fill Region.
+    public void FillRegion(IUser user)
+        {
+            ClickRegionCategory();
+            SetRegionCategory(user.RegionState);
+        }
+
+        //Fill Password
+        public void FillPassword(IUser user)
+        {
+            ClickRegisterPasswordField();
+            ClearRegisterPasswordField();
+            SetRegisterPasswordField(user.Password);
+        }
+        //FIll Confirm pass
+        public void FillConfirmPassword(IUser user)
+        {
+            ClickRegisterPasswordConfirmField();
+            ClearRegisterPasswordConfirmField();
+            if (user.Password != null
+                    && user.Password.Trim().Length > 0)
+            {
+                SetRegisterPasswordConfirmField(user.Password);
+            }
+            else
+            {
+                SetRegisterPasswordConfirmField(user.Password);
+            }
+        }
+
+
+        public void FillRegistrationForm(IUser user)
+        {
+            FillFirstName(user);
+            FillLastName(user);
+            FillEmail(user);
+            FillTelephone(user);
+            FillAddress1(user);
+            FillCity(user);
+            FillPostcode(user);
+            FillCountry(user);
+            FillRegion(user);
+            FillPassword(user);
+            FillConfirmPassword(user);
+            ClickPrivacyAgreement();
+            ClickSubmitButton();
+           
+        }
+
+        public SuccessfullyRegisterPage successfullyRegisterUser(IUser user)
+        {
+            FillRegistrationForm(user);
+            return new SuccessfullyRegisterPage(driver);
+        }
     }
 }
