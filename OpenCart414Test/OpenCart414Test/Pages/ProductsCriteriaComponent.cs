@@ -106,17 +106,6 @@ namespace OpenCart414Test.Pages
         // Pagination
 
         // Functional
-        protected void MakeSortAndShow(string SortValue, string ShowValue)
-        {
-            ClickInputSort();
-            SetInputSort(SortValue);
-            SetInputLimit(ShowValue);
-        }
-        public SearchSuccessPage SortAndShowSuccessfully(SortShowCriteria searchCriteria)
-        {
-            MakeSortAndShow(searchCriteria.SortValue, searchCriteria.ShowValue);
-            return new SearchSuccessPage(driver);
-        }
 
         // Business Logic
 

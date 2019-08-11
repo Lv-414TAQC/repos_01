@@ -52,7 +52,7 @@ namespace OpenCart414Test.Tests
         {
             SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyByDefault(searchCriteria);
             Thread.Sleep(2000);  //Only for Presentation
-            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainTextByDefaultCategory(searchCriteria));
+            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainNameText(searchCriteria));
             Thread.Sleep(2000);  //Only for Presentation
         }
         //
@@ -61,7 +61,7 @@ namespace OpenCart414Test.Tests
         {
             SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyByCategory(searchCriteria);
             Thread.Sleep(2000);  //Only for Presentation            
-            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainTextBySeparateCategory(searchCriteria));
+            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainNameText(searchCriteria));
             Thread.Sleep(2000);  //Only for Presentation 
 
             //HomePage homePage = LoadApplication();
@@ -78,17 +78,6 @@ namespace OpenCart414Test.Tests
             Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainTextByDescription(searchCriteria));
             Thread.Sleep(2000);  //Only for Presentation  
 
-            //HomePage homePage = LoadApplication();
-            //SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
-            //SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByDescription(searchCriteria);
-            //bool temp = true;
-            //for (int a = 0; a < searchSuccessPage.ProductsCriteria.GetProductComponentsCount(); a++)
-            //{
-            //    if (!searchSuccessPage.ProductsCriteria.GetProductComponentDescriptionByProduct(addingProduct).Contains(searchSuccessPage.GetCriteriaSearchFieldText()))
-            //    {
-            //        temp = false;
-            //    }
-            //}
         }
         //
         //[Test, TestCaseSource(nameof(ProductSearch2))]
@@ -97,11 +86,11 @@ namespace OpenCart414Test.Tests
             SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyBySubCategory(searchCriteria);
             Thread.Sleep(2000);  //Only for Presentation                        
             //
-            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainTextBySubCategory(searchCriteria));
+            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainNameText(searchCriteria));
             Thread.Sleep(2000);  //Only for Presentation
         }
         //
-        //[Test, TestCaseSource(nameof(ProductSearch4))]
+        [Test, TestCaseSource(nameof(ProductSearch4))]
         public void ShowElementsTest(SearchCriteria searchCriteria,SortShowCriteria sortShowCriteria, SortShowCriteria sortShowCriteriaA)
         {
             SearchSuccessPage searchSuccessPage = LoadApplication().SearchSuccessfully(searchCriteria);        

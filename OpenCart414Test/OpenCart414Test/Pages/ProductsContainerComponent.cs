@@ -59,43 +59,7 @@ namespace OpenCart414Test.Pages
         }
 
         // Functional
-        protected bool IsContainTextByDefaultCategory(string text)
-        {
-            bool result = true;
-            foreach (var current in GetProductComponentNames())
-            {
-                if (!current.Contains(text))
-                {
-                    result = false;
-                    break;
-                }
-            }
-            return result;
-        }
-        //bussines logic
-        public  bool IsContainTextByDefaultCategory(SearchCriteria searchCriteria)
-        {
-            return IsContainTextByDefaultCategory(searchCriteria.SearchValue);
-        }
-        //
-        protected bool IsContainTextBySeparateCategory(string text)
-        {
-            bool result = true;
-            foreach (var current in GetProductComponentNames())
-            {
-                if (!current.Contains(text))
-                {
-                    result = false;
-                }
-            }
-            return result;
-        }
-        //bussines logic
-        public bool IsContainTextBySeparateCategory(SearchCriteria searchCriteria)
-        {
-            return IsContainTextBySeparateCategory(searchCriteria.SearchValue);
-        }
-        //
+
         protected bool IsContainTextByDescription(string text)
         {
             bool result = true;
@@ -115,22 +79,6 @@ namespace OpenCart414Test.Pages
             return IsContainTextByDescription(searchCriteria.SearchValue);
         }
         //
-        protected bool IsContainTextBySubCategory(string text)
-        {
-            bool result = true;
-            foreach (var current in GetProductComponentNames())
-            {
-                if (!current.Contains(text))
-                {
-                    result = false;
-                }
-            }
-            return result;
-        }
-        public bool IsContainTextBySubCategory(SearchCriteria searchCriteria)
-        {
-            return IsContainTextBySubCategory(searchCriteria.SearchValue);
-        }
         protected bool IsContainText(string text)
         {
             bool result = true;
@@ -265,12 +213,6 @@ namespace OpenCart414Test.Pages
         {
             return GetProductComponentDescriptionByName(product.GetName());
         }
-
-        //void AddToCart(Product)
-
-        //GetProductComponent(Product)  
-
-
 
     }
 }

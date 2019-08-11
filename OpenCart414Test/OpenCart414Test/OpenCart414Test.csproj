@@ -104,7 +104,6 @@
     <Compile Include="Pages\ShoppingCartEmptyPage.cs" />
     <Compile Include="Pages\ShoppingCartMessage.cs" />
     <Compile Include="Pages\ShoppingCartPage.cs" />
-    <Compile Include="Pages\ShoppingCartPageComponent.cs" />
     <Compile Include="Pages\SuccessfullyRegisterPage.cs" />
     <Compile Include="Pages\ShoppingCartComponent.cs" />
     <Compile Include="Pages\TablePriceComponent.cs" />
@@ -121,10 +120,7 @@
     <Compile Include="Tests\RegisterUserTest.cs" />
     <Compile Include="Tests\SearchByDefaultCategoryTest.cs" />
     <Compile Include="Tests\AddToCartTests.cs" />
-
     <Compile Include="Tests\ShoppingCartTest.cs" />
-
-
     <Compile Include="Tests\WishListAddTest.cs" />
     <Compile Include="Tests\WishListRemoveTest.cs" />
     <Compile Include="Tests\SearchTest.cs" />
