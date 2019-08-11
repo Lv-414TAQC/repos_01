@@ -131,6 +131,22 @@ namespace OpenCart414Test.Pages
         {
             return IsContainTextBySubCategory(searchCriteria.SearchValue);
         }
+        protected bool IsContainText(string text)
+        {
+            bool result = true;
+            foreach (var current in GetProductComponentNames())
+            {
+                if (!current.Contains(text))
+                {
+                    result = false;
+                }
+            }
+            return result;
+        }
+        public bool IsContainNameText(SearchCriteria searchCriteria)
+        {
+            return IsContainText(searchCriteria.SearchValue);
+        }
         //
         public IList<string> GetProductComponentNames()
         {

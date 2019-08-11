@@ -114,7 +114,7 @@ namespace OpenCart414Test.Pages
         }
         protected void MakeSortAndShow(string SortValue, string ShowValue)
         {
-            ClickInputLimit();
+            ClickInputSort();
             SetInputSort(SortValue);
             SetInputLimit(ShowValue);
         }

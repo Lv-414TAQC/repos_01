@@ -51,8 +51,13 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlClient, Version=4.5.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.6.1\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
     <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
     </Reference>
@@ -61,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tests\DataBaseUtils.cs" />
     <Compile Include="Data\ApplicationRepository.cs" />
     <Compile Include="Data\Currency.cs" />
     <Compile Include="Data\ShippingDetails.cs" />
@@ -117,6 +123,8 @@
     <Compile Include="Pages\ShoppingCartEmptyPage.cs" />
     <Compile Include="Pages\ShoppingCartMessage.cs" />
     <Compile Include="Pages\ShoppingCartPage.cs" />
+    <Compile Include="Pages\ShoppingCartPageComponent.cs" />
+    <Compile Include="Pages\SuccessfullyRegisterPage.cs" />
     <Compile Include="Pages\ShoppingCartComponent.cs" />
     <Compile Include="Pages\TablePriceComponent.cs" />
     <Compile Include="Pages\TopPart.cs" />
