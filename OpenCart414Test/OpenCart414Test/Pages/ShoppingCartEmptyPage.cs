@@ -10,11 +10,11 @@ namespace OpenCart414Test.Pages
 {
 
     public class ShoppingCartEmptyPage : BreadCrumbsPart
-
-
+        
     {
         
         public const string CART_IS_EMPTY = "Your shopping cart is empty!";
+
         public IWebElement CartEmptyMessage
         { get { return driver.FindElement(By.XPath("//div[@id = 'content']/p")); } }
         public IWebElement Continue
@@ -36,15 +36,13 @@ namespace OpenCart414Test.Pages
         {
             Continue.Click();
         }
-        // InfoMessage
+        // Function
         public string GetInfoMessageText()
         {
-            
             return CartEmptyMessage.Text;
         }
         public bool Equal()
         {
-           
             if (GetInfoMessageText() == CART_IS_EMPTY)
                 return true;
             else

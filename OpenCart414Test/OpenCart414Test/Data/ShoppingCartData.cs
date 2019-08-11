@@ -15,5 +15,7 @@ namespace OpenCart414Test.Data
         public const string CART_IS_EMPTY = "Your shopping cart is empty!";
         public const string CART_IS_OPEN = "Shopping Cart";
         public const string UPDATE_MESSAGE = "Success: You have modified your shopping cart!";
+        public const int FOR_VAT_1 = 2;
+        public const int FOR_VAT_2 = 10;
     }
 }
