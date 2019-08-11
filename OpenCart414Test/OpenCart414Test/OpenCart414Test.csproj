@@ -148,6 +148,7 @@
     <Compile Include="Tests\SearchTest.cs" />
     <Compile Include="Tests\TestRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\WishListToCartTest.cs" />
     <Compile Include="Tools\RegularExpressions.cs" />
   </ItemGroup>
   <ItemGroup>
