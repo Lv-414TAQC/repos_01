@@ -36,7 +36,6 @@ namespace OpenCart414Test.Pages
             temp = CriteriaSubCategory;
             temp = CriteriaDescription;
             temp = CriteriaSearchButton;          
-            // TODO All Web Elements
         }
         // Page Object
         // CriteriaSearchField
@@ -165,8 +164,6 @@ namespace OpenCart414Test.Pages
             ClickCriteriaSubCategory(isSearchInSubcategories);
             ClickCriteriaSearchButton();
         }
-        // TODO Choose/Click WebElements
-        //protected void MakeCriteriaSearch(SearchCriteria searchCriteria...)
 
         // Business Logic
 
@@ -196,7 +193,5 @@ namespace OpenCart414Test.Pages
             MakeCriteriaSearchBySubCategory(searchCriteria.SearchValue, searchCriteria.SearchCategory,searchCriteria.IsSearchInSubcategories);
             return new SearchSuccessPage(driver);
         }
-        //public SearchSuccessPage SearchSuccessfully(SearchCriteria searchCriteria Product string searchText)
-        //public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria Product string searchText) // TODO
     }
 }

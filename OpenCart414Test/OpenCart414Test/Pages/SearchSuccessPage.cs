@@ -21,8 +21,7 @@ namespace OpenCart414Test.Pages
 
         private void CheckElements()
         {
-            // TODO Develop Custom Exception
-            //IWebElement temp = CriteriaSearchField; // TODO All Web Elements
+            
         }
 
         private void InitElements()

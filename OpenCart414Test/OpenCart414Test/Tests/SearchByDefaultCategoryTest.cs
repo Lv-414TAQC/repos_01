@@ -32,14 +32,8 @@ namespace OpenCart414Test.Tests
                 SearchCriteriaRepository.GetImac(),
                 },
         };
-        private static readonly object[] ProductSearch3 =
-        {
-            new object[] {
-                SearchCriteriaRepository.GetAllProducts(),
-                },
-        };
         private static readonly object[] ProductSearch4 =
-    {
+        {
             new object[] {
                 SearchCriteriaRepository.GetAllProducts(),
                 SortShowRepository.ShowBy15(),
@@ -47,7 +41,7 @@ namespace OpenCart414Test.Tests
                 },
         };
         //
-        //[Test, TestCaseSource(nameof(ProductSearch))]
+        [Test, TestCaseSource(nameof(ProductSearch))]
         public void CheckSearchByDefaultCategory(SearchCriteria searchCriteria)
         {
             SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyByDefault(searchCriteria);
@@ -56,7 +50,7 @@ namespace OpenCart414Test.Tests
             Thread.Sleep(2000);  //Only for Presentation
         }
         //
-        //[Test, TestCaseSource(nameof(ProductSearch))]
+        [Test, TestCaseSource(nameof(ProductSearch))]
         public void CheckSearchBySeparateCategory(SearchCriteria searchCriteria)
         {
             SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyByCategory(searchCriteria);
@@ -69,7 +63,7 @@ namespace OpenCart414Test.Tests
             //SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByCategory(searchCriteria);
         }
         //
-        //[Test, TestCaseSource(nameof(ProductSearch1))]
+        [Test, TestCaseSource(nameof(ProductSearch1))]
         public void CheckSearchByDescription(SearchCriteria searchCriteria)
         {
             SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyByDescription(searchCriteria);     
@@ -80,7 +74,7 @@ namespace OpenCart414Test.Tests
 
         }
         //
-        //[Test, TestCaseSource(nameof(ProductSearch2))]
+        [Test, TestCaseSource(nameof(ProductSearch2))]
         public void CheckSearchBySubCategory(SearchCriteria searchCriteria)
         {
             SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyBySubCategory(searchCriteria);

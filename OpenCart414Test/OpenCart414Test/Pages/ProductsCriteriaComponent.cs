@@ -101,13 +101,9 @@ namespace OpenCart414Test.Pages
             GetInputLimitIWebElement().Click();
         }
 
-        // ProductsContainer
-
         // Pagination
 
         // Functional
-
-        // Business Logic
 
         public ProductsCriteriaComponent ViewProductsByList()
         {

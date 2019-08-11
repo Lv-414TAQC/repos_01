@@ -20,7 +20,7 @@ namespace OpenCart414Test.Pages
         private void CheckElements()
         {
             // TODO Develop Custom Exception
-            IWebElement temp = InfoMessage; // TODO All Web Elements
+            IWebElement temp = InfoMessage; 
         }
 
         // Page Object
@@ -34,25 +34,6 @@ namespace OpenCart414Test.Pages
         // Functional
 
         // Business Logic
-        //public SearchSuccessPage MakeCriteriaSearch(string searchText)
-        //{
-        //    ClickCriteriaSearchField();
-        //    ClearCriteriaSearchField();
-        //    SetCriteriaSearchField(searchText);
-        //    ClickCriteriaSearchButton();
-        //    return new SearchSuccessPage(driver);
-        //}
-
-        //public SearchSuccessPage MakeSearchBySeparateCategory(string searchText)
-        //{
-        //    ClickCriteriaCategory();
-        //    SetCriteriaCategory(searchText);
-        //    ClickCriteriaSearchField();
-        //    ClearCriteriaSearchField();
-        //    SetCriteriaSearchField(searchText);
-        //    ClickCriteriaSearchButton();
-        //    return new SearchSuccessPage(driver);
-        //}
 
     }
 }
