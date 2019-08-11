@@ -6,6 +6,8 @@ using System.Threading;
 using NUnit.Framework;
 using OpenCart414Test.Data;
 using OpenCart414Test.Pages;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 
 namespace OpenCart414Test.Tests
@@ -13,6 +15,7 @@ namespace OpenCart414Test.Tests
     [TestFixture]
     class AddToCartTests : TestRunner
     {
+      
         // DataProvider
         private static readonly object[] ProductToAdd =
         {
@@ -23,36 +26,36 @@ namespace OpenCart414Test.Tests
         {
             HomePage homePage = LoadApplication();
             homePage.AddProductToCart(addingProduct1);
-            Thread.Sleep(2000);        //Only for presentation
             homePage.AddProductToCart(addingProduct2);
 
-            Thread.Sleep(2000);
-            
-            Assert.AreEqual(addingProduct1.Title, homePage.GetCartContainerComponent()
-               .GetProductByName(addingProduct1).GetProductNameText());
-
-            homePage.GetCartContainerComponent(); //for reopen page
-            
+            // Thread.Sleep(2000);
+            wait.Until((drv) => {
+            return homePage.GetCartButtonText().Contains(HomePage.TWO_PRODUCT);
+            });
+            Assert.IsTrue(homePage.GetCartButtonText().Contains(HomePage.TWO_PRODUCT));
+            Assert.AreEqual(addingProduct1.Title, homePage.OpenCartButton()
+               .GetProductByName(addingProduct1).GetProductNameText());      
             Assert.AreEqual(addingProduct2.Title, homePage.GetCartContainerComponent()
                 .GetProductByName(addingProduct2).GetProductNameText());
 
-            homePage.GetCartContainerComponent(); //for reopen page
-
-            Thread.Sleep(2000);          //Only for presentation
             homePage.GetCartContainerComponent().RemoveProductByName(addingProduct2);
-            Thread.Sleep(2000);
 
-            //Console.WriteLine(homePage.GetCartButtonText());
-            //Assert.IsTrue(homePage.GetCartButtonText().Contains("1 item(s)"));
-            //Thread.Sleep(2000);          //Only for presentation
+            // Thread.Sleep(2000);
+            wait.Until((drv) => {
+                return homePage.GetCartButtonText().Contains(HomePage.ONE_PRODUCT);
+            });
+            Assert.IsTrue(homePage.GetCartButtonText().Contains(HomePage.ONE_PRODUCT));
 
-            homePage.GetCartContainerComponent().RemoveProductByName(addingProduct1);
+            homePage.OpenCartButton().RemoveProductByName(addingProduct1);
 
-            homePage.GetCartEmptyContainerComponent(); //for reopen page
+            // Thread.Sleep(2000);
+            wait.Until((drv) => {
+                return homePage.GetCartButtonText().Contains(HomePage.ZERO_PRODUCT);
+            });
+            Assert.IsTrue(homePage.GetCartButtonText().Contains(HomePage.ZERO_PRODUCT));
 
-            Assert.IsTrue(homePage.GetCartEmptyContainerComponent().GetInfoMessageText().Length > 0);
-            //Add assert on EmptyPage
-            Thread.Sleep(3000);
+            Assert.IsTrue(homePage.OpenEmptyCartButton().GetInfoMessageText().Length > 0);
+            
         }
 
 
@@ -62,20 +65,20 @@ namespace OpenCart414Test.Tests
             HomePage homePage = LoadApplication();
 
             homePage.AddProductToCart(addingProduct1);
-            Thread.Sleep(2000);
             homePage.AddProductToCart(addingProduct2);
 
-            Thread.Sleep(2000);   //Only for presentation
+            //Thread.Sleep(2000);
+            wait.Until((drv) =>{
+                return homePage.GetCartContainerComponent().CheckOutLink;
+            });
 
-            Assert.AreEqual(addingProduct1.Title, homePage.GetCartContainerComponent()
+            Assert.AreEqual(addingProduct1.Title, homePage.OpenCartButton()
                  .GetProductByName(addingProduct1).GetProductNameText());
-
-            homePage.GetCartContainerComponent(); //for reopen page
 
             Assert.AreEqual(addingProduct2.Title, homePage.GetCartContainerComponent()
                 .GetProductByName(addingProduct2).GetProductNameText());
 
-            Thread.Sleep(2000);  //Only for presentation
+            Assert.IsTrue(homePage.GetCartButtonText().Contains(HomePage.TWO_PRODUCT));
         }
 
         [Test, TestCaseSource(nameof(ProductToAdd))]
@@ -83,19 +86,15 @@ namespace OpenCart414Test.Tests
         {
             HomePage homePage = LoadApplication();
             homePage.AddProductToCart(addingProduct1);
-            Thread.Sleep(2000);    //Only for presentation
             homePage.AddProductToCart(addingProduct2);
 
-            Thread.Sleep(2000);    //Only for presentation
-            decimal a = homePage.GetCartContainerComponent().GetTotalSumProducts();
-           
-            homePage.GetCartContainerComponent(); //for reopen page
+           // Thread.Sleep(2000);
+            wait.Until((drv) => {
+                return homePage.GetCartContainerComponent().CheckOutLink;
+            });
 
-            decimal b = homePage.GetCartContainerComponent().GetTablePriceTotal();
-
-            Assert.AreEqual(a, b);
-           // Assert.AreEqual(homePage.GetCartContainerComponent().GetTotalSumProducts(),
-           //  homePage.OpenCartButton().GetTablePriceTotal());
+            Assert.AreEqual(homePage.OpenCartButton().GetTotalSumProducts(),
+            homePage.GetCartContainerComponent().GetTablePriceTotal());
             Thread.Sleep(3000);
         }
     }
