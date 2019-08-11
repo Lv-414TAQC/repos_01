@@ -64,7 +64,5 @@ namespace OpenCart414Test.Pages
             return "102.5";
             //return result;
         }
-
-
     }
 }

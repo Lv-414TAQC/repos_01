@@ -203,18 +203,25 @@ namespace OpenCart414Test.Pages
             dropdownComponent = null;
         }
 
-        internal CartContainerComponent GetCartContainerComponent()
+        internal CartContainerComponent OpenCartButton()
         {
             ClickCartButton();
             return new CartContainerComponent(driver);
         }
-
-        internal CartEmptyContainerComponent GetCartEmptyContainerComponent()
+        internal CartContainerComponent GetCartContainerComponent()
+        {
+            return new CartContainerComponent(driver);
+        }
+        internal CartEmptyContainerComponent OpenEmptyCartButton()
         {
             ClickCartButton();
             return new CartEmptyContainerComponent(driver);
         }
-
+        internal CartEmptyContainerComponent GetCartEmptyContainerComponent()
+        {
+            return new CartEmptyContainerComponent(driver);
+        }
+ 
         // Functional
         protected void MakeTopSearch(string searchText)
         {
@@ -325,6 +332,5 @@ namespace OpenCart414Test.Pages
             return new ShoppingCartPage(driver);
         }
 
-        
     }
 }
