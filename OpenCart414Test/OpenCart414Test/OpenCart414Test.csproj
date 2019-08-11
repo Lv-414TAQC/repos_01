@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Data\GeoZone.cs" />
     <Compile Include="Data\GeoZonesRepository.cs" />
+    <Compile Include="Data\TaxClassesRepository.cs" />
     <Compile Include="Data\TaxRate.cs" />
     <Compile Include="Data\TaxRateRepository.cs" />
     <Compile Include="Pages\AdminPanel\EditTaxClassPage.cs" />

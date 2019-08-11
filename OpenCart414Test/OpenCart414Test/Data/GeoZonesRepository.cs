@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Data
 {
-    class GeoZonesRepository
+    static class GeoZonesRepository
     {
-        private GeoZonesRepository() { }
-
-        public static GeoZone GetUAGeoZone()
+         public static GeoZone GetUAGeoZone()
         {
             return new GeoZone(
                 "UA Tax Zone",

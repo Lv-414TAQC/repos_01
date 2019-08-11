@@ -11,7 +11,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace OpenCart414Test.Pages
 {
-    class SelectShippingMethodComponent
+    public class SelectShippingMethodComponent
     {
         IWebDriver driver;
         IWebElement radioButton { get { return driver.FindElement(By.Name("shipping_method")); } }

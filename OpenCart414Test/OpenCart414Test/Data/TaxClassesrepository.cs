@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Data
 {
-    static class ShippingDetailsRepository
+    static class TaxClassesRepository
     {
-        public static ShippingDetails GetUkDetails()
+        public static string GetTaxebleProductsTaxClass()
         {
-            return new ShippingDetails("United Kingdom", "Bristol", 123456);
+            return "Taxable Goods";
         }
     }
 }

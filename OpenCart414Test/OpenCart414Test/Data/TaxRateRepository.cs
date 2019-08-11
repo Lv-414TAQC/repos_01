@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Data
 {
-    class TaxRateRepository
+    static class TaxRateRepository
     {
         public static TaxRate GetFixTaxRate()
         {

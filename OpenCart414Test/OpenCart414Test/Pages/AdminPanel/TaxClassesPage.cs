@@ -2,10 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using OpenCart414Test.Data;
 
 namespace OpenCart414Test.Pages.AdminPanel
 {
-    class TaxClassesPage : SideMenuComponent
+    public class TaxClassesPage : SideMenuComponent
     {
         IWebElement EditTaxableGoodsButton { get { return driver.FindElement(By.XPath("//td[contains(text(), 'Taxable Goods')]/following-sibling::td/a")); } }
         IWebElement EditDownloadableProductsButton { get { return driver.FindElement(By.XPath("//td[contains(text(), 'Downloadable Products')]/following-sibling::td/a")); } }
@@ -24,24 +25,25 @@ namespace OpenCart414Test.Pages.AdminPanel
                 TaxClassComponent TaxClass = new TaxClassComponent();
                 TaxClass.CheckBox = item.FindElement(By.XPath("./td[@class='text-center']"));
                 TaxClass.ClassTitle = item.FindElement(By.XPath("./td[@class='text-left']")).Text;
-                TaxClass.Action = item.FindElement(By.XPath("./td[@class='text-right']/a"));
+                TaxClass.EditButton = item.FindElement(By.XPath("./td[@class='text-right']/a"));
                 TaxClasses.Add(TaxClass);
             }
         }
 
-        public void ClickTaxClassEditButton(string taxClass)
+        void ClickTaxClassEditButton(string taxClass)
         {
             foreach (TaxClassComponent item in TaxClasses)
             {
-                if (item.ClassTitle.Contains(taxClass))
-                    Console.WriteLine(item.ClassTitle);
-                item.Action.Click();
+                if (item.ClassTitle == taxClass)
+                    item.EditButton.Click();
             }
         }
 
-        public void EditTaxClass()
+        public void EditTaxClass(string taxClass, TaxRate taxRate)
         {
-
+            ClickTaxClassEditButton(taxClass);
+            EditTaxClassPage editTaxClassPage = new EditTaxClassPage(driver);
+            editTaxClassPage.AddTaxRule(taxRate);
         }
     }
 

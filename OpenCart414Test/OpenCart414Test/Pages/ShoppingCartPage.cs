@@ -27,6 +27,9 @@ namespace OpenCart414Test.Pages
         public IWebElement DiscountCode //??????????
         { get { return driver.FindElement(By.Id("accordion")); } }
 
+        ShippingAndTaxesComponent shippingAndTaxesDetails;
+
+
         public IList<ShoppingCartComponent> shopppingcartComponents;
         public TablePriceComponent tablePrice;
 
@@ -172,6 +175,11 @@ namespace OpenCart414Test.Pages
             return new ShoppingCartEmptyPage(driver);
         }
 
+        public  SelectShippingMethodComponent ApplySippingAndTaxes(ShippingDetails details)
+        {
+            shippingAndTaxesDetails = new ShippingAndTaxesComponent(driver);
+            return shippingAndTaxesDetails.ApplyShippingDetails(details);
+        }
     }
 }
     

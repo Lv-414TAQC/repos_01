@@ -20,13 +20,13 @@ namespace OpenCart414Test.Pages.AdminPanel
             MenuButton.Click();
             foreach (IWebElement item in driver.FindElements(By.CssSelector("li[id]>a.parent")))
             {
-                MenuComponent menu = new MenuComponent(driver);
+                MenuComponent menu = new MenuComponent();
                 menu.MenuButton = item;
                 menu.MenuLabel = item.FindElement(By.XPath("./span")).Text;
                 Menus.Add(menu.MenuLabel, menu);
 
             }
-            MenuButton.Click();
+            //MenuButton.Click();
         }
 
         public void ClickMenu(string targetMenu)
@@ -38,7 +38,7 @@ namespace OpenCart414Test.Pages.AdminPanel
         public void ClickLocalizationMenu()
         {
             ClickSystemMenu();
-            MenuComponent Localization = new MenuComponent(driver);
+            MenuComponent Localization = new MenuComponent();
             Localization.MenuButton = driver.FindElement(By.XPath("//a[contains(text(), 'Localisation')]"));
             Localization.MenuLabel = Localization.MenuButton.Text;
             Localization.MenuButton.Click();
@@ -47,7 +47,7 @@ namespace OpenCart414Test.Pages.AdminPanel
         public GeoZonesPage GoToGeoZonePage()
         {
             ClickLocalizationMenu();
-            MenuComponent GeoZones = new MenuComponent(driver);
+            MenuComponent GeoZones = new MenuComponent();
             GeoZones.MenuButton = driver.FindElement(By.XPath("//a[contains(text(), 'Geo Zones')]"));
             GeoZones.MenuLabel = GeoZones.MenuButton.Text;
             GeoZones.MenuButton.Click();
@@ -56,8 +56,8 @@ namespace OpenCart414Test.Pages.AdminPanel
 
         public void ClickTaxesMenu()
         {
-            ClickLocalizationMenu();
-            MenuComponent Taxes = new MenuComponent(driver);
+            ClickSystemMenu();
+            MenuComponent Taxes = new MenuComponent();
             Taxes.MenuButton = driver.FindElement(By.XPath("//a[contains(text(), 'Taxes')]"));
             Taxes.MenuLabel = Taxes.MenuButton.Text;
             Taxes.MenuButton.Click();
@@ -66,25 +66,26 @@ namespace OpenCart414Test.Pages.AdminPanel
         public TaxRatesPage GoToTaxRatesPage()
         {
             ClickTaxesMenu();
-            MenuComponent TaxRates = new MenuComponent(driver);
+            MenuComponent TaxRates = new MenuComponent();
             TaxRates.MenuButton = driver.FindElement(By.XPath("//a[contains(text(), 'Tax Rates')]"));
             TaxRates.MenuLabel = TaxRates.MenuButton.Text;
             TaxRates.MenuButton.Click();
             return new TaxRatesPage(driver);
         }
 
-        public  ClickTaxClassesMenu()
+        public TaxClassesPage GoToTaxClassesPage()
         {
-            ClickTaxesMenu();
-            MenuComponent TaxClasses = new MenuComponent(driver);
+            ClickSystemMenu();
+            MenuComponent TaxClasses = new MenuComponent();
             TaxClasses.MenuButton = driver.FindElement(By.XPath("//a[contains(text(), 'Tax Classes')]"));
             TaxClasses.MenuLabel = TaxClasses.MenuButton.Text;
             TaxClasses.MenuButton.Click();
+            return new TaxClassesPage(driver);
         }
 
         public void ClickSubMenu(string submenu)
         {
-            MenuComponent Submenu = new MenuComponent(driver);
+            MenuComponent Submenu = new MenuComponent();
             string path = String.Format(@"//a[contains(text(), {0})]", submenu);
             Submenu.MenuButton = driver.FindElement(By.XPath(path));
             Submenu.MenuLabel = Submenu.MenuButton.Text;
@@ -94,7 +95,7 @@ namespace OpenCart414Test.Pages.AdminPanel
         public CurrenciesPage ClickCurrenciesMenu()
         {
             ClickLocalizationMenu();
-            MenuComponent Currencies = new MenuComponent(driver);
+            MenuComponent Currencies = new MenuComponent();
             Currencies.MenuButton = driver.FindElement(By.XPath("//a[contains(text(), 'Currencies')]"));
             Currencies.MenuLabel = Currencies.MenuButton.Text;
             Currencies.MenuButton.Click();

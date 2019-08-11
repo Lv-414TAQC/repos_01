@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OpenCart414Test.Data
 {
-    class ShippingDetails
+    public class ShippingDetails
     {
         public string Country { get; set; }
         public string Region { get; set; }
