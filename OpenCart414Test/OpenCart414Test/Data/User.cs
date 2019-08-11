@@ -1,5 +1,4 @@
-﻿    
-using System;
+﻿  using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -98,48 +97,6 @@ namespace OpenCart414Test.Data
         public string Password { get; private set; }
         public bool Subscribe { get; private set; }
 
-        // 1. Use Constructor
-        //public User(string firstname, string lastname,
-        //        string email, string telephone, string address1,
-        //        string city, string postcode, string country,
-        //        string region, string password, bool subscribe)
-        //{
-        //    Firstname = firstname;
-        //    Lastname = lastname;
-        //    Email = email;
-        //    Telephone = telephone;
-        //    Fax = "";                 // use string.Empty;
-        //    Company = "";             // use string.Empty;
-        //    Address1 = address1;
-        //    Address2 = "";            // use string.Empty;
-        //    City = city;
-        //    Postcode = postcode;
-        //    Country = country;
-        //    RegionState = region;
-        //    Password = password;
-        //    Subscribe = subscribe;
-        //}
-
-        // 2. Default Constructor and Setters
-        //public User()
-        // 4. Add Static Factory
-        //private User()
-        //{
-        //    Firstname = string.Empty;
-        //    Lastname = string.Empty;
-        //    Email = string.Empty;
-        //    Telephone = string.Empty;
-        //    Fax = string.Empty;
-        //    Company = string.Empty;
-        //    Address1 = string.Empty;
-        //    Address2 = string.Empty;
-        //    City = string.Empty;
-        //    Postcode = string.Empty;
-        //    Country = string.Empty;
-        //    RegionState = string.Empty;
-        //    Password = string.Empty;
-        //    Subscribe = true;
-        //}
 
         // 5. Add Builder
         private User()

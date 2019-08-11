@@ -9,27 +9,57 @@ namespace OpenCart414Test.Pages
 {
     public class LoginPage : RightLogoutPart
     {
+        public IWebElement EmailInputField
+        { get { return driver.FindElement(By.Id("input-email")); } }
+        public IWebElement PasswordInputField
+        { get { return driver.FindElement(By.Id("input-password")); } }
+        public IWebElement LoginButton
+        { get { return driver.FindElement(By.CssSelector("input.btn.btn-primary")); } }
         public LoginPage(IWebDriver driver) : base(driver)
         {
         }
 
         // Page Object
+        public void ClearEmailField()
+        {
+            EmailInputField.Clear();
+        }
+        public void TypeIntoEmailField(string email)
+        {
+            EmailInputField.SendKeys(email);
+        }
+        public void ClearPasswordField()
+        {
+            PasswordInputField.Clear();
+        }
+        public void TypeIntoPasswordField(string passWord)
+        {
+            PasswordInputField.SendKeys(passWord);
+        }
+        public void ClickLoginButton()
+        {
+            LoginButton.Click();
+        }
 
         // Functional
+        public void InputEmail(string email)
+        {
+            ClearEmailField();
+            TypeIntoEmailField(email);
+        }
+        public void InputPassword(string passWord)
+        {
+            ClearPasswordField();
+            TypeIntoPasswordField(passWord);
+        }
+        // Business Logic
         public AccountPage LoggingIn(string email, string passWord)
         {
             string testerPassword = Environment.GetEnvironmentVariable(passWord);
-            IWebElement listUpperRight = driver.FindElement(By.ClassName("list-inline"));
-            listUpperRight.FindElement(By.ClassName("dropdown-toggle")).Click();
-            listUpperRight.FindElement(By.LinkText("Login")).Click();
-            driver.FindElement(By.Id("input-email")).Clear();
-            driver.FindElement(By.Id("input-email")).SendKeys(email);
-            driver.FindElement(By.Id("input-password")).Clear();
-            driver.FindElement(By.Id("input-password")).SendKeys(testerPassword);
-            driver.FindElement(By.CssSelector("input.btn.btn-primary")).Click();
-            GotoHomePage();
+            InputEmail(email);
+            InputPassword(testerPassword);
+            ClickLoginButton();
             return new AccountPage(driver);
         }
-        // Business Logic
     }
 }
