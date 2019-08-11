@@ -176,9 +176,21 @@
     <Compile Include="Pages\ChangePasswordPage.cs" />
     <Compile Include="Pages\UnsuccessfullyRegisterPage.cs" />
     <Compile Include="Tests\ChangePasswordTest.cs" />
+=======
+    <Compile Include="Data\GeoZone.cs" />
+    <Compile Include="Data\GeoZonesRepository.cs" />
+    <Compile Include="Data\TaxClassesRepository.cs" />
+    <Compile Include="Data\TaxRate.cs" />
+    <Compile Include="Data\TaxRateRepository.cs" />
+    <Compile Include="Pages\AdminPanel\EditTaxClassPage.cs" />
+    <Compile Include="Tests\CurrencyAditionalTaxesTests.cs" />
+    <Compile Include="Tests\CurrencyShippingRateTests.cs" />
+>>>>>>> 476597002b138ef753c2ca96535baf335e7bfdec
     <Compile Include="Tests\DataBaseUtils.cs" />
     <Compile Include="Data\ApplicationRepository.cs" />
     <Compile Include="Data\Currency.cs" />
+    <Compile Include="Data\ShippingDetails.cs" />
+    <Compile Include="Data\ShippingDetailsRepository.cs" />
     <Compile Include="Data\ShoppingCartData.cs" />
     <Compile Include="Data\IUser.cs" />
     <Compile Include="Data\LoggedMyAccount.cs" />
@@ -194,6 +206,21 @@
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Pages\AccountLogoutPage.cs" />
     <Compile Include="Pages\AccountPage.cs" />
+    <Compile Include="Pages\AdminPanel\AddGeoZonePage.cs" />
+    <Compile Include="Pages\AdminPanel\AddTaxRatePage.cs" />
+    <Compile Include="Pages\AdminPanel\AdminHomePage.cs" />
+    <Compile Include="Pages\AdminPanel\AdminLoginPage.cs" />
+    <Compile Include="Pages\AdminPanel\CurrenciesPage.cs" />
+    <Compile Include="Pages\AdminPanel\CurrencyComponent.cs" />
+    <Compile Include="Pages\AdminPanel\DropDownMenuComponent.cs" />
+    <Compile Include="Pages\AdminPanel\GeoZoneComponent.cs" />
+    <Compile Include="Pages\AdminPanel\GeoZonesPage.cs" />
+    <Compile Include="Pages\AdminPanel\HeaderPart.cs" />
+    <Compile Include="Pages\AdminPanel\MenuComponent.cs" />
+    <Compile Include="Pages\AdminPanel\SideMenuComponent.cs" />
+    <Compile Include="Pages\AdminPanel\TaxClassComponent.cs" />
+    <Compile Include="Pages\AdminPanel\TaxClassesPage.cs" />
+    <Compile Include="Pages\AdminPanel\TaxRatesPage.cs" />
     <Compile Include="Pages\BreadCrumbsPart.cs" />
     <Compile Include="Pages\CartContainerComponent.cs" />
     <Compile Include="Pages\CartEmptyContainerComponent.cs" />
@@ -201,6 +228,7 @@
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\ProductComponent.cs" />
+    <Compile Include="Pages\ProductListContainerComponent.cs" />
     <Compile Include="Pages\ProductsContainerComponent.cs" />
     <Compile Include="Pages\ProductsCriteriaComponent.cs" />
     <Compile Include="Pages\RegisterUserPage.cs" />
@@ -210,7 +238,8 @@
     <Compile Include="Pages\SearchCriteriaPart.cs" />
     <Compile Include="Pages\SearchSuccessPage.cs" />
     <Compile Include="Pages\SearchUnsuccessPage.cs" />
-    <Compile Include="Pages\ProductListContainerComponent.cs" />
+    <Compile Include="Pages\SelectShippingMethodComponent.cs" />
+    <Compile Include="Pages\ShippingAndTaxesComponent.cs" />
     <Compile Include="Pages\ShoppingCartEmptyPage.cs" />
     <Compile Include="Pages\ShoppingCartMessage.cs" />
     <Compile Include="Pages\ShoppingCartPage.cs" />
@@ -227,6 +256,10 @@
     <Compile Include="Pages\WishListPart.cs" />
     <Compile Include="Tests\EmptyDataTest.cs" />
     <Compile Include="Tests\IncorrectDataTest.cs" />
+    <Compile Include="Tests\CurrencyConversionTests.cs" />
+    <Compile Include="Tests\CurrencyInShoppingCartTests.cs" />
+    <Compile Include="Tests\CurrencyProductPriceFormatTests.cs" />
+    <Compile Include="Tests\CurrencyWishListTests.cs" />
     <Compile Include="Tests\ListGridVerifyTest.cs" />
     <Compile Include="Tests\SearchByCategoryTest.cs" />
     <Compile Include="Tests\RegisterUserTest.cs" />
@@ -237,8 +270,8 @@
     <Compile Include="Tests\WishListRemoveTest.cs" />
     <Compile Include="Tests\SearchTest.cs" />
     <Compile Include="Tests\TestRunner.cs" />
-    <Compile Include="Tests\WishListToCartTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\WishListToCartTest.cs" />
     <Compile Include="Tools\RegularExpressions.cs" />
   </ItemGroup>
   <ItemGroup>

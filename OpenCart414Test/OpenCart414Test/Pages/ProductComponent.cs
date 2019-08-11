@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
@@ -23,6 +24,7 @@ namespace OpenCart414Test.Pages
         { get { return productLayout.FindElement(By.CssSelector(".fa.fa-heart")); } }
         public IWebElement AddToCompareButton
         { get { return productLayout.FindElement(By.CssSelector(".fa.fa-exchange")); } }
+        Dictionary<string, decimal> prices;
 
         
         public ProductComponent(IWebElement productLayout)
@@ -93,6 +95,25 @@ namespace OpenCart414Test.Pages
         public void AddItemToWishList()
         {
             ClickAddToWishButton();
+        }
+
+        public string GetNewPrice()
+        {
+            string newPrice = Price.FindElement(By.CssSelector("span[class='price-new']")).Text;
+            return newPrice;
+        }
+
+        public string GetOldPrice()
+        {
+            string oldPrice = Price.FindElement(By.CssSelector("span[class='price-old']")).Text;
+            return oldPrice;
+        }
+
+        public string GetExTax()
+        {
+            string exTax = Regex.Match( Price.FindElement(By.CssSelector("span[class='price-tax']")).Text, @"[\$£]?\d+\.\d{2}\€?").Value;
+
+            return exTax;
         }
     }
 }

@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CurrencyTests.Stetsula.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenCart414Test.Data;
 
-namespace OpenCartTests.Stetsula.Pages
+namespace OpenCart414Test.Pages.AdminPanel
 {
-    class GeoZonesPage : HeaderPart
+    public class GeoZonesPage : SideMenuComponent
     {
-        SideMenuComponent SideMenu;
-        public IWebElement AddNewButton { get { return Driver.FindElement(By.CssSelector("a[data-original-title='Add New']")); } }
-        public IWebElement DeleteButtton { get { return Driver.FindElement(By.CssSelector("button[data-original-title='Delete']")); } }
+        public IWebElement AddNewButton { get { return driver.FindElement(By.CssSelector("a[data-original-title='Add New']")); } }
+        public IWebElement DeleteButtton { get { return driver.FindElement(By.CssSelector("button[data-original-title='Delete']")); } }
         public IList<GeoZoneComponent> GeoZones = new List<GeoZoneComponent>();
 
-        public GeoZonesPage(IWebDriver driver) : base (driver)
+        public GeoZonesPage(IWebDriver driver) : base(driver)
         {
             GetGeoZones();
 
@@ -22,7 +21,7 @@ namespace OpenCartTests.Stetsula.Pages
 
         public void GetGeoZones()
         {
-            foreach (IWebElement item in Driver.FindElements(By.CssSelector("form tbody tr")))
+            foreach (IWebElement item in driver.FindElements(By.CssSelector("form tbody tr")))
             {
                 GeoZoneComponent GeoZone = new GeoZoneComponent();
                 GeoZone.Checkbox = item.FindElement(By.XPath("./td/input"));
@@ -48,15 +47,16 @@ namespace OpenCartTests.Stetsula.Pages
         {
             SelectGeoZone(geoZone);
             DeleteButtton.Click();
-            Driver.SwitchTo().Alert().Accept();
+            driver.SwitchTo().Alert().Accept();
         }
 
-        public void AddNewGeoZone(string name, string description, string country)
+        public void AddNewGeoZone(GeoZone geoZone)
         {
             AddNewButton.Click();
-            AddGeoZonePage GeoZone = new AddGeoZonePage(Driver);
-            GeoZone.AddNewGeoZone(name, description, country);
+            AddGeoZonePage GeoZone = new AddGeoZonePage(driver);
+            GeoZone.AddNewGeoZone(geoZone);
 
         }
     }
 }
+

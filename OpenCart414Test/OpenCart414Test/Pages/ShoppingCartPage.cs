@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using OpenCart414Test.Data;
 using OpenCart414Test.Pages;
 using System.Threading;
+using OpenCart414Test.Tools;
 
 namespace OpenCart414Test.Pages
 {
@@ -15,7 +16,7 @@ namespace OpenCart414Test.Pages
 
     {
         private const string SHOPPING_CART_XPATH = "//div[@class = 'table-responsive']/table/tbody";
-        private const string TABLE_PRICE_COMPONENT_XPATH = "//div[@class='row']/div/table/tbody";
+        private const string TABLE_PRICE_COMPONENT_XPATH = "//div[@class='row']/div/table/tbody/tr/td";
         //
 
         public IWebElement ShoppingCartTitle
@@ -24,8 +25,11 @@ namespace OpenCart414Test.Pages
         { get { return driver.FindElement(By.CssSelector("button.btn.btn-primary")); } }
         public IWebElement ChecoutButton
         { get { return driver.FindElement(By.CssSelector("a.btn.btn-primary")); } }
-        public IWebElement DiscountCode //??????????
+        public IWebElement DiscountCode 
         { get { return driver.FindElement(By.Id("accordion")); } }
+
+        ShippingAndTaxesComponent shippingAndTaxesDetails;
+
 
         public IList<ShoppingCartComponent> shopppingcartComponents;
         public TablePriceComponent tablePrice;
@@ -115,7 +119,16 @@ namespace OpenCart414Test.Pages
             }
             return result;
         }
-
+        public RegularExpressions GetRegularExpressions()
+        {
+            return new RegularExpressions();
+        }
+        public decimal GetTablePriceTotal()
+        {
+            CreateTablePriceComponent(By.XPath(TABLE_PRICE_COMPONENT_XPATH));
+            Console.WriteLine(GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetTotal())); //Only for presentation
+            return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetTotal());
+        }
 
 
         protected TablePriceComponent GetTablePriceComponent()
@@ -133,16 +146,23 @@ namespace OpenCart414Test.Pages
             tablePrice = new TablePriceComponent(driver, searchLocator);
             return GetTablePriceComponent();
         }
-        //public void EnterVAlidDataQuantity(Product product)
+        //public string EnterData(Product product, string data)
         //{
-        //    GetShoppingCartComponentByName(product.Title).SandKeysQuantityField(ShoppingCartData.VALID_CHECK);
+        //    GetShoppingCartComponentByName(product.Title).GetUnitPrice();
+        //    return GetShoppingCartComponentByName(product.Title).GetTextQuantityFieldString();
 
         //}
-        //public int EnterZeroQuantity(Product product, string data)
-        //{
-        //    GetShoppingCartComponentByName(product.Title).SandKeysQuantityField(data);
-        //    return GetShoppingCartComponentByName(product.Title).GetTextQuantityField();
-        //}
+        public string EnterData(Product product, string data)
+        {
+            GetShoppingCartComponentByName(product.Title).SandKeysQuantityField(data);
+            return GetShoppingCartComponentByName(product.Title).GetTextQuantityFieldString();
+
+        }
+        public int EnterDataForSum(Product product, string data)
+        {
+            GetShoppingCartComponentByName(product.Title).SandKeysQuantityField(data);
+            return GetShoppingCartComponentByName(product.Title).GetTextQuantityField();
+        }
         public ShoppingCartEmptyPage ClearQuantity(Product product)
         {
             GetShoppingCartComponentByName(product.Title).ClearQuantityField();
@@ -151,8 +171,9 @@ namespace OpenCart414Test.Pages
         }
         // Business Logic
 
-        public ShoppingCartMessage UpdateMessage(Product product)
+        public ShoppingCartMessage UpdateMessage(Product product, string data)
         {
+            EnterData(product, data);
             GetShoppingCartComponentByName(product.Title).ClickUpdateButton();
             return new ShoppingCartMessage(driver);
         }
@@ -172,6 +193,11 @@ namespace OpenCart414Test.Pages
             return new ShoppingCartEmptyPage(driver);
         }
 
+        public  SelectShippingMethodComponent ApplySippingAndTaxes(ShippingDetails details)
+        {
+            shippingAndTaxesDetails = new ShippingAndTaxesComponent(driver);
+            return shippingAndTaxesDetails.ApplyShippingDetails(details);
+        }
     }
 }
     

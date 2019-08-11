@@ -16,7 +16,7 @@ namespace OpenCart414Test.Tests
         {
             WishListEmptyPage wishListEmptyPage = wishListMessagePage
                 .RemoveLastItemFromWishList(productToCart);
-            wishListEmptyPage.GetCartContainerComponent()
+            wishListEmptyPage.OpenCartButton()
                 .RemoveProductByName(productToCart);
             AccountLogoutPage accountLogoutPage = wishListEmptyPage
                 .Logout();
@@ -45,7 +45,7 @@ namespace OpenCart414Test.Tests
                 .AddWishListComponentToCart(productToCart);
             Thread.Sleep(2000); //for presentation only
             Assert.IsTrue(wishListMessagePage.IsWishListAlertMessageDisplayed());
-            Assert.IsTrue(wishListMessagePage.GetCartContainerComponent()
+            Assert.IsTrue(wishListMessagePage.OpenCartButton()
                 .GetCartComponentNames().Contains(productToCart.Title));
         }
     }

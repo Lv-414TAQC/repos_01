@@ -254,6 +254,11 @@ namespace OpenCart414Test.Pages
             return result;
         }
 
+        public void AddProductToWishList(Product product)
+        {
+            GetProductComponentByName(product.Title).ClickAddToWishButton();
+        }
+
         // Business Logic
 
         //public string GetProductComponentPriceByProduct(Product product)
