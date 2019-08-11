@@ -10,7 +10,7 @@ namespace OpenCart414Test.Pages
 {
     public class TopPart
     {
-        protected const string TAG_ATTRIBUTE_VALUE = "value";
+        public const string TAG_ATTRIBUTE_VALUE = "value";
         protected const string TAG_ATTRIBUTE_SRC = "src";
         //
         protected const string LIST_CURENCIES_CSSSELECTOR = "div.btn-group.open ul.dropdown-menu li";
@@ -38,6 +38,7 @@ namespace OpenCart414Test.Pages
         { get { return driver.FindElement(By.CssSelector("#cart > button")); } }
         //
         private DropdownComponent dropdownComponent;
+      
         public IList<IWebElement> TopMenu;  // TODO { get; private set; }
 
         public TopPart(IWebDriver driver)
@@ -50,7 +51,6 @@ namespace OpenCart414Test.Pages
         private void InitElements()
         {
             dropdownComponent = null;
-            // TopMenu =... // TODO
         }
 
         private void CheckElements()
@@ -147,17 +147,16 @@ namespace OpenCart414Test.Pages
         // SearchButton
         public void ClickSearchButton()
         {
-            SearchButton.Click();
-            
+            SearchButton.Click(); 
         }
+
+
         //public SearchUnsuccessPage ClickSearchButtonD() //Доробити як бізнес логіку
         //{
         //    SearchButton.Click();
         //    return new SearchUnsuccessPage(driver);
 
         //}
-
-
 
         // CartButton
         public string GetCartButtonText()
@@ -204,7 +203,17 @@ namespace OpenCart414Test.Pages
             dropdownComponent = null;
         }
 
-        // TopMenu
+        internal CartContainerComponent GetCartContainerComponent()
+        {
+            ClickCartButton();
+            return new CartContainerComponent(driver);
+        }
+
+        internal CartEmptyContainerComponent GetCartEmptyContainerComponent()
+        {
+            ClickCartButton();
+            return new CartEmptyContainerComponent(driver);
+        }
 
         // Functional
         protected void MakeTopSearch(string searchText)
@@ -214,6 +223,7 @@ namespace OpenCart414Test.Pages
             SetSearchField(searchText);
             ClickSearchButton();
         }
+
 
         // CurrencyDropdownComponent
         private void OpenCurrencyDropdownComponent()
@@ -270,24 +280,13 @@ namespace OpenCart414Test.Pages
             return new HomePage(driver);
         }
         //public SearchSuccessPage SearchSuccessfully(string searchText)
-        //public SearchSuccessPage SearchSuccessfully()
-        //{
-        //    //MakeTopSearch(searchCriteria.SearchValue);
-        //    //MakeTopSearch(searchText);
-        //    return new SearchSuccessPage(driver);
-        //}
-        //public SearchSuccessPage SearchSuccessfully(string searchText)
         public SearchSuccessPage SearchSuccessfully(SearchCriteria searchCriteria)
         {
             MakeTopSearch(searchCriteria.SearchValue);
             //MakeTopSearch(searchText);
             return new SearchSuccessPage(driver);
         }
-        public SearchSuccessPage SearchTopSuccessfully()
-        {
-            MakeTopSearch("Mac");
-            return new SearchSuccessPage(driver);
-        }
+
         //public SearchUnsuccessPage SearchUnsuccessfully(string searchText)
         public SearchUnsuccessPage SearchUnsuccessfully(SearchCriteria searchCriteria)
         {
@@ -313,10 +312,17 @@ namespace OpenCart414Test.Pages
             ClickLoggedMyAccountByPartialName(LoggedMyAccount.LOGOUT);
             return new AccountLogoutPage(driver);
         }
+
         public WishListPage GotoWishListPage()
         {
             ClickWishList();
             return new WishListPage(driver);
+        }
+
+        public ShoppingCartPage GotoShoppingCartPage()
+        {
+            ClickShoppingCart();
+            return new ShoppingCartPage(driver);
         }
     }
 }

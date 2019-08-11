@@ -64,5 +64,29 @@ namespace OpenCart414Test.Pages
         }
 
 
+        //internal CartContainerComponent GetCartContainerComponent()
+        //{
+        //    ClickCartButton();
+        //    return new CartContainerComponent(driver);
+        //}
+
+        //internal CartEmptyContainerComponent GetCartEmptyContainerComponent()
+        //{
+        //    ClickCartButton();
+        //    return new CartEmptyContainerComponent(driver);
+        //}
+
+        public void AddProductToCart(Product product)
+        {
+            productsContainerComponent.GetProductComponentByName(product.Title)
+                .ClickAddToCartButton();  
+        }
+
+       /* internal CartContainerComponent OpenCartButton()
+        {
+            return new CartContainerComponent(driver);
+        }*/
+
+
     }
 }

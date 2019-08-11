@@ -1,30 +1,27 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
     public class WishListComponentContainer
     {
-        private const string WISHLIST_COMPONENT_XPATH = "//div[@class='table-responsive']/table/tbody/tr";
+        private const string WishComponentXPath = "//div[@class='table-responsive']/table/tbody/tr";
 
         protected IWebDriver driver;
 
-        public IWebElement TableHeadImage
-        { get { return driver.FindElement(By.XPath("//td[text()='Image']")); } }
-        public IWebElement TableHeadProductName
-        { get { return driver.FindElement(By.XPath("//td[text()='Product Name']")); } }
-        public IWebElement TableHeadModel
-        { get { return driver.FindElement(By.XPath("//td[text()='Model']")); } }
-        public IWebElement TableHeadStock
-        { get { return driver.FindElement(By.XPath("//td[text()='Stock']")); } }
-        public IWebElement TableHeadUnitPrice
-        { get { return driver.FindElement(By.XPath("//td[text()='Unit Price']")); } }
-        public IWebElement TableHeadAction
-        { get { return driver.FindElement(By.XPath("//td[text()='Action']")); } }
+        public IWebElement TableHeadImage =>
+        driver.FindElement(By.XPath("//td[text()='Image']"));
+        public IWebElement TableHeadProductName =>
+        driver.FindElement(By.XPath("//td[text()='Product Name']"));
+        public IWebElement TableHeadModel =>
+        driver.FindElement(By.XPath("//td[text()='Model']"));
+        public IWebElement TableHeadStock =>
+        driver.FindElement(By.XPath("//td[text()='Stock']"));
+        public IWebElement TableHeadUnitPrice =>
+        driver.FindElement(By.XPath("//td[text()='Unit Price']"));
+        public IWebElement TableHeadAction =>
+        driver.FindElement(By.XPath("//td[text()='Action']"));
 
         private IList<WishListComponent> TableRows;
 
@@ -36,7 +33,7 @@ namespace OpenCart414Test.Pages
         private void InitElements()
         {
             TableRows = new List<WishListComponent>();
-            foreach (IWebElement current in driver.FindElements(By.XPath(WISHLIST_COMPONENT_XPATH)))
+            foreach (IWebElement current in driver.FindElements(By.XPath(WishComponentXPath)))
             {
                 TableRows.Add(new WishListComponent(current));
             }
@@ -57,7 +54,6 @@ namespace OpenCart414Test.Pages
             }
             return wishListComponentNames;
         }
-
         public WishListComponent GetWishListComponentByName(string wishListComponentName)
         {
             WishListComponent result = null;
@@ -71,17 +67,14 @@ namespace OpenCart414Test.Pages
             }
             if (result == null)
             {
-                // TODO Develop Custom Exception
                 throw new Exception("ProductName: " + wishListComponentName + " not Found.");
             }
             return result;
         }
-
         public string GetWishListComponentUnitPriceByName(string wishListComponentName)
         {
             return GetWishListComponentByName(wishListComponentName).GetWishListComponentUnitPriceText();
         }
-
         public string GetWishListComponentModelByName(string wishListComponentName)
         {
             return GetWishListComponentByName(wishListComponentName).GetWishListComponentModelText();
@@ -90,17 +83,14 @@ namespace OpenCart414Test.Pages
         {
             return GetWishListComponentByName(wishListComponentName).GetWishListComponentStockText();
         }
-
         public void ClickWishListComponentAddToCartButtonByName(string wishListComponentName)
         {
             GetWishListComponentByName(wishListComponentName).ClickWishListComponentAddToCartButton();
         }
-
         public void ClickWishListComponentRemoveButtonByName(string wishListComponentName)
         {
             GetWishListComponentByName(wishListComponentName).ClickWishListComponentRemoveButton();
         }
-
         public int GetWishListComponentsCount()
         {
             return GetWishListComponents().Count;

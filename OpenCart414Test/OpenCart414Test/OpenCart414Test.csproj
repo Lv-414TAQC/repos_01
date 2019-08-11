@@ -69,6 +69,7 @@
     <Compile Include="Tests\DataBaseUtils.cs" />
     <Compile Include="Data\ApplicationRepository.cs" />
     <Compile Include="Data\Currency.cs" />
+    <Compile Include="Data\ShoppingCartData.cs" />
     <Compile Include="Data\IUser.cs" />
     <Compile Include="Data\LoggedMyAccount.cs" />
     <Compile Include="Data\Product.cs" />
@@ -76,20 +77,22 @@
     <Compile Include="Data\SearchCriteria.cs" />
     <Compile Include="Data\SearchCriteriaRepository.cs" />
     <Compile Include="Data\SearchDTO.cs" />
+    <Compile Include="Data\SortShowCriteria.cs" />
+    <Compile Include="Data\SortShowRepository.cs" />
     <Compile Include="Data\UnloggedMyAccount.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Pages\AccountLogoutPage.cs" />
     <Compile Include="Pages\AccountPage.cs" />
-    <Compile Include="Pages\BreadCrumPart.cs" />
-    <Compile Include="Pages\CartProductContainer.cs" />
+    <Compile Include="Pages\BreadCrumbsPart.cs" />
+    <Compile Include="Pages\CartContainerComponent.cs" />
+    <Compile Include="Pages\CartEmptyContainerComponent.cs" />
     <Compile Include="Pages\DropdownComponent.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\ProductComponent.cs" />
     <Compile Include="Pages\ProductsContainerComponent.cs" />
     <Compile Include="Pages\ProductsCriteriaComponent.cs" />
-    <Compile Include="Pages\RegisterPage.cs" />
     <Compile Include="Pages\RegisterUserPage.cs" />
     <Compile Include="Pages\RightLogInPart.cs" />
     <Compile Include="Pages\RightLogOutPart.cs" />
@@ -97,11 +100,13 @@
     <Compile Include="Pages\SearchCriteriaPart.cs" />
     <Compile Include="Pages\SearchSuccessPage.cs" />
     <Compile Include="Pages\SearchUnsuccessPage.cs" />
-    <Compile Include="Pages\ShoppingCartContainerComponent.cs" />
+    <Compile Include="Pages\ProductListContainerComponent.cs" />
     <Compile Include="Pages\ShoppingCartEmptyPage.cs" />
+    <Compile Include="Pages\ShoppingCartMessage.cs" />
     <Compile Include="Pages\ShoppingCartPage.cs" />
     <Compile Include="Pages\ShoppingCartPageComponent.cs" />
     <Compile Include="Pages\SuccessfullyRegisterPage.cs" />
+    <Compile Include="Pages\ShoppingCartComponent.cs" />
     <Compile Include="Pages\TablePriceComponent.cs" />
     <Compile Include="Pages\TopPart.cs" />
     <Compile Include="Pages\WishListComponent.cs" />
@@ -111,17 +116,22 @@
     <Compile Include="Pages\WishListMessagePage.cs" />
     <Compile Include="Pages\WishListPage.cs" />
     <Compile Include="Pages\WishListPart.cs" />
-    <Compile Include="Tests\GridListTest.cs" />
+    <Compile Include="Tests\ListGridVerifyTest.cs" />
     <Compile Include="Tests\SearchByCategoryTest.cs" />
     <Compile Include="Tests\RegisterUserTest.cs" />
     <Compile Include="Tests\SearchByDefaultCategoryTest.cs" />
     <Compile Include="Tests\AddToCartTests.cs" />
+
+    <Compile Include="Tests\ShoppingCartTest.cs" />
+
+
     <Compile Include="Tests\WishListAddTest.cs" />
     <Compile Include="Tests\WishListRemoveTest.cs" />
     <Compile Include="Tests\SearchTest.cs" />
     <Compile Include="Tests\TestRunner.cs" />
     <Compile Include="Tests\WishListToCartTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\RegularExpressions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -129,9 +139,7 @@
   <ItemGroup>
     <Content Include="Resources\Convention.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tools\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

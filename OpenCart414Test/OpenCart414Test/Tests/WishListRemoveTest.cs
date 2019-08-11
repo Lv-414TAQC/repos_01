@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading;
 using NUnit.Framework;
 using OpenCart414Test.Data;
 using OpenCart414Test.Pages;
@@ -24,17 +19,17 @@ namespace OpenCart414Test.Tests
         }
 
         // DataProvider
-        private static readonly object[] ProductToTestOn =
+        private static readonly object[] DataToTestOn =
         {
-            new object[] { ProductRepository.GetIPhone() },
+            new object[] { ProductRepository.GetIPhone(), UserRepository.Get().WishListTester() },
         };
 
-        [Test, TestCaseSource(nameof(ProductToTestOn))]
-        public void CheckRemoving(Product productToRemove)
+        [Test, TestCaseSource(nameof(DataToTestOn))]
+        public void CheckRemoving(Product productToRemove, IUser user)
         {
             HomePage homePage = LoadApplication()
                 .GotoLoginPage()
-                .LoggingIn("roman_my@ukr.net", "TESTER_PASWORD")
+                .LoggingIn(user.Email, user.Password)
                 .GotoHomePage();
             Thread.Sleep(2000); //for presentation only
             homePage.getProductComponentsContainer()
@@ -43,7 +38,7 @@ namespace OpenCart414Test.Tests
             Thread.Sleep(2000); //for presentation only
             wishListMessageEmptyPage = homePage
                 .GotoWishListPage()
-                .removeLastItemFromWishList(productToRemove);
+                .RemoveLastItemFromWishList(productToRemove);
             Thread.Sleep(2000); //for presentation only
             Assert.IsTrue(wishListMessageEmptyPage.IsWishListAlertMessageDisplayed());
             Assert.IsTrue(wishListMessageEmptyPage.IsWishListIsEmptyParagraphDisplayed());
