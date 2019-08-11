@@ -21,19 +21,20 @@ namespace OpenCart414Test.Pages
         //public IWebElement QuantityField
         //{ get { return product.FindElement(By.CssSelector("input:not(#input-coupon,#input-postcode,#input-voucher).form-control:not(.input-lg)")); } }
         public IWebElement QuantityField
-        { get { return product.FindElement(By.CssSelector("input[name*='quantity']")); } }
+        { get { return product.FindElement(By.XPath("//input[contains(@name,'quantity')]")); } }
         public IWebElement UpdateButton
-        { get { return product.FindElement(By.CssSelector("button.btn.btn-primary")); } }
+        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']//table/tbody/tr/td[@class='text-left'][last()]/div/span/button[@type='submit']")); } }
         public IWebElement RemoveButton
         { get { return product.FindElement(By.CssSelector("button.btn.btn-danger:not(.btn-xs)")); } }
         public IWebElement UnitPrice
-        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/a[contains(text(),'iPhone')]/../following-sibling::td[@class ='text-right']")); } }
+        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/a[contains(text(),'iPhone')]/../following-sibling::td[@class ='text-right'][last()-1]")); } }
         public IWebElement Total
         { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/a[contains(text(),'iPhone')]/../following-sibling::td[@class ='text-right']/following-sibling::td")); } }
+        //public IWebElement FieldValue
+        //{ get { return product.FindElement(By.CssSelector(".input-group.btn-block > input")); } }
         public IWebElement FieldValue
-        { get { return product.FindElement(By.CssSelector(".input-group.btn-block > input")); } }
-
-
+        { get { return product.FindElement(By.XPath("//input[contains(@name,'quantity')]")); } }
+        
         public ShoppingCartComponent(IWebElement product)
         
         {
@@ -69,6 +70,7 @@ namespace OpenCart414Test.Pages
         }
         public string GetTextQuantityFieldString()
         {
+            
             return FieldValue.GetAttribute(TopPart.TAG_ATTRIBUTE_VALUE); 
         }
         public int GetTextQuantityField()
@@ -84,13 +86,13 @@ namespace OpenCart414Test.Pages
         {
             UpdateButton.Click();
         }
-        public double GetUnitPrice()
+        public decimal GetUnitPrice()
         {
-            return Convert.ToDouble(UnitPrice.Text.Substring(1, 5).Replace('.', ','));//TODO localization   
+            return Convert.ToDecimal(UnitPrice.Text.Substring(1, 5).Replace('.', ','));//TODO localization   
         }
-        public double GetTotal()
+        public decimal GetTotal()
         {
-            return Convert.ToDouble((Total.Text.Substring(1, 5).Replace('.', ',')));
+            return Convert.ToDecimal((Total.Text.Substring(1, 5).Replace('.', ',')));
         }
         //met convert 
         
