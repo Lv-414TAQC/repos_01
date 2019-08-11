@@ -39,7 +39,7 @@ namespace OpenCart414Test
           
         }
          
-        public bool IsEmailInDb(IUser user)
+    /*    public bool IsEmailInDb(IUser user)
         {
             ResultSet rs = 0;
             bool InDb = false;
@@ -56,6 +56,6 @@ namespace OpenCart414Test
                 e.printStackTrace();
                 return InDb;
         }
-
+*/
     }
 }
