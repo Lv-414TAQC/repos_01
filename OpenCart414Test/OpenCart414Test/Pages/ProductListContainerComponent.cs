@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System;
 
 namespace OpenCart414Test.Pages
 {
@@ -31,12 +32,18 @@ namespace OpenCart414Test.Pages
 
         private void CheckElements()
         {
-            // TODO Develop Custom Exception
+            try
+            { 
             IWebElement temp = ProductImage;
             temp = ProductName;
             temp = ProductPrice;
             temp = ProductQuantity;
             temp = ProductRemoveButton;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Custom exception: CheckElements()");
+            }
         }
 
         // Page Object

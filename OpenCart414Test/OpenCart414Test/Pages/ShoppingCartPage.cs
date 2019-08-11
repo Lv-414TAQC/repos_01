@@ -123,8 +123,8 @@ namespace OpenCart414Test.Pages
         public decimal GetTablePriceTotal()
         {
             CreateTablePriceComponent(By.XPath(TABLE_PRICE_COMPONENT_XPATH));
-            Console.WriteLine(GetRegularExpressions().RegexCurrency(GetTablePriceComponent().GetTotal())); //Only for presentation
-            return GetRegularExpressions().RegexCurrency(GetTablePriceComponent().GetTotal());
+            Console.WriteLine(GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetTotal())); //Only for presentation
+            return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetTotal());
         }
 
 

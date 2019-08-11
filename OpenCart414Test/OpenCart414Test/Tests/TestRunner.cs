@@ -20,6 +20,7 @@ namespace OpenCart414Test.Tests
     {
         protected IWebDriver driver;
         protected WebDriverWait wait;
+
         [OneTimeSetUp]
         public void BeforeAllMethods()
         {

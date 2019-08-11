@@ -23,8 +23,14 @@ namespace OpenCart414Test.Pages
         }
         private void CheckElements()
         {
-            // TODO Develop Custom Exception
+            try
+            { 
             IList<IWebElement> temp = TablePriceList;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Custom exception: CheckElements()");
+            }
         }
         private void InitElements(By searchLocator)
         {

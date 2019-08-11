@@ -22,8 +22,14 @@ namespace OpenCart414Test.Pages
 
         private void CheckElements()
         {
-            // TODO Develop Custom Exception
-            IWebElement temp = InfoMessage; // TODO All Web Elements
+            try
+            { 
+                IWebElement temp = InfoMessage;
+            }
+            catch(Exception)
+            {
+                throw new Exception("Custom exception: CheckElements()");
+            }
         }
 
         // Page Object

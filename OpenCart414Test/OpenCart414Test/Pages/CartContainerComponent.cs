@@ -20,7 +20,7 @@ namespace OpenCart414Test.Pages
         private TablePriceComponent tablePriceComponent;
         IList<ProductListContainerComponent> productList;
 
-          public CartContainerComponent(IWebDriver driver)
+        public CartContainerComponent(IWebDriver driver)
         {
             this.driver = driver;
             CheckElements();
@@ -29,9 +29,15 @@ namespace OpenCart414Test.Pages
 
         private void CheckElements()
         {
-            // TODO Develop Custom Exception
-              IWebElement temp = ViewCartLink; 
-              temp = CheckOutLink;
+            try
+            {
+                IWebElement temp = ViewCartLink;
+                temp = CheckOutLink;
+            }
+            catch(Exception)
+            {
+                throw new Exception("Custom exception: CheckElements()");
+            }
         }
 
         private void InitElements()
@@ -109,7 +115,7 @@ namespace OpenCart414Test.Pages
             return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetTotal());
         }
 
-        public void RemoveProductByName(Product product)
+        public void RemoveProduct(Product product)
         {
             foreach (ProductListContainerComponent cur in GetProductList())
             {
