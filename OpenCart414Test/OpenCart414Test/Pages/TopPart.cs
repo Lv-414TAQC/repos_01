@@ -324,5 +324,7 @@ namespace OpenCart414Test.Pages
             ClickShoppingCart();
             return new ShoppingCartPage(driver);
         }
+
+        
     }
 }

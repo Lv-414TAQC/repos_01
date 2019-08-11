@@ -84,5 +84,25 @@ namespace OpenCart414Test.Data
               .SetCompany("someCompany")
               .Build();
         }
+
+        public static IUser  GetTestUser()
+        {
+            return User.Get()
+              .SetFirstname("tester")
+              .SetLastname("tester")
+              .SetEmail(Environment.GetEnvironmentVariable("USER_NAME"))
+              .SetTelephone("someNumber")
+              .SetAddress1("someAddress")
+              .SetCity("someCity")
+              .SetPostcode("somePostcode")
+              .SetCountry("someCountry")
+              .SetRegionState("someRegionState")
+              .SetPassword(Environment.GetEnvironmentVariable("USER_PASSWORD"))
+              .SetSubscribe(true)
+              .SetCompany("someCompany")
+              .Build();
+        }
+
+
     }
 }

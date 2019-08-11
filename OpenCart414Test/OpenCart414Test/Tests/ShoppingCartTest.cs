@@ -101,6 +101,9 @@ namespace OpenCart414Test.Tests
                 .GetTextQuantityField()) == shoppingCartPage
                 .GetShoppingCartComponentByName(addingProduct1.Title).GetTotal());
             Console.WriteLine("4");
+
+            Console.WriteLine(shoppingCartPage.GetShoppingCartComponentByName(addingProduct1.Title).GetTotal());
+            Console.WriteLine(shoppingCartPage.GetTablePriceTotal());
             Assert.IsTrue(shoppingCartPage
                 .GetShoppingCartComponentByName(addingProduct1.Title)
                 .GetTotal() == shoppingCartPage.GetTablePriceTotal());

@@ -39,11 +39,11 @@ namespace OpenCart414Test.Tests
 
             // TODO
 
-           // driver.Navigate().GoToUrl("http://192.168.20.128/opencart/upload/");
-            //driver.Navigate().GoToUrl("http://192.168.163.130/opencart/upload/"); //alena
+            // driver.Navigate().GoToUrl("http://192.168.20.128/opencart/upload/");
+            // driver.Navigate().GoToUrl("http://192.168.163.130/opencart/upload/"); //alena
             //driver.Navigate().GoToUrl("http://192.168.147.128/opencart/upload/"); // Nazar
             //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");
-            //driver.Navigate().GoToUrl("http://10.26.34.118/opencart/upload/");
+            driver.Navigate().GoToUrl("http://192.168.17.128/opencart/upload/");
             //driver.Navigate().GoToUrl("http://192.168.140.131/opencart/upload/");
             //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");
             //driver.Navigate().GoToUrl("http://172.20.10.2/opencart/upload/");
@@ -101,12 +101,16 @@ namespace OpenCart414Test.Tests
         public AdminLoginPage LoadAdminLoginPage()
         {
             driver.Navigate().GoToUrl("http://192.168.17.128/opencart/upload/admin");
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             return new AdminLoginPage(driver);
         }
 
         public HomePage LoadHomePage()
         {
             driver.Navigate().GoToUrl("http://192.168.17.128/opencart/upload/");
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             return new HomePage(driver);
         }
     }

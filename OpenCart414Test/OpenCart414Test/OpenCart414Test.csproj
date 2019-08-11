@@ -73,6 +73,7 @@
     <Compile Include="Data\TaxRateRepository.cs" />
     <Compile Include="Pages\AdminPanel\EditTaxClassPage.cs" />
     <Compile Include="Tests\CurrencyAditionalTaxesTests.cs" />
+    <Compile Include="Tests\CurrencyShippingRateTests.cs" />
     <Compile Include="Tests\DataBaseUtils.cs" />
     <Compile Include="Data\ApplicationRepository.cs" />
     <Compile Include="Data\Currency.cs" />
