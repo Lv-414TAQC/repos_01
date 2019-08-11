@@ -14,8 +14,7 @@ namespace OpenCart414Test.Tests
 {
     [TestFixture]
     class AddToCartTests : TestRunner
-    {
-      
+    {  
         // DataProvider
         private static readonly object[] ProductToAdd =
         {
@@ -28,10 +27,7 @@ namespace OpenCart414Test.Tests
             homePage.AddProductToCart(addingProduct1);
             homePage.AddProductToCart(addingProduct2);
 
-            // Thread.Sleep(2000);
-            wait.Until((drv) => {
-            return homePage.GetCartButtonText().Contains(HomePage.TWO_PRODUCT);
-            });
+            wait.Until((drv) => { return homePage.GetCartButtonText().Contains(HomePage.TWO_PRODUCT); });
             Assert.IsTrue(homePage.GetCartButtonText().Contains(HomePage.TWO_PRODUCT));
             Assert.AreEqual(addingProduct1.Title, homePage.OpenCartButton()
                .GetProductByName(addingProduct1).GetProductNameText());      
@@ -40,22 +36,14 @@ namespace OpenCart414Test.Tests
 
             homePage.GetCartContainerComponent().RemoveProductByName(addingProduct2);
 
-            // Thread.Sleep(2000);
-            wait.Until((drv) => {
-                return homePage.GetCartButtonText().Contains(HomePage.ONE_PRODUCT);
-            });
+            wait.Until((drv) => { return homePage.GetCartButtonText().Contains(HomePage.ONE_PRODUCT); });
             Assert.IsTrue(homePage.GetCartButtonText().Contains(HomePage.ONE_PRODUCT));
 
             homePage.OpenCartButton().RemoveProductByName(addingProduct1);
 
-            // Thread.Sleep(2000);
-            wait.Until((drv) => {
-                return homePage.GetCartButtonText().Contains(HomePage.ZERO_PRODUCT);
-            });
+            wait.Until((drv) => { return homePage.GetCartButtonText().Contains(HomePage.ZERO_PRODUCT); });
             Assert.IsTrue(homePage.GetCartButtonText().Contains(HomePage.ZERO_PRODUCT));
-
-            Assert.IsTrue(homePage.OpenEmptyCartButton().GetInfoMessageText().Length > 0);
-            
+            Assert.IsTrue(homePage.OpenEmptyCartButton().GetInfoMessageText().Length > 0);   
         }
 
 
@@ -67,7 +55,6 @@ namespace OpenCart414Test.Tests
             homePage.AddProductToCart(addingProduct1);
             homePage.AddProductToCart(addingProduct2);
 
-            //Thread.Sleep(2000);
             wait.Until((drv) =>{
                 return homePage.GetCartContainerComponent().CheckOutLink;
             });
@@ -88,7 +75,6 @@ namespace OpenCart414Test.Tests
             homePage.AddProductToCart(addingProduct1);
             homePage.AddProductToCart(addingProduct2);
 
-           // Thread.Sleep(2000);
             wait.Until((drv) => {
                 return homePage.GetCartContainerComponent().CheckOutLink;
             });
@@ -96,6 +82,8 @@ namespace OpenCart414Test.Tests
             Assert.AreEqual(homePage.OpenCartButton().GetTotalSumProducts(),
             homePage.GetCartContainerComponent().GetTablePriceTotal());
             Thread.Sleep(3000);
+
+
         }
     }
 }
