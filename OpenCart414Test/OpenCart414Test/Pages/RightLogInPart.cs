@@ -28,9 +28,12 @@ namespace OpenCart414Test.Pages
         {
             return RightMenuPassword.Text;
         }
-        public void ClickRightMenuPassword()
+
+        //Chenged 
+        public ChangePasswordPage ClickRightMenuPassword()
         {
             RightMenuPassword.Click();
+            return new ChangePasswordPage(driver);
         }
         public string GetRightMenuLogoutText()
         {
