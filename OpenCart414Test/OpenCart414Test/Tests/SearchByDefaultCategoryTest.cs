@@ -42,10 +42,10 @@ namespace OpenCart414Test.Tests
     {
             new object[] {
                 SearchCriteriaRepository.GetAllProducts(),
-                SortShowRepository.ShowBy25()
+                SortShowRepository.ShowBy15(),
+                SortShowRepository.ShowBy25(),             
                 },
         };
-
         //
         //[Test, TestCaseSource(nameof(ProductSearch))]
         public void CheckSearchByDefaultCategory(SearchCriteria searchCriteria)
@@ -100,22 +100,18 @@ namespace OpenCart414Test.Tests
             Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainTextBySubCategory(searchCriteria));
             Thread.Sleep(2000);  //Only for Presentation
         }
-        [Test, TestCaseSource(nameof(ProductSearch4))]
-        public void ShowElementsTest(SearchCriteria searchCriteria,SortShowCriteria sortShowCriteria)
+        //
+        //[Test, TestCaseSource(nameof(ProductSearch4))]
+        public void ShowElementsTest(SearchCriteria searchCriteria,SortShowCriteria sortShowCriteria, SortShowCriteria sortShowCriteriaA)
         {
-            SearchSuccessPage searchSuccessPage = LoadApplication().SearchSuccessfully(searchCriteria);
+            SearchSuccessPage searchSuccessPage = LoadApplication().SearchSuccessfully(searchCriteria);        
             Thread.Sleep(2000);  //Only for Presentation
-            searchSuccessPage.ProductsCriteria.SortAndShowSuccessfully(sortShowCriteria);
+            Assert.AreEqual(searchSuccessPage.ProductsCriteria.GetProductComponentsCount(), Convert.ToInt32(sortShowCriteria.ShowValue));
+            //
+            searchSuccessPage = searchSuccessPage.ProductsCriteria.SortAndShowSuccessfully(sortShowCriteriaA);
+            Assert.AreEqual(searchSuccessPage.ProductsCriteria.GetProductComponentsCount(), Convert.ToInt32(sortShowCriteriaA.ShowValue));
             Thread.Sleep(2000);  //Only for Presentation
 
-
-            //SearchSuccessPage searchSuccessPage = LoadApplication().SearchSuccessfully(searchCriteria);
-            //Thread.Sleep(2000);  //Only for Presentation
-            //Assert.AreEqual(15,searchSuccessPage.ProductsCriteria.GetProductComponentsCount());
-            ////
-            //searchSuccessPage=searchSuccessPage.ProductsCriteria.IputLimitShow25();
-            //Assert.AreEqual(25, searchSuccessPage.ProductsCriteria.GetProductComponentsCount());
-            //Thread.Sleep(2000);  //Only for Presentation
         }
     }
 }

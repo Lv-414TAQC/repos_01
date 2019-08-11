@@ -104,25 +104,6 @@ namespace OpenCart414Test.Pages
         // Pagination
 
         // Functional
-        public SearchSuccessPage IputLimitShow25()
-        {
-            ClickInputLimit();
-            SetInputLimit("25");
-            return new SearchSuccessPage(driver);
-        }
-        protected void MakeSortAndShow(string SortValue, string ShowValue)
-        {
-            ClickInputLimit();
-            SetInputSort(SortValue);
-            SetInputLimit(ShowValue);
-        }
-        public SearchSuccessPage SortAndShowSuccessfully(SortShowCriteria searchCriteria)
-        {
-            MakeSortAndShow(searchCriteria.SortValue, searchCriteria.ShowValue);
-            return new SearchSuccessPage(driver);
-        }
-
-        // Business Logic
 
         public ProductsCriteriaComponent ViewProductsByList()
         {
@@ -136,6 +117,21 @@ namespace OpenCart414Test.Pages
             ClickGridViewButton();
             InitElements();
             return this;
+        }
+
+        protected void MakeSortAndShow(string SortValue, string ShowValue)
+        {
+            ClickInputLimit();
+            SetInputSort(SortValue);
+            SetInputLimit(ShowValue);
+        }
+
+        // Business Logic
+
+        public SearchSuccessPage SortAndShowSuccessfully(SortShowCriteria searchCriteria)
+        {
+            MakeSortAndShow(searchCriteria.SortValue, searchCriteria.ShowValue);
+            return new SearchSuccessPage(driver);
         }
 
     }
