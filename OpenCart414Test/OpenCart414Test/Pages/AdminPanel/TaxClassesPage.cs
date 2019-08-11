@@ -5,10 +5,10 @@ using System.Text;
 
 namespace OpenCart414Test.Pages.AdminPanel
 {
-    class TaxClassesPage : HeaderPart
+    class TaxClassesPage : SideMenuComponent
     {
-        IWebElement EditTaxableGoodsButton { get { return Driver.FindElement(By.XPath("//td[contains(text(), 'Taxable Goods')]/following-sibling::td/a")); } }
-        IWebElement EditDownloadableProductsButton { get { return Driver.FindElement(By.XPath("//td[contains(text(), 'Downloadable Products')]/following-sibling::td/a")); } }
+        IWebElement EditTaxableGoodsButton { get { return driver.FindElement(By.XPath("//td[contains(text(), 'Taxable Goods')]/following-sibling::td/a")); } }
+        IWebElement EditDownloadableProductsButton { get { return driver.FindElement(By.XPath("//td[contains(text(), 'Downloadable Products')]/following-sibling::td/a")); } }
 
         IList<TaxClassComponent> TaxClasses = new List<TaxClassComponent>();
 
@@ -19,7 +19,7 @@ namespace OpenCart414Test.Pages.AdminPanel
 
         public void GetTaxClasses()
         {
-            foreach (IWebElement item in Driver.FindElements(By.CssSelector("table.table-bordered.table-hover tbody tr")))
+            foreach (IWebElement item in driver.FindElements(By.CssSelector("table.table-bordered.table-hover tbody tr")))
             {
                 TaxClassComponent TaxClass = new TaxClassComponent();
                 TaxClass.CheckBox = item.FindElement(By.XPath("./td[@class='text-center']"));
