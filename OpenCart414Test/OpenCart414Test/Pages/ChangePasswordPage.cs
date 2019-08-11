@@ -16,7 +16,7 @@ namespace OpenCart414Test.Pages
         public IWebElement BackButton
         { get { return driver.FindElement(By.CssSelector("input.btn.btn-primary")); } }
         public IWebElement ContinueButton
-        { get { return driver.FindElement(By.CssSelector("input.btn.btn-primary")); } }
+        { get { return driver.FindElement(By.LinkText("Back")); } }
         public ChangePasswordPage(IWebDriver driver) : base(driver)
         {
 

@@ -32,7 +32,7 @@ namespace OpenCart414Test.Data
             return User.Get()
                     .SetFirstname("L")
                     .SetLastname("V")
-                    .SetEmail("onbvc.201@lpnu.ua")
+                    .SetEmail("fdvc.201@lpnu.ua")
                     .SetTelephone("0507591658")
                     .SetAddress1("Var")
                     .SetCity("Lv")
@@ -60,6 +60,24 @@ namespace OpenCart414Test.Data
               .SetPassword("password07")
               .SetSubscribe(true)
               .SetCompany("Company07")
+              .Build();
+        }
+
+        public IUser ValidUser()
+        {
+            return User.Get()
+              .SetFirstname("firstname")
+              .SetLastname("lastname")
+              .SetEmail("email")
+              .SetTelephone("telephone")
+              .SetAddress1("address")
+              .SetCity("city")
+              .SetPostcode("postcode")
+              .SetCountry("country")
+              .SetRegionState("regionState")
+              .SetPassword("password")
+              .SetSubscribe(true)
+              .SetCompany("Company")
               .Build();
         }
 

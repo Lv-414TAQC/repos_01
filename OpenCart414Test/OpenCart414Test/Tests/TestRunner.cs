@@ -45,13 +45,13 @@ namespace OpenCart414Test.Tests
             //driver.Navigate().GoToUrl("http://192.168.163.130/opencart/upload/"); //alena
             //driver.Navigate().GoToUrl("http://192.168.147.128/opencart/upload/"); // Nazar
             //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");
-            driver.Navigate().GoToUrl("http://192.168.17.128/opencart/upload/");
+           // driver.Navigate().GoToUrl("http://192.168.17.128/opencart/upload/");
             //driver.Navigate().GoToUrl("http://192.168.140.131/opencart/upload/");
             //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");
             driver.Navigate().GoToUrl("http://172.20.10.2/opencart/upload/");
             //driver.Navigate().GoToUrl("http://192.168.20.128/opencart/upload/");
             //driver.Navigate().GoToUrl("http://172.20.10.2/opencart/upload/");
-            driver.Navigate().GoToUrl("http://192.168.20.128/opencart/upload/");
+           // driver.Navigate().GoToUrl("http://192.168.20.128/opencart/upload/");
 
 
             //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");

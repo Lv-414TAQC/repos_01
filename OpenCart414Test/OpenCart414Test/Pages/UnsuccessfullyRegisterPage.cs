@@ -10,13 +10,13 @@ namespace OpenCart414Test.Pages
      public class UnsuccessfullyRegisterPage : RegisterUserPage
     {
         public const string Expected_Warning_First_Name = "First Name must be between 1 and 32 characters!";
-        public static readonly string Expected_Warning_Last_Name = "Last Name must be between 1 and 32 characters!";
-        public static readonly string Expected_Warning_Email = "E-Mail Address does not appear to be valid!";
-        public static readonly string Expected_Warning_Telephone = "Telephone must be between 3 and 32 characters!";
-        public static readonly string Expected_Warning_Address1 = "Address 1 must be between 3 and 128 characters!";
-        public static readonly string Expected_Warning_City = "City must be between 2 and 128 characters!";
-        public static readonly string Expected_Warning_Region = "Please select a region / state!";
-        public static readonly string Expected_Warning_Password = "Password must be between 4 and 20 characters!";
+        public const string Expected_Warning_Last_Name = "Last Name must be between 1 and 32 characters!";
+        public const string Expected_Warning_Email = "E-Mail Address does not appear to be valid!";
+        public const string Expected_Warning_Telephone = "Telephone must be between 3 and 32 characters!";
+        public const string Expected_Warning_Address1 = "Address 1 must be between 3 and 128 characters!";
+        public const string Expected_Warning_City = "City must be between 2 and 128 characters!";
+        public const string Expected_Warning_Region = "Please select a region / state!";
+        public const string Expected_Warning_Password = "Password must be between 4 and 20 characters!";
 
         public IWebElement ActualFirstNameError
         { get { return driver.FindElement(By.CssSelector("#account "+ "> div:nth-child(3) > div > div")); } }
