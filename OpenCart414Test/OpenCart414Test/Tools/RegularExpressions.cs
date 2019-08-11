@@ -11,11 +11,11 @@ namespace OpenCart414Test.Tools
 {
     public class RegularExpressions
     {
-        public decimal RegexCurrency(string element)
+        public decimal ConvertStringCurrency(string element)
         {
             decimal totalSum = 0;
             string toStringVar = string.Empty;
-            Regex regex = new Regex(@"\d*[.|,]\d*");
+            Regex regex = new Regex(@"\d+[.|,]\d*");
             MatchCollection matches = regex.Matches(element);
 
             foreach (Match match in matches)

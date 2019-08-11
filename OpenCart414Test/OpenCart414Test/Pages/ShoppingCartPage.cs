@@ -28,6 +28,9 @@ namespace OpenCart414Test.Pages
         public IWebElement DiscountCode 
         { get { return driver.FindElement(By.Id("accordion")); } }
 
+        ShippingAndTaxesComponent shippingAndTaxesDetails;
+
+
         public IList<ShoppingCartComponent> shopppingcartComponents;
         public TablePriceComponent tablePrice;
 
@@ -124,25 +127,25 @@ namespace OpenCart414Test.Pages
         public decimal GetTablePriceTotal()
         {
             CreateTablePriceComponent(By.XPath(TABLE_PRICE_COMPONENT_XPATH));
-            return GetRegularExpressions().RegexCurrency(GetTablePriceComponent().GetTotalForPageSC());
+            return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetTotalForPageSC());
 
         }
         public decimal GetTablePriceSubTotal()
         {
             CreateTablePriceComponent(By.XPath(TABLE_PRICE_COMPONENT_XPATH));
-            return GetRegularExpressions().RegexCurrency(GetTablePriceComponent().GetSubTotal());
+            return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetSubTotal());
 
         }
         public decimal GetTablePriceEcoTax()
         {
             CreateTablePriceComponent(By.XPath(TABLE_PRICE_COMPONENT_XPATH));
-            return GetRegularExpressions().RegexCurrency(GetTablePriceComponent().GetEcoTax());
+            return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetEcoTax());
 
         }
         public decimal GetTablePriceVat()
         {
             CreateTablePriceComponent(By.XPath(TABLE_PRICE_COMPONENT_XPATH));
-            return GetRegularExpressions().RegexCurrency(GetTablePriceComponent().GetVat());
+            return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetVat());
 
         }
 
@@ -215,6 +218,11 @@ namespace OpenCart414Test.Pages
             return new ShoppingCartEmptyPage(driver);
         }
 
+        public  SelectShippingMethodComponent ApplySippingAndTaxes(ShippingDetails details)
+        {
+            shippingAndTaxesDetails = new ShippingAndTaxesComponent(driver);
+            return shippingAndTaxesDetails.ApplyShippingDetails(details);
+        }
     }
 }
     

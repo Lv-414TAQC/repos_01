@@ -71,12 +71,12 @@ namespace OpenCart414Test.Pages
         }
         public decimal GetUnitPrice()
         {
-            return GetRegularExpressions().RegexCurrency(UnitPrice.Text);
+            return GetRegularExpressions().ConvertStringCurrency(UnitPrice.Text);
             
         }
         public decimal GetTotal()
         {
-            return GetRegularExpressions().RegexCurrency(Total.Text);
+            return GetRegularExpressions().ConvertStringCurrency(Total.Text);
            
         }
        

@@ -5,10 +5,10 @@ using System.Text;
 
 namespace OpenCart414Test.Pages.AdminPanel
 {
-    class TaxClassComponent
+    public class TaxClassComponent
     {
         public IWebElement CheckBox;
         public string ClassTitle;
-        public IWebElement Action;
+        public IWebElement EditButton;
     }
 }

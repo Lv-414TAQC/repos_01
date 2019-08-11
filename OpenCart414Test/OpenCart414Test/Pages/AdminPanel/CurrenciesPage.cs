@@ -6,11 +6,11 @@ using System.Text.RegularExpressions;
 
 namespace OpenCart414Test.Pages.AdminPanel
 {
-    public class CurrenciesPage : HeaderPart
+    public class CurrenciesPage : SideMenuComponent
     {
-        IWebElement RefrefhButton { get { return Driver.FindElement(By.CssSelector("a[data-original-title='Refresh Currency Values']")); } }
-        IWebElement AddButton { get { return Driver.FindElement(By.CssSelector("a[data-original-title='Add New']")); } }
-        IWebElement DeleteButton { get { return Driver.FindElement(By.CssSelector("a[data-original-title='Delete']")); } }
+        IWebElement RefrefhButton { get { return driver.FindElement(By.CssSelector("a[data-original-title='Refresh Currency Values']")); } }
+        IWebElement AddButton { get { return driver.FindElement(By.CssSelector("a[data-original-title='Add New']")); } }
+        IWebElement DeleteButton { get { return driver.FindElement(By.CssSelector("a[data-original-title='Delete']")); } }
         IList<CurrencyComponent> Currencies;
 
         public CurrenciesPage(IWebDriver driver) : base(driver)
@@ -21,7 +21,7 @@ namespace OpenCart414Test.Pages.AdminPanel
 
         void GetCurrencies()
         {
-            foreach (IWebElement item in Driver.FindElements(By.CssSelector("table.table-bordered.table-hover tbody tr")))
+            foreach (IWebElement item in driver.FindElements(By.CssSelector("table.table-bordered.table-hover tbody tr")))
             {
                 CurrencyComponent Currency = new CurrencyComponent();
                 Currency.CheckBox = item.FindElement(By.XPath("./td/input"));

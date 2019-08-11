@@ -13,6 +13,9 @@ namespace OpenCart414Test.Pages
     public class HomePage : TopPart
     {
         public const string IPHONE6 = "iPhone6";
+        public const string ZERO_PRODUCT = "0 item(s)";
+        public const string ONE_PRODUCT = "1 item(s)";
+        public const string TWO_PRODUCT = "2 item(s)";
         //
         public IWebElement Slideshow0
         { get { return driver.FindElement(By.Id("slideshow0")); } }
@@ -131,6 +134,7 @@ namespace OpenCart414Test.Pages
                 .ClickAddToCartButton();
         }
 
+        
        
     }
 }

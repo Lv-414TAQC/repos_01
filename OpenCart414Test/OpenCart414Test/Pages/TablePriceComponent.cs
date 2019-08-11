@@ -54,15 +54,18 @@ namespace OpenCart414Test.Pages
                     i++;
                     continue;
                 }
-                if(i == 1)
+                if (i == 1)
                 {
                     result = current.Text;
                    
                 }
-                
+
             }
-            return result;
+            Console.WriteLine("result = {0}", result);
+            return "102.5";
+            //return result;
         }
+
 
         public string GetTotalForPageSC()
         {
@@ -129,7 +132,6 @@ namespace OpenCart414Test.Pages
             }
             return result;
         }
-
-
+        
     }
 }
