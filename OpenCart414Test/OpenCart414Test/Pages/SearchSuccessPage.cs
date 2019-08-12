@@ -19,12 +19,6 @@ namespace OpenCart414Test.Pages
             InitElements();
         }
 
-        private void CheckElements()
-        {
-            // TODO Develop Custom Exception
-            //IWebElement temp = CriteriaSearchField; // TODO All Web Elements
-        }
-
         private void InitElements()
         {
             ProductsCriteria = new ProductsCriteriaComponent(driver);
@@ -43,13 +37,13 @@ namespace OpenCart414Test.Pages
             return new SearchSuccessPage(driver);
         }
 
-        public SearchSuccessPage SortProductsByCriteria(string text) // TODO Use Enum
+        public SearchSuccessPage SortProductsByCriteria(string text) 
         {
             ProductsCriteria.SetInputSort(text);
             return new SearchSuccessPage(driver);
         }
 
-        public SearchSuccessPage ShowProductsByCount(string text) // TODO Use Enum
+        public SearchSuccessPage ShowProductsByCount(string text) 
         {
             ProductsCriteria.SetInputLimit(text);
             return new SearchSuccessPage(driver);

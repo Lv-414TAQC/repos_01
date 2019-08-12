@@ -316,10 +316,8 @@ namespace OpenCart414Test.Pages
             SetRegisterLastNameField(user.Lastname);
         }
 
-        /**
-         * Fill Email.
-         * @param user user.
-         */
+        // Fill Email.
+       
         public void FillEmail(IUser user)
         {
             ClickRegisterEmailField();
@@ -422,6 +420,12 @@ namespace OpenCart414Test.Pages
         {
             FillRegistrationForm(user);
             return new SuccessfullyRegisterPage(driver);
+        }
+
+        public UnsuccessfullyRegisterPage UserWithWrongData(IUser invalidBoundaryUser)
+        {
+            FillRegistrationForm(invalidBoundaryUser);
+            return new UnsuccessfullyRegisterPage(driver);
         }
     }
 }

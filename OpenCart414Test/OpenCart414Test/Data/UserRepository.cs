@@ -32,7 +32,7 @@ namespace OpenCart414Test.Data
             return User.Get()
                     .SetFirstname("L")
                     .SetLastname("V")
-                    .SetEmail("onbvc.201@lpnu.ua")
+                    .SetEmail("fdvc.201@lpnu.ua")
                     .SetTelephone("0507591658")
                     .SetAddress1("Var")
                     .SetCity("Lv")
@@ -63,6 +63,66 @@ namespace OpenCart414Test.Data
               .Build();
         }
 
+        public IUser ValidUser()
+        {
+            return User.Get()
+              .SetFirstname("firstname")
+              .SetLastname("lastname")
+              .SetEmail("email")
+              .SetTelephone("telephone")
+              .SetAddress1("address")
+              .SetCity("city")
+              .SetPostcode("postcode")
+              .SetCountry("country")
+              .SetRegionState("regionState")
+              .SetPassword("password")
+              .SetSubscribe(true)
+              .SetCompany("Company")
+              .Build();
+        }
+
+        public IUser InvalidUserWithBoundaryValues2()
+        {
+            return User.Get()
+                    .SetFirstname("iamlordvoldemortiamlordvoldemort!")
+                    .SetLastname("iamlordvoldemortiamlordvoldemort!")
+                    .SetEmail("grabli2016l@pnuua")
+                    .SetTelephone("123456789012345678901234567890123")
+                    .SetAddress1("alqqqqqqqqalqqqqqqqqalqqqqqqqqalqqqqqqqqalqqqqqq" +
+                            "qqalqqqqqqqqalqqqqqqqqalqqqqqqqqalqqqqqqqqa" +
+                            "lqqqqqqqqalqqqqqqqqalqqqqqqqqalqqqqqqq")
+                    .SetCity("lvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlv" +
+                            "lvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlv" +
+                            "lvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvlvl")
+                    .SetPostcode("11")
+                    .SetCountry("Angola")
+                    .SetRegionState("--- Please Select ---")
+                    .SetPassword("qwe")
+                    .SetSubscribe(true)
+                    .SetCompany("asdaaaaaaaaaaaaaaasdfg")
+                    .SetAddress2("sdsdada")
+                    .Build();
+        }
+
+        public IUser EmptyFieldsUser()
+        {
+            return User.Get()
+                    .SetFirstname("")
+                    .SetLastname("")
+                    .SetEmail("")
+                    .SetTelephone("")
+                    .SetAddress1("")
+                    .SetCity("")
+                    .SetPostcode("")
+                    .SetCountry("Angola")
+                    .SetRegionState("--- Please Select ---")
+                    .SetPassword("")
+                    .SetSubscribe(true)
+                    .SetFax("")
+                    .SetCompany("")
+                    .SetAddress2("")
+                    .Build();
+        }
         public IUser WishListTester()
         {
             return User.Get()

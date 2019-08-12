@@ -18,7 +18,6 @@ namespace OpenCart414Test.Pages
 
         protected IWebDriver driver;
         //
-        // TODO
         public IWebElement EmptyListMessage
         {
             get
@@ -34,7 +33,6 @@ namespace OpenCart414Test.Pages
         //
         private IList<ProductComponent> productComponents;
       
-
         public ProductsContainerComponent(IWebDriver driver)
         {
             this.driver = driver;
@@ -59,50 +57,11 @@ namespace OpenCart414Test.Pages
         }
 
         // Functional
-        protected bool IsContainTextByDefaultCategory(string text)
-        {
-            bool result = true;
-            foreach (var current in GetProductComponentNames())
-            {
-                if (!current.Contains(text))
-                {
-                    result = false;
-                    break;
-                }
-            }
-            return result;
-        }
-        //bussines logic
-        public  bool IsContainTextByDefaultCategory(SearchCriteria searchCriteria)
-        {
-            return IsContainTextByDefaultCategory(searchCriteria.SearchValue);
-        }
-        //
-        protected bool IsContainTextBySeparateCategory(string text)
-        {
-            bool result = true;
-            foreach (var current in GetProductComponentNames())
-            {
-                if (!current.Contains(text))
-                {
-                    result = false;
-                }
-            }
-            return result;
-        }
-        //bussines logic
-        public bool IsContainTextBySeparateCategory(SearchCriteria searchCriteria)
-        {
-            return IsContainTextBySeparateCategory(searchCriteria.SearchValue);
-        }
-        //
+
         protected bool IsContainTextByDescription(string text)
         {
-            bool result = true;
-            Console.WriteLine(text);
             foreach (var current in GetProductComponents())
             {
-                Console.WriteLine(current.GetPartialDescriptionText());
                 if (!current.GetPartialDescriptionText().Contains(text))
                 {
                     return false;
@@ -115,22 +74,6 @@ namespace OpenCart414Test.Pages
             return IsContainTextByDescription(searchCriteria.SearchValue);
         }
         //
-        protected bool IsContainTextBySubCategory(string text)
-        {
-            bool result = true;
-            foreach (var current in GetProductComponentNames())
-            {
-                if (!current.Contains(text))
-                {
-                    result = false;
-                }
-            }
-            return result;
-        }
-        public bool IsContainTextBySubCategory(SearchCriteria searchCriteria)
-        {
-            return IsContainTextBySubCategory(searchCriteria.SearchValue);
-        }
         protected bool IsContainText(string text)
         {
             bool result = true;
@@ -147,7 +90,7 @@ namespace OpenCart414Test.Pages
         {
             return IsContainText(searchCriteria.SearchValue);
         }
-        //
+        
         public IList<string> GetProductComponentNames()
         {
             IList<string> productComponentNames = new List<string>();
@@ -158,6 +101,7 @@ namespace OpenCart414Test.Pages
             }
             return productComponentNames;
         }
+
         public IList<string> GetProductComponentPrices()
         {
             IList<string> productComponentPrices = new List<string>();
@@ -261,21 +205,10 @@ namespace OpenCart414Test.Pages
 
         // Business Logic
 
-        //public string GetProductComponentPriceByProduct(Product product)
-        //{
-        //    return GetProductComponentPriceByName(product.getName());
-        //}
-
         public string  GetProductComponentDescriptionByProduct(Product product)
         {
             return GetProductComponentDescriptionByName(product.GetName());
         }
-
-        //void AddToCart(Product)
-
-        //GetProductComponent(Product)  
-
-
 
     }
 }

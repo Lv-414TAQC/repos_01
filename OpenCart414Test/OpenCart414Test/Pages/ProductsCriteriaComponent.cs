@@ -16,14 +16,14 @@ namespace OpenCart414Test.Pages
         { get { return driver.FindElement(By.Id("list-view")); } }
         public IWebElement GridViewButton
         { get { return driver.FindElement(By.Id("grid-view")); } }
-        //TODO ProductCompare
+        //ProductCompare
         public SelectElement InputSort
         { get { return new SelectElement(driver.FindElement(By.Id("input-sort"))); } }
         public SelectElement InputLimit
         { get { return new SelectElement(driver.FindElement(By.Id("input-limit"))); } }
         public ProductsContainerComponent ProductsContainer
         { get; private set; }
-        // TODO Pagination
+        //Pagination
 
         public ProductsCriteriaComponent(IWebDriver driver) : base(driver)
         {
@@ -33,7 +33,7 @@ namespace OpenCart414Test.Pages
 
         private void CheckElements()
         {
-            // TODO Develop Custom Exception
+            //Develop Custom Exception
             //IWebElement temp = CriteriaSearchField; // TODO All Web Elements
         }
 
@@ -101,31 +101,9 @@ namespace OpenCart414Test.Pages
             GetInputLimitIWebElement().Click();
         }
 
-        // ProductsContainer
-
         // Pagination
 
         // Functional
-        public SearchSuccessPage IputLimitShow25()
-        {
-            ClickInputLimit();
-            SetInputLimit("25");
-            return new SearchSuccessPage(driver);
-        }
-        protected void MakeSortAndShow(string SortValue, string ShowValue)
-        {
-            ClickInputSort();
-            SetInputSort(SortValue);
-            SetInputLimit(ShowValue);
-        }
-        public SearchSuccessPage SortAndShowSuccessfully(SortShowCriteria searchCriteria)
-        {
-            MakeSortAndShow(searchCriteria.SortValue, searchCriteria.ShowValue);
-            return new SearchSuccessPage(driver);
-        }
-
-        // Business Logic
-
 
         public ProductsCriteriaComponent ViewProductsByList()
         {
@@ -140,6 +118,22 @@ namespace OpenCart414Test.Pages
             InitElements();
             return this;
         }
+
+        protected void MakeSortAndShow(string SortValue, string ShowValue)
+        {
+            ClickInputLimit();
+            SetInputSort(SortValue);
+            SetInputLimit(ShowValue);
+        }
+
+        // Business Logic
+
+        public SearchSuccessPage SortAndShowSuccessfully(SortShowCriteria searchCriteria)
+        {
+            MakeSortAndShow(searchCriteria.SortValue, searchCriteria.ShowValue);
+            return new SearchSuccessPage(driver);
+        }
+
         public IList<string> GetNamesByGrid()
         {
             ViewProductsByGrid();
