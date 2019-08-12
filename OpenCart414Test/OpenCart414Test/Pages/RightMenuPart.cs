@@ -29,7 +29,6 @@ namespace OpenCart414Test.Pages
         {
         }
 
-        // Atomic
         public string GetRightMenuMyAccountText()
         {
             return RightMenuMyAccount.Text;

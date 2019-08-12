@@ -15,7 +15,6 @@ namespace OpenCart414Test.Pages
         {
         }
 
-        // Atomic
         public string GetRightMenuEditAccountText()
         {
             return RightMenuEditAccount.Text;

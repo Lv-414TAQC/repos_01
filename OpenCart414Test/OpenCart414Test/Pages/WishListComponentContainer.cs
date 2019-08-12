@@ -10,19 +10,6 @@ namespace OpenCart414Test.Pages
 
         protected IWebDriver driver;
 
-        public IWebElement TableHeadImage =>
-        driver.FindElement(By.XPath("//td[text()='Image']"));
-        public IWebElement TableHeadProductName =>
-        driver.FindElement(By.XPath("//td[text()='Product Name']"));
-        public IWebElement TableHeadModel =>
-        driver.FindElement(By.XPath("//td[text()='Model']"));
-        public IWebElement TableHeadStock =>
-        driver.FindElement(By.XPath("//td[text()='Stock']"));
-        public IWebElement TableHeadUnitPrice =>
-        driver.FindElement(By.XPath("//td[text()='Unit Price']"));
-        public IWebElement TableHeadAction =>
-        driver.FindElement(By.XPath("//td[text()='Action']"));
-
         private IList<WishListComponent> TableRows;
 
         public WishListComponentContainer(IWebDriver driver)

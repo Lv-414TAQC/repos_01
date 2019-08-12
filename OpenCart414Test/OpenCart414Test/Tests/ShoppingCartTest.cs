@@ -92,7 +92,7 @@ namespace OpenCart414Test.Tests
             shoppingCartPage = shoppingCartPage.UpdateMessage(addingProduct1, ShoppingCartData.VALID_CHECK);
             Thread.Sleep(1000); // only for presentation
             Assert.IsTrue(shoppingCartPage.GetShoppingCartComponentByName(addingProduct1.Title)
-                .GetTextQuantityFieldString() == ShoppingCartData.VALID_CHECK);
+                .GetTextQuantityField() == ShoppingCartData.VALID_CHECK);
             Console.WriteLine("3");
             Assert.IsTrue((shoppingCartPage
                 .GetShoppingCartComponentByName(addingProduct1.Title)
