@@ -16,14 +16,14 @@ namespace OpenCart414Test.Pages
         { get { return driver.FindElement(By.Id("list-view")); } }
         public IWebElement GridViewButton
         { get { return driver.FindElement(By.Id("grid-view")); } }
-        //TODO ProductCompare
+        //ProductCompare
         public SelectElement InputSort
         { get { return new SelectElement(driver.FindElement(By.Id("input-sort"))); } }
         public SelectElement InputLimit
         { get { return new SelectElement(driver.FindElement(By.Id("input-limit"))); } }
         public ProductsContainerComponent ProductsContainer
         { get; private set; }
-        // TODO Pagination
+        //Pagination
 
         public ProductsCriteriaComponent(IWebDriver driver) : base(driver)
         {
@@ -33,7 +33,7 @@ namespace OpenCart414Test.Pages
 
         private void CheckElements()
         {
-            // TODO Develop Custom Exception
+            //Develop Custom Exception
             //IWebElement temp = CriteriaSearchField; // TODO All Web Elements
         }
 

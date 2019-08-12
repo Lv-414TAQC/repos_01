@@ -19,7 +19,7 @@ namespace OpenCart414Test.Pages
 
         private void CheckElements()
         {
-            // TODO Develop Custom Exception
+            //Develop Custom Exception
             IWebElement temp = InfoMessage; 
         }
 

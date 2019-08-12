@@ -15,6 +15,11 @@ namespace OpenCart414Test.Data
             return new SearchCriteria("MacBook",
                 "Laptops & Notebooks", true, false);
         }
+        public static SearchCriteria GetIphone()
+        {
+            return new SearchCriteria("Iphone",
+                "All Categories", false, false);
+        }
         public static SearchCriteria GetMacBookD()
         {
             return new SearchCriteria("Mac",
@@ -32,7 +37,7 @@ namespace OpenCart414Test.Data
                 "Laptops & Notebooks", false, false);
         }
 
-        public static SearchCriteria GetHpSearchCriteria()
+        public static SearchCriteria GetHp()
         {
             return new SearchCriteria("with the stunning new 30-inch diagonal",
                 "Laptops & Notebooks", false, true);

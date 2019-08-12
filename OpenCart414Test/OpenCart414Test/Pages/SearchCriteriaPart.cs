@@ -30,7 +30,7 @@ namespace OpenCart414Test.Pages
          
         private void CheckElements()
         {
-            // TODO Develop Custom Exception
+            // Develop Custom Exception
             IWebElement temp = CriteriaSearchField;
             SelectElement tempS = CriteriaCategory;
             temp = CriteriaSubCategory;
@@ -83,7 +83,7 @@ namespace OpenCart414Test.Pages
         {
             if (!CriteriaSubCategory.Enabled)
             {
-                // TODO Develop Custom Exception
+                //Develop Custom Exception
                 throw new Exception("Error, CriteriaSubCategory had disabled");
             }
             CriteriaSubCategory.Click();
@@ -167,18 +167,15 @@ namespace OpenCart414Test.Pages
 
         // Business Logic
 
-        //public SearchSuccessPage SearchSuccessfully(string searchText)
         public SearchSuccessPage SearchSuccessfullyByDefault(SearchCriteria searchCriteria)
         {
-            //MakeTopSearch(searchCriteria.SearchValue);
             MakeCriteriaSearchByDefault(searchCriteria.SearchValue);
-            //MakeTopSearch(searchText);
             return new SearchSuccessPage(driver);
         }    
 
         public SearchSuccessPage SearchSuccessfullyByCategory(SearchCriteria searchCriteria)
         {
-            MakeCriteriaSearchByCategory(searchCriteria.SearchValue,searchCriteria.SearchCategory);
+            MakeCriteriaSearchByCategory(searchCriteria.SearchValue, searchCriteria.SearchCategory);
             return new SearchSuccessPage(driver);
         }
 
