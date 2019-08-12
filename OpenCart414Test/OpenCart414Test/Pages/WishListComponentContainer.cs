@@ -44,7 +44,6 @@ namespace OpenCart414Test.Pages
             return TableRows;
         }
 
-        // Functional
         public IList<string> GetWishListComponentNames()
         {
             IList<string> wishListComponentNames = new List<string>();

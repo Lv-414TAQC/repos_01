@@ -26,7 +26,6 @@ namespace OpenCart414Test.Pages
             this.wishListComponentLayout = wishListComponentLayout;
         }
 
-        // Atomic
         public void ClickWishListComponentImage()
         {
             WishListComponentImage.Click();

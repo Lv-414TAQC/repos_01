@@ -13,7 +13,6 @@ namespace OpenCart414Test.Pages
         {
         }
 
-        // Atomic
         public string GetWishListTitleText()
         {
             return WishListTitle.Text;

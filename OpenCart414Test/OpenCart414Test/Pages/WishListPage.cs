@@ -16,13 +16,11 @@ namespace OpenCart414Test.Pages
             wishListTable = new WishListComponentContainer(driver);
         }
 
-        // Atomic
         public WishListComponentContainer GetWishListComponentsContainer()
         {
             return wishListTable;
         }
 
-        // Business Logic
         public WishListMessageEmptyPage RemoveLastItemFromWishList(Product removingProduct)
         {
             GetWishListComponentsContainer()

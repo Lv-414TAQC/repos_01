@@ -46,7 +46,8 @@ namespace OpenCart414Test.Tests
             Thread.Sleep(2000); //for presentation only
             Assert.IsTrue(wishListMessagePage.IsWishListAlertMessageDisplayed());
             Assert.IsTrue(wishListMessagePage.OpenCartButton()
-                .GetCartComponentNames().Contains(productToCart.Title));
+                .GetCartComponentNames()
+                .Contains(productToCart.Title));
         }
     }
 }

@@ -11,7 +11,6 @@ namespace OpenCart414Test.Pages
         {
         }
 
-        // Atomic
         public string GetWishListAlertMessageText()
         {
             return WishListAlertMessage.Text;
