@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using OpenCart414Test.Data;
+using OpenQA.Selenium;
 
 namespace OpenCart414Test.Pages
 {
@@ -47,12 +48,27 @@ namespace OpenCart414Test.Pages
             ClearPasswordField();
             TypeIntoPasswordField(passWord);
         }
+        //My version (Ferid)
+        protected void FillLoginForm(IUser user)
+        {
+            InputEmail(user.Email);
+            InputPassword(user.Password);          
+            ClickLoginButton();
+        }
+
         // Business Logic
         public AccountPage LoggingIn(string email, string passWord)
         {
             InputEmail(email);
             InputPassword(passWord);
             ClickLoginButton();
+            return new AccountPage(driver);
+        }
+
+        //My version(Ferid)
+        public AccountPage SuccessLogin(IUser user)
+        {
+            FillLoginForm(user);
             return new AccountPage(driver);
         }
     }

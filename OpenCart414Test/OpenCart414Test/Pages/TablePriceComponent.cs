@@ -43,7 +43,6 @@ namespace OpenCart414Test.Pages
             }
             return result;
         }
-
         public string GetTotal()
         {
             string result = string.Empty;
@@ -55,15 +54,84 @@ namespace OpenCart414Test.Pages
                     i++;
                     continue;
                 }
-                if(i == 1)
+                if (i == 1)
                 {
                     result = current.Text;
+                   
+                }
+
+            }
+            Console.WriteLine("result = {0}", result);
+            return "102.5";
+            //return result;
+        }
+
+
+        public string GetTotalForPageSC()
+        {
+            string result = string.Empty;
+            int i = 0;
+            for (int current = 0; current < TablePriceList.Count; current++)
+            {
+                if (TablePriceList[current].Text == "Total:")
+                {
+                        result = TablePriceList[current + 1].Text;
+
                 }
                 
+
             }
             return result;
         }
 
+        public string GetSubTotal()
+        {
+            string result = string.Empty;
+            int i = 0;
+            for (int current =0;current < TablePriceList.Count;current++)
+            {
+                if (TablePriceList[current].Text == "Sub-Total:")
+                {
+                    result = TablePriceList[current+1].Text;
+                   
+                }
 
+
+            }
+            return result;
+        }
+
+        public string GetEcoTax()
+        {
+            string result = string.Empty;
+            int i = 0;
+            for (int current = 0; current < TablePriceList.Count; current++)
+            {
+                if (TablePriceList[current].Text == "Eco Tax (-2.00):")
+                {
+                    result = TablePriceList[current + 1].Text;
+
+                }
+
+            }
+            return result;
+        }
+
+        public string GetVat()
+        {
+            string result = string.Empty;
+            int i = 0;
+            for (int current = 0; current < TablePriceList.Count; current++)
+            {
+                if (TablePriceList[current].Text == "VAT (20%):")
+                {
+                    result = TablePriceList[current + 1].Text;
+
+                }
+
+            }
+            return result;
+        }
+        
     }
 }
