@@ -20,102 +20,76 @@ namespace OpenCart414Test.Tests
                 SearchCriteriaRepository.GetMacBookD(),
                 }
         };
-        private static readonly object[] ProductSearch1 =
+        private static readonly object[] ProductSearchBydescription =
         {
             new object[] {
-                SearchCriteriaRepository.GetHpSearchCriteria(),
+                SearchCriteriaRepository.GetHp(),
                 },
         };
-        private static readonly object[] ProductSearch2 =
+        private static readonly object[] ProductSearchBySubCategory =
         {
             new object[] {
                 SearchCriteriaRepository.GetImac(),
                 },
         };
-        private static readonly object[] ProductSearch3 =
+        private static readonly object[] ProductSearchShowItems =
         {
             new object[] {
                 SearchCriteriaRepository.GetAllProducts(),
+                SortShowRepository.ShowBy15(),
+                SortShowRepository.ShowBy25(),             
                 },
         };
-        private static readonly object[] ProductSearch4 =
-    {
-            new object[] {
-                SearchCriteriaRepository.GetAllProducts(),
-                SortShowRepository.ShowBy25()
-                },
-        };
-
-        //
-        //[Test, TestCaseSource(nameof(ProductSearch))]
-        public void CheckSearchByDefaultCategory(SearchCriteria searchCriteria)
-        {
+        
+        [Test, TestCaseSource(nameof(ProductSearch))]
+        public void ByDefaultCategoryTest(SearchCriteria searchCriteria)
+        {                                                
             SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyByDefault(searchCriteria);
-            Thread.Sleep(2000);  //Only for Presentation
-            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainTextByDefaultCategory(searchCriteria));
-            Thread.Sleep(2000);  //Only for Presentation
+            Thread.Sleep(2000);     //Only for Presentation
+            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainNameText(searchCriteria));
+            Thread.Sleep(2000);     //Only for Presentation
         }
-        //
-        //[Test, TestCaseSource(nameof(ProductSearch))]
-        public void CheckSearchBySeparateCategory(SearchCriteria searchCriteria)
+        
+        [Test, TestCaseSource(nameof(ProductSearch))]
+        public void SearchBySeparateCategoryTest(SearchCriteria searchCriteria)
         {
             SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyByCategory(searchCriteria);
-            Thread.Sleep(2000);  //Only for Presentation            
-            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainTextBySeparateCategory(searchCriteria));
-            Thread.Sleep(2000);  //Only for Presentation 
-
-            //HomePage homePage = LoadApplication();
-            //SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
-            //SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByCategory(searchCriteria);
+            Thread.Sleep(2000);      //Only for Presentation                         
+            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainNameText(searchCriteria));
+            Thread.Sleep(2000);      //Only for Presentation 
         }
-        //
-        //[Test, TestCaseSource(nameof(ProductSearch1))]
-        public void CheckSearchByDescription(SearchCriteria searchCriteria)
+        
+        [Test, TestCaseSource(nameof(ProductSearchBydescription))]
+        public void SearchByDescriptionTest(SearchCriteria searchCriteria)
         {
             SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyByDescription(searchCriteria);     
-            Thread.Sleep(2000);  //Only for Presentation                        
+            Thread.Sleep(2000);     //Only for Presentation                        
             //
             Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainTextByDescription(searchCriteria));
-            Thread.Sleep(2000);  //Only for Presentation  
+            Thread.Sleep(2000);     //Only for Presentation  
 
-            //HomePage homePage = LoadApplication();
-            //SearchUnsuccessPage searchUnsuccessPage = homePage.GetUnsuccessPage();
-            //SearchSuccessPage searchSuccessPage = searchUnsuccessPage.SearchSuccessfullyByDescription(searchCriteria);
-            //bool temp = true;
-            //for (int a = 0; a < searchSuccessPage.ProductsCriteria.GetProductComponentsCount(); a++)
-            //{
-            //    if (!searchSuccessPage.ProductsCriteria.GetProductComponentDescriptionByProduct(addingProduct).Contains(searchSuccessPage.GetCriteriaSearchFieldText()))
-            //    {
-            //        temp = false;
-            //    }
-            //}
         }
-        //
-        //[Test, TestCaseSource(nameof(ProductSearch2))]
-        public void CheckSearchBySubCategory(SearchCriteria searchCriteria)
+        
+        [Test, TestCaseSource(nameof(ProductSearchBySubCategory))]
+        public void SearchBySubCategoryTest(SearchCriteria searchCriteria)
         {
             SearchSuccessPage searchSuccessPage = LoadApplication().GetUnsuccessPage().SearchSuccessfullyBySubCategory(searchCriteria);
-            Thread.Sleep(2000);  //Only for Presentation                        
+            Thread.Sleep(2000);      //Only for Presentation                        
             //
-            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainTextBySubCategory(searchCriteria));
-            Thread.Sleep(2000);  //Only for Presentation
+            Assert.IsTrue(searchSuccessPage.ProductsCriteria.IsContainNameText(searchCriteria));
+            Thread.Sleep(2000);      //Only for Presentation
         }
-        [Test, TestCaseSource(nameof(ProductSearch4))]
-        public void ShowElementsTest(SearchCriteria searchCriteria,SortShowCriteria sortShowCriteria)
+        
+        [Test, TestCaseSource(nameof(ProductSearchShowItems))]
+        public void ShowElementsTest(SearchCriteria searchCriteria,SortShowCriteria sortShowCriteria, SortShowCriteria sortShowCriteriaA)
         {
-            SearchSuccessPage searchSuccessPage = LoadApplication().SearchSuccessfully(searchCriteria);
+            SearchSuccessPage searchSuccessPage = LoadApplication().SearchSuccessfully(searchCriteria);        
             Thread.Sleep(2000);  //Only for Presentation
-            searchSuccessPage.ProductsCriteria.SortAndShowSuccessfully(sortShowCriteria);
+            Assert.AreEqual(searchSuccessPage.ProductsCriteria.GetProductComponentsCount(), Convert.ToInt32(sortShowCriteria.ShowValue));
+            //
+            searchSuccessPage=searchSuccessPage.ProductsCriteria.SortAndShowSuccessfully(sortShowCriteriaA);
+            Assert.AreEqual(searchSuccessPage.ProductsCriteria.GetProductComponentsCount(), Convert.ToInt32(sortShowCriteriaA.ShowValue));
             Thread.Sleep(2000);  //Only for Presentation
-
-
-            //SearchSuccessPage searchSuccessPage = LoadApplication().SearchSuccessfully(searchCriteria);
-            //Thread.Sleep(2000);  //Only for Presentation
-            //Assert.AreEqual(15,searchSuccessPage.ProductsCriteria.GetProductComponentsCount());
-            ////
-            //searchSuccessPage=searchSuccessPage.ProductsCriteria.IputLimitShow25();
-            //Assert.AreEqual(25, searchSuccessPage.ProductsCriteria.GetProductComponentsCount());
-            //Thread.Sleep(2000);  //Only for Presentation
         }
     }
 }

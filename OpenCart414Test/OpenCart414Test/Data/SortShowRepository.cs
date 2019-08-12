@@ -9,6 +9,10 @@ namespace OpenCart414Test.Data
         {
             return new SortShowCriteria("Default", "25");
         }
+        public static SortShowCriteria ShowBy15()
+        {
+            return new SortShowCriteria("Default", "15");
+		}
         public static SortShowCriteria SortByAsc()
         {
             return new SortShowCriteria("Price (Low > High)", "15");
