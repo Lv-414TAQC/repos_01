@@ -20,7 +20,7 @@ namespace OpenCart414Test.Tests
         new object[] { ProductRepository.GetIPhone() }
         };
         [Test, TestCaseSource(nameof(ProductToAdd))]
-        public void Update(Product addingProduct)
+        public void UpdateAfterZero(Product addingProduct)
         {
             HomePage homePage = LoadApplication();
             Thread.Sleep(1000); // only for presentation
@@ -30,27 +30,45 @@ namespace OpenCart414Test.Tests
                  .GotoShoppingCartPage()
                  .NotUpdateMessage(addingProduct, ShoppingCartData.INVALID_CHECK_ZERO);
             Thread.Sleep(1000); // only for presentation
-            Assert.IsTrue(shoppingCartEmptyPage.Equal());
+            Assert.AreEqual(ShoppingCartEmptyPage.CART_IS_EMPTY, shoppingCartEmptyPage.GetInfoMessageText());
             homePage = shoppingCartEmptyPage.GoToHomePage();
             Thread.Sleep(1000); // only for presentation
+        }
+
+        [Test, TestCaseSource(nameof(ProductToAdd))]
+        public void UpdateAfterEmpty(Product addingProduct)
+        {
+            HomePage homePage = LoadApplication();
             homePage.AddProductToCart(addingProduct);
             Thread.Sleep(1000); // only for presentation
             shoppingCartEmptyPage = homePage
                 .GotoShoppingCartPage()
                 .ClearQuantity(addingProduct);
             Thread.Sleep(1000); // only for presentation
-            Assert.IsTrue(shoppingCartEmptyPage.Equal());
+            Assert.AreEqual(ShoppingCartEmptyPage.CART_IS_EMPTY, shoppingCartEmptyPage.GetInfoMessageText());
             homePage = shoppingCartEmptyPage.GoToHomePage();
             Thread.Sleep(1000); // only for presentation
+        }
+        [Test, TestCaseSource(nameof(ProductToAdd))]
+        public void UpdateAfterSymbols(Product addingProduct)
+        {
+
+            HomePage homePage = LoadApplication();
             homePage.AddProductToCart(addingProduct);
             Thread.Sleep(1000); // only for presentation
             shoppingCartEmptyPage = homePage
                 .GotoShoppingCartPage()
                 .NotUpdateMessage(addingProduct, ShoppingCartData.INVALID_CHECK_SYM);
             Thread.Sleep(1000); // only for presentation
-            Assert.IsTrue(shoppingCartEmptyPage.Equal());
+            Assert.AreEqual(ShoppingCartEmptyPage.CART_IS_EMPTY, shoppingCartEmptyPage.GetInfoMessageText());
             homePage = shoppingCartEmptyPage.GoToHomePage();
             Thread.Sleep(1000); // only for presentation
+        }
+        [Test, TestCaseSource(nameof(ProductToAdd))]
+        public void Update(Product addingProduct)
+        {
+
+            HomePage homePage = LoadApplication();
             homePage.AddProductToCart(addingProduct);
             Thread.Sleep(1000); // only for presentation
             ShoppingCartMessage shoppingCartPageUpdate = homePage

@@ -22,7 +22,7 @@ namespace TestCaseDelete
         [OneTimeSetUp]
         public void BeforeAllMethods()
         {
-            //IWebDriver driver = new FirefoxDriver();
+           
             driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
@@ -36,17 +36,15 @@ namespace TestCaseDelete
         [SetUp]
         public void SetUp()
         {
-            // Precondition
-            // Goto Application Start Page
+           
             driver.Navigate().GoToUrl("http://192.168.163.130/opencart/upload/");
-            Thread.Sleep(1000); // BAD Practic, don't use.
+            Thread.Sleep(1000);// only for presentation 
         }
 
         [TearDown]
         public void TearDown()
         {
-            // Return to previous state
-            // Check if Loggined and logout driver.Navigate().GoToUrl(".../logout");
+            
         }
         [Test]
         public void Addproduct()

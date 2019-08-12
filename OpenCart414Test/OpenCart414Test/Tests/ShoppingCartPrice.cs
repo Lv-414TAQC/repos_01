@@ -37,27 +37,59 @@ namespace OpenCart414Test.Tests
                 .UnitPrice(addingProduct),
                 shoppingCartPage
                 .TotalPrice(addingProduct));
-            Console.WriteLine(shoppingCartPage
-                .TotalPrice(addingProduct) +                           //only for presentation
-                "==" + shoppingCartPage.GetTablePriceTotal());
+        }
 
+        [Test, TestCaseSource(nameof(ProductToAdd))]
+        public void PriceAfterUpdate(Product addingProduct)
+        {
+            HomePage homePage = LoadApplication();
+            Thread.Sleep(1000); // only for presentation
+            homePage.AddProductToCart(addingProduct);
+            Thread.Sleep(1000); // only for presentation
+            shoppingCartPage = homePage
+                .GotoShoppingCartPage();
             shoppingCartPageUpdate = shoppingCartPage
                 .UpdateMessage(addingProduct, ShoppingCartData.VALID_CHECK);
             Thread.Sleep(1000); // only for presentation
 
             Assert.IsTrue(shoppingCartPageUpdate
                 .GetData(addingProduct) == ShoppingCartData.VALID_CHECK);
-            
+
             Assert.IsTrue((shoppingCartPageUpdate
                 .UnitPrice(addingProduct) * shoppingCartPageUpdate.GetIntData(addingProduct))
                 == shoppingCartPageUpdate.TotalPrice(addingProduct));
+        }
 
+        [Test, TestCaseSource(nameof(ProductToAdd))]
+        public void PriceEqual(Product addingProduct)
+        {
+            HomePage homePage = LoadApplication();
+            Thread.Sleep(1000); // only for presentation
+            homePage.AddProductToCart(addingProduct);
+            Thread.Sleep(1000); // only for presentation
+            shoppingCartPage = homePage
+                .GotoShoppingCartPage();
+            shoppingCartPageUpdate = shoppingCartPage
+                .UpdateMessage(addingProduct, ShoppingCartData.VALID_CHECK);
+            Thread.Sleep(1000); // only for presentation
             Console.WriteLine(shoppingCartPageUpdate.TotalPrice(addingProduct)  //only for presentation
                 + "==" + shoppingCartPageUpdate.GetTablePriceTotal());
             Assert.IsTrue(shoppingCartPageUpdate.TotalPrice(addingProduct)
                 == shoppingCartPageUpdate.GetTablePriceTotal());
+        }
 
-
+        [Test, TestCaseSource(nameof(ProductToAdd))]
+        public void PriceInTable(Product addingProduct)
+        {
+            HomePage homePage = LoadApplication();
+            Thread.Sleep(1000); // only for presentation
+            homePage.AddProductToCart(addingProduct);
+            Thread.Sleep(1000); // only for presentation
+            shoppingCartPage = homePage
+                .GotoShoppingCartPage();
+            shoppingCartPageUpdate = shoppingCartPage
+                .UpdateMessage(addingProduct, ShoppingCartData.VALID_CHECK);
+            Thread.Sleep(1000); // only for presentation
             Console.WriteLine(shoppingCartPageUpdate.GetTablePriceSubTotal()
                 + " + " + shoppingCartPageUpdate.GetTablePriceEcoTax()
                  + " + " + shoppingCartPageUpdate.GetTablePriceVat()        //only for presentation
