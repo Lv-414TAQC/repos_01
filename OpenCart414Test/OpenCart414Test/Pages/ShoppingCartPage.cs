@@ -8,6 +8,8 @@ using OpenCart414Test.Data;
 using OpenCart414Test.Pages;
 using System.Threading;
 using OpenCart414Test.Tools;
+using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace OpenCart414Test.Pages
 {
@@ -197,6 +199,29 @@ namespace OpenCart414Test.Pages
         {
             shippingAndTaxesDetails = new ShippingAndTaxesComponent(driver);
             return shippingAndTaxesDetails.ApplyShippingDetails(details);
+        }
+
+        public string GetPriceOption(string option)
+        {
+            string result = string.Empty;
+            List<string> priceOptions = GetAllTablePriceComponents().ToList();
+            for (int i = 0; i < priceOptions.Count; i++)
+            {
+                if (priceOptions[i] == option)
+                {
+                    result = priceOptions[i+1];
+                }
+            }
+            return result;
+        }
+
+        public decimal GetPriceOptionValue(string option)
+        {
+            string result = Regex.Match(GetPriceOption(option), @"\d+\.\d{2}").Value;
+            NumberStyles style = NumberStyles.AllowDecimalPoint;
+            CultureInfo provider = new CultureInfo("en-US");
+            decimal value = Decimal.Parse(result, style, provider);
+            return value;
         }
     }
 }

@@ -45,11 +45,11 @@ namespace OpenCart414Test.Tests
             //driver.Navigate().GoToUrl("http://192.168.163.130/opencart/upload/"); //alena
             //driver.Navigate().GoToUrl("http://192.168.147.128/opencart/upload/"); // Nazar
             //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");
-            driver.Navigate().GoToUrl("http://192.168.17.128/opencart/upload/");
+            //driver.Navigate().GoToUrl("http://192.168.17.128/opencart/upload/");
             //driver.Navigate().GoToUrl("http://192.168.140.131/opencart/upload/");
             //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");
             //driver.Navigate().GoToUrl("http://172.20.10.2/opencart/upload/");
-            driver.Navigate().GoToUrl("http://192.168.20.128/opencart/upload/");
+            //driver.Navigate().GoToUrl("http://192.168.20.128/opencart/upload/");
 
 
             //driver.Navigate().GoToUrl("http://192.168.61.129/opencart/upload/");
@@ -59,7 +59,7 @@ namespace OpenCart414Test.Tests
 
         [TearDown]
         //public void TearDown(ITestResult testResult)
-        public void TearDown()
+        public virtual void TearDown()
         {
             string resultMessage = TestContext.CurrentContext.Result.Message;
             if ((resultMessage != null) && (resultMessage.Length > 0))

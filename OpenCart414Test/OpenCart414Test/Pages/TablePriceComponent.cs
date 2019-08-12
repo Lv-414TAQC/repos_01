@@ -60,9 +60,10 @@ namespace OpenCart414Test.Pages
                 }
 
             }
-            Console.WriteLine("result = {0}", result);
-            return "102.5";
-            //return result;
+            return result;
         }
+
+        
+
     }
 }

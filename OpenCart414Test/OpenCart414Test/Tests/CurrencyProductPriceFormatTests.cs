@@ -37,6 +37,11 @@ namespace OpenCart414Test.Tests
         [TestCase(Currency.US_DOLLAR, @"^\$\d+\.\d{2}")]
         [TestCase(Currency.EURO, @"\d+\.\d{2}€$")]
         [TestCase(Currency.POUND_STERLING, @"^£\d+\.\d{2}")]
+
+
+
+
+
         public void CheckCurrencyFormatOfExTax(Currency currency, string pattern)
         {
             HomePage UserHomePage = LoadHomePage();

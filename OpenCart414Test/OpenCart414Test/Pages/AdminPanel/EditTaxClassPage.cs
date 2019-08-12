@@ -38,5 +38,22 @@ namespace OpenCart414Test.Pages.AdminPanel
             ClickSaveButton();
 
         }
+
+        public void RemoveRule(TaxRate taxRate)
+        {
+            foreach (var item in driver.FindElements(By.CssSelector("select[name$='[tax_rate_id]']")))
+            {
+                SelectElement Select = new SelectElement(item);
+                string Text = Select.SelectedOption.Text;
+                string Name;
+                if (Text == taxRate.Name)
+                {
+                    Name = item.GetAttribute("name");
+                    string quiery = "//select[@name='" + Name + "']/parent::td/following-sibling::td/button[@data-original-title='Remove']";
+                    driver.FindElement(By.XPath(quiery)).Click();
+                }
+            }
+            ClickSaveButton();
+        }
     }
 }

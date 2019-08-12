@@ -37,7 +37,7 @@ namespace OpenCart414Test.Pages.AdminPanel
 
         public void ClickLocalizationMenu()
         {
-            ClickSystemMenu();
+            
             MenuComponent Localization = new MenuComponent();
             Localization.MenuButton = driver.FindElement(By.XPath("//a[contains(text(), 'Localisation')]"));
             Localization.MenuLabel = Localization.MenuButton.Text;
@@ -46,7 +46,7 @@ namespace OpenCart414Test.Pages.AdminPanel
 
         public GeoZonesPage GoToGeoZonePage()
         {
-            ClickLocalizationMenu();
+            
             MenuComponent GeoZones = new MenuComponent();
             GeoZones.MenuButton = driver.FindElement(By.XPath("//a[contains(text(), 'Geo Zones')]"));
             GeoZones.MenuLabel = GeoZones.MenuButton.Text;
@@ -56,7 +56,7 @@ namespace OpenCart414Test.Pages.AdminPanel
 
         public void ClickTaxesMenu()
         {
-            ClickSystemMenu();
+            
             MenuComponent Taxes = new MenuComponent();
             Taxes.MenuButton = driver.FindElement(By.XPath("//a[contains(text(), 'Taxes')]"));
             Taxes.MenuLabel = Taxes.MenuButton.Text;
@@ -65,7 +65,7 @@ namespace OpenCart414Test.Pages.AdminPanel
 
         public TaxRatesPage GoToTaxRatesPage()
         {
-            ClickTaxesMenu();
+            
             MenuComponent TaxRates = new MenuComponent();
             TaxRates.MenuButton = driver.FindElement(By.XPath("//a[contains(text(), 'Tax Rates')]"));
             TaxRates.MenuLabel = TaxRates.MenuButton.Text;
@@ -75,7 +75,7 @@ namespace OpenCart414Test.Pages.AdminPanel
 
         public TaxClassesPage GoToTaxClassesPage()
         {
-            ClickSystemMenu();
+            
             MenuComponent TaxClasses = new MenuComponent();
             TaxClasses.MenuButton = driver.FindElement(By.XPath("//a[contains(text(), 'Tax Classes')]"));
             TaxClasses.MenuLabel = TaxClasses.MenuButton.Text;

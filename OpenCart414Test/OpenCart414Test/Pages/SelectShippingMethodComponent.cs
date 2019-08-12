@@ -39,10 +39,11 @@ namespace OpenCart414Test.Pages
             cancelButton.Click();
         }
 
-        public void ApllyShippingMethod()
+        public ShoppingCartPage ApllyShippingMethod()
         {
             SelectRadioButton();
             ClickApplyButton();
+            return new ShoppingCartPage(driver);
         }
 
         public decimal GetShippingRate()
