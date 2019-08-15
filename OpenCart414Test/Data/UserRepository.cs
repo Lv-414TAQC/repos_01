@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleAppPractices
+namespace OpenCart414Test
 {
     public sealed class UserRepository
     {
@@ -33,16 +33,16 @@ namespace ConsoleAppPractices
         public IUser Registered()
         {
             return User.Get()
-              .SetFirstname("firstname07")
-              .SetLastname("lastname07")
-              .SetEmail("email07")
+              .SetFirstname("hahaha")
+              .SetLastname("hahaha")
+              .SetEmail("hahaha@gmail.com")
               .SetTelephone("telephone07")
               .SetAddress1("address107")
               .SetCity("city07")
               .SetPostcode("postcode07")
               .SetCountry("country07")
               .SetRegionState("regionState07")
-              .SetPassword("password07")
+              .SetPassword(Environment.GetEnvironmentVariable("MY_PASSWORD"))
               .SetSubscribe(true)
               .SetCompany("Company07")
               .Build();

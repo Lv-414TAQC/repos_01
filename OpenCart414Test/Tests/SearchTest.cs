@@ -65,10 +65,10 @@ namespace OpenCart414Test.Tests
         // DataProvider
         private static readonly object[] UserData =
         {
-            new object[] { new User() },
+            new object[] { UserRepository.Get().Registered() },
         };
 
-        [Test, TestCaseSource(nameof(UserData))]
+        //[Test, TestCaseSource(nameof(UserData))]
         public void CheckLogin(User user)
         {
             // Steps
