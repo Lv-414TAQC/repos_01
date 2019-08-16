@@ -56,34 +56,54 @@ namespace Rest414Test
             obj = deserial.Deserialize<RestResult>(response);
             Assert.AreEqual("true", obj.content.ToLower());
             //
-            request = new RestRequest("/tokenlifetime", Method.GET);
+            // get cooldowntime
+            request = new RestRequest("/cooldowntime", Method.GET);
             response = client.Execute(request);
-            obj = deserial.Deserialize<RestResult>(response);
-            Assert.AreEqual("700000", obj.content.ToLower());
+            string content = response.Content;
+            Console.WriteLine("Get Cooldowntime content: " + content);
+            //
+            // Change cooldowntime
+            request = new RestRequest("/cooldowntime", Method.PUT);
+            request.AddParameter("token", token);
+            request.AddParameter("time", "1100000");
+            response = client.Execute(request);
+            content = response.Content;
+            Console.WriteLine("Update Cooldowntime content: " + content);
+            //
+            // get cooldowntime
+            request = new RestRequest("/cooldowntime", Method.GET);
+            response = client.Execute(request);
+            content = response.Content;
+            Console.WriteLine("Get Cooldowntime content: " + content);
+            //
+            //request = new RestRequest("/tokenlifetime", Method.GET);
+            //response = client.Execute(request);
+            //obj = deserial.Deserialize<RestResult>(response);
+            //Assert.AreEqual("700000", obj.content.ToLower());
             //
             // addItem
-            request = new RestRequest("/item/{index}", Method.POST);
-            request.AddParameter("item", "hahaha");          // Save parameters to body
-            request.AddParameter("token", token);
-            request.AddUrlSegment("index", "1");
-            response = client.Execute(request);
-            obj = deserial.Deserialize<RestResult>(response);
-            Console.WriteLine("***addItem " + obj);
+            //request = new RestRequest("/item/{index}", Method.POST);
+            //request.AddParameter("item", "hahaha");          // Save parameters to body
+            //request.AddParameter("token", token);
+            //request.AddUrlSegment("index", "1");
+            //response = client.Execute(request);
+            //obj = deserial.Deserialize<RestResult>(response);
+            //Console.WriteLine("***addItem " + obj);
             //
             // getUserItem
-            request = new RestRequest("/item/{index}/user/{name}?token=" + token, Method.GET);
-            request.AddUrlSegment("index", "1");
-            request.AddUrlSegment("name", "admin");
-            response = client.Execute(request);
-            obj = deserial.Deserialize<RestResult>(response);
-            Console.WriteLine("***getUserItem " + obj);
+            //request = new RestRequest("/item/{index}/user/{name}?token=" + token, Method.GET);
+            //request.AddUrlSegment("index", "1");
+            //request.AddUrlSegment("name", "admin");
+            //response = client.Execute(request);
+            //obj = deserial.Deserialize<RestResult>(response);
+            //Console.WriteLine("***getUserItem " + obj);
             //
-            request = new RestRequest("/logout", Method.POST);
-            request.AddParameter("name", "admin");          // Save parameters to body
-            request.AddParameter("token", token);
-            response = client.Execute(request);
-            obj = deserial.Deserialize<RestResult>(response);
-            Assert.AreEqual("true", obj.content.ToLower());
+            //request = new RestRequest("/logout", Method.POST);
+            //request.AddParameter("name", "admin");          // Save parameters to body
+            //request.AddParameter("token", token);
+            //response = client.Execute(request);
+            //obj = deserial.Deserialize<RestResult>(response);
+            //Assert.AreEqual("true", obj.content.ToLower());
         }
     }
 }
