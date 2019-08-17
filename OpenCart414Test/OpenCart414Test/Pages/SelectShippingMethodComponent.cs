@@ -11,7 +11,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace OpenCart414Test.Pages
 {
-    class SelectShippingMethodComponent
+    public class SelectShippingMethodComponent
     {
         IWebDriver driver;
         IWebElement radioButton { get { return driver.FindElement(By.Name("shipping_method")); } }
@@ -39,10 +39,11 @@ namespace OpenCart414Test.Pages
             cancelButton.Click();
         }
 
-        public void ApllyShippingMethod()
+        public ShoppingCartPage ApllyShippingMethod()
         {
             SelectRadioButton();
             ClickApplyButton();
+            return new ShoppingCartPage(driver);
         }
 
         public decimal GetShippingRate()

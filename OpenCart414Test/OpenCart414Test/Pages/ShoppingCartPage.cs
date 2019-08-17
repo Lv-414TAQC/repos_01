@@ -8,6 +8,8 @@ using OpenCart414Test.Data;
 using OpenCart414Test.Pages;
 using System.Threading;
 using OpenCart414Test.Tools;
+using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace OpenCart414Test.Pages
 {
@@ -17,16 +19,18 @@ namespace OpenCart414Test.Pages
     {
         private const string SHOPPING_CART_XPATH = "//div[@class = 'table-responsive']/table/tbody";
         private const string TABLE_PRICE_COMPONENT_XPATH = "//div[@class='row']/div/table/tbody/tr/td";
-        //
+       
 
-        public IWebElement ShoppingCartTitle
-        { get { return driver.FindElement(By.CssSelector("#content > h1")); } }
-        public IWebElement ContinueShoppingButton
-        { get { return driver.FindElement(By.CssSelector("button.btn.btn-primary")); } }
-        public IWebElement ChecoutButton
-        { get { return driver.FindElement(By.CssSelector("a.btn.btn-primary")); } }
-        public IWebElement DiscountCode 
-        { get { return driver.FindElement(By.Id("accordion")); } }
+        public IWebElement ShoppingCartTitle =>
+        driver.FindElement(By.CssSelector("#content > h1")); 
+        public IWebElement ContinueShoppingButton =>
+        driver.FindElement(By.CssSelector("button.btn.btn-primary")); 
+        public IWebElement ChecoutButton =>
+        driver.FindElement(By.CssSelector("a.btn.btn-primary")); 
+        public IWebElement DiscountCode =>
+        driver.FindElement(By.Id("accordion")); 
+        ShippingAndTaxesComponent shippingAndTaxesDetails;
+
 
         public IList<ShoppingCartComponent> shopppingcartComponents;
         public TablePriceComponent tablePrice;
@@ -51,7 +55,7 @@ namespace OpenCart414Test.Pages
 
         private void CheckElements()
         {
-            // TODO Develop Custom Exception
+            
             IWebElement temp = ContinueShoppingButton;
             temp = ChecoutButton;
             temp = ShoppingCartTitle;
@@ -80,11 +84,11 @@ namespace OpenCart414Test.Pages
         {
             ContinueShoppingButton.Click();
         }
-        public string GetCheoutText()
+        public string GetChecoutText()
         {
             return ChecoutButton.Text;
         }
-        public void ClickCheckout()
+        public void ClickCheckoutSc()
         {
             ChecoutButton.Click();
         }
@@ -120,42 +124,67 @@ namespace OpenCart414Test.Pages
         {
             return new RegularExpressions();
         }
+        
         public decimal GetTablePriceTotal()
         {
             CreateTablePriceComponent(By.XPath(TABLE_PRICE_COMPONENT_XPATH));
             Console.WriteLine(GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetTotal())); //Only for presentation
             return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetTotal());
-        }
+            return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetTotalForPageSC());
 
+        }
+        public decimal GetTablePriceSubTotal()
+        {
+            CreateTablePriceComponent(By.XPath(TABLE_PRICE_COMPONENT_XPATH));
+            return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetSubTotal());
+
+        }
+        public decimal GetTablePriceEcoTax()
+        {
+            CreateTablePriceComponent(By.XPath(TABLE_PRICE_COMPONENT_XPATH));
+            return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetEcoTax());
+        }
+        public decimal GetTablePriceVat()
+        {
+            CreateTablePriceComponent(By.XPath(TABLE_PRICE_COMPONENT_XPATH));
+            return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetVat());
+
+        }
 
         protected TablePriceComponent GetTablePriceComponent()
         {
             if (tablePrice == null)
             {
-                // TODO Develop Custom Exception 
                 throw new Exception("TablePriceComponent is null.");
             }
             return tablePrice;
         }
 
-        private TablePriceComponent CreateTablePriceComponent(By searchLocator)
+        protected TablePriceComponent CreateTablePriceComponent(By searchLocator)
         {
             tablePrice = new TablePriceComponent(driver, searchLocator);
             return GetTablePriceComponent();
         }
-        //public string EnterData(Product product, string data)
-        //{
-        //    GetShoppingCartComponentByName(product.Title).GetUnitPrice();
-        //    return GetShoppingCartComponentByName(product.Title).GetTextQuantityFieldString();
 
-        //}
-        public string EnterData(Product product, string data)
+        public decimal UnitPrice(Product product)
         {
-            GetShoppingCartComponentByName(product.Title).SandKeysQuantityField(data);
-            return GetShoppingCartComponentByName(product.Title).GetTextQuantityFieldString();
-
+            return GetShoppingCartComponentByName(product.Title).GetUnitPrice();
         }
-        public int EnterDataForSum(Product product, string data)
+        public decimal TotalPrice(Product product)
+        {
+            return GetShoppingCartComponentByName(product.Title).GetTotal();
+        }
+       
+        public string GetData(Product product)
+        {
+            return GetShoppingCartComponentByName(product.Title).GetTextQuantityField();
+        }
+        public int GetIntData(Product product)
+        {
+            return Convert.ToInt32(GetShoppingCartComponentByName(product.Title).GetTextQuantityField());
+        }
+
+        public string EnterData(Product product, string data)
         {
             GetShoppingCartComponentByName(product.Title).SandKeysQuantityField(data);
             return GetShoppingCartComponentByName(product.Title).GetTextQuantityField();
@@ -163,7 +192,7 @@ namespace OpenCart414Test.Pages
         public ShoppingCartEmptyPage ClearQuantity(Product product)
         {
             GetShoppingCartComponentByName(product.Title).ClearQuantityField();
-            return NotUpdateMessage(product, GetShoppingCartComponentByName(product.Title).GetTextQuantityFieldString());
+            return NotUpdateMessage(product, GetShoppingCartComponentByName(product.Title).GetTextQuantityField());
 
         }
         // Business Logic
@@ -190,6 +219,34 @@ namespace OpenCart414Test.Pages
             return new ShoppingCartEmptyPage(driver);
         }
 
+        public  SelectShippingMethodComponent ApplySippingAndTaxes(ShippingDetails details)
+        {
+            shippingAndTaxesDetails = new ShippingAndTaxesComponent(driver);
+            return shippingAndTaxesDetails.ApplyShippingDetails(details);
+        }
+
+        public string GetPriceOption(string option)
+        {
+            string result = string.Empty;
+            List<string> priceOptions = GetAllTablePriceComponents().ToList();
+            for (int i = 0; i < priceOptions.Count; i++)
+            {
+                if (priceOptions[i] == option)
+                {
+                    result = priceOptions[i+1];
+                }
+            }
+            return result;
+        }
+
+        public decimal GetPriceOptionValue(string option)
+        {
+            string result = Regex.Match(GetPriceOption(option), @"\d+\.\d{2}").Value;
+            NumberStyles style = NumberStyles.AllowDecimalPoint;
+            CultureInfo provider = new CultureInfo("en-US");
+            decimal value = Decimal.Parse(result, style, provider);
+            return value;
+        }
     }
 }
     

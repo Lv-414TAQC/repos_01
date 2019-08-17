@@ -22,7 +22,7 @@ namespace OpenCart414Test.Tests
 
         [Test, TestCaseSource(nameof(RegistredUser))]
 
-        public void CheckRegistering(IUser user)
+        public void CheckValidRegistering(IUser user)
         {
             SuccessfullyRegisterPage SucRegPage = LoadApplication().GotoRegisterPage().successfullyRegisterUser(user);
             // Check
@@ -32,8 +32,8 @@ namespace OpenCart414Test.Tests
             AccountLogoutPage accountLogoutPage = SucRegPage.LogOut();
 
             //Check
-         //  Assert.IsTrue(accountLogoutPage.GetActualAccountLogoutMessage()  TODO
-            //        .equals(accountLogoutPage.Expected_Account_Message));
+        // Assert.IsTrue(AccountLogoutPage.GetActualAccountLogoutMessage()  
+          //          .Equals(accountLogoutPage.Expected_Account_Message));
             //  DataBaseUtils db = new DataBaseUtils();
 
             Thread.Sleep(5000);

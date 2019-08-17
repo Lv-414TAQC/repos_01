@@ -1,34 +1,35 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using OpenCart414Test.Data;
 
 namespace OpenCart414Test.Pages.AdminPanel
 {
-    class TaxRatesPage : HeaderPart
+    public class TaxRatesPage : SideMenuComponent
     {
-        IWebElement AddNewButton { get { return Driver.FindElement(By.CssSelector("a[data-original-title='Add New']")); } }
-        IWebElement DeleteButton { get { return Driver.FindElement(By.CssSelector("button[data-original-title='Delete']")); } }
+        IWebElement AddNewButton { get { return driver.FindElement(By.CssSelector("a[data-original-title='Add New']")); } }
+        IWebElement DeleteButton { get { return driver.FindElement(By.CssSelector("button[data-original-title='Delete']")); } }
         IList<IWebElement> TaxRates = new List<IWebElement>();
 
         public TaxRatesPage(IWebDriver driver) : base(driver){ }
 
         public void GetTaxrates() { }
 
-        public void AddNewTaxRate(string name, double rate, string type, string geoZone)
+        public void AddNewTaxRate(TaxRate rate)
         {
             AddNewButton.Click();
-            AddTaxRatePage TaxRate = new AddTaxRatePage(Driver);
-            TaxRate.AddTaxRate(name, rate, type, geoZone);
+            AddTaxRatePage TaxRate = new AddTaxRatePage(driver);
+            TaxRate.AddTaxRate(rate);
         }
 
-        public void DeleteTaxrate(string taxRate)
+        public TaxRatesPage DeleteTaxRate(string taxRate)
         {
             string Path = String.Format(@"//td[contains(text(),'{0}')]/preceding-sibling::td/input", taxRate);
-            foreach (var item in Driver.FindElements(By.XPath(Path)))
+            foreach (var item in driver.FindElements(By.XPath(Path)))
                 item.Click();
-            Driver.FindElement(By.CssSelector("button[data-original-title='Delete']")).Click();
-            Driver.SwitchTo().Alert().Accept();
+            driver.FindElement(By.CssSelector("button[data-original-title='Delete']")).Click();
+            driver.SwitchTo().Alert().Accept();
+            return new TaxRatesPage(driver);
         }
     }
 }
