@@ -1,9 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
@@ -12,7 +9,7 @@ namespace OpenCart414Test.Pages
         protected IWebDriver driver;
 
         public IList<IWebElement> TablePriceList
-        { get; private set; }
+        { get; set; }
 
         public TablePriceComponent(IWebDriver driver, By searchLocator)
         {
@@ -39,7 +36,6 @@ namespace OpenCart414Test.Pages
 
         //Page Object
 
-
         public IList<string> GetTablePriceListText()
         {
             IList<string> result = new List<string>();
@@ -49,6 +45,8 @@ namespace OpenCart414Test.Pages
             }
             return result;
         }
+
+
         public string GetTotal()
         {
             string result = string.Empty;
@@ -63,8 +61,8 @@ namespace OpenCart414Test.Pages
                 if(i == 1)
                 {
                     result = current.Text;
-                }
-                
+                    break;
+                }  
             }
             return result;
         }

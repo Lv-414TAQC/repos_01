@@ -7,7 +7,7 @@ namespace OpenCart414Test.Tests
 {
     [TestFixture]
     class CurrencyProductPriceFormatTests : TestRunner
-    {
+    {/*
         [TestCase(Currency.US_DOLLAR, @"^\$\d+\.\d{2}")]
         [TestCase(Currency.EURO, @"\d+\.\d{2}€$")]
         [TestCase(Currency.POUND_STERLING, @"^£\d+\.\d{2}")]
@@ -20,7 +20,7 @@ namespace OpenCart414Test.Tests
             StringAssert.IsMatch(pattern, newPrice);
 
         }
-
+        
         [TestCase(Currency.US_DOLLAR, @"^\$\d+\.\d{2}")]
         [TestCase(Currency.EURO, @"\d+\.\d{2}€$")]
         [TestCase(Currency.POUND_STERLING, @"^£\d+\.\d{2}")]
@@ -46,7 +46,7 @@ namespace OpenCart414Test.Tests
             StringAssert.IsMatch(pattern, exTax);
 
         }
-
+        */
 
     }
 }

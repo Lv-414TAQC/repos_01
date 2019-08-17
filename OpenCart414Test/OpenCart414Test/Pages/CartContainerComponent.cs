@@ -13,10 +13,10 @@ namespace OpenCart414Test.Pages
 
         public IWebDriver driver;
 
-        public IWebElement ViewCartLink
-        { get { return driver.FindElement(By.XPath("//p[@class='text-right']//strong/i[@class='fa fa-shopping-cart']//..")); } }
-        public IWebElement CheckOutLink
-        { get { return driver.FindElement(By.XPath("//p[@class='text-right']//strong/i[@class='fa fa-share']//..")); } }
+        public IWebElement ViewCartLink =>
+        driver.FindElement(By.XPath("//p[@class='text-right']//strong/i[@class='fa fa-shopping-cart']//.."));
+        public IWebElement CheckOutLink =>
+        driver.FindElement(By.XPath("//p[@class='text-right']//strong/i[@class='fa fa-share']//.."));
         private TablePriceComponent tablePriceComponent;
         IList<ProductListContainerComponent> productList;
 
@@ -29,15 +29,8 @@ namespace OpenCart414Test.Pages
 
         private void CheckElements()
         {
-            try
-            {
-                IWebElement temp = ViewCartLink;
-                temp = CheckOutLink;
-            }
-            catch(Exception)
-            {
-                throw new Exception("Custom exception: CheckElements()");
-            }
+            IWebElement temp = ViewCartLink;
+            temp = CheckOutLink;
         }
 
         private void InitElements()
@@ -99,19 +92,19 @@ namespace OpenCart414Test.Pages
             return new RegularExpressions();
         }
 
-            // Functional
+        // Functional
 
         public IList<string> GetAllTablePriceComponents()
         {
             CreateTablePriceComponent(By.CssSelector(TABLE_PRICE_COMPONENT_CSSSELECTOR));
-            IList<string> result = GetTablePriceComponent().GetTablePriceListText();
-            return result;
+            return GetTablePriceComponent().GetTablePriceListText();
         }
 
         public decimal GetTablePriceTotal()
         {
             CreateTablePriceComponent(By.CssSelector(TABLE_PRICE_COMPONENT_CSSSELECTOR));
-            Console.WriteLine(GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetTotal())); //Only for presentation
+            Console.WriteLine("Data from table: " + GetRegularExpressions().
+                ConvertStringCurrency(GetTablePriceComponent().GetTotal())); //Only for presentation
             return GetRegularExpressions().ConvertStringCurrency(GetTablePriceComponent().GetTotal());
         }
 
@@ -125,7 +118,6 @@ namespace OpenCart414Test.Pages
                     break;
                  }
             }
-         
         }
 
         public IList<string> GetCartComponentNames()
@@ -158,7 +150,7 @@ namespace OpenCart414Test.Pages
             {
                total += GetRegularExpressions().ConvertStringCurrency(cur.GetProductPriceText());
             }
-            Console.WriteLine(total); //Only for presentation
+            Console.WriteLine("Data from list products: " + total); //Only for presentation
             
             return total;
         }

@@ -15,7 +15,7 @@ namespace OpenCart414Test.Tests
         decimal  euroPrice;
         decimal  gbpPrice;
 
-        [SetUp]
+        /*[SetUp]
         public override void SetUp()
         {
             AdminLoginPage ALoginPage = LoadAdminLoginPage();
@@ -32,7 +32,7 @@ namespace OpenCart414Test.Tests
             gbpPrice = UserHomePage.GetProductNewPriceValue(ProductRepository.GetCanonEos5D());
 
         }
-
+        */
         [Test]
         public void CheckConversion()
         {
