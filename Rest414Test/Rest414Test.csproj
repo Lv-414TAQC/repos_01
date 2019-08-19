@@ -61,11 +61,21 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ItemRepository.cs" />
+    <Compile Include="Data\ItemTemplate.cs" />
+    <Compile Include="Data\IUser.cs" />
+    <Compile Include="Data\Lifetime.cs" />
+    <Compile Include="Data\LifetimeRepository.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Dto\RestParameters.cs" />
+    <Compile Include="Dto\RestUrl.cs" />
+    <Compile Include="Dto\RestUrlKeys.cs" />
+    <Compile Include="Dto\RestUrlRepository.cs" />
     <Compile Include="Entity\SimpleEntity.cs" />
     <Compile Include="Resources\LoginResource.cs" />
     <Compile Include="Resources\RestCrud.cs" />
+    <Compile Include="Resources\RestQueries.cs" />
     <Compile Include="Resources\UserResource.cs" />
     <Compile Include="Resources\UsersResource.cs" />
     <Compile Include="RestTest1.cs" />
