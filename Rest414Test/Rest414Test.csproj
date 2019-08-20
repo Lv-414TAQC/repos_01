@@ -73,17 +73,24 @@
     <Compile Include="Dto\RestUrlKeys.cs" />
     <Compile Include="Dto\RestUrlRepository.cs" />
     <Compile Include="Entity\SimpleEntity.cs" />
-    <Compile Include="Resources\LoginResource.cs" />
+    <Compile Include="Resources\AdminAuthorizedResource.cs" />
+    <Compile Include="Resources\ItemResource.cs" />
+    <Compile Include="Resources\LogoutResource.cs" />
+    <Compile Include="Resources\TokenLifetimeResource.cs" />
+    <Compile Include="Resources\UserAuthorizedResource.cs" />
     <Compile Include="Resources\RestCrud.cs" />
     <Compile Include="Resources\RestQueries.cs" />
+    <Compile Include="Resources\UserItemResource.cs" />
     <Compile Include="Resources\UserResource.cs" />
     <Compile Include="Resources\UsersResource.cs" />
     <Compile Include="RestTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\GuestService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Tests\LifeTimeTest.cs" />
+    <Compile Include="Tests\SecondTest.cs" />
     <Compile Include="Tools\ListUtils.cs" />
   </ItemGroup>
   <ItemGroup>

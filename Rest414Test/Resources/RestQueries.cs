@@ -11,7 +11,6 @@ namespace Rest414Test.Resources
 {
     public class RestQueries<TGET, TPOST, TPUT, TDELETE> : RestCrud
     {
-        private const string NOT_SUPPORT_MESSAGE = "Method {0} not Support for {1} Resource";
         private const string CONVERT_OBJECT_ERROR = "ConvertToObject Error. {0}\n{1}";
         //
         private JsonDeserializer deserial;
@@ -19,13 +18,6 @@ namespace Rest414Test.Resources
         public RestQueries(RestUrl restUrl) : base(restUrl)
         {
             deserial = new JsonDeserializer();
-        }
-
-        protected void ThrowException(string message)
-        {
-            // TODO Develop Custom Exception
-            string resourceName = this.GetType().ToString();
-            throw new Exception(string.Format(NOT_SUPPORT_MESSAGE, message, resourceName));
         }
 
         // Entity - - - - - - - - - - - - - - - - - - - -

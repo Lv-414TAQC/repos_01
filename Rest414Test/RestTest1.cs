@@ -22,7 +22,7 @@ namespace Rest414Test
     public class RestTest1
     {
         //[TestMethod]
-        [Test]
+        //[Test]
         public void TestMethod1()
         {
             // Common

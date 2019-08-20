@@ -14,6 +14,22 @@ using System.Threading.Tasks;
 
 namespace ConsoleAppPractices
 {
+    public class A11
+    {
+        public void m1()
+        {
+            Console.WriteLine("Class Name: " + this.GetType().ToString());
+        }
+    }
+
+    public class B22 : A11
+    {
+        public void m2()
+        {
+            m1();
+        }
+    }
+
     // For RestSharp
     public class RestResult
     {
@@ -371,6 +387,9 @@ namespace ConsoleAppPractices
             //var obj2 = deserial.Deserialize<RestResult>(response);
             //var obj2 = JsonConvert.DeserializeObject<RestResult2>(response.Content);
             //Console.WriteLine("\nDeserialize content, Update Lifetime: " + obj2);
+            //
+            B22 b22 = new B22();
+            b22.m2();
             //
             Console.WriteLine("done");
         }

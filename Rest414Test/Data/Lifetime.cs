@@ -20,6 +20,25 @@ namespace Rest414Test.Data
             Time = time;
         }
 
+        public override bool Equals(object obj)
+        {
+            bool result = false;
+            if (this == obj)
+            {
+                result = true;
+            }
+            else if ((obj == null)       // string.IsNullOrEmpty
+                || (!(obj is Lifetime))) // this.GetType() != obj.GetType()
+            {
+                result = false;
+            }
+            else 
+            {
+                result = Time.Equals((obj as Lifetime).Time);
+            }
+            return result;
+        }
+
         // TODO Equals, Integer
     }
 

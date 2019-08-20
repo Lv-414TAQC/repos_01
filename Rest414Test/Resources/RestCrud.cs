@@ -11,6 +11,8 @@ namespace Rest414Test.Resources
 {
     public abstract class RestCrud
     {
+        private const string NOT_SUPPORT_MESSAGE = "Method {0} not Support for {1} Resource";
+        //
         private const string URL_PARAMETERS_SEPARATOR = "?";
         private const string NEXT_PARAMETERS_SEPARATOR = "&";
         private const string KEY_VALUE_SEPARATOR = "=";
@@ -33,6 +35,24 @@ namespace Rest414Test.Resources
             dictionaryMethods.Add(RestUrlKeys.POST, Method.POST);
             dictionaryMethods.Add(RestUrlKeys.PUT, Method.PUT);
             dictionaryMethods.Add(RestUrlKeys.DELETE, Method.DELETE);
+        }
+
+        // protected - - - - - - - - - - - - - - - - - - - -
+
+        protected void ThrowException(string message)
+        {
+            // TODO Develop Custom Exception
+            string resourceName = this.GetType().ToString();
+            throw new Exception(string.Format(NOT_SUPPORT_MESSAGE, message, resourceName));
+        }
+
+        protected void CheckImplementation(RestUrlKeys restUrlKeys)
+        {
+            // if (restUrl.GetUrl(restUrlKeys).Length == 0)
+            if (string.IsNullOrEmpty(restUrl.GetUrl(restUrlKeys)))
+            {
+                ThrowException(restUrlKeys.ToString());
+            }
         }
 
         // private - - - - - - - - - - - - - - - - - - - -
@@ -89,6 +109,7 @@ namespace Rest414Test.Resources
         private RestRequest CreateRestRequest(RestUrlKeys restUrlKeys, RestParameters urlParameters,
                     RestParameters pathVariables, RestParameters bodyParameters)
         {
+            CheckImplementation(restUrlKeys);
             string url = PrepareUrlParameters(restUrl.ReadBaseUrl() + restUrl.GetUrl(restUrlKeys), urlParameters);
             //Console.WriteLine("\t\t+++url = " + url + "METOD = " + dictionaryMethods[restUrlKeys].ToString());
             RestRequest request = new RestRequest(url, dictionaryMethods[restUrlKeys]);
