@@ -262,7 +262,6 @@
     <Compile Include="Tests\RegisterUserTest.cs" />
     <Compile Include="Tests\SearchByDefaultCategoryTest.cs" />
     <Compile Include="Tests\AddToCartTests.cs" />
-    <Compile Include="Tests\ShoppingCartTest.cs" />
     <Compile Include="Tests\SimpleRegistationTest.cs" />
     <Compile Include="Tests\ShoppingCartPrice.cs" />
     <Compile Include="Tests\ShoppingCartRemove.cs" />
