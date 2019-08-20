@@ -15,8 +15,14 @@ namespace OpenCart414Test.Tests
         decimal  euroPrice;
         decimal  gbpPrice;
 
+
         [SetUp]
         public override void SetUp()
+        { }
+
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+
         {
             AdminLoginPage ALoginPage = LoadAdminLoginPage();
             AdminHomePage AHomePage = ALoginPage.LogInAdmin();
@@ -25,14 +31,17 @@ namespace OpenCart414Test.Tests
             gbpRate = CurrencyPage.GetCurrencyRate("Pound Sterling");
             HomePage UserHomePage = LoadHomePage();
             UserHomePage = UserHomePage.ChooseCurrency(Currency.US_DOLLAR);
+            UserHomePage = LoadHomePage();
             usdPrice = UserHomePage.GetProductNewPriceValue(ProductRepository.GetCanonEos5D());
             UserHomePage = UserHomePage.ChooseCurrency(Currency.EURO);
+            UserHomePage = LoadHomePage();
             euroPrice = UserHomePage.GetProductNewPriceValue(ProductRepository.GetCanonEos5D());
             UserHomePage = UserHomePage.ChooseCurrency(Currency.POUND_STERLING);
+            UserHomePage = LoadHomePage();
             gbpPrice = UserHomePage.GetProductNewPriceValue(ProductRepository.GetCanonEos5D());
 
         }
-
+        
         [Test]
         public void CheckConversion()
         {

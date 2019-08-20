@@ -13,37 +13,33 @@ namespace OpenCart414Test.Pages
     {
         private IWebElement product;
         
-        public IWebElement Image
-        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-center']/a/img")); } }
-        public IWebElement ProductName
-        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']//table/tbody/tr/td[@class='text-left'][count(a)=1]")); } }
-        public IWebElement Model
-        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']//table/tbody/tr/td[@class='text-left'][count(*)=0]"));} } 
-        public IWebElement QuantityField
-        { get { return product.FindElement(By.XPath("//input[contains(@name,'quantity')]")); } }
-        public IWebElement UpdateButton
-        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']//table/tbody/tr/td[@class='text-left'][last()]/div/span/button[@type='submit']")); } }
-        public IWebElement RemoveButton
-        { get { return product.FindElement(By.CssSelector("button.btn.btn-danger:not(.btn-xs)")); } }
-        public IWebElement UnitPrice
-        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/a[contains(text(),'iPhone')]/../following-sibling::td[@class ='text-right'][last()-1]")); } }
-        public IWebElement Total
-        { get { return product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/a[contains(text(),'iPhone')]/../following-sibling::td[@class ='text-right']/following-sibling::td")); } }
-        //public IWebElement FieldValue
-        //{ get { return product.FindElement(By.CssSelector(".input-group.btn-block > input")); } }
-        public IWebElement FieldValue
-        { get { return product.FindElement(By.XPath("//input[contains(@name,'quantity')]")); } }
+        public IWebElement Image =>
+        product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td[@class='text-center']/a/img"));
+        public IWebElement ProductName =>
+        product.FindElement(By.XPath("//div[@class='table-responsive']//table/tbody/tr/td[@class='text-left'][count(a)=1]")); 
+        public IWebElement Model =>
+        product.FindElement(By.XPath("//div[@class='table-responsive']//table/tbody/tr/td[@class='text-left'][count(*)=0]"));
+        public IWebElement QuantityField =>
+        product.FindElement(By.XPath("//input[contains(@name,'quantity')]"));
+        public IWebElement UpdateButton => 
+        product.FindElement(By.XPath("//div[@class='table-responsive']//table/tbody/tr/td[@class='text-left'][last()]/div/span/button[@type='submit']")); 
+        public IWebElement RemoveButton =>
+        product.FindElement(By.CssSelector("button.btn.btn-danger:not(.btn-xs)")); 
+        public IWebElement UnitPrice =>
+        product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/a[contains(text(),'iPhone')]/../following-sibling::td[@class ='text-right'][last()-1]")); 
+        public IWebElement Total =>
+        product.FindElement(By.XPath("//div[@class='table-responsive']/table/tbody/tr/td/a[contains(text(),'iPhone')]/../following-sibling::td[@class ='text-right']/following-sibling::td")); 
+        public IWebElement FieldValue =>
+        product.FindElement(By.XPath("//input[contains(@name,'quantity')]")); 
         
         public ShoppingCartComponent(IWebElement product)
         {
             this.product = product;
           
         }
-
-       
+        
         // Page Object
         
-        //Functional
         public string GetProductName()
         {
             return ProductName.Text;
@@ -94,7 +90,7 @@ namespace OpenCart414Test.Pages
             
         }
         
-        //Business logic
+        
     }
 
 }

@@ -1,9 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenCart414Test.Pages
 {
@@ -12,7 +9,7 @@ namespace OpenCart414Test.Pages
         protected IWebDriver driver;
 
         public IList<IWebElement> TablePriceList
-        { get; private set; }
+        { get; set; }
 
         public TablePriceComponent(IWebDriver driver, By searchLocator)
         {
@@ -23,8 +20,14 @@ namespace OpenCart414Test.Pages
         }
         private void CheckElements()
         {
-            // TODO Develop Custom Exception
+            try
+            { 
             IList<IWebElement> temp = TablePriceList;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Custom exception: CheckElements()");
+            }
         }
         private void InitElements(By searchLocator)
         {
@@ -32,7 +35,6 @@ namespace OpenCart414Test.Pages
         }
 
         //Page Object
-
 
         public IList<string> GetTablePriceListText()
         {
@@ -43,6 +45,8 @@ namespace OpenCart414Test.Pages
             }
             return result;
         }
+
+
         public string GetTotal()
         {
             string result = string.Empty;
@@ -57,20 +61,18 @@ namespace OpenCart414Test.Pages
                 if (i == 1)
                 {
                     result = current.Text;
-                   
-                }
-
+                    break;
+                }  
             }
             Console.WriteLine("result = {0}", result);
-            return "102.5";
-            //return result;
+            return result;
         }
 
 
         public string GetTotalForPageSC()
         {
             string result = string.Empty;
-            int i = 0;
+            
             for (int current = 0; current < TablePriceList.Count; current++)
             {
                 if (TablePriceList[current].Text == "Total:")
@@ -87,7 +89,7 @@ namespace OpenCart414Test.Pages
         public string GetSubTotal()
         {
             string result = string.Empty;
-            int i = 0;
+            
             for (int current =0;current < TablePriceList.Count;current++)
             {
                 if (TablePriceList[current].Text == "Sub-Total:")
@@ -104,7 +106,7 @@ namespace OpenCart414Test.Pages
         public string GetEcoTax()
         {
             string result = string.Empty;
-            int i = 0;
+            
             for (int current = 0; current < TablePriceList.Count; current++)
             {
                 if (TablePriceList[current].Text == "Eco Tax (-2.00):")
@@ -120,7 +122,7 @@ namespace OpenCart414Test.Pages
         public string GetVat()
         {
             string result = string.Empty;
-            int i = 0;
+            
             for (int current = 0; current < TablePriceList.Count; current++)
             {
                 if (TablePriceList[current].Text == "VAT (20%):")
@@ -128,6 +130,7 @@ namespace OpenCart414Test.Pages
                     result = TablePriceList[current + 1].Text;
 
                 }
+
 
             }
             return result;

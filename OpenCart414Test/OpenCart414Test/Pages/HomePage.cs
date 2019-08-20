@@ -1,11 +1,7 @@
 ﻿using OpenCart414Test.Data;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 namespace OpenCart414Test.Pages
@@ -32,10 +28,7 @@ namespace OpenCart414Test.Pages
         // Slideshow0
         public IWebElement GetSlideshow0FirstImage()
         {
-            //return Slideshow0.FindElement(By.CssSelector("a > img"));
             return Slideshow0.FindElement(By.XPath(".//a/img"));
-            //return Slideshow0.FindElement(By.XPath("//a/img")); // ERROR
-            //return driver.FindElement(By.XPath("//div[@id='slideshow0']//a/img"));
         }
 
         public string GetSlideshow0FirstImageAttributeText(string attribute)
@@ -115,26 +108,11 @@ namespace OpenCart414Test.Pages
             return new SearchUnsuccessPage(driver);
         }
 
-
-        //internal CartContainerComponent GetCartContainerComponent()
-        //{
-        //    ClickCartButton();
-        //    return new CartContainerComponent(driver);
-        //}
-
-        //internal CartEmptyContainerComponent GetCartEmptyContainerComponent()
-        //{
-        //    ClickCartButton();
-        //    return new CartEmptyContainerComponent(driver);
-        //}
-
         public void AddProductToCart(Product product)
         {
             productsContainerComponent.GetProductComponentByName(product.Title)
                 .ClickAddToCartButton();
         }
 
-        
-       
     }
 }

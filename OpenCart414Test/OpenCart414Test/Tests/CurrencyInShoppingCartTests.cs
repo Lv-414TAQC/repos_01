@@ -8,7 +8,7 @@ namespace OpenCart414Test.Tests
 {
     [TestFixture]
     class CurrencyInShoppingCartTests : TestRunner
-    {
+    {/*
         [SetUp]
         public override void SetUp()
         {
@@ -24,5 +24,6 @@ namespace OpenCart414Test.Tests
         {
 
         }
+        */
     }
 }

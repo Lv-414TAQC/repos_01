@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 
 namespace OpenCart414Test.Pages
@@ -11,8 +7,8 @@ namespace OpenCart414Test.Pages
     {
         private IWebDriver driver;
 
-        public IWebElement InfoMessage
-        { get { return driver.FindElement(By.CssSelector("li p.text-center")); } }
+        public IWebElement InfoMessage =>
+        driver.FindElement(By.CssSelector("li p.text-center"));
 
         public CartEmptyContainerComponent(IWebDriver driver)
         {
@@ -22,8 +18,14 @@ namespace OpenCart414Test.Pages
 
         private void CheckElements()
         {
-            // TODO Develop Custom Exception
-            IWebElement temp = InfoMessage; // TODO All Web Elements
+            try
+            { 
+                IWebElement temp = InfoMessage;
+            }
+            catch(Exception)
+            {
+                throw new Exception("Custom exception: CheckElements()");
+            }
         }
 
         // Page Object

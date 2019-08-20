@@ -22,13 +22,14 @@ namespace OpenCart414Test.Pages.AdminPanel
             TaxRate.AddTaxRate(rate);
         }
 
-        public void DeleteTaxrate(string taxRate)
+        public TaxRatesPage DeleteTaxRate(string taxRate)
         {
             string Path = String.Format(@"//td[contains(text(),'{0}')]/preceding-sibling::td/input", taxRate);
             foreach (var item in driver.FindElements(By.XPath(Path)))
                 item.Click();
             driver.FindElement(By.CssSelector("button[data-original-title='Delete']")).Click();
             driver.SwitchTo().Alert().Accept();
+            return new TaxRatesPage(driver);
         }
     }
 }

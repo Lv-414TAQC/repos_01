@@ -34,6 +34,7 @@ namespace OpenCart414Test.Tests
                 .GoToEmptyPage(addingProduct);
             Thread.Sleep(1000); // only for presentation
             Assert.IsTrue(shoppingCartEmptyPage.Equal());
+            Assert.AreEqual(ShoppingCartEmptyPage.CART_IS_EMPTY, shoppingCartEmptyPage.GetInfoMessageText());
             homePage = shoppingCartEmptyPage.GoToHomePage();
             Thread.Sleep(1000); // only for presentation
         }

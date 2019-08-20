@@ -17,7 +17,7 @@ namespace OpenCart414Test.Tests
             WishListEmptyPage wishListEmptyPage = wishListMessagePage
                 .RemoveLastItemFromWishList(productToCart);
             wishListEmptyPage.OpenCartButton()
-                .RemoveProductByName(productToCart);
+                .RemoveProduct(productToCart);
             AccountLogoutPage accountLogoutPage = wishListEmptyPage
                 .Logout();
         }

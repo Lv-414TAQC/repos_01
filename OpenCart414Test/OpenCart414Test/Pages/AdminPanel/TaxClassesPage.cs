@@ -39,11 +39,20 @@ namespace OpenCart414Test.Pages.AdminPanel
             }
         }
 
-        public void EditTaxClass(string taxClass, TaxRate taxRate)
+        public TaxClassesPage EditTaxClass(string taxClass, TaxRate taxRate)
         {
             ClickTaxClassEditButton(taxClass);
             EditTaxClassPage editTaxClassPage = new EditTaxClassPage(driver);
             editTaxClassPage.AddTaxRule(taxRate);
+            return new TaxClassesPage(driver);
+        }
+
+        public TaxClassesPage RemoveRuleFromTaxClass(string taxClass, TaxRate taxRate)
+        {
+            ClickTaxClassEditButton(taxClass);
+            EditTaxClassPage editTaxClassPage = new EditTaxClassPage(driver);
+            editTaxClassPage.RemoveRule(taxRate);
+            return new TaxClassesPage(driver);
         }
     }
 
