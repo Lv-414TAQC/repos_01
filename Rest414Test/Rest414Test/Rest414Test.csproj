@@ -61,6 +61,8 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\CoolDownTime.cs" />
+    <Compile Include="Data\CoolDownTimeRepository.cs" />
     <Compile Include="Data\ItemRepository.cs" />
     <Compile Include="Data\ItemTemplate.cs" />
     <Compile Include="Data\IUser.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="Entity\SimpleEntity.cs" />
     <Compile Include="Resources\AdminAuthorizedResource.cs" />
     <Compile Include="Resources\AdminsResource.cs" />
+    <Compile Include="Resources\CoolDownTimeResource.cs" />
     <Compile Include="Resources\ItemResource.cs" />
     <Compile Include="Resources\LoggedInAdminsResource.cs" />
     <Compile Include="Resources\LogoutResource.cs" />
@@ -94,6 +97,7 @@
     <Compile Include="Tests\AdminTests1.cs" />
     <Compile Include="Tests\AdminTests2.cs" />
     <Compile Include="Tests\AdminTests3.cs" />
+    <Compile Include="Tests\ChangeCoolDownTimeTest.cs" />
     <Compile Include="Tests\LifeTimeTest.cs" />
     <Compile Include="Tests\SecondTest.cs" />
     <Compile Include="Tools\ListUtils.cs" />

@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace Rest414Test.Resources
 {
-    public class UsersResource : RestQueries<SimpleEntity, SimpleEntity, SimpleEntity, SimpleEntity>
+    public class CoolDownTimeResource : RestQueries<SimpleEntity, SimpleEntity, SimpleEntity, SimpleEntity>
     {
-        public UsersResource() : base(RestUrlRepository.GetUsers())
+        public CoolDownTimeResource() : base(RestUrlRepository.GetCoolDownTime())
         {
-
         }
     }
 }
