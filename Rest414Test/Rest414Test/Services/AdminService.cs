@@ -18,6 +18,7 @@ namespace Rest414Test.Services
         protected UserResource userResource;
         protected CoolDownTimeResource cooldowntimeResource;
         protected UsersResource usersResource;
+        protected LockedUsersResource lockedusersResource;
 
         public AdminService(IUser adminUser) : base(adminUser)
         {
@@ -100,9 +101,30 @@ namespace Rest414Test.Services
             SimpleEntity simpleEntity = cooldowntimeResource.HttpGetAsObject(urlParameters, null);
             return simpleEntity.content;
         }
-
+      
+        public string GetLockedUsers()
+        {
+            RestParameters urlParameters = new RestParameters()
+                .AddParameters("token", user.Token);
+            SimpleEntity simpleEntity = lockedusersResource.HttpGetAsObject(urlParameters, null);
+            return simpleEntity.content;
+        }
 
         // Business
+
+        
+
+       public UserService UnlockUser(IUser user)
+        {
+            RestParameters urlParameters = new RestParameters()
+            //RestParameters bodyParameters = new RestParameters()
+                .AddParameters("token", user.Token)
+                .AddParameters("name", user.Name); //?????
+            SimpleEntity simpleEntity = userResource
+                .HttpPutAsObject(urlParameters, null, null);
+            Console.WriteLine("\t***AddAdmin(): simpleEntity = " + simpleEntity);
+            return this;
+        }
 
         public AdminService UpdateTokenlifetime(Lifetime lifetime)
         {
@@ -181,7 +203,7 @@ namespace Rest414Test.Services
 
         
         
-        //GetLockedUser
+        
         //UnlockedUser
 
     }

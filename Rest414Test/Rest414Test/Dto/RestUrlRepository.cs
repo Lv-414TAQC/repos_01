@@ -35,10 +35,10 @@ namespace Rest414Test.Dto
         {
             return new RestUrl()
                 .AddBaseUrl(Server)
-                .AddGetUrl("/users")
-                .AddPostUrl("")
+                .AddGetUrl("")
+                .AddPostUrl("/user")
                 .AddPutUrl("")
-                .AddDeleteUrl("");
+                .AddDeleteUrl("/user");
             //.AddDeleteUrl("/logout");
         }
 
@@ -46,12 +46,34 @@ namespace Rest414Test.Dto
         {
             return new RestUrl()
                 .AddBaseUrl(Server)
-                .AddGetUrl("")
-                .AddPostUrl("/users")
+                .AddGetUrl("/users")
+                .AddPostUrl("")
                 .AddPutUrl("")
-                .AddDeleteUrl("/user");
+                .AddDeleteUrl("");
             //.AddDeleteUrl("/logout");
         }
+
+        public static RestUrl GetLockedUsers()
+        {
+            return new RestUrl()
+                .AddBaseUrl(Server)
+                .AddGetUrl("/locked/users")
+                .AddPostUrl("")
+                .AddPutUrl("")
+                .AddDeleteUrl("");
+        }
+
+        public static RestUrl GetLockedUser()
+        {
+            return new RestUrl()
+                .AddBaseUrl(Server)
+                .AddGetUrl("")
+                .AddPostUrl("/locked/user/{name}")
+                .AddPutUrl("/locked/user/{name}")
+                .AddDeleteUrl("");
+        }
+
+
 
         public static RestUrl GetAllAdmins()
         {
