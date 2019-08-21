@@ -2,6 +2,7 @@
 using Rest414Test.Data;
 using Rest414Test.Services;
 using System;
+using System.Collections.Generic;
 
 namespace Rest414Test.Tests
 {
@@ -24,8 +25,8 @@ namespace Rest414Test.Tests
             IUser adminForTest = UserRepository.Get().AdminForTest();
             adminService.AddAdmin(adminForTest);
             adminService.RemoveUser(adminForTest);
-            string allAdmins = adminService.GetAllAdmins();
-            Assert.IsFalse(allAdmins.Contains(adminForTest.Name));
+            List<IUser> allAdmins = adminService.GetAllAdmins();
+            Assert.IsFalse(allAdmins.Contains(adminForTest));
         }
 
         [Test]
@@ -35,8 +36,8 @@ namespace Rest414Test.Tests
             adminService.AddAdmin(adminForTest);
             adminService.SuccessfulAdminLogin(adminForTest);
             adminService.RemoveUser(adminForTest);
-            string allLoggedInAdmins = adminService.GetLoggedInAdmins();
-            Assert.IsFalse(allLoggedInAdmins.Contains(adminForTest.Name));
+            List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
+            Assert.IsFalse(allLoggedInAdmins.Contains(adminForTest));
         }
 
         [Test]
@@ -46,9 +47,9 @@ namespace Rest414Test.Tests
             adminService.AddAdmin(anotherAdmin);
             adminService.RemoveUser(anotherAdmin);
             adminService.SuccessfulAdminLogin(anotherAdmin);
-            string allLoggedInAdmins = adminService.GetLoggedInAdmins();
+            List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
             Console.WriteLine(allLoggedInAdmins);
-            Assert.IsFalse(allLoggedInAdmins.Contains(anotherAdmin.Name));
+            Assert.IsFalse(allLoggedInAdmins.Contains(anotherAdmin));
         }
 
         [Test]
@@ -59,8 +60,8 @@ namespace Rest414Test.Tests
             AdminService anotherAdminService = adminService
                 .SuccessfulAdminLogin(adminForTest);
             anotherAdminService.RemoveUser(adminForTest);
-            string allAdmins = adminService.GetAllAdmins();
-            Assert.IsFalse(allAdmins.Contains(adminForTest.Name));
+            List<IUser> allAdmins = adminService.GetAllAdmins();
+            Assert.IsTrue(allAdmins.Contains(adminForTest));
         }
     }
 }

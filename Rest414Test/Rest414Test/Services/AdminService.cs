@@ -51,32 +51,82 @@ namespace Rest414Test.Services
             return new ItemTemplate(simpleEntity.content, itemTemplate.Index);
         }
 
-        public string GetAllAdmins()
+        public List<IUser> GetAllAdmins()
         {
             RestParameters urlParameters = new RestParameters()
                 .AddParameters("token", user.Token);
-            //RestParameters pathParameters = new RestParameters()
             SimpleEntity simpleEntity = adminsResource.HttpGetAsObject(urlParameters, null);
-            //Console.WriteLine("\t***GetUserItem(): simpleEntity = " + simpleEntity);
             // TODO
             //CheckService(!simpleEntity.Equals(true),
             //    "Item " + itemTemplate.ToString() + "was not received.");
             // TODO (new or exist)
-            return simpleEntity.content;
+            string[] contentArray = simpleEntity.content.Split(' ');
+            int counter = 0;
+            foreach(string i in contentArray)
+            {
+                contentArray[counter] = new String(i.Where(Char.IsLetter).ToArray());
+                counter++;
+            }
+            List<IUser> returnedUsers = new List<IUser> {};
+            foreach(string i in contentArray)
+            {
+                Console.WriteLine(i);
+                if (i == "admin")
+                {
+                    IUser userToList = UserRepository.Get().Admin();
+                    returnedUsers.Add(userToList);
+                }
+                else if (i == "adminToTest")
+                {
+                    IUser userToList = UserRepository.Get().AdminForTest();
+                    returnedUsers.Add(userToList);
+                }
+                else if (i == "anotherAdmin")
+                {
+                    IUser userToList = UserRepository.Get().AnotherAdmin();
+                    returnedUsers.Add(userToList);
+                }
+            }
+            return returnedUsers;
         }
 
-        public string GetLoggedInAdmins()
+        public List<IUser> GetLoggedInAdmins()
         {
             RestParameters urlParameters = new RestParameters()
                 .AddParameters("token", user.Token);
-            //RestParameters pathParameters = new RestParameters()
             SimpleEntity simpleEntity = loggedInAdminsResource.HttpGetAsObject(urlParameters, null);
-            //Console.WriteLine("\t***GetUserItem(): simpleEntity = " + simpleEntity);
             // TODO
             //CheckService(!simpleEntity.Equals(true),
             //    "Item " + itemTemplate.ToString() + "was not received.");
             // TODO (new or exist)
-            return simpleEntity.content;
+            string[] contentArray = simpleEntity.content.Split(' ');
+            int counter = 0;
+            foreach (string i in contentArray)
+            {
+                contentArray[counter] = new String(i.Where(Char.IsLetter).ToArray());
+                counter++;
+            }
+            List<IUser> returnedUsers = new List<IUser> { };
+            foreach (string i in contentArray)
+            {
+                Console.WriteLine(i);
+                if (i == "admin")
+                {
+                    IUser userToList = UserRepository.Get().Admin();
+                    returnedUsers.Add(userToList);
+                }
+                else if (i == "adminToTest")
+                {
+                    IUser userToList = UserRepository.Get().AdminForTest();
+                    returnedUsers.Add(userToList);
+                }
+                else if (i == "anotherAdmin")
+                {
+                    IUser userToList = UserRepository.Get().AnotherAdmin();
+                    returnedUsers.Add(userToList);
+                }
+            }
+            return returnedUsers;
         }
 
         // Business

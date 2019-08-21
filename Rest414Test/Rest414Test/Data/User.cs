@@ -115,5 +115,18 @@ namespace Rest414Test.Data
             return users;
         }
 
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as User;
+
+            if (other == null)
+                return false;
+
+            if (Name != other.Name || Password != other.Password)
+                return false;
+
+            return true;
+        }
     }
 }
