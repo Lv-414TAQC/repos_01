@@ -390,6 +390,8 @@ namespace ConsoleAppPractices
             //
             B22 b22 = new B22();
             b22.m2();
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            Console.WriteLine("Path = " + path);
             //
             Console.WriteLine("done");
         }

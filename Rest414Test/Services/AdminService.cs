@@ -49,14 +49,14 @@ namespace Rest414Test.Services
 
         public AdminService UpdateTokenlifetime(Lifetime lifetime)
         {
-            //Console.WriteLine("lifetime = " + lifetime.Time + "   User = " + user);
+            Console.WriteLine("lifetime = " + lifetime + "   User = " + user);
             RestParameters bodyParameters = new RestParameters()
                 .AddParameters("token", user.Token)
                 .AddParameters("time", lifetime.Time);
             SimpleEntity simpleEntity = tokenLifetimeResource.HttpPutAsObject(null, null, bodyParameters);
             // TODO
             CheckService(!simpleEntity.Equals(true),
-                "Tokenlifetime " + lifetime.ToString() + "was not Updated.");
+                "Tokenlifetime " + lifetime.ToString() + " was not Updated.");
             return this;
         }
     }

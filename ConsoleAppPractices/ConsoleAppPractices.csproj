@@ -60,4 +60,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo $(ProjectDir) &gt; d:\a1.txt
+echo $(SolutionDir) &gt; d:\a2.txt
+echo $(TargetDir) &gt; d:\a3.txt</PostBuildEvent>
+  </PropertyGroup>
 </Project>
