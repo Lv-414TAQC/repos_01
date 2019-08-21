@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rest414Test.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -69,6 +70,27 @@ namespace Rest414Test.Data
                .SetPassword("qwerty")
                .Build();
         }
-    }
 
+        public IList<IUser> FromCsv()
+        {
+            return FromCsv("users.csv");
+        }
+
+        public IList<IUser> FromCsv(string filename)
+        {
+            Console.WriteLine("Run FromCsv filename = " + filename);
+            return User.GetAllUsers(new CSVReader(filename).GetAllCells());
+        }
+
+        public IList<IUser> FromExcel()
+        {
+            return FromExcel("users.xlsx");
+        }
+
+        public IList<IUser> FromExcel(string filename)
+        {
+            return User.GetAllUsers(new ExcelReader(filename).GetAllCells());
+        }
+
+    }
 }
