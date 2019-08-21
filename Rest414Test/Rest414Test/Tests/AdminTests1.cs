@@ -2,6 +2,7 @@
 using Rest414Test.Data;
 using Rest414Test.Services;
 using System;
+using System.Collections.Generic;
 
 namespace Rest414Test.Tests
 {
@@ -19,6 +20,7 @@ namespace Rest414Test.Tests
             adminService = guestService
                 .SuccessfulAdminLogin(adminUser);
             adminForTest = UserRepository.Get().AdminForTest();
+            Console.WriteLine(adminForTest);
             adminService.AddAdmin(adminForTest);
         }
 
@@ -31,8 +33,8 @@ namespace Rest414Test.Tests
         [Test]
         public void CheckAddingAdmin()
         {
-            string allAdmins = adminService.GetAllAdmins();
-            Assert.IsTrue(allAdmins.Contains(adminForTest.Name));
+            List<IUser> allAdmins = adminService.GetAllAdmins();
+            Assert.IsTrue(allAdmins.Contains(adminForTest));
         }
 
         [Test]
@@ -40,10 +42,14 @@ namespace Rest414Test.Tests
         {   
             adminService.SuccessfulAdminLogin(adminForTest);
             adminService.Logout(adminForTest);
-            string allAdmins = adminService.GetAllAdmins();
-            Assert.IsTrue(allAdmins.Contains(adminForTest.Name));
-            string allLoggedInAdmins = adminService.GetLoggedInAdmins();
-            Assert.IsFalse(allLoggedInAdmins.Contains(adminForTest.Name));
+            List<IUser> allAdmins = adminService.GetAllAdmins();
+            foreach (IUser i in allAdmins)
+            {
+                Console.WriteLine(i.ToString());
+            }
+            Assert.IsTrue(allAdmins.Contains(adminForTest));
+            List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
+            Assert.IsFalse(allLoggedInAdmins.Contains(adminForTest));
         }
 
         //[Test]

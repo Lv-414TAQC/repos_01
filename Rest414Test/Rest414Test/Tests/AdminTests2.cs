@@ -2,6 +2,7 @@
 using Rest414Test.Data;
 using Rest414Test.Services;
 using System;
+using System.Collections.Generic;
 
 namespace Rest414Test.Tests
 {
@@ -33,8 +34,8 @@ namespace Rest414Test.Tests
         public void CheckLoggingInAdmin()
         {
             adminService.SuccessfulAdminLogin(adminForTest);
-            string allLoggedInAdmins = adminService.GetLoggedInAdmins();
-            Assert.IsTrue(allLoggedInAdmins.Contains(adminForTest.Name));
+            List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
+            Assert.IsTrue(allLoggedInAdmins.Contains(adminForTest));
         }
     }
 }

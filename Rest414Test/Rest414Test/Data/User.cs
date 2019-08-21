@@ -41,6 +41,12 @@ namespace Rest414Test.Data
         {
             Token = string.Empty;
         }
+        public User(string name)
+        {
+            Name = name;
+            Password = String.Empty;
+            Token = String.Empty;
+        }
 
         public static IName Get()
         {
@@ -115,5 +121,18 @@ namespace Rest414Test.Data
             return users;
         }
 
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as User;
+
+            if (other == null)
+                return false;
+
+            if (Name != other.Name)
+                return false;
+
+            return true;
+        }
     }
 }
