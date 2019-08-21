@@ -39,6 +39,11 @@ namespace Rest414Test.Data
             return result;
         }
 
+        public override string ToString()
+        {
+            return "Lifetime: [ Time = " + Time + " ];";
+        }
+
         // TODO Equals, Integer
     }
 

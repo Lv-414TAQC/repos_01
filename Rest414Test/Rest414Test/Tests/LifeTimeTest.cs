@@ -2,6 +2,7 @@
 using NUnit.Framework.Interfaces;
 using Rest414Test.Data;
 using Rest414Test.Services;
+using Rest414Test.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,19 +31,19 @@ namespace Rest414Test.Tests
         };
 
 
-        [OneTimeSetUp]
+        //[OneTimeSetUp]
         public void BeforeAllMethods()
         {
             guestService = new GuestService();
         }
 
-        [OneTimeTearDown]
+        //[OneTimeTearDown]
         public void AfterAllMethods()
         {
         }
 
         //[SetUp, TestCaseSource("Admins")]
-        [SetUp]
+        //[SetUp]
         //public void SetUp(IUser adminUser)
         public void SetUp()
         {
@@ -50,7 +51,7 @@ namespace Rest414Test.Tests
             adminService = guestService.SuccessfulAdminLogin(UserRepository.Get().Admin());
         }
 
-        [TearDown]
+        //[TearDown]
         public void TearDown()
         {
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
@@ -87,14 +88,25 @@ namespace Rest414Test.Tests
                         currentTokenlifetime.Time, "Long Time Error");
         }
 
+        // DataProvider
         //private static readonly object[] AdminUsers =
         //{
         //    new object[] { UserRepository.Get().Admin(), LifetimeRepository.GetLongTime() }
         //};
 
-        //[Test, TestCaseSource("AdminUsers")] // Old Version
+        // DataProvider
+        private static readonly object[] AdminCSVUsers =
+            ListUtils.ToMultiArray(UserRepository.Get().FromCsv(), LifetimeRepository.GetLongTime());
+
+        private static readonly object[] AdminExcelUsers =
+            ListUtils.ToMultiArray(UserRepository.Get().FromExcel(), LifetimeRepository.GetLongTime());
+
+        //[Test, TestCaseSource("AdminUsers")] // Old Version of method
+        //[Test, TestCaseSource(nameof(AdminCSVUsers))]
+        [Test, TestCaseSource(nameof(AdminExcelUsers))]
         public void ExamineTime(IUser adminUser, Lifetime newTokenlifetime)
         {
+            Console.WriteLine("*** adminUser:  " + adminUser);
             GuestService guestService = new GuestService();
             Lifetime currentTokenlifetime = guestService.GetCurrentTokenLifetime();
             Assert.AreEqual(LifetimeRepository.DEFAULT_TOKEN_LIFETIME,
