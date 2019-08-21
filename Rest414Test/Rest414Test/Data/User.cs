@@ -123,7 +123,7 @@ namespace Rest414Test.Data
             if (other == null)
                 return false;
 
-            if (Name != other.Name || Password != other.Password)
+            if (Name != other.Name)
                 return false;
 
             return true;
