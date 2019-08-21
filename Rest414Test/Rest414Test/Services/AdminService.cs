@@ -16,6 +16,8 @@ namespace Rest414Test.Services
         protected AdminsResource adminsResource;
         protected LoggedInAdminsResource loggedInAdminsResource;
         protected UserResource userResource;
+        protected CoolDownTimeResource cooldowntimeResource;
+        protected UsersResource usersResource;
 
         public AdminService(IUser adminUser) : base(adminUser)
         {
@@ -90,6 +92,18 @@ namespace Rest414Test.Services
             return returnedUsers;
         }
 
+        public string GetUsers()
+        {
+            RestParameters urlParameters = new RestParameters()
+                .AddParameters("token", user.Token);
+            
+            SimpleEntity simpleEntity = usersResource.HttpGetAsObject(urlParameters, null);
+            
+            return simpleEntity.content;
+        }
+        
+                    
+        
         public List<IUser> GetLoggedInAdmins()
         {
             RestParameters urlParameters = new RestParameters()
@@ -129,6 +143,15 @@ namespace Rest414Test.Services
             return returnedUsers;
         }
 
+        public string GetCoolDownTime()
+        {
+            RestParameters urlParameters = new RestParameters()
+                .AddParameters("token", user.Token);
+            SimpleEntity simpleEntity = cooldowntimeResource.HttpGetAsObject(urlParameters, null);
+            return simpleEntity.content;
+        }
+
+
         // Business
 
         public AdminService UpdateTokenlifetime(Lifetime lifetime)
@@ -141,6 +164,18 @@ namespace Rest414Test.Services
             // TODO
             CheckService(!simpleEntity.Equals(true),
                 "Tokenlifetime " + lifetime.ToString() + " was not Updated.");
+            return this;
+        }
+        public AdminService UpdateCoolDowntime(CoolDownTime cooldowntime)
+        {
+            //Console.WriteLine("CoolDownTime = " + CoolDownTime.Time + "   User = " + user);
+            RestParameters bodyParameters = new RestParameters()
+                .AddParameters("token", user.Token)
+                .AddParameters("time", cooldowntime.Time);
+            SimpleEntity simpleEntity = cooldowntimeResource.HttpPutAsObject(null, null, bodyParameters);
+            // TODO
+            CheckService(!simpleEntity.Equals(true),
+                "CoolDownTime " + cooldowntime.ToString() + "was not Updated.");
             return this;
         }
 
@@ -177,5 +212,27 @@ namespace Rest414Test.Services
             Console.WriteLine("\t***AddAdmin(): simpleEntity = " + simpleEntity);
             return this;
         }
+        public UserService CreateUser(IUser newUser)
+        {
+            // TODO Develop enum + classes with const in DTO
+            RestParameters urlParameters = new RestParameters()
+            //RestParameters bodyParameters = new RestParameters()
+                .AddParameters("token", user.Token)
+                .AddParameters("name", newUser.Name)
+                .AddParameters("password", newUser.Password)
+                .AddParameters("rights", "false");
+            SimpleEntity simpleEntity = userResource
+                .HttpPostAsObject(urlParameters, null, null);
+            
+            Console.WriteLine("\t***NewUser(): simpleEntity = " + simpleEntity);
+            return this;
+
+        }
+
+        
+        
+        //GetLockedUser
+        //UnlockedUser
+
     }
 }

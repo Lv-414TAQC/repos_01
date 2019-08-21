@@ -42,6 +42,17 @@ namespace Rest414Test.Dto
             //.AddDeleteUrl("/logout");
         }
 
+        public static RestUrl GetUsers()
+        {
+            return new RestUrl()
+                .AddBaseUrl(Server)
+                .AddGetUrl("/users")
+                .AddPostUrl("")
+                .AddPutUrl("")
+                .AddDeleteUrl("");
+            //.AddDeleteUrl("/logout");
+        }
+
         public static RestUrl GetAllAdmins()
         {
             return new RestUrl()
@@ -85,6 +96,16 @@ namespace Rest414Test.Dto
                 .AddDeleteUrl("");
         }
 
+        public static RestUrl GetCoolDownTime()
+        {
+            return new RestUrl()
+                .AddBaseUrl(Server)
+                .AddGetUrl("/cooldowntime")
+                .AddPostUrl("")
+                .AddPutUrl("/cooldowntime")
+                .AddDeleteUrl("");
+        }
+
         public static RestUrl GetTokenLifetime()
         {
             return new RestUrl()
@@ -114,6 +135,7 @@ namespace Rest414Test.Dto
                 .AddPutUrl("/item/{index}")
                 .AddDeleteUrl("/item/{index}");
         }
+
 
     }
 
