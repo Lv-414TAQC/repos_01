@@ -105,6 +105,7 @@
     <Compile Include="Tests\ChangeCoolDownTimeTest.cs" />
     <Compile Include="Tests\CoolDownTimeTest.cs" />
     <Compile Include="Tests\LifeTimeTest.cs" />
+    <Compile Include="Tests\LogginedTest.cs" />
     <Compile Include="Tests\SecondTest.cs" />
     <Compile Include="Tools\CSVReader.cs" />
     <Compile Include="Tools\ExcelReader.cs" />

@@ -41,6 +41,12 @@ namespace Rest414Test.Data
         {
             Token = string.Empty;
         }
+        public User(string name)
+        {
+            Name = name;
+            Password = String.Empty;
+            Token = String.Empty;
+        }
 
         public static IName Get()
         {

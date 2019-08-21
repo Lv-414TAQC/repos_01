@@ -25,6 +25,7 @@ namespace Rest414Test.Services
             adminsResource = new AdminsResource();
             loggedInAdminsResource = new LoggedInAdminsResource();
             userResource = new UserResource();
+            usersResource = new UsersResource();
             CheckService(!IsAdmin(),
                 "Admin " + adminUser.ToString() + "Login Unsuccessful.");
         }
@@ -224,13 +225,32 @@ namespace Rest414Test.Services
             SimpleEntity simpleEntity = userResource
                 .HttpPostAsObject(urlParameters, null, null);
             
-            Console.WriteLine("\t***NewUser(): simpleEntity = " + simpleEntity);
+          //Console.WriteLine("\t***NewUser(): simpleEntity = " + simpleEntity);
             return this;
-
         }
 
-        
-        
+        public List<IUser> GetAllUsers()
+        {
+            RestParameters urlParameters = new RestParameters()
+                .AddParameters("token", user.Token);
+            SimpleEntity simpleEntity = usersResource.HttpGetAsObject(urlParameters, null);
+            List<string> listNameUsers = new List<string>(simpleEntity.content.Split(new char[] { '\n', '\t' }));
+
+            for (int i = 0; i < listNameUsers.Count; i++)
+            {
+                listNameUsers.RemoveAt(i);
+            }
+            List<IUser> listUsers = new List<IUser>();
+            foreach (string user in listNameUsers)
+            {
+                listUsers.Add(new User(user));
+                Console.WriteLine(user);
+            }
+            return listUsers;
+        }
+
+
+
         //GetLockedUser
         //UnlockedUser
 
