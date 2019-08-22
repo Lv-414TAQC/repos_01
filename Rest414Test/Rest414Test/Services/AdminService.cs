@@ -74,22 +74,7 @@ namespace Rest414Test.Services
             List<IUser> returnedUsers = new List<IUser> {};
             foreach(string i in contentArray)
             {
-                Console.WriteLine(i);
-                if (i == "admin")
-                {
-                    IUser userToList = UserRepository.Get().Admin();
-                    returnedUsers.Add(userToList);
-                }
-                else if (i == "adminToTest")
-                {
-                    IUser userToList = UserRepository.Get().AdminForTest();
-                    returnedUsers.Add(userToList);
-                }
-                else if (i == "anotherAdmin")
-                {
-                    IUser userToList = UserRepository.Get().AnotherAdmin();
-                    returnedUsers.Add(userToList);
-                }
+                returnedUsers.Add(new User(i));
             }
             return returnedUsers;
         }
@@ -99,10 +84,6 @@ namespace Rest414Test.Services
             RestParameters urlParameters = new RestParameters()
                 .AddParameters("token", newAdmin.Token);
             SimpleEntity simpleEntity = adminsResource.HttpGetAsObject(urlParameters, null);
-            // TODO
-            //CheckService(!simpleEntity.Equals(true),
-            //    "Item " + itemTemplate.ToString() + "was not received.");
-            // TODO (new or exist)
             string[] contentArray = simpleEntity.content.Split(' ');
             int counter = 0;
             foreach (string i in contentArray)
@@ -113,22 +94,7 @@ namespace Rest414Test.Services
             List<IUser> returnedUsers = new List<IUser> { };
             foreach (string i in contentArray)
             {
-                Console.WriteLine(i);
-                if (i == "admin")
-                {
-                    IUser userToList = UserRepository.Get().Admin();
-                    returnedUsers.Add(userToList);
-                }
-                else if (i == "adminToTest")
-                {
-                    IUser userToList = UserRepository.Get().AdminForTest();
-                    returnedUsers.Add(userToList);
-                }
-                else if (i == "anotherAdmin")
-                {
-                    IUser userToList = UserRepository.Get().AnotherAdmin();
-                    returnedUsers.Add(userToList);
-                }
+                returnedUsers.Add(new User(i));
             }
             return returnedUsers;
         }
@@ -164,22 +130,7 @@ namespace Rest414Test.Services
             List<IUser> returnedUsers = new List<IUser> { };
             foreach (string i in contentArray)
             {
-                Console.WriteLine(i);
-                if (i == "admin")
-                {
-                    IUser userToList = UserRepository.Get().Admin();
-                    returnedUsers.Add(userToList);
-                }
-                else if (i == "adminToTest")
-                {
-                    IUser userToList = UserRepository.Get().AdminForTest();
-                    returnedUsers.Add(userToList);
-                }
-                else if (i == "anotherAdmin")
-                {
-                    IUser userToList = UserRepository.Get().AnotherAdmin();
-                    returnedUsers.Add(userToList);
-                }
+                returnedUsers.Add(new User(i));
             }
             return returnedUsers;
         }
