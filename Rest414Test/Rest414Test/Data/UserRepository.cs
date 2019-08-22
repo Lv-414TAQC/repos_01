@@ -71,6 +71,14 @@ namespace Rest414Test.Data
                .Build();
         }
 
+        public IUser UserForLock()
+        {
+            return User.Get()
+               .SetName("user1")
+               .SetPassword("123456")
+               .Build();
+        }
+
         public IList<IUser> FromCsv()
         {
             return FromCsv("users.csv");

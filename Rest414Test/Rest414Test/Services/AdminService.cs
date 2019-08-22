@@ -165,14 +165,17 @@ namespace Rest414Test.Services
 
         
 
-       public UserService UnlockUser(IUser user)
+       public AdminService UnlockUser(IUser user1)
         {
-            RestParameters urlParameters = new RestParameters()
-            //RestParameters bodyParameters = new RestParameters()
-                .AddParameters("token", user.Token)
-                .AddParameters("name", user.Name); //?????
+            //RestParameters urlParameters = new RestParameters()
+
+            RestParameters bodyParameters = new RestParameters()
+                .AddParameters("token", user.Token);
+            RestParameters pathVariables = new RestParameters()
+                .AddParameters("name", user1.Name); //?????
+            
             SimpleEntity simpleEntity = userResource
-                .HttpPutAsObject(urlParameters, null, null);
+                .HttpPutAsObject(null, pathVariables, bodyParameters);
             Console.WriteLine("\t***AddAdmin(): simpleEntity = " + simpleEntity);
             return this;
         }

@@ -103,7 +103,6 @@
     <Compile Include="Tests\AdminTests1.cs" />
     <Compile Include="Tests\AdminTests2.cs" />
     <Compile Include="Tests\AdminTests3.cs" />
-    <Compile Include="Tests\ChangeCoolDownTimeTest.cs" />
     <Compile Include="Tests\CoolDownTimeTest.cs" />
     <Compile Include="Tests\LifeTimeTest.cs" />
     <Compile Include="Tests\LogginedTest.cs" />
