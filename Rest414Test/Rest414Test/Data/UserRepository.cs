@@ -71,6 +71,22 @@ namespace Rest414Test.Data
                .Build();
         }
 
+        public IUser EmptyPasswordUser()
+        {
+            return User.Get()
+               .SetName("ivan")
+               .SetPassword("")
+               .Build();
+        }
+
+        public IUser IncorrectPasswordUser()
+        {
+            return User.Get()
+               .SetName("ivan")
+               .SetPassword("wetfdsa321")
+               .Build();
+        }
+
         public IList<IUser> FromCsv()
         {
             return FromCsv("users.csv");
@@ -115,5 +131,29 @@ namespace Rest414Test.Data
         }
 
         // --------------------------------------------------------------------
+		
+        public IUser CreateNewUser()
+        {
+            return User.Get()
+                .SetName("dimaS")
+                .SetPassword("qwerty")
+                .Build();
+        }
+
+        public IUser NewPasswordForUser()
+        {
+            return User.Get()
+                .SetName("")
+                .SetPassword("999")
+                .Build();
+        }
+
+        public IUser OldPasswordForUser()
+        {
+            return User.Get()
+               .SetName("")
+               .SetPassword("qwerty")
+               .Build();
+        }
     }
 }

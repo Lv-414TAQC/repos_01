@@ -15,6 +15,8 @@ namespace Rest414Test.Services
         protected IUser user;
         protected LogoutResource logoutResource;
         protected ItemResource itemResource;
+        
+
 
         public UserService(IUser user) : base()
         {
@@ -29,7 +31,8 @@ namespace Rest414Test.Services
 
         public bool IsLoggined()
         {
-            return (user != null) && (!string.IsNullOrEmpty(user.Token));
+            //Console.WriteLine(user.Token);
+            return (user != null) && (!string.IsNullOrEmpty(user.Token) && !user.Token.Contains("ERROR, user not found"));
         }
 
         public ItemTemplate GetItem(ItemTemplate itemTemplate)
@@ -75,6 +78,7 @@ namespace Rest414Test.Services
             SimpleEntity simpleEntity = logoutResource.HttpPostAsObject(null, null, bodyParameters);
             //Console.WriteLine("\t***Logout(): simpleEntity = " + simpleEntity);
             // TODO
+            //Console.WriteLine(simpleEntity.content);
             CheckService(!simpleEntity.Equals(true), "Logout Unsuccessful.");
             user.Token = string.Empty;
             //Console.WriteLine("\t***Logout(): DONE ");
@@ -91,10 +95,24 @@ namespace Rest414Test.Services
             SimpleEntity simpleEntity = logoutResource.HttpPostAsObject(null, null, bodyParameters);
             //Console.WriteLine("\t***Logout(): simpleEntity = " + simpleEntity);
             // TODO
+           // Console.WriteLine(simpleEntity.content);
             CheckService(!simpleEntity.Equals(true), "Logout Unsuccessful.");
             //user.Token = string.Empty;
             //Console.WriteLine("\t***Logout(): DONE ");
             return new GuestService();
+        }
+
+        public UserService ChangePassw(IUser userD, IUser newpassw)
+        {
+            // TODO Develop enum + classes with const in DTO
+            RestParameters bodyParameters = new RestParameters()
+                .AddParameters("token", userD.Token)
+                .AddParameters("oldpassword", userD.Password)
+                .AddParameters("newpassword", newpassw.Password);
+            SimpleEntity simpleEntity = userpasswresource.HttpPutAsObject(null, null, bodyParameters);
+            Console.WriteLine("ResultChangePasww = " + simpleEntity.content);
+            userD.Password = newpassw.Password;
+            return new UserService(userD);
         }
     }
 }
