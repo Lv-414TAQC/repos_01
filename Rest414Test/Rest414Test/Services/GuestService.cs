@@ -37,7 +37,17 @@ namespace Rest414Test.Services
 
         public GuestService UnsuccessfulLogin(IUser user)
         {
-            // TODO
+            RestParameters bodyParameters = new RestParameters()
+                .AddParameters("name", user.Name)
+                .AddParameters("password", user.Password);
+           
+            SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
+            user.Token = simpleEntity.content;
+            if (simpleEntity.content.Length == 32)
+            {
+                return new UserService(user);
+            }
+            Console.WriteLine(user.Token);
             return this;
         }
 
@@ -48,6 +58,7 @@ namespace Rest414Test.Services
                 .AddParameters("password", user.Password);
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             user.Token = simpleEntity.content;
+            Console.WriteLine(user.Token);
             return new UserService(user);
         }
 
@@ -58,7 +69,7 @@ namespace Rest414Test.Services
                 .AddParameters("password", adminUser.Password);
             SimpleEntity simpleEntity = adminAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             adminUser.Token = simpleEntity.content;
-          //Console.WriteLine("adminUser.Token = " + adminUser.Token);
+            //Console.WriteLine("adminUser.Token = " + adminUser.Token);
             return new AdminService(adminUser);
         }
     }
