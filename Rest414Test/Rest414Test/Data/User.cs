@@ -34,7 +34,7 @@ namespace Rest414Test.Data
     public class User : IName, IPassword, IUserBuild, IUser
     {
         public string Name { get; private set; }            // Required
-        public string Password { get; private set; }        // Required
+        public string Password { get;  set; }        // Required
         public string Token { get; set; }
 
         private User()

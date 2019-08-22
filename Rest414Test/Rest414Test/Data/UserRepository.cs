@@ -92,5 +92,28 @@ namespace Rest414Test.Data
             return User.GetAllUsers(new ExcelReader(filename).GetAllCells());
         }
 
+        public IUser CreateNewUser()
+        {
+            return User.Get()
+                .SetName("dimaS")
+                .SetPassword("qwerty")
+                .Build();
+        }
+
+        public IUser NewPasswordForUser()
+        {
+            return User.Get()
+                .SetName("")
+                .SetPassword("999")
+                .Build();
+        }
+
+        public IUser OldPasswordForUser()
+        {
+            return User.Get()
+               .SetName("")
+               .SetPassword("qwerty")
+               .Build();
+        }
     }
 }

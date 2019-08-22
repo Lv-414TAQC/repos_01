@@ -15,6 +15,8 @@ namespace Rest414Test.Services
         protected IUser user;
         protected LogoutResource logoutResource;
         protected ItemResource itemResource;
+        
+
 
         public UserService(IUser user) : base()
         {
@@ -95,6 +97,19 @@ namespace Rest414Test.Services
             //user.Token = string.Empty;
             //Console.WriteLine("\t***Logout(): DONE ");
             return new GuestService();
+        }
+
+        public UserService ChangePassw(IUser userD, IUser newpassw)
+        {
+            // TODO Develop enum + classes with const in DTO
+            RestParameters bodyParameters = new RestParameters()
+                .AddParameters("token", userD.Token)
+                .AddParameters("oldpassword", userD.Password)
+                .AddParameters("newpassword", newpassw.Password);
+            SimpleEntity simpleEntity = userpasswresource.HttpPutAsObject(null, null, bodyParameters);
+            Console.WriteLine("ResultChangePasww = " + simpleEntity.content);
+            userD.Password = newpassw.Password;
+            return new UserService(userD);
         }
     }
 }
