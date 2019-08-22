@@ -102,11 +102,13 @@ namespace Rest414Test.Tests
         public void CheckLoginLogoutUser(IUser newUser)
         {
             logger.Info("Start test CheckLoginLogoutUser");
+     
             userService = guestService.SuccessfulUserLogin(newUser);
             Assert.IsTrue(userService.IsLoggined());
             userService.Logout();
             Assert.IsFalse(userService.IsLoggined());
-            logger.Info("End test CheckLoginLogoutUser");
+
+            logger.Info("End test CheckLoginLogoutUser: " + newUser.Name);
         }
 
         [Test, TestCaseSource("UserAdmin")]
