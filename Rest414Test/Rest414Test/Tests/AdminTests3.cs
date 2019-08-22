@@ -61,12 +61,12 @@ namespace Rest414Test.Tests
 
         //[Test, TestCaseSource(nameof(AdminFromCSV))]
         [Test, TestCaseSource(nameof(AdminFromExcel))]
-        public void CheckLoggingInRemovedUser(IUser anotherAdmin)
+        public void CheckLoggingInRemovedAdmin(IUser anotherAdmin)
         {
             adminService.AddAdmin(anotherAdmin);
             adminService.RemoveUser(anotherAdmin);
-            adminService.SuccessfulAdminLogin(anotherAdmin);
             Console.WriteLine("*********" + anotherAdmin.ToString());
+            adminService.UnsuccessfulLogin(anotherAdmin);
             List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
             Console.WriteLine(allLoggedInAdmins);
             Assert.IsFalse(allLoggedInAdmins.Contains(anotherAdmin));
