@@ -15,12 +15,14 @@ namespace Rest414Test.Services
         protected AdminAuthorizedResource adminAuthorizedResource;
         protected UserAuthorizedResource userAuthorizedResource;
         protected TokenLifetimeResource tokenLifetimeResource;
+        protected UserPasswordResource userpasswresource;
 
         public GuestService() : base()
         {
             adminAuthorizedResource = new AdminAuthorizedResource();
             userAuthorizedResource = new UserAuthorizedResource();
             tokenLifetimeResource = new TokenLifetimeResource();
+            userpasswresource = new UserPasswordResource();
         }
 
         // Atomic
