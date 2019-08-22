@@ -71,6 +71,22 @@ namespace Rest414Test.Data
                .Build();
         }
 
+        public IUser EmptyPasswordUser()
+        {
+            return User.Get()
+               .SetName("ivan")
+               .SetPassword("")
+               .Build();
+        }
+
+        public IUser IncorrectPasswordUser()
+        {
+            return User.Get()
+               .SetName("ivan")
+               .SetPassword("wetfdsa321")
+               .Build();
+        }
+
         public IList<IUser> FromCsv()
         {
             return FromCsv("users.csv");

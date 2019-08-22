@@ -31,7 +31,8 @@ namespace Rest414Test.Services
 
         public bool IsLoggined()
         {
-            return (user != null) && (!string.IsNullOrEmpty(user.Token));
+            //Console.WriteLine(user.Token);
+            return (user != null) && (!string.IsNullOrEmpty(user.Token) && !user.Token.Contains("ERROR, user not found"));
         }
 
         public ItemTemplate GetItem(ItemTemplate itemTemplate)
@@ -77,6 +78,7 @@ namespace Rest414Test.Services
             SimpleEntity simpleEntity = logoutResource.HttpPostAsObject(null, null, bodyParameters);
             //Console.WriteLine("\t***Logout(): simpleEntity = " + simpleEntity);
             // TODO
+            //Console.WriteLine(simpleEntity.content);
             CheckService(!simpleEntity.Equals(true), "Logout Unsuccessful.");
             user.Token = string.Empty;
             //Console.WriteLine("\t***Logout(): DONE ");
@@ -93,6 +95,7 @@ namespace Rest414Test.Services
             SimpleEntity simpleEntity = logoutResource.HttpPostAsObject(null, null, bodyParameters);
             //Console.WriteLine("\t***Logout(): simpleEntity = " + simpleEntity);
             // TODO
+           // Console.WriteLine(simpleEntity.content);
             CheckService(!simpleEntity.Equals(true), "Logout Unsuccessful.");
             //user.Token = string.Empty;
             //Console.WriteLine("\t***Logout(): DONE ");

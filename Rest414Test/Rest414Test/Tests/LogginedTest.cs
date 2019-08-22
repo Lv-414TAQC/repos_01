@@ -14,7 +14,6 @@ namespace Rest414Test.Tests
     class LogginedTest
     {
         private GuestService guestService;
-        //private AdminService userService;
         private AdminService adminService;
         private UserService userService;
 
@@ -31,35 +30,49 @@ namespace Rest414Test.Tests
         };
 
         // DataProvider
-        private static readonly object[] TokenLifeTimes =
+        private static readonly object[] UserAdmin =
         {
-            new object[] { LifetimeRepository.GetLongTime() }
+            new object[] { UserRepository.Get().NewUser(), UserRepository.Get().Admin() }
+        };
+
+        // DataProvider
+        private static object[] IncorrectPasswordUser =
+        {
+            new object[] { UserRepository.Get().IncorrectPasswordUser()},
+            new object[] { UserRepository.Get().EmptyPasswordUser()}
         };
 
 
         [OneTimeSetUp]
         public void BeforeAllMethods()
         {
-            guestService = new GuestService();
+            guestService = new GuestService();    
         }
 
         [OneTimeTearDown]
         public void AfterAllMethods()
         {
+           
         }
 
-        //[SetUp, TestCaseSource("Admins")]
-        [SetUp]
-        //public void SetUp(IUser adminUser)
-        public void SetUp()
+       [SetUp]
+       public void SetUp()
         {
-            //adminService = guestService.SuccessfulAdminLogin(adminUser);
             adminService = guestService.SuccessfulAdminLogin(UserRepository.Get().Admin());
+            adminService.CreateUser(UserRepository.Get().NewUser());
+            adminService.GetAllUsers();
+            //Assert.IsTrue(adminService.GetAllUsers().Contains(new User(newUser.Name)));
+            adminService.Logout();
         }
 
         [TearDown]
         public void TearDown()
         {
+            //Delete created user
+            adminService = guestService.SuccessfulAdminLogin(UserRepository.Get().Admin());
+            adminService.RemoveUser(UserRepository.Get().NewUser());
+            adminService.Logout();
+
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
                 // TODO Save to Log File
@@ -82,16 +95,29 @@ namespace Rest414Test.Tests
             }
         }
 
-
         [Test, TestCaseSource("NewUsers")]
-        public void CheckCreatingUser(IUser newUser)
+        public void CheckLoginLogoutUser(IUser newUser)
         {
-            adminService.CreateUser(newUser);
-            Assert.IsTrue(adminService.GetAllUsers().Contains(new User(newUser.Name)));
-            userService = guestService.SuccessfulUserLogin(UserRepository.Get().NewUser());
+            userService = guestService.SuccessfulUserLogin(newUser);
             Assert.IsTrue(userService.IsLoggined());
-            //  adminService.Logout();
+            userService.Logout();
+            Assert.IsFalse(userService.IsLoggined());
+        }
 
+        [Test, TestCaseSource("UserAdmin")]
+        public void CheckAnotherLogin(IUser newUser, IUser adminUser)
+        {
+            userService = guestService.SuccessfulUserLogin(newUser);
+            Assert.IsTrue(userService.IsLoggined());
+            adminService = guestService.SuccessfulAdminLogin(adminUser);
+            Assert.IsFalse(adminService.IsLoggined());
+        }
+
+        [Test, TestCaseSource("IncorrectPasswordUser")]
+        public void CheckIncorrectLogin(IUser incorrectUser)
+        {
+            Assert.IsTrue(guestService.UnsuccessfulLogin(incorrectUser)
+                .GetType() == typeof(GuestService));
         }
 
     }

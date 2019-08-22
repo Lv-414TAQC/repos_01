@@ -212,7 +212,7 @@ namespace Rest414Test.Services
             // TODO
             //CheckService(!simpleEntity.Equals(true),
             //    "Admin " + newAdmin.ToString() + "was not Added.");
-            Console.WriteLine("\t***AddAdmin(): simpleEntity = " + simpleEntity);
+           // Console.WriteLine("\t***AddAdmin(): simpleEntity = " + simpleEntity);
             return this;
         }
         public UserService CreateUser(IUser newUser)
