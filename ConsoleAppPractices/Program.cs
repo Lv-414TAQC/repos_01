@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿//using log4net;
+//using log4net.Config;
+using Newtonsoft.Json;
+using NLog;
 using RestSharp;
 using RestSharp.Serialization.Json;
 using System;
@@ -87,6 +90,10 @@ namespace ConsoleAppPractices
 
     public class Program
     {
+        //public static ILog log = LogManager.GetLogger(typeof(Program)); // for Log4net
+        //public static Logger log = LogManager.GetCurrentClassLogger(); // for NLog
+        public static Logger log = LogManager.GetLogger("rolling0"); // for NLog
+
         public static void Main(string[] args)
         {
             // 1. Use Constructor
@@ -290,6 +297,7 @@ namespace ConsoleAppPractices
             //    Console.Out.WriteLine(e.Message);
             //}
             //
+            /*
             // ===========================================================================
             // RestClient
             //string url = "http://localhost:51266/";
@@ -392,6 +400,20 @@ namespace ConsoleAppPractices
             b22.m2();
             string path = AppDomain.CurrentDomain.BaseDirectory;
             Console.WriteLine("Path = " + path);
+            //
+            */
+            //
+            //BasicConfigurator.Configure();
+            //XmlConfigurator.Configure();
+            //
+            log.Trace("NLOG: Trace Level test");
+            log.Debug("2*Debug Level test");
+            log.Info("2*Info Level");
+            log.Warn("2*Warn Level");
+            log.Warn("2*Warn test");
+            log.Error("2*Error Level test");
+            log.Error("3*Error Level");
+            log.Fatal("2*Fatal Level");
             //
             Console.WriteLine("done");
         }
