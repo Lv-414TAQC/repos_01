@@ -92,5 +92,28 @@ namespace Rest414Test.Data
             return User.GetAllUsers(new ExcelReader(filename).GetAllCells());
         }
 
+        // Admin From External Files ------------------------------------------
+
+        public IList<IUser> AdminsFromCsv()
+        {
+            return AdminsFromCsv("additionalAdmins.csv");
+        }
+
+        public IList<IUser> AdminsFromCsv(string filename)
+        {
+            return User.GetAllUsers(new CSVReader(filename).GetAllCells());
+        }
+
+        public IList<IUser> AdminsFromExcel()
+        {
+            return AdminsFromExcel("additionalAdmins.xlsx");
+        }
+
+        public IList<IUser> AdminsFromExcel(string filename)
+        {
+            return User.GetAllUsers(new ExcelReader(filename).GetAllCells());
+        }
+
+        // --------------------------------------------------------------------
     }
 }

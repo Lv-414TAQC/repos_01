@@ -114,6 +114,8 @@
     <Compile Include="Tools\ListUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\additionalAdmins.csv" />
+    <None Include="Assets\additionalAdmins.xlsx" />
     <None Include="Assets\users.csv" />
     <None Include="Assets\users.xlsx" />
     <None Include="packages.config" />

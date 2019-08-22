@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
+using Rest414Test.Tools;
 using System;
 using System.Collections.Generic;
 
@@ -41,18 +42,6 @@ namespace Rest414Test.Tests
         }
 
         [Test]
-        public void CheckLoggingInRemovedUser()
-        {
-            IUser anotherAdmin = UserRepository.Get().AnotherAdmin();
-            adminService.AddAdmin(anotherAdmin);
-            adminService.RemoveUser(anotherAdmin);
-            adminService.SuccessfulAdminLogin(anotherAdmin);
-            List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
-            Console.WriteLine(allLoggedInAdmins);
-            Assert.IsFalse(allLoggedInAdmins.Contains(anotherAdmin));
-        }
-
-        [Test]
         public void CheckAdminRemovingHimself()
         {
             IUser adminForTest = UserRepository.Get().AdminForTest();
@@ -62,6 +51,25 @@ namespace Rest414Test.Tests
             anotherAdminService.RemoveUser(adminForTest);
             List<IUser> allAdmins = adminService.GetAllAdmins();
             Assert.IsTrue(allAdmins.Contains(adminForTest));
+        }
+
+        // DataProvider
+        private static readonly object[] AdminFromCSV =
+            ListUtils.ToMultiArray(UserRepository.Get().AdminsFromCsv());
+        private static readonly object[] AdminFromExcel =
+            ListUtils.ToMultiArray(UserRepository.Get().AdminsFromExcel());
+
+        //[Test, TestCaseSource(nameof(AdminFromCSV))]
+        [Test, TestCaseSource(nameof(AdminFromExcel))]
+        public void CheckLoggingInRemovedUser(IUser anotherAdmin)
+        {
+            adminService.AddAdmin(anotherAdmin);
+            adminService.RemoveUser(anotherAdmin);
+            adminService.SuccessfulAdminLogin(anotherAdmin);
+            Console.WriteLine("*********" + anotherAdmin.ToString());
+            List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
+            Console.WriteLine(allLoggedInAdmins);
+            Assert.IsFalse(allLoggedInAdmins.Contains(anotherAdmin));
         }
     }
 }
