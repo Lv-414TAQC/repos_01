@@ -51,20 +51,5 @@ namespace Rest414Test.Tests
             List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
             Assert.IsFalse(allLoggedInAdmins.Contains(adminForTest));
         }
-
-        //[Test]
-        //public void CheckAddingSameNameUser()
-        //{
-        //    IUser adminUser = UserRepository.Get().Admin();
-        //    GuestService guestService = new GuestService();
-        //    adminService = guestService
-        //        .SuccessfulAdminLogin(adminUser);
-        //    adminForTest = UserRepository.Get().AdminForTest();
-        //    adminService.AddAdmin(adminForTest);
-        //    adminService.RemoveUser(adminForTest);
-        //    adminService.
-        //}
-
-        
     }
 }
