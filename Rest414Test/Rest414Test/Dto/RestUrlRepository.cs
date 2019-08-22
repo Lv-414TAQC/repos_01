@@ -53,6 +53,28 @@ namespace Rest414Test.Dto
             //.AddDeleteUrl("/logout");
         }
 
+        public static RestUrl GetLockedUsers()
+        {
+            return new RestUrl()
+                .AddBaseUrl(Server)
+                .AddGetUrl("/locked/users")
+                .AddPostUrl("")
+                .AddPutUrl("")
+                .AddDeleteUrl("");
+        }
+
+        public static RestUrl GetLockedUser()
+        {
+            return new RestUrl()
+                .AddBaseUrl(Server)
+                .AddGetUrl("")
+                .AddPostUrl("/locked/user/{name}")
+                .AddPutUrl("/locked/user/{name}")
+                .AddDeleteUrl("");
+        }
+
+
+
         public static RestUrl GetAllAdmins()
         {
             return new RestUrl()

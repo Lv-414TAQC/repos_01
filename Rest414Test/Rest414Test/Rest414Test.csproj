@@ -83,6 +83,7 @@
     <Compile Include="Resources\AdminsResource.cs" />
     <Compile Include="Resources\CoolDownTimeResource.cs" />
     <Compile Include="Resources\ItemResource.cs" />
+    <Compile Include="Resources\LockedUsersResource.cs" />
     <Compile Include="Resources\LoggedInAdminsResource.cs" />
     <Compile Include="Resources\LogoutResource.cs" />
     <Compile Include="Resources\TokenLifetimeResource.cs" />
