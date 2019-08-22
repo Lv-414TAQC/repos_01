@@ -60,10 +60,6 @@ namespace Rest414Test.Services
             RestParameters urlParameters = new RestParameters()
                 .AddParameters("token", user.Token);
             SimpleEntity simpleEntity = adminsResource.HttpGetAsObject(urlParameters, null);
-            // TODO
-            //CheckService(!simpleEntity.Equals(true),
-            //    "Item " + itemTemplate.ToString() + "was not received.");
-            // TODO (new or exist)
             string[] contentArray = simpleEntity.content.Split(' ');
             int counter = 0;
             foreach(string i in contentArray)
@@ -109,17 +105,11 @@ namespace Rest414Test.Services
             return simpleEntity.content;
         }
         
-                    
-        
         public List<IUser> GetLoggedInAdmins()
         {
             RestParameters urlParameters = new RestParameters()
                 .AddParameters("token", user.Token);
             SimpleEntity simpleEntity = loggedInAdminsResource.HttpGetAsObject(urlParameters, null);
-            // TODO
-            //CheckService(!simpleEntity.Equals(true),
-            //    "Item " + itemTemplate.ToString() + "was not received.");
-            // TODO (new or exist)
             string[] contentArray = simpleEntity.content.Split(' ');
             int counter = 0;
             foreach (string i in contentArray)
