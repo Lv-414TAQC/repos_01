@@ -65,11 +65,7 @@ namespace Rest414Test.Tests
         {
             adminService.AddAdmin(anotherAdmin);
             adminService.RemoveUser(anotherAdmin);
-            Console.WriteLine("*********" + anotherAdmin.ToString());
-            adminService.UnsuccessfulLogin(anotherAdmin);
-            List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
-            Console.WriteLine(allLoggedInAdmins);
-            Assert.IsFalse(allLoggedInAdmins.Contains(anotherAdmin));
+            Assert.Throws<Exception>(()=>adminService.SuccessfulAdminLogin(anotherAdmin));
         }
     }
 }
