@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿//using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Threading;
 using System.Windows.Forms;
@@ -11,14 +13,14 @@ namespace OpenCart414Test
     //[Parallelizable(ParallelScope.All)]
     public class UnitTest1
     {
-        [OneTimeSetUp]
+        //[OneTimeSetUp]
         public void BeforeAllMethods()
         {
             //Console.WriteLine("[OneTimeSetUp] BeforeAllMethods()");
             //MessageBox.Show("[OneTimeSetUp] BeforeAllMethods()", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        [OneTimeTearDown]
+        //[OneTimeTearDown]
         public void AfterAllMethods()
         {
             //Console.WriteLine("[OneTimeTearDown] AfterAllMethods()");
@@ -76,5 +78,17 @@ namespace OpenCart414Test
             Assert.IsTrue(expexted == actual);
         }
 
+        [Test]
+        //[TestMethod]
+        //[ExpectedException(typeof(DivideByZeroException))]
+        //[ExpectedException(typeof(Exception))]
+        public void TestMethod4()
+        {
+            Console.WriteLine("TestMethod4() [ExpectedException(typeof(Exception))]");
+            int i = 0;
+            //i = 1 / i;
+            //Assert.That(() => 1 / i, Throws.Exception);
+            Assert.Throws<DivideByZeroException>(() => (1 / i).ToString());
+        }
     }
 }
