@@ -158,7 +158,26 @@ namespace Rest414Test.Dto
                 .AddDeleteUrl("/item/{index}");
         }
 
+        public static RestUrl GetNewUser()
+        {
+            return new RestUrl()
+                .AddBaseUrl(Server)
+                .AddGetUrl("")
+                .AddPostUrl("/user")
+                .AddPutUrl("")
+                .AddDeleteUrl("/user");
 
+        }
+
+        public static RestUrl ChangePassw()
+        {
+            return new RestUrl()
+               .AddBaseUrl(Server)
+               .AddGetUrl("")
+               .AddPostUrl("")
+               .AddPutUrl("/user")
+               .AddDeleteUrl("");
+        }
     }
 
 }

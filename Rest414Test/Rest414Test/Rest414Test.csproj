@@ -54,6 +54,9 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.6.6\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -61,8 +64,15 @@
       <HintPath>..\packages\RestSharp.106.6.10\lib\net452\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\CoolDownTime.cs" />
@@ -83,6 +93,7 @@
     <Compile Include="Resources\AdminsResource.cs" />
     <Compile Include="Resources\CoolDownTimeResource.cs" />
     <Compile Include="Resources\ItemResource.cs" />
+    <Compile Include="Resources\LockedUserResource.cs" />
     <Compile Include="Resources\LockedUsersResource.cs" />
     <Compile Include="Resources\LoggedInAdminsResource.cs" />
     <Compile Include="Resources\LogoutResource.cs" />
@@ -91,6 +102,7 @@
     <Compile Include="Resources\RestCrud.cs" />
     <Compile Include="Resources\RestQueries.cs" />
     <Compile Include="Resources\UserItemResource.cs" />
+    <Compile Include="Resources\UserPasswordResource.cs" />
     <Compile Include="Resources\UserResource.cs" />
     <Compile Include="Resources\UsersResource.cs" />
     <Compile Include="RestTest1.cs" />
@@ -103,7 +115,10 @@
     <Compile Include="Tests\AdminTests1.cs" />
     <Compile Include="Tests\AdminTests2.cs" />
     <Compile Include="Tests\AdminTests3.cs" />
+    <Compile Include="Tests\ChangeUserPassword.cs" />
     <Compile Include="Tests\CoolDownTimeTest.cs" />
+    <Compile Include="Tests\CreateUser.cs" />
+    <Compile Include="Tests\DeleteUser.cs" />
     <Compile Include="Tests\LifeTimeTest.cs" />
     <Compile Include="Tests\LogginedTest.cs" />
     <Compile Include="Tests\SecondTest.cs" />
@@ -113,8 +128,16 @@
     <Compile Include="Tools\ListUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\additionalAdmins.csv" />
+    <None Include="Assets\additionalAdmins.xlsx" />
     <None Include="Assets\users.csv" />
     <None Include="Assets\users.xlsx" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

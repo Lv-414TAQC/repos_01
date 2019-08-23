@@ -37,5 +37,16 @@ namespace Rest414Test.Tests
             List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
             Assert.IsTrue(allLoggedInAdmins.Contains(adminForTest));
         }
+
+        [Test]
+        public void CheckAddingSameNameUser()
+        {
+            adminService.RemoveUser(adminForTest);
+            adminService.CreateUser(adminForTest);
+            adminService = adminService
+                .SuccessfulAdminLogin(adminForTest);
+            List<IUser> allAdmins = adminService.GetAllAdmins(adminForTest);
+            Assert.IsTrue(allAdmins.Count == 0);
+        }
     }
 }

@@ -12,15 +12,18 @@ namespace Rest414Test.Services
 {
     public class GuestService : BaseService
     {
+        public string ResultStatus { get; set; }
         protected AdminAuthorizedResource adminAuthorizedResource;
         protected UserAuthorizedResource userAuthorizedResource;
         protected TokenLifetimeResource tokenLifetimeResource;
+        protected UserPasswordResource userpasswresource;
 
         public GuestService() : base()
         {
             adminAuthorizedResource = new AdminAuthorizedResource();
             userAuthorizedResource = new UserAuthorizedResource();
             tokenLifetimeResource = new TokenLifetimeResource();
+            userpasswresource = new UserPasswordResource();
         }
 
         // Atomic
@@ -37,9 +40,42 @@ namespace Rest414Test.Services
 
         public GuestService UnsuccessfulLogin(IUser user)
         {
-            // TODO
+            RestParameters bodyParameters = new RestParameters()
+                .AddParameters("name", user.Name)
+                .AddParameters("password", user.Password);
+
+            SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
+            user.Token = simpleEntity.content;
+            if (simpleEntity.content.Length == 32)
+            {
+
+                return new UserService(user);
+               
+            }
+            Console.WriteLine(user.Token);
             return this;
         }
+        public GuestService LockingUser(IUser user)
+        {
+            int i = 0;
+            while (i < 3)
+            {
+                UnsuccessfulLogin(user);
+                if (UnsuccessfulLogin(user).GetType() == typeof(GuestService))
+                {
+                    ResultStatus = "error, user not found";
+                }
+                i++;
+            }
+            UnsuccessfulLogin(user);
+            if (UnsuccessfulLogin(user).GetType() == typeof(GuestService))
+            {
+                ResultStatus = "error, user locked";
+            }
+            return this;
+
+        }
+    
 
         public UserService SuccessfulUserLogin(IUser user)
         {
@@ -48,6 +84,7 @@ namespace Rest414Test.Services
                 .AddParameters("password", user.Password);
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             user.Token = simpleEntity.content;
+            Console.WriteLine(user.Token);
             return new UserService(user);
         }
 
@@ -58,7 +95,7 @@ namespace Rest414Test.Services
                 .AddParameters("password", adminUser.Password);
             SimpleEntity simpleEntity = adminAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             adminUser.Token = simpleEntity.content;
-          //Console.WriteLine("adminUser.Token = " + adminUser.Token);
+            //Console.WriteLine("adminUser.Token = " + adminUser.Token);
             return new AdminService(adminUser);
         }
     }
