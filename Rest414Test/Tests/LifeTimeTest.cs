@@ -103,7 +103,8 @@ namespace Rest414Test.Tests
 
         //[Test, TestCaseSource("AdminUsers")] // Old Version of method
         //[Test, TestCaseSource(nameof(AdminCSVUsers))]
-        [Test, TestCaseSource(nameof(AdminExcelUsers))]
+        //[Test, TestCaseSource(nameof(AdminExcelUsers))]
+        [Test, TestCaseSource("AdminExcelUsers")]
         public void ExamineTime(IUser adminUser, Lifetime newTokenlifetime)
         {
             Console.WriteLine("*** adminUser:  " + adminUser);

@@ -78,7 +78,7 @@ namespace OpenCart414Test
             Assert.IsTrue(expexted == actual);
         }
 
-        [Test]
+        //[Test]
         //[TestMethod]
         //[ExpectedException(typeof(DivideByZeroException))]
         //[ExpectedException(typeof(Exception))]
