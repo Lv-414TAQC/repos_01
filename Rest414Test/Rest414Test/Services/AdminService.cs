@@ -37,7 +37,7 @@ namespace Rest414Test.Services
 
         public bool IsAdmin(IUser isAdmin)
         {
-            List<IUser> adminsList = this.GetAllAdmins();
+            List<IUser> adminsList = GetAllAdmins();
             return adminsList.Contains(isAdmin);
         }
 
