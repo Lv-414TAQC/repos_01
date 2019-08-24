@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NLog;
+using System;
 
 namespace Rest414Test.Services
 {
     public class BaseService
     {
+        public Logger logger = LogManager.GetCurrentClassLogger();
         private const string NOT_SUPPORT_SERVICE = "Service {0} Error. {1}";
 
         public BaseService()

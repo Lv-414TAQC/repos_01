@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.3.15.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.15.0\build\net35\NUnit3TestAdapter.props')" />
   <Import Project="..\packages\MSTest.TestAdapter.1.4.0\build\net45\MSTest.TestAdapter.props" Condition="Exists('..\packages\MSTest.TestAdapter.1.4.0\build\net45\MSTest.TestAdapter.props')" />
-  <Import Project="..\packages\NUnit3TestAdapter.3.14.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.14.0\build\net35\NUnit3TestAdapter.props')" />
   <Import Project="..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -93,6 +93,7 @@
     <Compile Include="Resources\AdminsResource.cs" />
     <Compile Include="Resources\CoolDownTimeResource.cs" />
     <Compile Include="Resources\ItemResource.cs" />
+    <Compile Include="Resources\LockedUserResource.cs" />
     <Compile Include="Resources\LockedUsersResource.cs" />
     <Compile Include="Resources\LoggedInAdminsResource.cs" />
     <Compile Include="Resources\LogoutResource.cs" />
@@ -114,7 +115,6 @@
     <Compile Include="Tests\AdminTests1.cs" />
     <Compile Include="Tests\AdminTests2.cs" />
     <Compile Include="Tests\AdminTests3.cs" />
-    <Compile Include="Tests\ChangeCoolDownTimeTest.cs" />
     <Compile Include="Tests\ChangeUserPassword.cs" />
     <Compile Include="Tests\CoolDownTimeTest.cs" />
     <Compile Include="Tests\CreateUser.cs" />
@@ -128,6 +128,8 @@
     <Compile Include="Tools\ListUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\additionalAdmins.csv" />
+    <None Include="Assets\additionalAdmins.xlsx" />
     <None Include="Assets\users.csv" />
     <None Include="Assets\users.xlsx" />
     <Content Include="NLog.config">
@@ -149,9 +151,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.12.0\build\NUnit.props'))" />
-    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.14.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.14.0\build\net35\NUnit3TestAdapter.props'))" />
     <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.4.0\build\net45\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.4.0\build\net45\MSTest.TestAdapter.props'))" />
     <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.4.0\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.4.0\build\net45\MSTest.TestAdapter.targets'))" />
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.15.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.15.0\build\net35\NUnit3TestAdapter.props'))" />
   </Target>
   <PropertyGroup>
     <PostBuildEvent>copy /b $(ProjectDir)\Assets\*.* $(TargetDir)</PostBuildEvent>

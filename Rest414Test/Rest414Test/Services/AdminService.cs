@@ -5,8 +5,6 @@ using Rest414Test.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Rest414Test.Services
 {
@@ -19,6 +17,7 @@ namespace Rest414Test.Services
         protected CoolDownTimeResource cooldowntimeResource;
         protected UsersResource usersResource;
         protected LockedUsersResource lockedusersResource;
+        protected LockedUserResource lockeduserResource;
 
         public AdminService(IUser adminUser) : base(adminUser)
         {
@@ -27,6 +26,9 @@ namespace Rest414Test.Services
             loggedInAdminsResource = new LoggedInAdminsResource();
             userResource = new UserResource();
             usersResource = new UsersResource();
+            cooldowntimeResource = new CoolDownTimeResource();
+            lockedusersResource = new LockedUsersResource();
+            lockeduserResource = new LockedUserResource();
             CheckService(!IsAdmin(),
                 "Admin " + adminUser.ToString() + "Login Unsuccessful.");
         }
@@ -94,16 +96,6 @@ namespace Rest414Test.Services
             }
             return returnedUsers;
         }
-
-        public string GetUsers()
-        {
-            RestParameters urlParameters = new RestParameters()
-                .AddParameters("token", user.Token);
-            
-            SimpleEntity simpleEntity = usersResource.HttpGetAsObject(urlParameters, null);
-            
-            return simpleEntity.content;
-        }
         
         public List<IUser> GetLoggedInAdmins()
         {
@@ -127,32 +119,52 @@ namespace Rest414Test.Services
 
         public string GetCoolDownTime()
         {
+            
+            CoolDownTime coolDownTime = new CoolDownTime();
             RestParameters urlParameters = new RestParameters()
                 .AddParameters("token", user.Token);
             SimpleEntity simpleEntity = cooldowntimeResource.HttpGetAsObject(urlParameters, null);
+            //coolDownTime.Time = simpleEntity.content;
+            Console.WriteLine("simpleEntity = " + simpleEntity.content);
             return simpleEntity.content;
         }
-      
-        public string GetLockedUsers()
+
+        
+        public List<IUser> GetLockedUsers()
         {
             RestParameters urlParameters = new RestParameters()
                 .AddParameters("token", user.Token);
             SimpleEntity simpleEntity = lockedusersResource.HttpGetAsObject(urlParameters, null);
-            return simpleEntity.content;
+            List<string> listNameLockedUsers = new List<string>(simpleEntity.content.Split(new char[] { '\n', '\t' }));
+
+            for (int i = 0; i < listNameLockedUsers.Count; i++)
+            {
+                listNameLockedUsers.RemoveAt(i);
+            }
+            List<IUser> listLockedUsers = new List<IUser>();
+            foreach (string lockuser in listNameLockedUsers)
+            {
+                listLockedUsers.Add(new User(lockuser));
+                Console.WriteLine(user);
+            }
+            return listLockedUsers;
         }
 
         // Business
 
-        
 
-       public UserService UnlockUser(IUser user)
+
+        public AdminService UnlockUser(IUser user1)
         {
-            RestParameters urlParameters = new RestParameters()
-            //RestParameters bodyParameters = new RestParameters()
-                .AddParameters("token", user.Token)
-                .AddParameters("name", user.Name); //?????
-            SimpleEntity simpleEntity = userResource
-                .HttpPutAsObject(urlParameters, null, null);
+            //RestParameters urlParameters = new RestParameters()
+
+            RestParameters bodyParameters = new RestParameters()
+                .AddParameters("token", user.Token);
+            RestParameters pathVariables = new RestParameters()
+                .AddParameters("name", user1.Name); //?????
+            
+            SimpleEntity simpleEntity = lockeduserResource
+                .HttpPutAsObject(null, pathVariables, bodyParameters);
             Console.WriteLine("\t***AddAdmin(): simpleEntity = " + simpleEntity);
             return this;
         }
@@ -243,10 +255,10 @@ namespace Rest414Test.Services
                 listNameUsers.RemoveAt(i);
             }
             List<IUser> listUsers = new List<IUser>();
-            foreach (string user in listNameUsers)
+            foreach (string u in listNameUsers)
             {
-                listUsers.Add(new User(user));
-                Console.WriteLine(user);
+                listUsers.Add(new User(u));
+                Console.WriteLine(u);
             }
             return listUsers;
         }

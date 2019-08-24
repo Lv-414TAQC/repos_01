@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
+﻿using NLog;
+using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
-using System;
 using System.Collections.Generic;
 
 namespace Rest414Test.Tests
@@ -9,6 +9,8 @@ namespace Rest414Test.Tests
     [TestFixture]
     public class AdminTests1
     {
+        Logger logger = LogManager.GetCurrentClassLogger();
+
         AdminService adminService;
         IUser adminForTest;
 
@@ -20,7 +22,6 @@ namespace Rest414Test.Tests
             adminService = guestService
                 .SuccessfulAdminLogin(adminUser);
             adminForTest = UserRepository.Get().AdminForTest();
-            Console.WriteLine(adminForTest);
             adminService.AddAdmin(adminForTest);
         }
 
@@ -28,28 +29,29 @@ namespace Rest414Test.Tests
         public void TearDown()
         {
             adminService.RemoveUser(adminForTest);
+            adminService.Logout();
         }
 
         [Test]
         public void CheckAddingAdmin()
         {
+            logger.Info("Checking adding admin started.");
             List<IUser> allAdmins = adminService.GetAllAdmins();
             Assert.IsTrue(allAdmins.Contains(adminForTest));
+            logger.Info("Checking adding admin done.");
         }
 
         [Test]
         public void CheckLoggingOutAdmin()
-        {   
+        {
+            logger.Info("Checking logging admin out started.");
             adminService.SuccessfulAdminLogin(adminForTest);
             adminService.Logout(adminForTest);
             List<IUser> allAdmins = adminService.GetAllAdmins();
-            foreach (IUser i in allAdmins)
-            {
-                Console.WriteLine(i.ToString());
-            }
             Assert.IsTrue(allAdmins.Contains(adminForTest));
             List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
             Assert.IsFalse(allLoggedInAdmins.Contains(adminForTest));
+            logger.Info("Checking logging admin out done.");
         }
     }
 }

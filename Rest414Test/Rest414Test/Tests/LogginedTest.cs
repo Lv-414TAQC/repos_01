@@ -3,48 +3,39 @@ using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using Rest414Test.Data;
 using Rest414Test.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Rest414Test.Tests
 {
     [TestFixture]
     class LogginedTest
     {
-        Logger logger = LogManager.GetCurrentClassLogger();
-
         private GuestService guestService;
         private AdminService adminService;
         private UserService userService;
 
-        // DataProvider
+        // DataProviders
         private static readonly object[] Admins =
         {
             new object[] { UserRepository.Get().Admin() }
         };
 
-        // DataProvider
         private static readonly object[] NewUsers =
         {
             new object[] { UserRepository.Get().NewUser() }
         };
 
-        // DataProvider
-        private static readonly object[] UserAdmin =
+        private static readonly object[] ExistUser_NewUser =
         {
-            new object[] { UserRepository.Get().NewUser(), UserRepository.Get().Admin() }
+            new object[] { UserRepository.Get().ExistUser(), UserRepository.Get().NewUser() }
         };
 
-        // DataProvider
-        private static object[] IncorrectPasswordUser =
+        private static object[] IncorrectPasswords =
         {
             new object[] { UserRepository.Get().IncorrectPasswordUser()},
-            new object[] { UserRepository.Get().EmptyPasswordUser()}
+            new object[] { UserRepository.Get().EmptyPasswordUser()},
+            new object[] { UserRepository.Get().IncorrectPasswordAdmin()},
+            new object[] { UserRepository.Get().EmptyPasswordAdmin()}
         };
-
 
         [OneTimeSetUp]
         public void BeforeAllMethods()
@@ -63,69 +54,69 @@ namespace Rest414Test.Tests
         {
             adminService = guestService.SuccessfulAdminLogin(UserRepository.Get().Admin());
             adminService.CreateUser(UserRepository.Get().NewUser());
-            adminService.GetAllUsers();
-            //Assert.IsTrue(adminService.GetAllUsers().Contains(new User(newUser.Name)));
             adminService.Logout();
         }
 
         [TearDown]
         public void TearDown()
         {
-            //Delete created user
             adminService = guestService.SuccessfulAdminLogin(UserRepository.Get().Admin());
-            adminService.RemoveUser(UserRepository.Get().NewUser());
-            adminService.Logout();
 
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
-                // TODO Save to Log File
-                Console.WriteLine("TestContext.CurrentContext.Result.StackTrace = " + TestContext.CurrentContext.Result.StackTrace);
-                // Clear Cache
+                guestService.logger.Info("TestContext.CurrentContext.Result.StackTrace = " + TestContext.CurrentContext.Result.StackTrace);
             }
-            //
+           
             // Return to Previous State
             if ((adminService != null) && (adminService.IsLoggined()))
             {
-                Lifetime currentTokenlifetime = LifetimeRepository.GetDefault();
-                adminService = adminService.UpdateTokenlifetime(currentTokenlifetime);
+                //Delete created user
+                adminService.RemoveUser(UserRepository.Get().NewUser());
+                adminService.Logout();
             }
-            //
-            // TODO for User
-            if ((adminService != null) && (adminService.IsLoggined()))
-            {
-                guestService = adminService.Logout();
-                adminService = null;
-            }
+            
         }
 
         [Test, TestCaseSource("NewUsers")]
-        public void CheckLoginLogoutUser(IUser newUser)
+        public void CheckLoginLogoutUser(IUser user)
         {
-            logger.Info("Start test CheckLoginLogoutUser");
+            guestService.logger.Info("Start test CheckLoginLogoutUser");
      
-            userService = guestService.SuccessfulUserLogin(newUser);
+            userService = guestService.SuccessfulUserLogin(user);
             Assert.IsTrue(userService.IsLoggined());
             userService.Logout();
             Assert.IsFalse(userService.IsLoggined());
 
-            logger.Info("End test CheckLoginLogoutUser: " + newUser.Name);
+            guestService.logger.Info("End test CheckLoginLogoutUser: ");
         }
 
-        [Test, TestCaseSource("UserAdmin")]
-        public void CheckAnotherLogin(IUser newUser, IUser adminUser)
+        [Test, TestCaseSource("Admins")]
+        public void CheckLoginLogoutAdmin(IUser admin)
         {
-            userService = guestService.SuccessfulUserLogin(newUser);
+            guestService.logger.Info("Start test CheckLoginLogoutAdmin");
+
+            adminService = guestService.SuccessfulAdminLogin(admin);
+            Assert.IsTrue(adminService.IsLoggined());
+            adminService.Logout();
+            Assert.IsFalse(adminService.IsLoggined());
+
+            guestService.logger.Info("End test CheckLoginLogoutAdmin");
+        }
+
+        [Test, TestCaseSource("ExistUser_NewUser")]
+        public void CheckAnotherLogin(IUser firstUser, IUser secondUser)
+        {
+            userService = guestService.SuccessfulUserLogin(firstUser);
             Assert.IsTrue(userService.IsLoggined());
-            adminService = guestService.SuccessfulAdminLogin(adminUser);
+            //first user don't logout!
+            adminService = guestService.SuccessfulAdminLogin(secondUser);
             Assert.IsFalse(adminService.IsLoggined());
         }
 
-        [Test, TestCaseSource("IncorrectPasswordUser")]
+        [Test, TestCaseSource("IncorrectPasswords")]
         public void CheckIncorrectLogin(IUser incorrectUser)
         {
-            guestService.UnsuccessfulLogin(incorrectUser);
-           // Assert.IsTrue(guestService.UnsuccessfulLogin(incorrectUser)
-           //  .GetType() == typeof(GuestService));
+            guestService = guestService.UnsuccessfulLogin(incorrectUser);
         }
 
     }
