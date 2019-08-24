@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
+using System;
 using System.Collections.Generic;
 
 namespace Rest414Test.Tests
@@ -49,10 +50,7 @@ namespace Rest414Test.Tests
             logger.Info("Checking adding a user with the same name as previously removed admin's started.");
             adminService.RemoveUser(adminForTest);
             adminService.CreateUser(adminForTest);
-            adminService = adminService
-                .SuccessfulAdminLogin(adminForTest);
-            List<IUser> allAdmins = adminService.GetAllAdmins(adminForTest);
-            Assert.IsTrue(allAdmins.Count == 0);
+            Assert.Throws<Exception>(()=>adminService.SuccessfulAdminLogin(adminForTest));
             logger.Info("Checking adding a user with the same name as previously removed admin's done.");
         }
     }
