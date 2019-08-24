@@ -1,9 +1,6 @@
 ﻿using Rest414Test.Tools;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Rest414Test.Data
 {
@@ -71,6 +68,22 @@ namespace Rest414Test.Data
                .Build();
         }
 
+
+        public IUser UserForLock()
+        {
+            return User.Get()
+               .SetName("user1")
+               .SetPassword("123456")
+               .Build();
+        }
+
+        public IUser IncorrectUserForLock()
+        {
+            return User.Get()
+               .SetName("user1")
+               .SetPassword("12345678")
+               .Build();
+        }
         public IUser EmptyPasswordUser()
         {
             return User.Get()
@@ -108,6 +121,30 @@ namespace Rest414Test.Data
             return User.GetAllUsers(new ExcelReader(filename).GetAllCells());
         }
 
+        // Admin From External Files ------------------------------------------
+
+        public IList<IUser> AdminsFromCsv()
+        {
+            return AdminsFromCsv("additionalAdmins.csv");
+        }
+
+        public IList<IUser> AdminsFromCsv(string filename)
+        {
+            return User.GetAllUsers(new CSVReader(filename).GetAllCells());
+        }
+
+        public IList<IUser> AdminsFromExcel()
+        {
+            return AdminsFromExcel("additionalAdmins.xlsx");
+        }
+
+        public IList<IUser> AdminsFromExcel(string filename)
+        {
+            return User.GetAllUsers(new ExcelReader(filename).GetAllCells());
+        }
+
+        // --------------------------------------------------------------------
+		
         public IUser CreateNewUser()
         {
             return User.Get()

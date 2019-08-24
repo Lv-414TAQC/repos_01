@@ -1,18 +1,17 @@
-﻿using NUnit.Framework;
+﻿using NLog;
+using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using Rest414Test.Data;
 using Rest414Test.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Rest414Test.Tests
 {
     [TestFixture]
     class LogginedTest
     {
+        Logger logger = LogManager.GetCurrentClassLogger();
+
         private GuestService guestService;
         private AdminService adminService;
         private UserService userService;
@@ -98,10 +97,14 @@ namespace Rest414Test.Tests
         [Test, TestCaseSource("NewUsers")]
         public void CheckLoginLogoutUser(IUser newUser)
         {
+            logger.Info("Start test CheckLoginLogoutUser");
+     
             userService = guestService.SuccessfulUserLogin(newUser);
             Assert.IsTrue(userService.IsLoggined());
             userService.Logout();
             Assert.IsFalse(userService.IsLoggined());
+
+            logger.Info("End test CheckLoginLogoutUser: " + newUser.Name);
         }
 
         [Test, TestCaseSource("UserAdmin")]

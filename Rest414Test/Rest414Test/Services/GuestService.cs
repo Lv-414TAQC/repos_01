@@ -3,15 +3,12 @@ using Rest414Test.Dto;
 using Rest414Test.Entity;
 using Rest414Test.Resources;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Rest414Test.Services
 {
     public class GuestService : BaseService
     {
+        public string ResultStatus { get; set; }
         protected AdminAuthorizedResource adminAuthorizedResource;
         protected UserAuthorizedResource userAuthorizedResource;
         protected TokenLifetimeResource tokenLifetimeResource;
@@ -42,16 +39,39 @@ namespace Rest414Test.Services
             RestParameters bodyParameters = new RestParameters()
                 .AddParameters("name", user.Name)
                 .AddParameters("password", user.Password);
-           
+
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             user.Token = simpleEntity.content;
             if (simpleEntity.content.Length == 32)
             {
+
                 return new UserService(user);
+               
             }
             Console.WriteLine(user.Token);
             return this;
         }
+        public GuestService LockingUser(IUser user)
+        {
+            int i = 0;
+            while (i < 3)
+            {
+                UnsuccessfulLogin(user);
+                if (UnsuccessfulLogin(user).GetType() == typeof(GuestService))
+                {
+                    ResultStatus = "error, user not found";
+                }
+                i++;
+            }
+            UnsuccessfulLogin(user);
+            if (UnsuccessfulLogin(user).GetType() == typeof(GuestService))
+            {
+                ResultStatus = "error, user locked";
+            }
+            return this;
+
+        }
+    
 
         public UserService SuccessfulUserLogin(IUser user)
         {
