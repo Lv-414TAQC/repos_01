@@ -44,12 +44,10 @@ namespace Rest414Test.Services
                 .AddParameters("password", user.Password);
            
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
-            user.Token = simpleEntity.content;
             if (simpleEntity.content.Length == 32)
             {
-                return new UserService(user);
+                throw new Exception("Valid login"); 
             }
-            Console.WriteLine(user.Token);
             return this;
         }
 
