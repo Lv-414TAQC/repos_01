@@ -3,7 +3,6 @@ using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
 using System;
-using System.Collections.Generic;
 
 namespace Rest414Test.Tests
 {
@@ -39,8 +38,8 @@ namespace Rest414Test.Tests
         {
             logger.Info("Checking logging admin in started.");
             adminService.SuccessfulAdminLogin(adminForTest);
-            List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
-            Assert.IsTrue(allLoggedInAdmins.Contains(adminForTest));
+            Assert.IsTrue(adminService.IsLoggedInAdmin(adminForTest));
+            logger.Info("Is logged in admin: " + adminService.IsLoggedInAdmin(adminForTest));
             logger.Info("Checking logging admin in done.");
         }
 
@@ -51,6 +50,7 @@ namespace Rest414Test.Tests
             adminService.RemoveUser(adminForTest);
             adminService.CreateUser(adminForTest);
             Assert.Throws<Exception>(()=>adminService.SuccessfulAdminLogin(adminForTest));
+            logger.Info("Expected exception is thrown.");
             logger.Info("Checking adding a user with the same name as previously removed admin's done.");
         }
     }

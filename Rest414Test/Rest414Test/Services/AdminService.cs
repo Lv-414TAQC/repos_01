@@ -41,6 +41,18 @@ namespace Rest414Test.Services
             return adminsList.Contains(isAdmin);
         }
 
+        public bool IsLoggedInAdmin(IUser isLoggedInAdmin)
+        {
+            List<IUser> loggedInAdminsList = GetLoggedInAdmins();
+            return loggedInAdminsList.Contains(isLoggedInAdmin);
+        }
+
+        public bool UserExists(IUser isUserThere)
+        {
+            List<IUser> userList = GetAllUsers();
+            return userList.Contains(isUserThere);
+        }
+
         public ItemTemplate GetUserItem(ItemTemplate itemTemplate, IUser userWithItem)
         {
             RestParameters urlParameters = new RestParameters()

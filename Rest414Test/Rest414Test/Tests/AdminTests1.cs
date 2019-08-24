@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
-using System.Collections.Generic;
 
 namespace Rest414Test.Tests
 {
@@ -36,8 +35,8 @@ namespace Rest414Test.Tests
         public void CheckAddingAdmin()
         {
             logger.Info("Checking adding admin started.");
-            List<IUser> allAdmins = adminService.GetAllAdmins();
-            Assert.IsTrue(allAdmins.Contains(adminForTest));
+            Assert.IsTrue(adminService.IsAdmin(adminForTest));
+            logger.Info("Is admin: " + adminService.IsAdmin(adminForTest));
             logger.Info("Checking adding admin done.");
         }
 
@@ -47,10 +46,10 @@ namespace Rest414Test.Tests
             logger.Info("Checking logging admin out started.");
             adminService.SuccessfulAdminLogin(adminForTest);
             adminService.Logout(adminForTest);
-            List<IUser> allAdmins = adminService.GetAllAdmins();
-            Assert.IsTrue(allAdmins.Contains(adminForTest));
-            List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
-            Assert.IsFalse(allLoggedInAdmins.Contains(adminForTest));
+            Assert.IsTrue(adminService.IsAdmin(adminForTest));
+            logger.Info("Is admin: " + adminService.IsAdmin(adminForTest));
+            Assert.IsFalse(adminService.IsLoggedInAdmin(adminForTest));
+            logger.Info("Is logged in admin: " + adminService.IsLoggedInAdmin(adminForTest));
             logger.Info("Checking logging admin out done.");
         }
     }
