@@ -71,8 +71,8 @@ namespace Rest414Test.Tests
         // DataProvider
         private static readonly object[] AdminFromCSV =
             ListUtils.ToMultiArray(UserRepository.Get().AdminsFromCsv());
-        private static readonly object[] AdminFromExcel =
-            ListUtils.ToMultiArray(UserRepository.Get().AdminsFromExcel());
+        //private static readonly object[] AdminFromExcel =
+        //    ListUtils.ToMultiArray(UserRepository.Get().AdminsFromExcel());
 
         [Test, TestCaseSource("AdminFromCSV")]
         //[Test, TestCaseSource("AdminFromExcel")]
