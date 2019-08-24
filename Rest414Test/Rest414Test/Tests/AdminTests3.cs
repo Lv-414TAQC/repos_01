@@ -74,8 +74,8 @@ namespace Rest414Test.Tests
         private static readonly object[] AdminFromExcel =
             ListUtils.ToMultiArray(UserRepository.Get().AdminsFromExcel());
 
-        //[Test, TestCaseSource(nameof(AdminFromCSV))]
-        [Test, TestCaseSource("AdminFromExcel")]
+        [Test, TestCaseSource("AdminFromCSV")]
+        //[Test, TestCaseSource("AdminFromExcel")]
         public void CheckLoggingInRemovedAdmin(IUser anotherAdmin)
         {
             logger.Info("Checking logging removed admin in started.");
