@@ -98,8 +98,8 @@ namespace Rest414Test.Tests
             ListUtils.ToMultiArray(UserRepository.Get().FromExcel(), LifetimeRepository.GetLongTime());
 
         //[Test, TestCaseSource("AdminUsers")] // Old Version of method
-        //[Test, TestCaseSource(nameof(AdminCSVUsers))]
-        [Test, TestCaseSource(nameof(AdminExcelUsers))]
+        //[Test, TestCaseSource("AdminCSVUsers")]
+        [Test, TestCaseSource("AdminExcelUsers")]
         public void ExamineTime(IUser adminUser, Lifetime newTokenlifetime)
         {
             Console.WriteLine("*** adminUser:  " + adminUser);
