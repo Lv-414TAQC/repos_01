@@ -255,10 +255,10 @@ namespace Rest414Test.Services
                 listNameUsers.RemoveAt(i);
             }
             List<IUser> listUsers = new List<IUser>();
-            foreach (string user in listNameUsers)
+            foreach (string u in listNameUsers)
             {
-                listUsers.Add(new User(user));
-                Console.WriteLine(user);
+                listUsers.Add(new User(u));
+                Console.WriteLine(u);
             }
             return listUsers;
         }
