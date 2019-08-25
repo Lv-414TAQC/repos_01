@@ -11,7 +11,6 @@ namespace Rest414Test.Tests
     {
         IUser adminUser = UserRepository.Get().Admin();
         GuestService guestService = new GuestService();
-        List<ItemTemplate> existItems = ItemsRepository.ListItems();
         AdminService adminService;
 
         UserService userService;
@@ -23,15 +22,16 @@ namespace Rest414Test.Tests
         [TearDown]
         public void TearDown()
         {
-
+            adminService.Logout();
         }
 
         [Test]
         public void AddItemTest()
         {
             adminService = guestService.SuccessfulAdminLogin(adminUser);
-            adminService.AddItems(existItems);
-            Assert.AreEqual(existItems.Count, adminService.GetAllItems().Count);
+            adminService.AddItems(ItemsRepository.ListItems());
+            CollectionAssert.Contains(ItemsRepository.ListItems(), 
+                adminService.GetAllItems());
         }
 
         [Test]
@@ -49,6 +49,5 @@ namespace Rest414Test.Tests
             adminService.UpdateItem(existItem, updatedItem);
             Assert.IsTrue(adminService.IsUpdateItem(updatedItem, adminService.GetAllItems()));
         }
-
     }
 }

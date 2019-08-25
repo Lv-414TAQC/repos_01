@@ -157,14 +157,15 @@ namespace Rest414Test.Services
                 .AddParameters("token", user.Token);
 
             SimpleEntity simpleEntity = allItemsResource.HttpGetAsObject(urlParameters, null);
-            List<string> list = new List<string>(simpleEntity.content.Split(new char[] { '\n', '\t' }));
+            Console.WriteLine(simpleEntity.content);
+            List<string> list = new List<string>(simpleEntity.content.Split(new String[] { "\n", " \t" }, StringSplitOptions.None));
             List<ItemTemplate> listItems = new List<ItemTemplate>();
             for (int i = list.Count - 2; i > 0; i -= 2)
             {
                 ItemTemplate template = new ItemTemplate(list[i], list[i - 1]);
                 listItems.Add(template);
-                Console.WriteLine($"{template.Index} - index");
-                Console.WriteLine($"{template.Item} - item");
+                Console.WriteLine($"{template.Index}- index");
+                Console.WriteLine($"{template.Item}- item");
             }
             return listItems;
         }
