@@ -80,6 +80,35 @@ namespace Rest414Test.Services
             }
             return this;
         }
+        public UserService UpdateItem(ItemTemplate item, ItemTemplate updateItem)
+        {
+            RestParameters bodyParameters = new RestParameters()
+                   .AddParameters("token", user.Token)
+                   .AddParameters("item", updateItem.Item);
+            RestParameters pathParameters = new RestParameters()
+                    .AddParameters("index", item.Index);
+            
+                SimpleEntity simpleEntity = itemResource.HttpPutAsObject(null, pathParameters, bodyParameters);
+            CheckService(!simpleEntity.Equals(true),
+                "Item " + item.ToString() + "was not Added.");
+            return this;
+        }
+        public bool IsUpdateItem(ItemTemplate updatedItem, List<ItemTemplate> items)
+        {
+            bool result = false;
+            foreach(ItemTemplate itemTemplate in items)
+            {
+                Console.WriteLine($"{itemTemplate.Index}---{updatedItem.Index}");
+                Console.WriteLine($"{itemTemplate.Item}---{updatedItem.Item}");
+                if (itemTemplate.Index.Contains(updatedItem.Index)
+                    && itemTemplate.Item.Contains(updatedItem.Item))
+                {
+                    result = true;
+                }
+                else Console.WriteLine("NOOOO");
+            }
+            return result;
+        }
 
         public GuestService Logout()
         {
