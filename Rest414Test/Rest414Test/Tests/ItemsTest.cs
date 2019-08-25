@@ -27,7 +27,7 @@ namespace Rest414Test.Tests
         }
 
         [Test]
-        public void ItemTestOne()
+        public void AddItemTest()
         {
             adminService = guestService.SuccessfulAdminLogin(adminUser);
             adminService.AddItems(existItems);
@@ -35,7 +35,7 @@ namespace Rest414Test.Tests
         }
 
         [Test]
-        public void ItemTestTwo()
+        public void userAccessItemsTest()
         {
             userService = guestService.SuccessfulUserLogin(user);
             Assert.IsTrue(userService.IsLoggined());
@@ -43,13 +43,11 @@ namespace Rest414Test.Tests
         }
 
         [Test]
-        public void ItemTestThree()
+        public void UpdateItemTest()
         {
             adminService = guestService.SuccessfulAdminLogin(adminUser);
             adminService.UpdateItem(existItem, updatedItem);
-            //adminService.GetAllItems();
             Assert.IsTrue(adminService.IsUpdateItem(updatedItem, adminService.GetAllItems()));
-
         }
 
     }
