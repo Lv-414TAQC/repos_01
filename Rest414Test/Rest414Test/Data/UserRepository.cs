@@ -91,12 +91,26 @@ namespace Rest414Test.Data
                .SetPassword("")
                .Build();
         }
+        public IUser EmptyPasswordAdmin()
+        {
+            return User.Get()
+               .SetName("admin")
+               .SetPassword("")
+               .Build();
+        }
 
         public IUser IncorrectPasswordUser()
         {
             return User.Get()
                .SetName("ivan")
                .SetPassword("wetfdsa321")
+               .Build();
+        }
+        public IUser IncorrectPasswordAdmin()
+        {
+            return User.Get()
+               .SetName("admin")
+               .SetPassword("gqtr431ff")
                .Build();
         }
 

@@ -94,12 +94,12 @@ namespace Rest414Test.Tests
         private static readonly object[] AdminCSVUsers =
             ListUtils.ToMultiArray(UserRepository.Get().FromCsv(), LifetimeRepository.GetLongTime());
 
-        private static readonly object[] AdminExcelUsers =
-            ListUtils.ToMultiArray(UserRepository.Get().FromExcel(), LifetimeRepository.GetLongTime());
+        //private static readonly object[] AdminExcelUsers =
+        //    ListUtils.ToMultiArray(UserRepository.Get().FromExcel(), LifetimeRepository.GetLongTime());
 
         //[Test, TestCaseSource("AdminUsers")] // Old Version of method
-        //[Test, TestCaseSource("AdminCSVUsers")]
-        [Test, TestCaseSource("AdminExcelUsers")]
+        [Test, TestCaseSource("AdminCSVUsers")]
+        //[Test, TestCaseSource("AdminExcelUsers")]
         public void ExamineTime(IUser adminUser, Lifetime newTokenlifetime)
         {
             Console.WriteLine("*** adminUser:  " + adminUser);

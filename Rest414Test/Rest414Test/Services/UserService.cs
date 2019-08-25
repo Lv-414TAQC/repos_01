@@ -27,7 +27,6 @@ namespace Rest414Test.Services
 
         public bool IsLoggined()
         {
-            //Console.WriteLine(user.Token);
             return (user != null) && (!string.IsNullOrEmpty(user.Token) && !user.Token.Contains("ERROR, user not found"));
         }
 
@@ -66,18 +65,13 @@ namespace Rest414Test.Services
 
         public GuestService Logout()
         {
-            //Console.WriteLine("\t***Logout(): user = " + user);
-            //
             RestParameters bodyParameters = new RestParameters()
                 .AddParameters("token", user.Token)
                 .AddParameters("name", user.Name);
             SimpleEntity simpleEntity = logoutResource.HttpPostAsObject(null, null, bodyParameters);
-            //Console.WriteLine("\t***Logout(): simpleEntity = " + simpleEntity);
-            // TODO
-            //Console.WriteLine(simpleEntity.content);
+
             CheckService(!simpleEntity.Equals(true), "Logout Unsuccessful.");
             user.Token = string.Empty;
-            //Console.WriteLine("\t***Logout(): DONE ");
             return new GuestService();
         }
 

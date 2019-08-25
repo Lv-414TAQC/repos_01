@@ -1,4 +1,5 @@
-﻿using Rest414Test.Data;
+﻿using NLog;
+using Rest414Test.Data;
 using Rest414Test.Dto;
 using Rest414Test.Entity;
 using Rest414Test.Resources;
@@ -8,6 +9,8 @@ namespace Rest414Test.Services
 {
     public class GuestService : BaseService
     {
+        private const int LENGTH_TOKEN = 32;
+
         public string ResultStatus { get; set; }
         protected AdminAuthorizedResource adminAuthorizedResource;
         protected UserAuthorizedResource userAuthorizedResource;
@@ -41,14 +44,11 @@ namespace Rest414Test.Services
                 .AddParameters("password", user.Password);
 
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
-            user.Token = simpleEntity.content;
-            if (simpleEntity.content.Length == 32)
+            if (simpleEntity.content.Length == LENGTH_TOKEN)
             {
-
-                return new UserService(user);
-               
+                logger.Error("Custom exception: entered valid login in UnsuccessfulLogin method");
+                throw new Exception("Valid login"); 
             }
-            Console.WriteLine(user.Token);
             return this;
         }
         public GuestService LockingUser(IUser user)
@@ -80,7 +80,6 @@ namespace Rest414Test.Services
                 .AddParameters("password", user.Password);
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             user.Token = simpleEntity.content;
-            Console.WriteLine(user.Token);
             return new UserService(user);
         }
 
@@ -91,7 +90,6 @@ namespace Rest414Test.Services
                 .AddParameters("password", adminUser.Password);
             SimpleEntity simpleEntity = adminAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             adminUser.Token = simpleEntity.content;
-            //Console.WriteLine("adminUser.Token = " + adminUser.Token);
             return new AdminService(adminUser);
         }
     }
