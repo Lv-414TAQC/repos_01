@@ -6,7 +6,7 @@ namespace Rest414Test.Services
     public class BaseService
     {
         public Logger logger = LogManager.GetCurrentClassLogger();
-        private const string NOT_SUPPORT_SERVICE = "Service {0} Error. {1}";
+        private const string NotSupportService = "Service {0} Error. {1}";
 
         public BaseService()
         {
@@ -16,9 +16,8 @@ namespace Rest414Test.Services
         {
             if (condition)
             {
-                // TODO Develop Custom Exception
                 string serviceName = this.GetType().ToString();
-                throw new Exception(string.Format(NOT_SUPPORT_SERVICE, serviceName, message));
+                throw new Exception(string.Format(NotSupportService, serviceName, message));
             }
         }
     }

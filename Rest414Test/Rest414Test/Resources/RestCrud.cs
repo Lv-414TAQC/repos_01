@@ -1,4 +1,5 @@
-﻿using Rest414Test.Dto;
+﻿using NLog;
+using Rest414Test.Dto;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -7,12 +8,14 @@ namespace Rest414Test.Resources
 {
     public abstract class RestCrud
     {
-        private const string NOT_SUPPORT_MESSAGE = "Method {0} not Support for {1} Resource";
-        //
-        private const string URL_PARAMETERS_SEPARATOR = "?";
-        private const string NEXT_PARAMETERS_SEPARATOR = "&";
-        private const string KEY_VALUE_SEPARATOR = "=";
-        //
+        Logger logger = LogManager.GetCurrentClassLogger();
+
+        private const string NotSupportMessage = "Method {0} not Support for {1} Resource";
+        
+        private const string UrlParametersSeparator = "?";
+        private const string NextParametersSeparator = "&";
+        private const string KeyValueSeparator = "=";
+        
         private RestUrl restUrl;
         private RestClient client;
         private Dictionary<RestUrlKeys, RestSharp.Method> dictionaryMethods;
@@ -37,14 +40,12 @@ namespace Rest414Test.Resources
 
         protected void ThrowException(string message)
         {
-            // TODO Develop Custom Exception
             string resourceName = this.GetType().ToString();
-            throw new Exception(string.Format(NOT_SUPPORT_MESSAGE, message, resourceName));
+            throw new Exception(string.Format(NotSupportMessage, message, resourceName));
         }
 
         protected void CheckImplementation(RestUrlKeys restUrlKeys)
         {
-            // if (restUrl.GetUrl(restUrlKeys).Length == 0)
             if (string.IsNullOrEmpty(restUrl.GetUrl(restUrlKeys)))
             {
                 ThrowException(restUrlKeys.ToString());
@@ -60,17 +61,17 @@ namespace Rest414Test.Resources
                 bool isFirstParameter = true;
                 foreach (KeyValuePair<string, string> current in urlParameters.Parameters)
                 {
-                    //Console.WriteLine("urlParameters: key = " + current.Key + " value = " + current.Value);
+                    logger.Info("urlParameters: key = " + current.Key + " value = " + current.Value);
                     if (isFirstParameter)
                     {
-                        urlTemplate = urlTemplate + URL_PARAMETERS_SEPARATOR;
+                        urlTemplate = urlTemplate + UrlParametersSeparator;
                         isFirstParameter = false;
                     }
                     else
                     {
-                        urlTemplate = urlTemplate + NEXT_PARAMETERS_SEPARATOR;
+                        urlTemplate = urlTemplate + NextParametersSeparator;
                     }
-                    urlTemplate = urlTemplate + current.Key + KEY_VALUE_SEPARATOR + current.Value;
+                    urlTemplate = urlTemplate + current.Key + KeyValueSeparator + current.Value;
                 }
             }
             return urlTemplate;
@@ -82,7 +83,6 @@ namespace Rest414Test.Resources
             {
                 foreach (KeyValuePair<string, string> current in pathVariables.Parameters)
                 {
-                    //Console.WriteLine("pathVariables: key = " + current.Key + " value = " + current.Value);
                     request.AddUrlSegment(current.Key, current.Value);
                 }
             }
@@ -95,7 +95,6 @@ namespace Rest414Test.Resources
             {
                 foreach (KeyValuePair<string, string> current in bodyParameters.Parameters)
                 {
-                    //Console.WriteLine("bodyParameters: key = " + current.Key + " value = " + current.Value);
                     request.AddParameter(current.Key, current.Value);
                 }
             }
@@ -107,7 +106,6 @@ namespace Rest414Test.Resources
         {
             CheckImplementation(restUrlKeys);
             string url = PrepareUrlParameters(restUrl.ReadBaseUrl() + restUrl.GetUrl(restUrlKeys), urlParameters);
-            //Console.WriteLine("\t\t+++url = " + url + "METOD = " + dictionaryMethods[restUrlKeys].ToString());
             RestRequest request = new RestRequest(url, dictionaryMethods[restUrlKeys]);
             request = PreparePathVariables(request, pathVariables);
             request = prepareRequestBody(request, bodyParameters);
@@ -172,6 +170,5 @@ namespace Rest414Test.Resources
         {
             return HttpDeleteAsResponse(urlParameters, pathVariables, bodyParameters).Content;
         }
-
     }
 }

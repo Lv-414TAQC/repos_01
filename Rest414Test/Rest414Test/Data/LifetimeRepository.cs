@@ -20,5 +20,4 @@ namespace Rest414Test.Data
             return new Lifetime(LONG_TOKEN_LIFETIME);
         }
     }
-
 }

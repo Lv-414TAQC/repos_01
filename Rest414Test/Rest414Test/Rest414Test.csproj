@@ -87,6 +87,7 @@
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Dto\RestParameters.cs" />
+    <Compile Include="Dto\RestParametersKeys.cs" />
     <Compile Include="Dto\RestUrl.cs" />
     <Compile Include="Dto\RestUrlKeys.cs" />
     <Compile Include="Dto\RestUrlRepository.cs" />
@@ -108,11 +109,9 @@
     <Compile Include="Resources\UserPasswordResource.cs" />
     <Compile Include="Resources\UserResource.cs" />
     <Compile Include="Resources\UsersResource.cs" />
-    <Compile Include="RestTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\BaseService.cs" />
-    <Compile Include="Services\CoolDownTimeService.cs" />
     <Compile Include="Services\GuestService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Tests\AdminTests1.cs" />

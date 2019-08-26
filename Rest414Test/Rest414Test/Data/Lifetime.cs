@@ -23,8 +23,8 @@ namespace Rest414Test.Data
             {
                 result = true;
             }
-            else if ((obj == null)       // string.IsNullOrEmpty
-                || (!(obj is Lifetime))) // this.GetType() != obj.GetType()
+            else if ((obj == null)
+                || (!(obj is Lifetime)))
             {
                 result = false;
             }
@@ -39,8 +39,5 @@ namespace Rest414Test.Data
         {
             return "Lifetime: [ Time = " + Time + " ];";
         }
-
-        // TODO Equals, Integer
     }
-
 }

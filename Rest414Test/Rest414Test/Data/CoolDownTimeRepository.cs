@@ -20,7 +20,5 @@ namespace Rest414Test.Data
             {
                 return new CoolDownTime(NEW_COOLDOWNTIME);
             }
-
-
     }
 }

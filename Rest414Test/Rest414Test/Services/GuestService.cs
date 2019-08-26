@@ -40,8 +40,8 @@ namespace Rest414Test.Services
         public GuestService UnsuccessfulLogin(IUser user)
         {
             RestParameters bodyParameters = new RestParameters()
-                .AddParameters("name", user.Name)
-                .AddParameters("password", user.Password);
+                .AddParameters(RestParametersKeys.Name, user.Name)
+                .AddParameters(RestParametersKeys.Password, user.Password);
 
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             if (simpleEntity.content.Length == LENGTH_TOKEN)
@@ -76,8 +76,8 @@ namespace Rest414Test.Services
         public UserService SuccessfulUserLogin(IUser user)
         {
             RestParameters bodyParameters = new RestParameters()
-                .AddParameters("name", user.Name)
-                .AddParameters("password", user.Password);
+                .AddParameters(RestParametersKeys.Name, user.Name)
+                .AddParameters(RestParametersKeys.Password, user.Password);
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             user.Token = simpleEntity.content;
             return new UserService(user);
@@ -86,8 +86,8 @@ namespace Rest414Test.Services
         public AdminService SuccessfulAdminLogin(IUser adminUser)
         {
             RestParameters bodyParameters = new RestParameters()
-                .AddParameters("name", adminUser.Name)
-                .AddParameters("password", adminUser.Password);
+                .AddParameters(RestParametersKeys.Name, adminUser.Name)
+                .AddParameters(RestParametersKeys.Password, adminUser.Password);
             SimpleEntity simpleEntity = adminAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             adminUser.Token = simpleEntity.content;
             

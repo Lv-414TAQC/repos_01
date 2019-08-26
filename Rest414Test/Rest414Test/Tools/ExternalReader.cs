@@ -5,10 +5,10 @@ namespace Rest414Test.Tools
 {
     public abstract class ExternalReader
     {
-        public const int PATH_PREFIX = 6;
-        //public const string PATH_SEPARATOR = "\\";
-        //protected const string FOLDER_DATA = "Assets";
-        //protected const string FOLDER_BIN = "bin";
+        public const int PathPrefix = 6;
+        //public const string PathSeparator = "\\";
+        //protected const string FolderData = "Assets";
+        //protected const string FolderBin = "bin";
         //
         //public static Logger log = LogManager.GetCurrentClassLogger(); // for NLog
 

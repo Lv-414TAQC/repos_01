@@ -6,8 +6,8 @@ namespace Rest414Test.Resources
 {
     public class RestQueries<TGET, TPOST, TPUT, TDELETE> : RestCrud
     {
-        private const string CONVERT_OBJECT_ERROR = "ConvertToObject Error. {0}\n{1}";
-        //
+        private const string ConvertObjectError = "ConvertToObject Error. {0}\n{1}";
+        
         private JsonDeserializer deserial;
 
         public RestQueries(RestUrl restUrl) : base(restUrl)
@@ -19,7 +19,7 @@ namespace Rest414Test.Resources
 
         public virtual TGET HttpGetAsObject(RestParameters urlParameters, RestParameters pathVariables)
         {
-            TGET result = default(TGET); // Running from T Default Constructor
+            TGET result = default(TGET);
             try
             {
                 result = deserial.Deserialize<TGET>(HttpGetAsResponse(urlParameters, pathVariables));
@@ -27,10 +27,10 @@ namespace Rest414Test.Resources
             catch (Exception ex)
             {
                 // TODO Save to Log File
-                Console.Error.WriteLine(string.Format(CONVERT_OBJECT_ERROR, ex.Message, ex.StackTrace));
+                Console.Error.WriteLine(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
                 //
                 // TODO Develop Custom Exception
-                throw new Exception(string.Format(CONVERT_OBJECT_ERROR, ex.Message, ex.StackTrace));
+                throw new Exception(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
             }
             return result;
         }
@@ -38,7 +38,7 @@ namespace Rest414Test.Resources
         public virtual TPOST HttpPostAsObject(RestParameters urlParameters,
             RestParameters pathVariables, RestParameters bodyParameters)
         {
-            TPOST result = default(TPOST); // Running from T Default Constructor
+            TPOST result = default(TPOST);
             try
             {
                 result = deserial.Deserialize<TPOST>(HttpPostAsResponse(urlParameters, pathVariables, bodyParameters));
@@ -46,10 +46,10 @@ namespace Rest414Test.Resources
             catch (Exception ex)
             {
                 // TODO Save to Log File
-                Console.Error.WriteLine(string.Format(CONVERT_OBJECT_ERROR, ex.Message, ex.StackTrace));
+                Console.Error.WriteLine(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
                 //
                 // TODO Develop Custom Exception
-                throw new Exception(string.Format(CONVERT_OBJECT_ERROR, ex.Message, ex.StackTrace));
+                throw new Exception(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
             }
             return result;
         }
@@ -57,7 +57,7 @@ namespace Rest414Test.Resources
         public virtual TPUT HttpPutAsObject(RestParameters urlParameters,
             RestParameters pathVariables, RestParameters bodyParameters)
         {
-            TPUT result = default(TPUT); // Running from T Default Constructor
+            TPUT result = default(TPUT);
             try
             {
                 result = deserial.Deserialize<TPUT>(HttpPutAsResponse(urlParameters, pathVariables, bodyParameters));
@@ -65,10 +65,10 @@ namespace Rest414Test.Resources
             catch (Exception ex)
             {
                 // TODO Save to Log File
-                Console.Error.WriteLine(string.Format(CONVERT_OBJECT_ERROR, ex.Message, ex.StackTrace));
+                Console.Error.WriteLine(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
                 //
                 // TODO Develop Custom Exception
-                throw new Exception(string.Format(CONVERT_OBJECT_ERROR, ex.Message, ex.StackTrace));
+                throw new Exception(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
             }
             return result;
         }
@@ -76,7 +76,7 @@ namespace Rest414Test.Resources
         public virtual TDELETE HttpDeleteAsObject(RestParameters urlParameters,
             RestParameters pathVariables, RestParameters bodyParameters)
         {
-            TDELETE result = default(TDELETE); // Running from T Default Constructor
+            TDELETE result = default(TDELETE);
             try
             {
                 result = deserial.Deserialize<TDELETE>(HttpDeleteAsResponse(urlParameters, pathVariables, bodyParameters));
@@ -84,24 +84,12 @@ namespace Rest414Test.Resources
             catch (Exception ex)
             {
                 // TODO Save to Log File
-                Console.Error.WriteLine(string.Format(CONVERT_OBJECT_ERROR, ex.Message, ex.StackTrace));
+                Console.Error.WriteLine(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
                 //
                 // TODO Develop Custom Exception
-                throw new Exception(string.Format(CONVERT_OBJECT_ERROR, ex.Message, ex.StackTrace));
+                throw new Exception(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
             }
             return result;
         }
-
-        // List Entity - - - - - - - - - - - - - - - - - - - -
-
-        // TODO
-        //public virtual IList<TGET> HttpGetAsObject(RestParameters urlParameters, RestParameters pathVariables)
-        //public virtual TPOST HttpPostAsObject(RestParameters urlParameters,
-        //    RestParameters pathVariables, RestParameters bodyParameters)
-        //public virtual TPUT HttpPutAsObject(RestParameters urlParameters,
-        //    RestParameters pathVariables, RestParameters bodyParameters)
-        //public virtual IList<TDELETE> HttpDeleteAsObject(RestParameters urlParameters,
-        //    RestParameters pathVariables, RestParameters bodyParameters)
-
     }
 }
