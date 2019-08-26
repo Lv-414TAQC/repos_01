@@ -27,7 +27,7 @@ namespace Rest414Test.Tests
             userService = guestService.SuccessfulUserLogin(simpleUser).ChangePassw(simpleUser, newPassw)
                 .Logout().SuccessfulUserLogin(newPassw);
             //
-            Assert.IsTrue(userService.IsLoggined());
+            Assert.IsTrue(userService.IsLogged());
             //Assert.IsTrue(userService.IsLoggined());
             //
             //userService.Logout();
