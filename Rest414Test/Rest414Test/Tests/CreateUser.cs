@@ -25,12 +25,13 @@ namespace Rest414Test.Tests
         [Test]
         public void CreateNewUser()
         {
+            logger.Info("Start test CreateNewUSer ");
             adminService = guestService.SuccessfulAdminLogin(adminUser);
-            logger.Info("Start test CheckLoginUser ");
             Assert.IsTrue(adminService.IsLoggined());
             //
             adminService.CreateUser(simpleUser);
             Assert.IsTrue(adminService.GetAllUsers().Contains(new User(simpleUser.Name)));
+            logger.Info("End test CheckLoginLogoutAdmin");
 
         }
     }

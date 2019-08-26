@@ -20,7 +20,7 @@ namespace Rest414Test.Tests
 
         [Test, TestCaseSource("NewUser")]
         public void DeleteeUser(IUser user)
-        {
+        {   
             adminService = guestService.SuccessfulAdminLogin(adminUser);
             Assert.IsTrue(adminService.IsLoggined());
             //

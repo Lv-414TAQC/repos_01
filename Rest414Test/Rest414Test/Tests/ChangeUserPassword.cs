@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
+using System;
 
 namespace Rest414Test.Tests
 {
@@ -9,7 +10,7 @@ namespace Rest414Test.Tests
     {
         IUser simpleUser = UserRepository.Get().ExistUser();
         IUser newPassw = UserRepository.Get().NewPasswordForUser();
-        IUser oldPassw = UserRepository.Get().OldPasswordForUser();
+       // IUser oldPassw = UserRepository.Get().OldPasswordForUser();
 
         private GuestService guestService = new GuestService();
         private UserService userService;
@@ -17,20 +18,23 @@ namespace Rest414Test.Tests
         [TearDown]
         public void TearDown()
         {
-            userService.ChangePassw(simpleUser, oldPassw);
+            userService.ChangePassw(newPassw,simpleUser);
         }
 
         [Test]
         public void ChangePasswordd()
-        {
-            userService = guestService.SuccessfulUserLogin(simpleUser).ChangePassw(simpleUser, newPassw);
-            Assert.AreEqual(simpleUser.Password, newPassw.Password);
+        {   
+            userService = guestService.SuccessfulUserLogin(simpleUser).ChangePassw(simpleUser, newPassw)
+                .Logout().SuccessfulUserLogin(newPassw);
             //
-            userService.Logout();
-            Assert.IsTrue(!userService.IsLoggined());
-            //
-            userService.SuccessfulUserLogin(simpleUser);
             Assert.IsTrue(userService.IsLoggined());
+            //Assert.IsTrue(userService.IsLoggined());
+            //
+            //userService.Logout();
+            ////Assert.IsTrue(!userService.IsLoggined());
+            ////
+            //userService.SuccessfulUserLogin(newPassw);
+            //Assert.IsTrue(userService.IsLoggined());
 
         }
     }

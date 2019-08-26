@@ -101,8 +101,21 @@ namespace Rest414Test.Services
                 .AddParameters("newpassword", newpassw.Password);
             SimpleEntity simpleEntity = userpasswresource.HttpPutAsObject(null, null, bodyParameters);
             Console.WriteLine("ResultChangePasww = " + simpleEntity.content);
-            userD.Password = newpassw.Password;
-            return new UserService(userD);
+            //userD.Password = newpassw.Password;
+            return this;
         }
+
+        //public bool IsPasswChange(IUser userD, IUser newpassw)
+        //{
+        //    if (userD.Password == newpassw.Password)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //        return false;
+
+        //}
+
+ 
     }
 }

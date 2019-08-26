@@ -80,6 +80,8 @@ namespace Rest414Test.Services
                 .AddParameters("password", user.Password);
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             user.Token = simpleEntity.content;
+            Console.WriteLine("LoginName = " + user.Name);
+            Console.WriteLine("LoginPassword = "+user.Password);
             return new UserService(user);
         }
 
