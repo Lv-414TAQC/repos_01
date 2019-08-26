@@ -127,13 +127,11 @@ namespace Rest414Test.Services
 
         public string GetCoolDownTime()
         {
-            
             CoolDownTime coolDownTime = new CoolDownTime();
             RestParameters urlParameters = new RestParameters()
                 .AddParameters(RestParametersKeys.Token, user.Token);
             SimpleEntity simpleEntity = cooldowntimeResource.HttpGetAsObject(urlParameters, null);
-            //coolDownTime.Time = simpleEntity.content;
-            Console.WriteLine("simpleEntity = " + simpleEntity.content);
+            coolDownTime.Time = simpleEntity.content;
             return simpleEntity.content;
         }
 
@@ -153,7 +151,7 @@ namespace Rest414Test.Services
             foreach (string lockuser in listNameLockedUsers)
             {
                 listLockedUsers.Add(new User(lockuser));
-                Console.WriteLine(user);
+                
             }
             return listLockedUsers;
         }
@@ -169,7 +167,6 @@ namespace Rest414Test.Services
             
             SimpleEntity simpleEntity = lockeduserResource
                 .HttpPutAsObject(null, pathVariables, bodyParameters);
-            Console.WriteLine("\t***AddAdmin(): simpleEntity = " + simpleEntity);
             return this;
         }
 

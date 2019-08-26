@@ -54,20 +54,16 @@ namespace Rest414Test.Services
         public GuestService LockingUser(IUser user)
         {
             int i = 0;
-            while (i < 3)
+            while (i < 4)
             {
                 UnsuccessfulLogin(user);
-                if (UnsuccessfulLogin(user).GetType() == typeof(GuestService))
-                {
-                    ResultStatus = "error, user not found";
-                }
+                //ResultStatus = "error, user not found";
                 i++;
             }
-            UnsuccessfulLogin(user);
-            if (UnsuccessfulLogin(user).GetType() == typeof(GuestService))
-            {
-                ResultStatus = "error, user locked";
-            }
+            //UnsuccessfulLogin(user);
+            
+                //ResultStatus = "error, user locked";
+            
             return this;
 
         }
