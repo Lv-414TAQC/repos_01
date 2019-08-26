@@ -11,23 +11,20 @@ namespace Rest414Test.Tests
     public class LifeTimeTest
     {
         private GuestService guestService;
-        //private AdminService userService;
         private AdminService adminService;
 
-        // DataProvider
         private static readonly object[] Admins =
         {
             new object[] { UserRepository.Get().Admin() }
         };
 
-        // DataProvider
         private static readonly object[] TokenLifeTimes =
         {
             new object[] { LifetimeRepository.GetLongTime() }
         };
 
 
-        //[OneTimeSetUp]
+        [OneTimeSetUp]
         public void BeforeAllMethods()
         {
             guestService = new GuestService();
@@ -38,12 +35,9 @@ namespace Rest414Test.Tests
         {
         }
 
-        //[SetUp, TestCaseSource("Admins")]
-        //[SetUp]
-        //public void SetUp(IUser adminUser)
+        [SetUp]
         public void SetUp()
         {
-            //adminService = guestService.SuccessfulAdminLogin(adminUser);
             adminService = guestService.SuccessfulAdminLogin(UserRepository.Get().Admin());
         }
 
@@ -72,34 +66,19 @@ namespace Rest414Test.Tests
             }
         }
 
-        //[Test, TestCaseSource("TokenLifeTimes")]
+        [Test, TestCaseSource("TokenLifeTimes")]
         public void CheckTimeChange(Lifetime newTokenlifetime)
         {
-            // Steps
             adminService = adminService.UpdateTokenlifetime(newTokenlifetime);
-            //
-            // Check
             Lifetime currentTokenlifetime = adminService.GetCurrentTokenLifetime();
             Assert.AreEqual(LifetimeRepository.LONG_TOKEN_LIFETIME,
                         currentTokenlifetime.Time, "Long Time Error");
         }
-
-        // DataProvider
-        //private static readonly object[] AdminUsers =
-        //{
-        //    new object[] { UserRepository.Get().Admin(), LifetimeRepository.GetLongTime() }
-        //};
-
-        // DataProvider
+                
         private static readonly object[] AdminCSVUsers =
             ListUtils.ToMultiArray(UserRepository.Get().FromCsv(), LifetimeRepository.GetLongTime());
 
-        //private static readonly object[] AdminExcelUsers =
-        //    ListUtils.ToMultiArray(UserRepository.Get().FromExcel(), LifetimeRepository.GetLongTime());
-
-        //[Test, TestCaseSource("AdminUsers")] // Old Version of method
         [Test, TestCaseSource("AdminCSVUsers")]
-        //[Test, TestCaseSource("AdminExcelUsers")]
         public void ExamineTime(IUser adminUser, Lifetime newTokenlifetime)
         {
             Console.WriteLine("*** adminUser:  " + adminUser);
@@ -107,23 +86,17 @@ namespace Rest414Test.Tests
             Lifetime currentTokenlifetime = guestService.GetCurrentTokenLifetime();
             Assert.AreEqual(LifetimeRepository.DEFAULT_TOKEN_LIFETIME,
                         currentTokenlifetime.Time, "Current Time Error");
-            //
             AdminService adminService = guestService
                 .SuccessfulAdminLogin(adminUser);
             adminService = adminService.UpdateTokenlifetime(newTokenlifetime);
-            //
             currentTokenlifetime = adminService.GetCurrentTokenLifetime();
             Assert.AreEqual(LifetimeRepository.LONG_TOKEN_LIFETIME,
                         currentTokenlifetime.Time, "Long Time Error");
-            //
             guestService = adminService.Logout();
             Assert.IsEmpty(adminUser.Token, "Logout Error"); // TODO
-            //
-            // Return to Previous State
             currentTokenlifetime.Time = LifetimeRepository.DEFAULT_TOKEN_LIFETIME;
             adminService = guestService.SuccessfulAdminLogin(adminUser);
             adminService = adminService.UpdateTokenlifetime(currentTokenlifetime);
-            //
             guestService = adminService.Logout();
             currentTokenlifetime = guestService.GetCurrentTokenLifetime();
             Assert.AreEqual(LifetimeRepository.DEFAULT_TOKEN_LIFETIME,
