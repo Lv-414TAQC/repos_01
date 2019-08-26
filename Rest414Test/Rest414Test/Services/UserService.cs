@@ -21,7 +21,7 @@ namespace Rest414Test.Services
             logoutResource = new LogoutResource();
             itemResource = new ItemResource();
             allItemsResource =new AllItemsResource();
-            CheckService(!IsLoggined(),
+            CheckService(!IsLogged(),
                 "User " + user.ToString() + " Login Unsuccessful.");
         }
 
