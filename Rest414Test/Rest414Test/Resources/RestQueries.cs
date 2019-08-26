@@ -1,4 +1,5 @@
-﻿using Rest414Test.Dto;
+﻿using NLog;
+using Rest414Test.Dto;
 using RestSharp.Serialization.Json;
 using System;
 
@@ -6,6 +7,8 @@ namespace Rest414Test.Resources
 {
     public class RestQueries<TGET, TPOST, TPUT, TDELETE> : RestCrud
     {
+        Logger logger = LogManager.GetCurrentClassLogger();
+
         private const string ConvertObjectError = "ConvertToObject Error. {0}\n{1}";
         
         private JsonDeserializer deserial;
@@ -26,10 +29,7 @@ namespace Rest414Test.Resources
             }
             catch (Exception ex)
             {
-                // TODO Save to Log File
-                Console.Error.WriteLine(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
-                //
-                // TODO Develop Custom Exception
+                logger.Error(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
                 throw new Exception(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
             }
             return result;
@@ -45,10 +45,7 @@ namespace Rest414Test.Resources
             }
             catch (Exception ex)
             {
-                // TODO Save to Log File
-                Console.Error.WriteLine(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
-                //
-                // TODO Develop Custom Exception
+                logger.Error(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
                 throw new Exception(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
             }
             return result;
@@ -64,10 +61,7 @@ namespace Rest414Test.Resources
             }
             catch (Exception ex)
             {
-                // TODO Save to Log File
-                Console.Error.WriteLine(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
-                //
-                // TODO Develop Custom Exception
+                logger.Error(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
                 throw new Exception(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
             }
             return result;
@@ -83,10 +77,7 @@ namespace Rest414Test.Resources
             }
             catch (Exception ex)
             {
-                // TODO Save to Log File
-                Console.Error.WriteLine(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
-                //
-                // TODO Develop Custom Exception
+                logger.Error(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
                 throw new Exception(string.Format(ConvertObjectError, ex.Message, ex.StackTrace));
             }
             return result;
