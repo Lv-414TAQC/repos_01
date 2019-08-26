@@ -270,8 +270,7 @@ namespace Rest414Test.Services
             List<IUser> listUsers = new List<IUser>();
             foreach (string u in listNameUsers)
             {
-                listUsers.Add(new User(u));
-                Console.WriteLine(u);
+                listUsers.Add(new User(u));       
             }
             return listUsers;
         }
