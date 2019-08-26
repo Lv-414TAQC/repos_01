@@ -84,36 +84,7 @@ namespace Rest414Test.Data
                .SetPassword("12345678")
                .Build();
         }
-        public IUser EmptyPasswordUser()
-        {
-            return User.Get()
-               .SetName("ivan")
-               .SetPassword("")
-               .Build();
-        }
-        public IUser EmptyPasswordAdmin()
-        {
-            return User.Get()
-               .SetName("admin")
-               .SetPassword("")
-               .Build();
-        }
-
-        public IUser IncorrectPasswordUser()
-        {
-            return User.Get()
-               .SetName("ivan")
-               .SetPassword("wetfdsa321")
-               .Build();
-        }
-        public IUser IncorrectPasswordAdmin()
-        {
-            return User.Get()
-               .SetName("admin")
-               .SetPassword("gqtr431ff")
-               .Build();
-        }
-
+       
         public IList<IUser> FromCsv()
         {
             return FromCsv("users.csv");
@@ -182,5 +153,17 @@ namespace Rest414Test.Data
                .SetPassword("qwerty")
                .Build();
         }
+
+        // Incorrect data(Login/Password) From External Files ------------------------------------------
+        public IList<IUser> IncorrectUsersFromCsv()
+        {
+            return IncorrectUsersFromCsv("IncorrectUsers.csv");
+        }
+
+        public IList<IUser> IncorrectUsersFromCsv(string filename)
+        {
+            return User.GetAllUsers(new CSVReader(filename).GetAllCells());
+        }
+
     }
 }
