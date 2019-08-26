@@ -22,7 +22,7 @@ namespace Rest414Test.Tests
         public void DeleteeUser(IUser user)
         {
             adminService = guestService.SuccessfulAdminLogin(adminUser);
-            Assert.IsTrue(adminService.IsLoggined());
+            Assert.IsTrue(adminService.IsLogged());
             //
             adminService.CreateUser(user);
             Assert.IsTrue(adminService.GetAllUsers().Contains(new User(user.Name)));

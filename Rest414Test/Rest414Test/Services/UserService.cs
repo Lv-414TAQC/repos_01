@@ -27,7 +27,7 @@ namespace Rest414Test.Services
 
         // Atomic
 
-        public bool IsLoggined()
+        public bool IsLogged()
         {
             return (user != null) && (!string.IsNullOrEmpty(user.Token) && !user.Token.Contains("ERROR, user not found"));
         }

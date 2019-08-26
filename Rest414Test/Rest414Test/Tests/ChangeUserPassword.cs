@@ -27,10 +27,10 @@ namespace Rest414Test.Tests
             Assert.AreEqual(simpleUser.Password, newPassw.Password);
             //
             userService.Logout();
-            Assert.IsTrue(!userService.IsLoggined());
+            Assert.IsTrue(!userService.IsLogged());
             //
             userService.SuccessfulUserLogin(simpleUser);
-            Assert.IsTrue(userService.IsLoggined());
+            Assert.IsTrue(userService.IsLogged());
 
         }
     }

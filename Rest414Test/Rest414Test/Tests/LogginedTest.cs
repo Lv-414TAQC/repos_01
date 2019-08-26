@@ -1,5 +1,4 @@
-﻿using NLog;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using Rest414Test.Data;
 using Rest414Test.Services;
@@ -68,7 +67,7 @@ namespace Rest414Test.Tests
             }
            
             // Return to Previous State
-            if ((adminService != null) && (adminService.IsLoggined()))
+            if ((adminService != null) && (adminService.IsLogged()))
             {
                 //Delete created user
                 adminService.RemoveUser(UserRepository.Get().NewUser());
@@ -83,9 +82,9 @@ namespace Rest414Test.Tests
             guestService.logger.Info("Start test CheckLoginLogoutUser");
      
             userService = guestService.SuccessfulUserLogin(user);
-            Assert.IsTrue(userService.IsLoggined());
+            Assert.IsTrue(userService.IsLogged());
             userService.Logout();
-            Assert.IsFalse(userService.IsLoggined());
+            Assert.IsFalse(userService.IsLogged());
 
             guestService.logger.Info("End test CheckLoginLogoutUser: ");
         }
@@ -96,9 +95,9 @@ namespace Rest414Test.Tests
             guestService.logger.Info("Start test CheckLoginLogoutAdmin");
 
             adminService = guestService.SuccessfulAdminLogin(admin);
-            Assert.IsTrue(adminService.IsLoggined());
+            Assert.IsTrue(adminService.IsLogged());
             adminService.Logout();
-            Assert.IsFalse(adminService.IsLoggined());
+            Assert.IsFalse(adminService.IsLogged());
 
             guestService.logger.Info("End test CheckLoginLogoutAdmin");
         }
@@ -107,10 +106,10 @@ namespace Rest414Test.Tests
         public void CheckAnotherLogin(IUser firstUser, IUser secondUser)
         {
             userService = guestService.SuccessfulUserLogin(firstUser);
-            Assert.IsTrue(userService.IsLoggined());
+            Assert.IsTrue(userService.IsLogged());
             //first user don't logout!
             adminService = guestService.SuccessfulAdminLogin(secondUser);
-            Assert.IsFalse(adminService.IsLoggined());
+            Assert.IsFalse(adminService.IsLogged());
         }
 
         [Test, TestCaseSource("IncorrectPasswords")]

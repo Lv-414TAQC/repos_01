@@ -58,14 +58,14 @@ namespace Rest414Test.Tests
             }
             //
             // Return to Previous State
-            if ((adminService != null) && (adminService.IsLoggined()))
+            if ((adminService != null) && (adminService.IsLogged()))
             {
                 Lifetime currentTokenlifetime = LifetimeRepository.GetDefault();
                 adminService = adminService.UpdateTokenlifetime(currentTokenlifetime);
             }
             //
             // TODO for User
-            if ((adminService != null) && (adminService.IsLoggined()))
+            if ((adminService != null) && (adminService.IsLogged()))
             {
                 guestService = adminService.Logout();
                 adminService = null;
