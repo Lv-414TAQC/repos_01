@@ -173,6 +173,16 @@ namespace Rest414Test.Dto
                .AddPutUrl("/user")
                .AddDeleteUrl("");
         }
+
+        public static RestUrl GetAllItems()
+        {
+            return new RestUrl()
+                .AddBaseUrl(Server)
+                .AddGetUrl("/items")
+                .AddPostUrl("")
+                .AddPutUrl("")
+                .AddDeleteUrl("");
+        }
     }
 
 }

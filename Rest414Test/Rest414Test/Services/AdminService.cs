@@ -29,6 +29,7 @@ namespace Rest414Test.Services
             cooldowntimeResource = new CoolDownTimeResource();
             lockedusersResource = new LockedUsersResource();
             lockeduserResource = new LockedUserResource();
+           
             CheckService(!IsAdmin(adminUser),
                 "Admin " + adminUser.ToString() + "Login Unsuccessful.");
         }
