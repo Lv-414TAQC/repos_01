@@ -80,7 +80,7 @@ namespace Rest414Test.Tests
             //
             // Check
             Lifetime currentTokenlifetime = adminService.GetCurrentTokenLifetime();
-            Assert.AreEqual(LifetimeRepository.LONG_TOKEN_LIFETIME,
+            Assert.AreEqual(LifetimeRepository.LongTokenLifetime,
                         currentTokenlifetime.Time, "Long Time Error");
         }
 
@@ -105,7 +105,7 @@ namespace Rest414Test.Tests
             Console.WriteLine("*** adminUser:  " + adminUser);
             GuestService guestService = new GuestService();
             Lifetime currentTokenlifetime = guestService.GetCurrentTokenLifetime();
-            Assert.AreEqual(LifetimeRepository.DEFAULT_TOKEN_LIFETIME,
+            Assert.AreEqual(LifetimeRepository.DefaultTokenLifetime,
                         currentTokenlifetime.Time, "Current Time Error");
             //
             AdminService adminService = guestService
@@ -113,20 +113,20 @@ namespace Rest414Test.Tests
             adminService = adminService.UpdateTokenlifetime(newTokenlifetime);
             //
             currentTokenlifetime = adminService.GetCurrentTokenLifetime();
-            Assert.AreEqual(LifetimeRepository.LONG_TOKEN_LIFETIME,
+            Assert.AreEqual(LifetimeRepository.LongTokenLifetime,
                         currentTokenlifetime.Time, "Long Time Error");
             //
             guestService = adminService.Logout();
             Assert.IsEmpty(adminUser.Token, "Logout Error"); // TODO
             //
             // Return to Previous State
-            currentTokenlifetime.Time = LifetimeRepository.DEFAULT_TOKEN_LIFETIME;
+            currentTokenlifetime.Time = LifetimeRepository.DefaultTokenLifetime;
             adminService = guestService.SuccessfulAdminLogin(adminUser);
             adminService = adminService.UpdateTokenlifetime(currentTokenlifetime);
             //
             guestService = adminService.Logout();
             currentTokenlifetime = guestService.GetCurrentTokenLifetime();
-            Assert.AreEqual(LifetimeRepository.DEFAULT_TOKEN_LIFETIME,
+            Assert.AreEqual(LifetimeRepository.DefaultTokenLifetime,
                         currentTokenlifetime.Time, "Current Time Error");
         }
     }
