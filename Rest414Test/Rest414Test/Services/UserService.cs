@@ -1,4 +1,5 @@
-﻿using Rest414Test.Data;
+﻿using NLog;
+using Rest414Test.Data;
 using Rest414Test.Dto;
 using Rest414Test.Entity;
 using Rest414Test.Resources;
@@ -98,8 +99,6 @@ namespace Rest414Test.Services
             bool result = false;
             foreach(ItemTemplate itemTemplate in items)
             {
-                Console.WriteLine($"{itemTemplate.Index}---{updatedItem.Index}");
-                Console.WriteLine($"{itemTemplate.Item}---{updatedItem.Item}");
                 if (itemTemplate.Index.Contains(updatedItem.Index)
                     && itemTemplate.Item.Contains(updatedItem.Item))
                 {
@@ -155,7 +154,6 @@ namespace Rest414Test.Services
         {
             RestParameters urlParameters = new RestParameters()
                 .AddParameters("token", user.Token);
-
             SimpleEntity simpleEntity = allItemsResource.HttpGetAsObject(urlParameters, null);
             Console.WriteLine(simpleEntity.content);
             List<string> list = new List<string>(simpleEntity.content
@@ -166,8 +164,10 @@ namespace Rest414Test.Services
             {
                 ItemTemplate template = new ItemTemplate(list[i], list[i - 1]);
                 listItems.Add(template);
-                Console.WriteLine($"{template.Index}- index");
-                Console.WriteLine($"{template.Item}- item");
+                LogManager.GetCurrentClassLogger()
+                    .Info("Index- "+template.Index);
+                LogManager.GetCurrentClassLogger()
+                    .Info("Item- " + template.Item);
             }
             return listItems;
         }
