@@ -33,7 +33,6 @@ namespace Rest414Test.Tests
         private static readonly object[] IncorrectFromCSV =
             ListUtils.ToMultiArray(UserRepository.Get().IncorrectUsersFromCsv());
 
-
         [OneTimeSetUp]
         public void BeforeAllMethods()
         {
@@ -69,6 +68,7 @@ namespace Rest414Test.Tests
             {
                 //Delete created user
                 adminService.RemoveUser(UserRepository.Get().NewUser());
+                adminService.GetAllUsers();
                 adminService.Logout();
             }
             
