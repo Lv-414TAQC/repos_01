@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using NLog;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -6,8 +7,9 @@ namespace Rest414Test.Tools
 {
     public class CSVReader : ExternalReader
     {
-        private const char CSV_SPLIT_BY = ';';
-
+        Logger logger = LogManager.GetCurrentClassLogger();
+        private const char CsvSplitBy = ';';
+        
         public CSVReader(string filename) : base(filename)
         {
         }
@@ -23,13 +25,13 @@ namespace Rest414Test.Tools
                 {
                     while ((row = streamReader.ReadLine()) != null)
                     {
-                        allCells.Add(row.Split(CSV_SPLIT_BY).ToList());
+                        allCells.Add(row.Split(CsvSplitBy).ToList());
                     }
                 }
             }
             catch
             {
-                //log.Error("File " + path + " not Found");
+                logger.Error("File " + path + " not Found");
             }
             return allCells;
         }

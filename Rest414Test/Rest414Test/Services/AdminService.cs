@@ -57,23 +57,18 @@ namespace Rest414Test.Services
         public ItemTemplate GetUserItem(ItemTemplate itemTemplate, IUser userWithItem)
         {
             RestParameters urlParameters = new RestParameters()
-                .AddParameters("token", user.Token);
+                .AddParameters(RestParametersKeys.Token, user.Token);
             RestParameters pathParameters = new RestParameters()
-                .AddParameters("index", itemTemplate.Index)
-                .AddParameters("name", userWithItem.Name);
+                .AddParameters(RestParametersKeys.Index, itemTemplate.Index)
+                .AddParameters(RestParametersKeys.Name, userWithItem.Name);
             SimpleEntity simpleEntity = userItemResource.HttpGetAsObject(urlParameters, pathParameters);
-            //Console.WriteLine("\t***GetUserItem(): simpleEntity = " + simpleEntity);
-            // TODO
-            //CheckService(!simpleEntity.Equals(true),
-            //    "Item " + itemTemplate.ToString() + "was not received.");
-            // TODO (new or exist)
             return new ItemTemplate(simpleEntity.content, itemTemplate.Index);
         }
 
         public List<IUser> GetAllAdmins()
         {
             RestParameters urlParameters = new RestParameters()
-                .AddParameters("token", user.Token);
+                .AddParameters(RestParametersKeys.Token, user.Token);
             SimpleEntity simpleEntity = adminsResource.HttpGetAsObject(urlParameters, null);
             string[] contentArray = simpleEntity.content.Split(' ');
             int counter = 0;
@@ -93,7 +88,7 @@ namespace Rest414Test.Services
         public List<IUser> GetAllAdmins(IUser newAdmin)
         {
             RestParameters urlParameters = new RestParameters()
-                .AddParameters("token", newAdmin.Token);
+                .AddParameters(RestParametersKeys.Token, newAdmin.Token);
             SimpleEntity simpleEntity = adminsResource.HttpGetAsObject(urlParameters, null);
             string[] contentArray = simpleEntity.content.Split(' ');
             int counter = 0;
@@ -113,7 +108,7 @@ namespace Rest414Test.Services
         public List<IUser> GetLoggedInAdmins()
         {
             RestParameters urlParameters = new RestParameters()
-                .AddParameters("token", user.Token);
+                .AddParameters(RestParametersKeys.Token, user.Token);
             SimpleEntity simpleEntity = loggedInAdminsResource.HttpGetAsObject(urlParameters, null);
             string[] contentArray = simpleEntity.content.Split(' ');
             int counter = 0;
@@ -135,7 +130,7 @@ namespace Rest414Test.Services
             
             CoolDownTime coolDownTime = new CoolDownTime();
             RestParameters urlParameters = new RestParameters()
-                .AddParameters("token", user.Token);
+                .AddParameters(RestParametersKeys.Token, user.Token);
             SimpleEntity simpleEntity = cooldowntimeResource.HttpGetAsObject(urlParameters, null);
             //coolDownTime.Time = simpleEntity.content;
             Console.WriteLine("simpleEntity = " + simpleEntity.content);
@@ -146,7 +141,7 @@ namespace Rest414Test.Services
         public List<IUser> GetLockedUsers()
         {
             RestParameters urlParameters = new RestParameters()
-                .AddParameters("token", user.Token);
+                .AddParameters(RestParametersKeys.Token, user.Token);
             SimpleEntity simpleEntity = lockedusersResource.HttpGetAsObject(urlParameters, null);
             List<string> listNameLockedUsers = new List<string>(simpleEntity.content.Split(new char[] { '\n', '\t' }));
 
@@ -165,16 +160,12 @@ namespace Rest414Test.Services
 
         // Business
 
-
-
         public AdminService UnlockUser(IUser user1)
         {
-            //RestParameters urlParameters = new RestParameters()
-
             RestParameters bodyParameters = new RestParameters()
-                .AddParameters("token", user.Token);
+                .AddParameters(RestParametersKeys.Token, user.Token);
             RestParameters pathVariables = new RestParameters()
-                .AddParameters("name", user1.Name); //?????
+                .AddParameters(RestParametersKeys.Name, user1.Name); //?????
             
             SimpleEntity simpleEntity = lockeduserResource
                 .HttpPutAsObject(null, pathVariables, bodyParameters);
@@ -186,22 +177,19 @@ namespace Rest414Test.Services
         {
             Console.WriteLine("lifetime = " + lifetime + "   User = " + user);
             RestParameters bodyParameters = new RestParameters()
-                .AddParameters("token", user.Token)
-                .AddParameters("time", lifetime.Time);
+                .AddParameters(RestParametersKeys.Token, user.Token)
+                .AddParameters(RestParametersKeys.Time, lifetime.Time);
             SimpleEntity simpleEntity = tokenLifetimeResource.HttpPutAsObject(null, null, bodyParameters);
-            // TODO
             CheckService(!simpleEntity.Equals(true),
                 "Tokenlifetime " + lifetime.ToString() + " was not Updated.");
             return this;
         }
         public AdminService UpdateCoolDowntime(CoolDownTime cooldowntime)
         {
-            //Console.WriteLine("CoolDownTime = " + CoolDownTime.Time + "   User = " + user);
             RestParameters bodyParameters = new RestParameters()
-                .AddParameters("token", user.Token)
-                .AddParameters("time", cooldowntime.Time);
+                .AddParameters(RestParametersKeys.Token, user.Token)
+                .AddParameters(RestParametersKeys.Time, cooldowntime.Time);
             SimpleEntity simpleEntity = cooldowntimeResource.HttpPutAsObject(null, null, bodyParameters);
-            // TODO
             CheckService(!simpleEntity.Equals(true),
                 "CoolDownTime " + cooldowntime.ToString() + "was not Updated.");
             return this;
@@ -209,57 +197,45 @@ namespace Rest414Test.Services
 
         public UserService AddAdmin(IUser newAdmin)
         {
-            // TODO Develop enum + classes with const in DTO
             RestParameters urlParameters = new RestParameters()
-            //RestParameters bodyParameters = new RestParameters()
-                .AddParameters("token", user.Token)
-                .AddParameters("name", newAdmin.Name)
-                .AddParameters("password", newAdmin.Password)
-                .AddParameters("rights", "true");
+                .AddParameters(RestParametersKeys.Token, user.Token)
+                .AddParameters(RestParametersKeys.Name, newAdmin.Name)
+                .AddParameters(RestParametersKeys.Password, newAdmin.Password)
+                .AddParameters(RestParametersKeys.Rights, "true");
             SimpleEntity simpleEntity = userResource
                 .HttpPostAsObject(urlParameters, null, null);
-            // TODO
-            //CheckService(!simpleEntity.Equals(true),
-            //    "Admin " + newAdmin.ToString() + "was not Added.");
-            Console.WriteLine("\t***AddAdmin(): simpleEntity = " + simpleEntity);
+            CheckService(!simpleEntity.Equals(true),
+                "Admin " + newAdmin.ToString() + "was not Added.");
             return this;
         }
 
         public UserService RemoveUser(IUser newAdmin)
         {
-            // TODO Develop enum + classes with const in DTO
             RestParameters urlParameters = new RestParameters()
-            //RestParameters bodyParameters = new RestParameters()
-                .AddParameters("token", user.Token)
-                .AddParameters("name", newAdmin.Name);
+                .AddParameters(RestParametersKeys.Token, user.Token)
+                .AddParameters(RestParametersKeys.Name, newAdmin.Name);
             SimpleEntity simpleEntity = userResource
                 .HttpDeleteAsObject(urlParameters, null, null);
-            // TODO
-            //CheckService(!simpleEntity.Equals(true),
-            //    "Admin " + newAdmin.ToString() + "was not Added.");
-           // Console.WriteLine("\t***AddAdmin(): simpleEntity = " + simpleEntity);
+            CheckService(!simpleEntity.Equals(true),
+                "User " + newAdmin.ToString() + "was not Removed.");
             return this;
         }
         public UserService CreateUser(IUser newUser)
         {
-            // TODO Develop enum + classes with const in DTO
             RestParameters urlParameters = new RestParameters()
-            //RestParameters bodyParameters = new RestParameters()
-                .AddParameters("token", user.Token)
-                .AddParameters("name", newUser.Name)
-                .AddParameters("password", newUser.Password)
-                .AddParameters("rights", "false");
+                .AddParameters(RestParametersKeys.Token, user.Token)
+                .AddParameters(RestParametersKeys.Name, newUser.Name)
+                .AddParameters(RestParametersKeys.Password, newUser.Password)
+                .AddParameters(RestParametersKeys.Rights, "false");
             SimpleEntity simpleEntity = userResource
                 .HttpPostAsObject(urlParameters, null, null);
-            
-          //Console.WriteLine("\t***NewUser(): simpleEntity = " + simpleEntity);
             return this;
         }
 
         public List<IUser> GetAllUsers()
         {
             RestParameters urlParameters = new RestParameters()
-                .AddParameters("token", user.Token);
+                .AddParameters(RestParametersKeys.Token, user.Token);
             SimpleEntity simpleEntity = usersResource.HttpGetAsObject(urlParameters, null);
             List<string> listNameUsers = new List<string>(simpleEntity.content.Split(new char[] { '\n', '\t' }));
 
