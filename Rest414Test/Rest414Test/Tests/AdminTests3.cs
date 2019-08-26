@@ -36,8 +36,10 @@ namespace Rest414Test.Tests
             IUser adminForTest = UserRepository.Get().AdminForTest();
             adminService.AddAdmin(adminForTest);
             adminService.RemoveUser(adminForTest);
-            List<IUser> allAdmins = adminService.GetAllAdmins();
-            Assert.IsFalse(allAdmins.Contains(adminForTest));
+            Assert.IsFalse(adminService.IsAdmin(adminForTest));
+            logger.Info("Is admin: " + adminService.IsAdmin(adminForTest));
+            Assert.IsFalse(adminService.UserExists(adminForTest));
+            logger.Info("User exists: " + adminService.UserExists(adminForTest));
             logger.Info("Checking removing admin done.");
         }
 
@@ -49,8 +51,12 @@ namespace Rest414Test.Tests
             adminService.AddAdmin(adminForTest);
             adminService.SuccessfulAdminLogin(adminForTest);
             adminService.RemoveUser(adminForTest);
-            List<IUser> allLoggedInAdmins = adminService.GetLoggedInAdmins();
-            Assert.IsFalse(allLoggedInAdmins.Contains(adminForTest));
+            Assert.IsFalse(adminService.IsLoggedInAdmin(adminForTest));
+            logger.Info("Is logged in admin: " + adminService.IsLoggedInAdmin(adminForTest));
+            Assert.IsFalse(adminService.IsAdmin(adminForTest));
+            logger.Info("Is admin: " + adminService.IsAdmin(adminForTest));
+            Assert.IsFalse(adminService.UserExists(adminForTest));
+            logger.Info("User exists: " + adminService.UserExists(adminForTest));
             logger.Info("Checking removing logged in admin done.");
         }
 
@@ -63,8 +69,10 @@ namespace Rest414Test.Tests
             AdminService anotherAdminService = adminService
                 .SuccessfulAdminLogin(adminForTest);
             anotherAdminService.RemoveUser(adminForTest);
-            List<IUser> allAdmins = adminService.GetAllAdmins();
-            Assert.IsTrue(allAdmins.Contains(adminForTest));
+            Assert.IsTrue(adminService.IsAdmin(adminForTest));
+            logger.Info("Is admin: " + adminService.IsAdmin(adminForTest));
+            Assert.IsTrue(adminService.UserExists(adminForTest));
+            logger.Info("User exists: " + adminService.UserExists(adminForTest));
             logger.Info("Checking removing admin by himself done.");
         }
 
@@ -82,6 +90,7 @@ namespace Rest414Test.Tests
             adminService.AddAdmin(anotherAdmin);
             adminService.RemoveUser(anotherAdmin);
             Assert.Throws<Exception>(()=>adminService.SuccessfulAdminLogin(anotherAdmin));
+            logger.Info("Expected exception is thrown.");
             logger.Info("Checking logging removed admin in done.");
         }
     }

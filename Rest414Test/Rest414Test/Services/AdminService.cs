@@ -29,16 +29,28 @@ namespace Rest414Test.Services
             cooldowntimeResource = new CoolDownTimeResource();
             lockedusersResource = new LockedUsersResource();
             lockeduserResource = new LockedUserResource();
-            CheckService(!IsAdmin(),
+            CheckService(!IsAdmin(adminUser),
                 "Admin " + adminUser.ToString() + "Login Unsuccessful.");
         }
 
         // Atomic
 
-        public bool IsAdmin()
+        public bool IsAdmin(IUser isAdmin)
         {
-            // TODO
-            return true;
+            List<IUser> adminsList = GetAllAdmins();
+            return adminsList.Contains(isAdmin);
+        }
+
+        public bool IsLoggedInAdmin(IUser isLoggedInAdmin)
+        {
+            List<IUser> loggedInAdminsList = GetLoggedInAdmins();
+            return loggedInAdminsList.Contains(isLoggedInAdmin);
+        }
+
+        public bool UserExists(IUser isUserThere)
+        {
+            List<IUser> userList = GetAllUsers();
+            return userList.Contains(isUserThere);
         }
 
         public ItemTemplate GetUserItem(ItemTemplate itemTemplate, IUser userWithItem)
