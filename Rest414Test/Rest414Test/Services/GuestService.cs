@@ -9,7 +9,7 @@ namespace Rest414Test.Services
 {
     public class GuestService : BaseService
     {
-        private const int LENGTH_TOKEN = 32;
+        private const int LengthToken = 32;
 
         public string ResultStatus { get; set; }
         protected AdminAuthorizedResource adminAuthorizedResource;
@@ -44,7 +44,7 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Password, user.Password);
 
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
-            if (simpleEntity.content.Length == LENGTH_TOKEN)
+            if (simpleEntity.content.Length == LengthToken)
             {
                 logger.Error("Custom exception: entered valid login in UnsuccessfulLogin method");
                 throw new Exception("Valid login"); 
