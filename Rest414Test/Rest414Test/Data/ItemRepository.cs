@@ -16,6 +16,10 @@ namespace Rest414Test.Data
         {
             return new ItemTemplate("my second information", "2345");
         }
+        public static ItemTemplate UpdateItem()
+        {
+            return new ItemTemplate("updated information", "123");
+        }
 
     }
 

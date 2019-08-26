@@ -78,6 +78,7 @@
     <Compile Include="Data\CoolDownTime.cs" />
     <Compile Include="Data\CoolDownTimeRepository.cs" />
     <Compile Include="Data\ItemRepository.cs" />
+    <Compile Include="Data\ItemsRepository.cs" />
     <Compile Include="Data\ItemTemplate.cs" />
     <Compile Include="Data\IUser.cs" />
     <Compile Include="Data\Lifetime.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Entity\SimpleEntity.cs" />
     <Compile Include="Resources\AdminAuthorizedResource.cs" />
     <Compile Include="Resources\AdminsResource.cs" />
+    <Compile Include="Resources\AllItemsResource.cs" />
     <Compile Include="Resources\CoolDownTimeResource.cs" />
     <Compile Include="Resources\ItemResource.cs" />
     <Compile Include="Resources\LockedUserResource.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="Tests\CoolDownTimeTest.cs" />
     <Compile Include="Tests\CreateUser.cs" />
     <Compile Include="Tests\DeleteUser.cs" />
+    <Compile Include="Tests\ItemsTest.cs" />
     <Compile Include="Tests\LifeTimeTest.cs" />
     <Compile Include="Tests\LogginedTest.cs" />
     <Compile Include="Tests\SecondTest.cs" />

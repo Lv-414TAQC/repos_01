@@ -3,6 +3,7 @@ using Rest414Test.Dto;
 using Rest414Test.Entity;
 using Rest414Test.Resources;
 using System;
+using System.Collections.Generic;
 
 namespace Rest414Test.Services
 {
@@ -11,7 +12,7 @@ namespace Rest414Test.Services
         protected IUser user;
         protected LogoutResource logoutResource;
         protected ItemResource itemResource;
-        
+        protected AllItemsResource allItemsResource;
 
 
         public UserService(IUser user) : base()
@@ -19,13 +20,14 @@ namespace Rest414Test.Services
             this.user = user;
             logoutResource = new LogoutResource();
             itemResource = new ItemResource();
-            CheckService(!IsLoggined(),
+            allItemsResource =new AllItemsResource();
+            CheckService(!IsLogged(),
                 "User " + user.ToString() + " Login Unsuccessful.");
         }
 
         // Atomic
 
-        public bool IsLoggined()
+        public bool IsLogged()
         {
             return (user != null) && (!string.IsNullOrEmpty(user.Token) && !user.Token.Contains("ERROR, user not found"));
         }
@@ -61,6 +63,51 @@ namespace Rest414Test.Services
                 "Item " + itemTemplate.ToString() + "was not Added.");
             //Console.WriteLine("\t***AddItem(): simpleEntity = " + simpleEntity);
             return this;
+        }
+
+        public UserService AddItems(List<ItemTemplate> itemsTemplate)
+        {
+            foreach (ItemTemplate item in itemsTemplate)
+            {
+                RestParameters pathParameters = new RestParameters()
+                    .AddParameters("index", item.Index);
+                RestParameters bodyParameters = new RestParameters()
+                    .AddParameters("token", user.Token)
+                    .AddParameters("item", item.Item);
+                SimpleEntity simpleEntity = itemResource.HttpPostAsObject(null, pathParameters, bodyParameters);
+                CheckService(!simpleEntity.Equals(true),
+                    "Item " + item.ToString() + "was not Added.");
+            }
+            return this;
+        }
+        public UserService UpdateItem(ItemTemplate item, ItemTemplate updateItem)
+        {
+            RestParameters bodyParameters = new RestParameters()
+                   .AddParameters("token", user.Token)
+                   .AddParameters("item", updateItem.Item);
+            RestParameters pathParameters = new RestParameters()
+                    .AddParameters("index", item.Index);
+            
+                SimpleEntity simpleEntity = itemResource.HttpPutAsObject(null, pathParameters, bodyParameters);
+            CheckService(!simpleEntity.Equals(true),
+                "Item " + item.ToString() + "was not Added.");
+            return this;
+        }
+        public bool IsUpdateItem(ItemTemplate updatedItem, List<ItemTemplate> items)
+        {
+            bool result = false;
+            foreach(ItemTemplate itemTemplate in items)
+            {
+                Console.WriteLine($"{itemTemplate.Index}---{updatedItem.Index}");
+                Console.WriteLine($"{itemTemplate.Item}---{updatedItem.Item}");
+                if (itemTemplate.Index.Contains(updatedItem.Index)
+                    && itemTemplate.Item.Contains(updatedItem.Item))
+                {
+                    result = true;
+                }
+                else Console.WriteLine("NOOOO");
+            }
+            return result;
         }
 
         public GuestService Logout()
@@ -104,18 +151,25 @@ namespace Rest414Test.Services
             //userD.Password = newpassw.Password;
             return this;
         }
+        public List<ItemTemplate> GetAllItems()
+        {
+            RestParameters urlParameters = new RestParameters()
+                .AddParameters("token", user.Token);
 
-        //public bool IsPasswChange(IUser userD, IUser newpassw)
-        //{
-        //    if (userD.Password == newpassw.Password)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //        return false;
-
-        //}
-
- 
+            SimpleEntity simpleEntity = allItemsResource.HttpGetAsObject(urlParameters, null);
+            Console.WriteLine(simpleEntity.content);
+            List<string> list = new List<string>(simpleEntity.content
+                .Split(new string[] { "\n", "\t", " \t"}, StringSplitOptions.None));
+            foreach (string i in list) Console.WriteLine("Element-"+i);
+            List<ItemTemplate> listItems = new List<ItemTemplate>();
+            for (int i = list.Count - 2; i > 0; i -= 2)
+            {
+                ItemTemplate template = new ItemTemplate(list[i], list[i - 1]);
+                listItems.Add(template);
+                Console.WriteLine($"{template.Index}- index");
+                Console.WriteLine($"{template.Item}- item");
+            }
+            return listItems;
+        }
     }
 }
