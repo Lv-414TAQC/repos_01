@@ -10,18 +10,17 @@ namespace Rest414Test.Tools
         //protected const string FolderData = "Assets";
         //protected const string FolderBin = "bin";
         //
-        //public static Logger log = LogManager.GetCurrentClassLogger(); // for NLog
+        //public static Logger log = LogManager.GetCurrentClassLogger();
 
         public string Filename { get; private set; }
         public string Path { get; protected set; }
 
-        //protected ExternalReader(string filename)
         public ExternalReader(string filename)
         {
             Filename = filename;
             Path = AppDomain.CurrentDomain.BaseDirectory;
             Console.WriteLine("Path = " + Path);
-            //Path = Path.Remove(Path.IndexOf(FOLDER_BIN)) + FOLDER_DATA + PATH_SEPARATOR + filename;
+            //Path = Path.Remove(Path.IndexOf(FolderBin)) + FolderData + PathSeparator + filename;
             Path = Path + filename;
             Console.WriteLine("Final Path = " + Path);
         }
