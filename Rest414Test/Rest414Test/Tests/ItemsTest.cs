@@ -42,7 +42,7 @@ namespace Rest414Test.Tests
         public void UserAccessItemsTest()
         {
             userService = guestService.SuccessfulUserLogin(user);
-            Assert.IsTrue(userService.IsLoggined());
+            Assert.IsTrue(userService.IsLogged());
             Assert.IsEmpty(userService.GetAllItems());
         }
 
