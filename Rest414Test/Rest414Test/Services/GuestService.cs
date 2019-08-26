@@ -90,6 +90,7 @@ namespace Rest414Test.Services
                 .AddParameters("password", adminUser.Password);
             SimpleEntity simpleEntity = adminAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             adminUser.Token = simpleEntity.content;
+            
             return new AdminService(adminUser);
         }
     }

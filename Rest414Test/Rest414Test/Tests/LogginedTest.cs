@@ -101,13 +101,12 @@ namespace Rest414Test.Tests
         }
 
         [Test, TestCaseSource("ExistUser_NewUser")]
-        public void CheckAnotherLogin(IUser firstUser, IUser secondUser)
+        public void CheckLoginUserAsAdmin(IUser firstUser, IUser secondUser)
         {
             userService = guestService.SuccessfulUserLogin(firstUser);
             Assert.IsTrue(userService.IsLogged());
-            //first user don't logout!
-            adminService = guestService.SuccessfulAdminLogin(secondUser);
-            Assert.IsFalse(adminService.IsLogged());
+    
+            Assert.Throws<Exception>(() => guestService.SuccessfulAdminLogin(secondUser));
         }
 
        
