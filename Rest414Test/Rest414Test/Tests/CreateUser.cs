@@ -23,7 +23,7 @@ namespace Rest414Test.Tests
         public void CreateNewUser()
         {
             adminService = guestService.SuccessfulAdminLogin(adminUser);
-            Assert.IsTrue(adminService.IsLoggined());
+            Assert.IsTrue(adminService.IsLogged());
             //
             adminService.CreateUser(simpleUser);
             Assert.IsTrue(adminService.GetAllUsers().Contains(new User(simpleUser.Name)));

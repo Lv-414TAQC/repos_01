@@ -19,13 +19,13 @@ namespace Rest414Test.Services
             this.user = user;
             logoutResource = new LogoutResource();
             itemResource = new ItemResource();
-            CheckService(!IsLoggined(),
+            CheckService(!IsLogged(),
                 "User " + user.ToString() + " Login Unsuccessful.");
         }
 
         // Atomic
 
-        public bool IsLoggined()
+        public bool IsLogged()
         {
             return (user != null) && (!string.IsNullOrEmpty(user.Token) && !user.Token.Contains("ERROR, user not found"));
         }
