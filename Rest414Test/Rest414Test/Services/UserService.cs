@@ -158,7 +158,9 @@ namespace Rest414Test.Services
 
             SimpleEntity simpleEntity = allItemsResource.HttpGetAsObject(urlParameters, null);
             Console.WriteLine(simpleEntity.content);
-            List<string> list = new List<string>(simpleEntity.content.Split(new String[] { "\n", " \t" }, StringSplitOptions.None));
+            List<string> list = new List<string>(simpleEntity.content
+                .Split(new string[] { "\n", "\t", " \t"}, StringSplitOptions.None));
+            foreach (string i in list) Console.WriteLine("Element-"+i);
             List<ItemTemplate> listItems = new List<ItemTemplate>();
             for (int i = list.Count - 2; i > 0; i -= 2)
             {

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using NLog;
+using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
 using System;
@@ -9,6 +10,8 @@ namespace Rest414Test.Tests
     [TestFixture]
     public class ItemTest
     {
+        Logger logger = LogManager.GetCurrentClassLogger();
+
         IUser adminUser = UserRepository.Get().Admin();
         GuestService guestService = new GuestService();
         AdminService adminService;
@@ -19,23 +22,24 @@ namespace Rest414Test.Tests
         ItemTemplate existItem = ItemRepository.GetFirst();
         ItemTemplate updatedItem = ItemRepository.UpdateItem();
 
-        [TearDown]
-        public void TearDown()
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
         {
-            adminService.Logout();
+            userService.Logout();
         }
 
         [Test]
         public void AddItemTest()
         {
+            logger.Info("Start AddItemTest");
             adminService = guestService.SuccessfulAdminLogin(adminUser);
             adminService.AddItems(ItemsRepository.ListItems());
-            CollectionAssert.Contains(ItemsRepository.ListItems(), 
-                adminService.GetAllItems());
+            Assert.AreEqual(ItemsRepository.ListItems().Count, 
+                adminService.GetAllItems().Count);
         }
 
         [Test]
-        public void userAccessItemsTest()
+        public void UserAccessItemsTest()
         {
             userService = guestService.SuccessfulUserLogin(user);
             Assert.IsTrue(userService.IsLoggined());
