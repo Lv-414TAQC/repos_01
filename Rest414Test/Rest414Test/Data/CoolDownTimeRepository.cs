@@ -4,8 +4,8 @@ namespace Rest414Test.Data
     public sealed class CoolDownTimeRepository
     {
         
-            public const string DEFAULT_COOLDOWNTIME = "180000";
-            public const string NEW_COOLDOWNTIME = "240000";
+            public const string DefaultCoolDownTime = "180000";
+            public const string NewCoolDownTime = "240000";
 
 
             private CoolDownTimeRepository()
@@ -14,11 +14,11 @@ namespace Rest414Test.Data
 
             public static CoolDownTime GetDefault()
             {
-                return new CoolDownTime(DEFAULT_COOLDOWNTIME);
+                return new CoolDownTime(DefaultCoolDownTime);
             }
             public static CoolDownTime NewCoolDown()
             {
-                return new CoolDownTime(NEW_COOLDOWNTIME);
+                return new CoolDownTime(NewCoolDownTime);
             }
     }
 }

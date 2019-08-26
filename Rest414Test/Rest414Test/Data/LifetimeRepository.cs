@@ -3,8 +3,8 @@ namespace Rest414Test.Data
 {
     public sealed class LifetimeRepository
     {
-        public const string DEFAULT_TOKEN_LIFETIME = "300000";
-        public const string LONG_TOKEN_LIFETIME = "800000";
+        public const string DefaultTokenLifetime = "300000";
+        public const string LongTokenLifetime = "800000";
 
         private LifetimeRepository()
         {
@@ -12,12 +12,12 @@ namespace Rest414Test.Data
 
         public static Lifetime GetDefault()
         {
-            return new Lifetime(DEFAULT_TOKEN_LIFETIME);
+            return new Lifetime(DefaultTokenLifetime);
         }
 
         public static Lifetime GetLongTime()
         {
-            return new Lifetime(LONG_TOKEN_LIFETIME);
+            return new Lifetime(LongTokenLifetime);
         }
     }
 }
