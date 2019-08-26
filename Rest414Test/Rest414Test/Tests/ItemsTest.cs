@@ -10,7 +10,7 @@ namespace Rest414Test.Tests
     [TestFixture]
     public class ItemTest
     {
-        Logger logger = LogManager.GetCurrentClassLogger();
+        private Logger logger = LogManager.GetCurrentClassLogger();
 
         IUser adminUser = UserRepository.Get().Admin();
         GuestService guestService = new GuestService();
