@@ -122,9 +122,7 @@
     <Compile Include="Tests\CreateUser.cs" />
     <Compile Include="Tests\DeleteUser.cs" />
     <Compile Include="Tests\ItemsTest.cs" />
-    <Compile Include="Tests\LifeTimeTest.cs" />
     <Compile Include="Tests\LogginedTest.cs" />
-    <Compile Include="Tests\SecondTest.cs" />
     <Compile Include="Tools\CSVReader.cs" />
     <Compile Include="Tools\ExcelReader.cs" />
     <Compile Include="Tools\ExternalReader.cs" />
@@ -142,9 +140,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Lv414RestArch.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
