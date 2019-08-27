@@ -38,20 +38,17 @@ namespace Rest414Test.Services
 
         public bool IsAdmin(IUser isAdmin)
         {
-            List<IUser> adminsList = GetAllAdmins();
-            return adminsList.Contains(isAdmin);
+            return GetAllAdmins().Contains(isAdmin);
         }
 
         public bool IsLoggedInAdmin(IUser isLoggedInAdmin)
         {
-            List<IUser> loggedInAdminsList = GetLoggedInAdmins();
-            return loggedInAdminsList.Contains(isLoggedInAdmin);
+            return GetLoggedInAdmins().Contains(isLoggedInAdmin);
         }
 
         public bool UserExists(IUser isUserThere)
         {
-            List<IUser> userList = GetAllUsers();
-            return userList.Contains(isUserThere);
+            return GetAllUsers().Contains(isUserThere);
         }
 
         public ItemTemplate GetUserItem(ItemTemplate itemTemplate, IUser userWithItem)
