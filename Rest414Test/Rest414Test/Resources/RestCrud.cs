@@ -61,7 +61,6 @@ namespace Rest414Test.Resources
                 bool isFirstParameter = true;
                 foreach (KeyValuePair<string, string> current in urlParameters.Parameters)
                 {
-                    logger.Info("urlParameters: key = " + current.Key + " value = " + current.Value);
                     if (isFirstParameter)
                     {
                         urlTemplate = urlTemplate + UrlParametersSeparator;

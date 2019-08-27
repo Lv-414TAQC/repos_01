@@ -22,10 +22,14 @@ namespace Rest414Test.Tests
         ItemTemplate existItem = ItemRepository.GetFirst();
         ItemTemplate updatedItem = ItemRepository.UpdateItem();
 
-        [OneTimeTearDown]
-        public void OneTimeTearDown()
+        [TearDown]
+        public void TearDown()
         {
-            userService.Logout();
+            if (adminService.IsLogged())
+            {
+                adminService.Logout();
+            }
+            else userService.Logout();
         }
 
         [Test]
@@ -36,22 +40,27 @@ namespace Rest414Test.Tests
             adminService.AddItems(ItemsRepository.ListItems());
             Assert.AreEqual(ItemsRepository.ListItems().Count, 
                 adminService.GetAllItems().Count);
+            logger.Info("End AddItemTest");
         }
 
         [Test]
         public void UserAccessItemsTest()
         {
+            logger.Info("Start UserAccessItemsTest");
             userService = guestService.SuccessfulUserLogin(user);
             Assert.IsTrue(userService.IsLogged());
             Assert.IsEmpty(userService.GetAllItems());
+            logger.Info("End UserAccessItemsTest");
         }
 
         [Test]
         public void UpdateItemTest()
         {
+            logger.Info("Start UpdateItemTest");
             adminService = guestService.SuccessfulAdminLogin(adminUser);
             adminService.UpdateItem(existItem, updatedItem);
             Assert.IsTrue(adminService.IsUpdateItem(updatedItem, adminService.GetAllItems()));
+            logger.Info("End UpdateItemTest");
         }
     }
 }

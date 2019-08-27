@@ -95,7 +95,6 @@ namespace Rest414Test.Services
                 {
                     result = true;
                 }
-                else Console.WriteLine("NOOOO");
             }
             return result;
         }
