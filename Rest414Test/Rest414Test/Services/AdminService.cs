@@ -198,7 +198,7 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Token, user.Token)
                 .AddParameters(RestParametersKeys.Name, newAdmin.Name)
                 .AddParameters(RestParametersKeys.Password, newAdmin.Password)
-                .AddParameters(RestParametersKeys.Rights, "true");
+                .AddParameters(RestParametersKeys.Rights, ParamTrue);
             SimpleEntity simpleEntity = userResource
                 .HttpPostAsObject(urlParameters, null, null);
             CheckService(!simpleEntity.Equals(true),
@@ -224,7 +224,7 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Token, user.Token)
                 .AddParameters(RestParametersKeys.Name, newUser.Name)
                 .AddParameters(RestParametersKeys.Password, newUser.Password)
-                .AddParameters(RestParametersKeys.Rights, "false");
+                .AddParameters(RestParametersKeys.Rights, ParamFalse);
             SimpleEntity simpleEntity = userResource
                 .HttpPostAsObject(urlParameters, null, null);
             logger.Info("CreateUser = " + simpleEntity.content);
