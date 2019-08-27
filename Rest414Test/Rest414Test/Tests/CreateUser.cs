@@ -7,9 +7,7 @@ namespace Rest414Test.Tests
 {
     [TestFixture]
     class CreateUser
-    {
-        Logger logger = LogManager.GetCurrentClassLogger();
-        //
+    {        
         private GuestService guestService = new GuestService();
         private AdminService adminService;
 
@@ -23,15 +21,15 @@ namespace Rest414Test.Tests
         }
 
         [Test]
-        public void CreateNewUser()
+        public void CreateNewUserTest()
         {
-            logger.Info("Start test CreateNewUSer ");
+            guestService.logger.Info("Start test CreateNewUSer ");
             adminService = guestService.SuccessfulAdminLogin(adminUser);
             Assert.IsTrue(adminService.IsLogged());
             //
             adminService.CreateUser(simpleUser);
             Assert.IsTrue(adminService.GetAllUsers().Contains(new User(simpleUser.Name)));
-            logger.Info("End test CheckLoginLogoutAdmin");
+            guestService.logger.Info("End test CreateNewUSer");
 
         }
     }

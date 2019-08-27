@@ -10,7 +10,6 @@ namespace Rest414Test.Tests
     {
         IUser simpleUser = UserRepository.Get().ExistUser();
         IUser newPassw = UserRepository.Get().NewPasswordForUser();
-       // IUser oldPassw = UserRepository.Get().OldPasswordForUser();
 
         private GuestService guestService = new GuestService();
         private UserService userService;
@@ -22,20 +21,14 @@ namespace Rest414Test.Tests
         }
 
         [Test]
-        public void ChangePasswordd()
-        {   
+        public void ChangePassworddTest()
+        {
+            guestService.logger.Info("Start test ChangePasswordd ");
             userService = guestService.SuccessfulUserLogin(simpleUser).ChangePassw(simpleUser, newPassw)
                 .Logout().SuccessfulUserLogin(newPassw);
             //
             Assert.IsTrue(userService.IsLogged());
-            //Assert.IsTrue(userService.IsLoggined());
-            //
-            //userService.Logout();
-            ////Assert.IsTrue(!userService.IsLoggined());
-            ////
-            //userService.SuccessfulUserLogin(newPassw);
-            //Assert.IsTrue(userService.IsLoggined());
-
+            guestService.logger.Info("End test ChangePasswordd");
         }
     }
 }
