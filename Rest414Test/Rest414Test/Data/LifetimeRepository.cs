@@ -17,12 +17,12 @@ namespace Rest414Test.Data
 
         public static Lifetime GetDefault()
         {
-            return new Lifetime(DEFAULT_TOKEN_LIFETIME);
+            return new Lifetime(DefaultTokenLifetime);
         }
 
         public static Lifetime GetLongTime()
         {
-            return new Lifetime(LONG_TOKEN_LIFETIME);
+            return new Lifetime(LongTokenLifetime);
         }
 
         public static Lifetime GetNegetiveLifeTime()
@@ -50,5 +50,4 @@ namespace Rest414Test.Data
             return new Lifetime(TEST_REAL_TOKEN_LIFETIME);
         }
     }
-
 }

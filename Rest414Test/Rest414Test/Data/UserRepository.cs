@@ -60,6 +60,14 @@ namespace Rest414Test.Data
                .Build();
         }
 
+        public IUser NewPasswordForUser()
+        {
+            return User.Get()
+                .SetName("akimatc")
+                .SetPassword("999")
+                .Build();
+        }
+
         public IUser NewUser()
         {
             return User.Get()
@@ -67,7 +75,7 @@ namespace Rest414Test.Data
                .SetPassword("qwerty")
                .Build();
         }
-
+       
 
         public IUser UserForLock()
         {
@@ -84,35 +92,8 @@ namespace Rest414Test.Data
                .SetPassword("12345678")
                .Build();
         }
-        public IUser EmptyPasswordUser()
-        {
-            return User.Get()
-               .SetName("ivan")
-               .SetPassword("")
-               .Build();
-        }
-        public IUser EmptyPasswordAdmin()
-        {
-            return User.Get()
-               .SetName("admin")
-               .SetPassword("")
-               .Build();
-        }
 
-        public IUser IncorrectPasswordUser()
-        {
-            return User.Get()
-               .SetName("ivan")
-               .SetPassword("wetfdsa321")
-               .Build();
-        }
-        public IUser IncorrectPasswordAdmin()
-        {
-            return User.Get()
-               .SetName("admin")
-               .SetPassword("gqtr431ff")
-               .Build();
-        }
+        // Users From External Files ------------------------------------------
 
         public IList<IUser> FromCsv()
         {
@@ -167,13 +148,13 @@ namespace Rest414Test.Data
                 .Build();
         }
 
-        public IUser NewPasswordForUser()
-        {
-            return User.Get()
-                .SetName("")
-                .SetPassword("999")
-                .Build();
-        }
+        //public IUser NewPasswordForUser()
+        //{
+        //    return User.Get()
+        //        .SetName("")
+        //        .SetPassword("999")
+        //        .Build();
+        //}
 
         public IUser OldPasswordForUser()
         {
@@ -181,6 +162,17 @@ namespace Rest414Test.Data
                .SetName("")
                .SetPassword("qwerty")
                .Build();
+        }
+
+        // Incorrect data(Login/Password) From External Files ------------------------------------------
+        public IList<IUser> IncorrectUsersFromCsv()
+        {
+            return IncorrectUsersFromCsv("IncorrectUsers.csv");
+        }
+
+        public IList<IUser> IncorrectUsersFromCsv(string filename)
+        {
+            return User.GetAllUsers(new CSVReader(filename).GetAllCells());
         }
 
         public IUser FakeAdmin()

@@ -21,15 +21,16 @@ namespace Rest414Test.Tests
         [Test, TestCaseSource("NewUser")]
         public void DeleteeUser(IUser user)
         {
+            guestService.logger.Info("Start test DeleteeUser ");
             adminService = guestService.SuccessfulAdminLogin(adminUser);
-            Assert.IsTrue(adminService.IsLoggined());
+            Assert.IsTrue(adminService.IsLogged());
             //
             adminService.CreateUser(user);
             Assert.IsTrue(adminService.GetAllUsers().Contains(new User(user.Name)));
             //
             adminService.RemoveUser(user);
             Assert.IsTrue(!adminService.GetAllUsers().Contains(new User(user.Name)));
-
+            guestService.logger.Info("End test DeleteeUser");
 
         }
 

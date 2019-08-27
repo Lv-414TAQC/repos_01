@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Rest414Test.Dto
 {
@@ -11,16 +12,38 @@ namespace Rest414Test.Dto
             Parameters = new Dictionary<string, string>();
         }
 
-        public RestParameters AddParameters(string key, string url)
+        private static string GetParamKey(RestParametersKeys key)
         {
-            Parameters.Add(key, url);
+            string result = null;
+            Dictionary<RestParametersKeys, string> paramKeys = new Dictionary<RestParametersKeys, string>();
+            paramKeys.Add(RestParametersKeys.Token, "token");
+            paramKeys.Add(RestParametersKeys.Name, "name");
+            paramKeys.Add(RestParametersKeys.Password, "password");
+            paramKeys.Add(RestParametersKeys.Rights, "rights");
+            paramKeys.Add(RestParametersKeys.Index, "index");
+            paramKeys.Add(RestParametersKeys.Time, "time");
+            paramKeys.Add(RestParametersKeys.Item, "item");
+            paramKeys.Add(RestParametersKeys.OldPassword, "oldpassword");
+            paramKeys.Add(RestParametersKeys.NewPassword, "newpassword");
+            result = paramKeys[key];
+            if (result == null)
+            {
+                throw new Exception("Key not found.");
+            }
+            return result;
+        }
+
+        public RestParameters AddParameters(RestParametersKeys key, string url)
+        {
+            string stringKey = GetParamKey(key);
+            Parameters.Add(stringKey, url);
             return this;
         }
 
-        public string GetParameters(string key)
+        public string GetParameters(RestParametersKeys key)
         {
-            return Parameters[key];
+            string stringKey = GetParamKey(key);
+            return Parameters[stringKey];
         }
     }
-
 }

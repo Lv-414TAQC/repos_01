@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+using NLog;
+using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
 
@@ -6,7 +7,7 @@ namespace Rest414Test.Tests
 {
     [TestFixture]
     class CreateUser
-    {
+    {        
         private GuestService guestService = new GuestService();
         private AdminService adminService;
 
@@ -20,13 +21,15 @@ namespace Rest414Test.Tests
         }
 
         [Test]
-        public void CreateNewUser()
+        public void CreateNewUserTest()
         {
+            guestService.logger.Info("Start test CreateNewUSer ");
             adminService = guestService.SuccessfulAdminLogin(adminUser);
-            Assert.IsTrue(adminService.IsLoggined());
+            Assert.IsTrue(adminService.IsLogged());
             //
             adminService.CreateUser(simpleUser);
             Assert.IsTrue(adminService.GetAllUsers().Contains(new User(simpleUser.Name)));
+            guestService.logger.Info("End test CreateNewUSer");
 
         }
     }

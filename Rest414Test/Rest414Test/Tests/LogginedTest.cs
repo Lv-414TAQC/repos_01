@@ -1,8 +1,9 @@
-﻿using NLog;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using Rest414Test.Data;
 using Rest414Test.Services;
+using Rest414Test.Tools;
+using System;
 
 namespace Rest414Test.Tests
 {
@@ -29,13 +30,8 @@ namespace Rest414Test.Tests
             new object[] { UserRepository.Get().ExistUser(), UserRepository.Get().NewUser() }
         };
 
-        private static object[] IncorrectPasswords =
-        {
-            new object[] { UserRepository.Get().IncorrectPasswordUser()},
-            new object[] { UserRepository.Get().EmptyPasswordUser()},
-            new object[] { UserRepository.Get().IncorrectPasswordAdmin()},
-            new object[] { UserRepository.Get().EmptyPasswordAdmin()}
-        };
+        private static readonly object[] IncorrectFromCSV =
+            ListUtils.ToMultiArray(UserRepository.Get().IncorrectUsersFromCsv());
 
         [OneTimeSetUp]
         public void BeforeAllMethods()
@@ -68,10 +64,11 @@ namespace Rest414Test.Tests
             }
            
             // Return to Previous State
-            if ((adminService != null) && (adminService.IsLoggined()))
+            if ((adminService != null) && (adminService.IsLogged()))
             {
                 //Delete created user
                 adminService.RemoveUser(UserRepository.Get().NewUser());
+                adminService.GetAllUsers();
                 adminService.Logout();
             }
             
@@ -83,9 +80,9 @@ namespace Rest414Test.Tests
             guestService.logger.Info("Start test CheckLoginLogoutUser");
      
             userService = guestService.SuccessfulUserLogin(user);
-            Assert.IsTrue(userService.IsLoggined());
+            Assert.IsTrue(userService.IsLogged());
             userService.Logout();
-            Assert.IsFalse(userService.IsLoggined());
+            Assert.IsFalse(userService.IsLogged());
 
             guestService.logger.Info("End test CheckLoginLogoutUser: ");
         }
@@ -96,27 +93,29 @@ namespace Rest414Test.Tests
             guestService.logger.Info("Start test CheckLoginLogoutAdmin");
 
             adminService = guestService.SuccessfulAdminLogin(admin);
-            Assert.IsTrue(adminService.IsLoggined());
+            Assert.IsTrue(adminService.IsLogged());
             adminService.Logout();
-            Assert.IsFalse(adminService.IsLoggined());
+            Assert.IsFalse(adminService.IsLogged());
 
             guestService.logger.Info("End test CheckLoginLogoutAdmin");
         }
 
         [Test, TestCaseSource("ExistUser_NewUser")]
-        public void CheckAnotherLogin(IUser firstUser, IUser secondUser)
+        public void CheckLoginUserAsAdmin(IUser firstUser, IUser secondUser)
         {
             userService = guestService.SuccessfulUserLogin(firstUser);
-            Assert.IsTrue(userService.IsLoggined());
-            //first user don't logout!
-            adminService = guestService.SuccessfulAdminLogin(secondUser);
-            Assert.IsFalse(adminService.IsLoggined());
+            Assert.IsTrue(userService.IsLogged());
+    
+            Assert.Throws<Exception>(() => guestService.SuccessfulAdminLogin(secondUser));
         }
 
-        [Test, TestCaseSource("IncorrectPasswords")]
+       
+        [Test, TestCaseSource("IncorrectFromCSV")]
         public void CheckIncorrectLogin(IUser incorrectUser)
         {
+            guestService.logger.Info("Start test CheckIncorrectLogin");
             guestService = guestService.UnsuccessfulLogin(incorrectUser);
+            guestService.logger.Info("End test CheckIncorrectLogin");
         }
 
     }

@@ -6,7 +6,7 @@ namespace Rest414Test.Entity
         
         public string content { get; set; }
 
-        public SimpleEntity() // for T result = default(T); from class RestCrud<T>
+        public SimpleEntity()
         {
         }
 
@@ -22,8 +22,8 @@ namespace Rest414Test.Entity
             {
                 result = true;
             }
-            else if ((obj == null)           // string.IsNullOrEmpty
-                || (!(obj is SimpleEntity))) // this.GetType() != obj.GetType()
+            else if ((obj == null)
+                || (!(obj is SimpleEntity)))
             {
                 result = false;
             }
