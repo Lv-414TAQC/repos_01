@@ -128,7 +128,6 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.OldPassword, userD.Password)
                 .AddParameters(RestParametersKeys.NewPassword, newpassw.Password);
             SimpleEntity simpleEntity = userpasswresource.HttpPutAsObject(null, null, bodyParameters);
-            Console.WriteLine("ResultChangePasww = " + simpleEntity.content);
             //userD.Password = newpassw.Password;
             return this;
         }
@@ -137,7 +136,6 @@ namespace Rest414Test.Services
             RestParameters urlParameters = new RestParameters()
                 .AddParameters(RestParametersKeys.Token, user.Token);
             SimpleEntity simpleEntity = allItemsResource.HttpGetAsObject(urlParameters, null);
-            Console.WriteLine(simpleEntity.content);
             List<string> list = new List<string>(simpleEntity.content
                 .Split(new string[] { "\n", "\t", " \t"}, StringSplitOptions.None));
             foreach (string i in list) Console.WriteLine("Element-"+i);
