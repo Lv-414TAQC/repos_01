@@ -104,5 +104,10 @@ namespace Rest414Test.Services
             userD.Password = newpassw.Password;
             return new UserService(userD);
         }
+
+        public string GetToken()
+        {
+            return user.Token;
+        }
     }
 }

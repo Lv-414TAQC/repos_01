@@ -1,5 +1,4 @@
 ﻿using System;
-//using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using RestSharp;
 using RestSharp.Serialization.Json;

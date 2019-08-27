@@ -5,6 +5,7 @@ using Rest414Test.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace Rest414Test.Services
 {
@@ -183,7 +184,7 @@ namespace Rest414Test.Services
 
         public AdminService UpdateTokenlifetime(Lifetime lifetime)
         {
-            Console.WriteLine("lifetime = " + lifetime + "   User = " + user);
+            //Console.WriteLine("lifetime = " + lifetime + "   User = " + user);
             RestParameters bodyParameters = new RestParameters()
                 .AddParameters("token", user.Token)
                 .AddParameters("time", lifetime.Time);
@@ -273,6 +274,14 @@ namespace Rest414Test.Services
                 Console.WriteLine(u);
             }
             return listUsers;
+        }
+
+        public string GetAliveTokens()
+        {
+            RestParameters urlParameters = new RestParameters()
+                .AddParameters("token", user.Token);
+            SimpleEntity simpleEntity = usersResource.HttpGetAsObject(urlParameters, null);
+            return simpleEntity.content;
         }
     }
 }

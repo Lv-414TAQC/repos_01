@@ -182,5 +182,14 @@ namespace Rest414Test.Data
                .SetPassword("qwerty")
                .Build();
         }
+
+        public IUser FakeAdmin()
+        {
+            return User.Get()
+                .SetName("FakeAdmin")
+                .SetPassword("1234")
+                .SetToken("DT2ES1AHRY5Y09MMC6A5XSQ500W74E3E")
+                .Build();
+        }
     }
 }
