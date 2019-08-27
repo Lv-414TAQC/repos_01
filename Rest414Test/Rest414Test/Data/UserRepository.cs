@@ -60,6 +60,14 @@ namespace Rest414Test.Data
                .Build();
         }
 
+        public IUser NewPasswordForUser()
+        {
+            return User.Get()
+                .SetName("akimatc")
+                .SetPassword("999")
+                .Build();
+        }
+
         public IUser NewUser()
         {
             return User.Get()
@@ -67,7 +75,7 @@ namespace Rest414Test.Data
                .SetPassword("qwerty")
                .Build();
         }
-
+       
 
         public IUser UserForLock()
         {
@@ -140,13 +148,13 @@ namespace Rest414Test.Data
                 .Build();
         }
 
-        public IUser NewPasswordForUser()
-        {
-            return User.Get()
-                .SetName("")
-                .SetPassword("999")
-                .Build();
-        }
+        //public IUser NewPasswordForUser()
+        //{
+        //    return User.Get()
+        //        .SetName("")
+        //        .SetPassword("999")
+        //        .Build();
+        //}
 
         public IUser OldPasswordForUser()
         {

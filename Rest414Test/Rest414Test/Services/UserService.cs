@@ -130,8 +130,8 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.NewPassword, newpassw.Password);
             SimpleEntity simpleEntity = userpasswresource.HttpPutAsObject(null, null, bodyParameters);
             Console.WriteLine("ResultChangePasww = " + simpleEntity.content);
-            userD.Password = newpassw.Password;
-            return new UserService(userD);
+            //userD.Password = newpassw.Password;
+            return this;
         }
         public List<ItemTemplate> GetAllItems()
         {

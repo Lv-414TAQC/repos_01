@@ -124,13 +124,11 @@ namespace Rest414Test.Services
 
         public string GetCoolDownTime()
         {
-            
             CoolDownTime coolDownTime = new CoolDownTime();
             RestParameters urlParameters = new RestParameters()
                 .AddParameters(RestParametersKeys.Token, user.Token);
             SimpleEntity simpleEntity = cooldowntimeResource.HttpGetAsObject(urlParameters, null);
-            //coolDownTime.Time = simpleEntity.content;
-            Console.WriteLine("simpleEntity = " + simpleEntity.content);
+            coolDownTime.Time = simpleEntity.content;
             return simpleEntity.content;
         }
 
@@ -150,7 +148,7 @@ namespace Rest414Test.Services
             foreach (string lockuser in listNameLockedUsers)
             {
                 listLockedUsers.Add(new User(lockuser));
-                Console.WriteLine(user);
+                
             }
             return listLockedUsers;
         }
@@ -166,7 +164,6 @@ namespace Rest414Test.Services
             
             SimpleEntity simpleEntity = lockeduserResource
                 .HttpPutAsObject(null, pathVariables, bodyParameters);
-            Console.WriteLine("\t***AddAdmin(): simpleEntity = " + simpleEntity);
             return this;
         }
 
@@ -198,7 +195,7 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Token, user.Token)
                 .AddParameters(RestParametersKeys.Name, newAdmin.Name)
                 .AddParameters(RestParametersKeys.Password, newAdmin.Password)
-                .AddParameters(RestParametersKeys.Rights, "true");
+                .AddParameters(RestParametersKeys.Rights, ParamTrue);
             SimpleEntity simpleEntity = userResource
                 .HttpPostAsObject(urlParameters, null, null);
             CheckService(!simpleEntity.Equals(true),
@@ -215,6 +212,7 @@ namespace Rest414Test.Services
                 .HttpDeleteAsObject(urlParameters, null, null);
             CheckService(!simpleEntity.Equals(true),
                 "User " + newAdmin.ToString() + "was not Removed.");
+            logger.Info("RemoveUser = " + simpleEntity.content);
             return this;
         }
         public UserService CreateUser(IUser newUser)
@@ -223,9 +221,10 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Token, user.Token)
                 .AddParameters(RestParametersKeys.Name, newUser.Name)
                 .AddParameters(RestParametersKeys.Password, newUser.Password)
-                .AddParameters(RestParametersKeys.Rights, "false");
+                .AddParameters(RestParametersKeys.Rights, ParamFalse);
             SimpleEntity simpleEntity = userResource
                 .HttpPostAsObject(urlParameters, null, null);
+            logger.Info("CreateUser = " + simpleEntity.content);
             return this;
         }
 

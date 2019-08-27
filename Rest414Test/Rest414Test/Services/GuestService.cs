@@ -54,20 +54,16 @@ namespace Rest414Test.Services
         public GuestService LockingUser(IUser user)
         {
             int i = 0;
-            while (i < 3)
+            while (i < 4)
             {
                 UnsuccessfulLogin(user);
-                if (UnsuccessfulLogin(user).GetType() == typeof(GuestService))
-                {
-                    ResultStatus = "error, user not found";
-                }
+                //ResultStatus = "error, user not found";
                 i++;
             }
-            UnsuccessfulLogin(user);
-            if (UnsuccessfulLogin(user).GetType() == typeof(GuestService))
-            {
-                ResultStatus = "error, user locked";
-            }
+            //UnsuccessfulLogin(user);
+            
+                //ResultStatus = "error, user locked";
+            
             return this;
 
         }
@@ -80,6 +76,8 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Password, user.Password);
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             user.Token = simpleEntity.content;
+            Console.WriteLine("LoginName = " + user.Name);
+            Console.WriteLine("LoginPassword = "+user.Password);
             return new UserService(user);
         }
 
@@ -90,7 +88,7 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Password, adminUser.Password);
             SimpleEntity simpleEntity = adminAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             adminUser.Token = simpleEntity.content;
-            
+            logger.Info("AdminLogin = " + simpleEntity.content);
             return new AdminService(adminUser);
         }
     }
