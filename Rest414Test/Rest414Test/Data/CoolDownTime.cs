@@ -23,8 +23,8 @@ namespace Rest414Test.Data
             {
                 result = true;
             }
-            else if ((obj == null)       // string.IsNullOrEmpty
-                || (!(obj is CoolDownTime))) // this.GetType() != obj.GetType()
+            else if ((obj == null)
+                || (!(obj is CoolDownTime)))
             {
                 result = false;
             }
@@ -34,8 +34,6 @@ namespace Rest414Test.Data
             }
             return result;
         }
-
-        // TODO Equals, Integer
     }
 }
 

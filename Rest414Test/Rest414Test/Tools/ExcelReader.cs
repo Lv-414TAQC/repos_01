@@ -7,7 +7,7 @@ namespace Rest414Test.Tools
 {
     public class ExcelReader : ExternalReader
     {
-        private const int DATA_SHEET = 1;
+        private const int DataSheet = 1;
 
         public ExcelReader(string filename) : base(filename)
         {
@@ -21,7 +21,7 @@ namespace Rest414Test.Tools
             // Create COM Objects. Create a COM object for everything that is referenced
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(path);
-            Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[DATA_SHEET];
+            Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[DataSheet];
             Excel.Range xlRange = xlWorksheet.UsedRange;
             //
             int rowCount = xlRange.Rows.Count;

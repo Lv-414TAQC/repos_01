@@ -30,8 +30,8 @@ namespace Rest414Test.Data
 
     public class User : IName, IPassword, IUserBuild, IUser
     {
-        public string Name { get; private set; }            // Required
-        public string Password { get;  set; }        // Required
+        public string Name { get; private set; }
+        public string Password { get;  set; }
         public string Token { get; set; }
 
         private User()
@@ -79,7 +79,6 @@ namespace Rest414Test.Data
         }
 
         // Static Factory
-
         public static IUser GetUser(IList<string> row)
         {
             IList<string> fields = new List<string>(row);
@@ -90,8 +89,6 @@ namespace Rest414Test.Data
             return Get()
                .SetName(fields[(int)UserFields.Name])
                .SetPassword(fields[(int)UserFields.Password])
-               //.SetAddress(fields[(int)UserFields.Address])
-               //.SetEmail(fields[(int)UserFields.Email])
                .SetToken(fields[(int)UserFields.Token])
                .Build();
         }
@@ -99,13 +96,7 @@ namespace Rest414Test.Data
 
         public static IList<IUser> GetAllUsers(IList<IList<string>> rows)
         {
-            //logger.Debug("Start GetAllUsers, path = " + path);
             IList<IUser> users = new List<IUser>();
-            //if ((rows[0][(int)UserFields.Email] != null)
-            //    && (!rows[0][(int)UserFields.Email].Contains(EMAIL_SEPARATOR)))
-            //{
-            //    rows.Remove(rows[0]);
-            //}
             foreach (IList<string> row in rows)
             {
                 if (row[(int)UserFields.Name].ToLower().Equals("name")
@@ -117,7 +108,6 @@ namespace Rest414Test.Data
             }
             return users;
         }
-
 
         public override bool Equals(object obj)
         {

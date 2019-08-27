@@ -36,15 +36,10 @@ namespace Rest414Test.Services
         public ItemTemplate GetItem(ItemTemplate itemTemplate)
         {
             RestParameters urlParameters = new RestParameters()
-                .AddParameters("token", user.Token);
+                .AddParameters(RestParametersKeys.Token, user.Token);
             RestParameters pathParameters = new RestParameters()
-                .AddParameters("index", itemTemplate.Index);
+                .AddParameters(RestParametersKeys.Index, itemTemplate.Index);
             SimpleEntity simpleEntity = itemResource.HttpGetAsObject(urlParameters, pathParameters);
-            // TODO
-            //CheckService(!simpleEntity.Equals(true),
-            //    "Item " + itemTemplate.ToString() + "was not received.");
-            //Console.WriteLine("\t***GetUserItem(): simpleEntity = " + simpleEntity);
-            // TODO (new or exist)
             return new ItemTemplate(simpleEntity.content, itemTemplate.Index);
         }
 
@@ -52,17 +47,14 @@ namespace Rest414Test.Services
 
         public UserService AddItem(ItemTemplate itemTemplate)
         {
-            // TODO Develop enum + classes with const in DTO
             RestParameters pathParameters = new RestParameters()
-                .AddParameters("index", itemTemplate.Index);
+                .AddParameters(RestParametersKeys.Index, itemTemplate.Index);
             RestParameters bodyParameters = new RestParameters()
-                .AddParameters("token", user.Token)
-                .AddParameters("item", itemTemplate.Item);
+                .AddParameters(RestParametersKeys.Token, user.Token)
+                .AddParameters(RestParametersKeys.Item, itemTemplate.Item);
             SimpleEntity simpleEntity = itemResource.HttpPostAsObject(null, pathParameters, bodyParameters);
-            // TODO
             CheckService(!simpleEntity.Equals(true),
                 "Item " + itemTemplate.ToString() + "was not Added.");
-            //Console.WriteLine("\t***AddItem(): simpleEntity = " + simpleEntity);
             return this;
         }
 
@@ -71,10 +63,10 @@ namespace Rest414Test.Services
             foreach (ItemTemplate item in itemsTemplate)
             {
                 RestParameters pathParameters = new RestParameters()
-                    .AddParameters("index", item.Index);
+                    .AddParameters(RestParametersKeys.Index, item.Index);
                 RestParameters bodyParameters = new RestParameters()
-                    .AddParameters("token", user.Token)
-                    .AddParameters("item", item.Item);
+                    .AddParameters(RestParametersKeys.Token, user.Token)
+                    .AddParameters(RestParametersKeys.Item, item.Item);
                 SimpleEntity simpleEntity = itemResource.HttpPostAsObject(null, pathParameters, bodyParameters);
                 CheckService(!simpleEntity.Equals(true),
                     "Item " + item.ToString() + "was not Added.");
@@ -84,12 +76,11 @@ namespace Rest414Test.Services
         public UserService UpdateItem(ItemTemplate item, ItemTemplate updateItem)
         {
             RestParameters bodyParameters = new RestParameters()
-                   .AddParameters("token", user.Token)
-                   .AddParameters("item", updateItem.Item);
+                   .AddParameters(RestParametersKeys.Token, user.Token)
+                   .AddParameters(RestParametersKeys.Item, updateItem.Item);
             RestParameters pathParameters = new RestParameters()
-                    .AddParameters("index", item.Index);
-            
-                SimpleEntity simpleEntity = itemResource.HttpPutAsObject(null, pathParameters, bodyParameters);
+                    .AddParameters(RestParametersKeys.Index, item.Index);
+            SimpleEntity simpleEntity = itemResource.HttpPutAsObject(null, pathParameters, bodyParameters);
             CheckService(!simpleEntity.Equals(true),
                 "Item " + item.ToString() + "was not Added.");
             return this;
@@ -112,10 +103,9 @@ namespace Rest414Test.Services
         public GuestService Logout()
         {
             RestParameters bodyParameters = new RestParameters()
-                .AddParameters("token", user.Token)
-                .AddParameters("name", user.Name);
+                .AddParameters(RestParametersKeys.Token, user.Token)
+                .AddParameters(RestParametersKeys.Name, user.Name);
             SimpleEntity simpleEntity = logoutResource.HttpPostAsObject(null, null, bodyParameters);
-
             CheckService(!simpleEntity.Equals(true), "Logout Unsuccessful.");
             user.Token = string.Empty;
             return new GuestService();
@@ -123,28 +113,21 @@ namespace Rest414Test.Services
 
         public GuestService Logout(IUser loggerOut)
         {
-            //Console.WriteLine("\t***Logout(): user = " + user);
-            //
             RestParameters bodyParameters = new RestParameters()
-                .AddParameters("token", loggerOut.Token)
-                .AddParameters("name", loggerOut.Name);
+                .AddParameters(RestParametersKeys.Token, loggerOut.Token)
+                .AddParameters(RestParametersKeys.Name, loggerOut.Name);
             SimpleEntity simpleEntity = logoutResource.HttpPostAsObject(null, null, bodyParameters);
-            //Console.WriteLine("\t***Logout(): simpleEntity = " + simpleEntity);
-            // TODO
-           // Console.WriteLine(simpleEntity.content);
             CheckService(!simpleEntity.Equals(true), "Logout Unsuccessful.");
-            //user.Token = string.Empty;
-            //Console.WriteLine("\t***Logout(): DONE ");
+            loggerOut.Token = string.Empty;
             return new GuestService();
         }
 
         public UserService ChangePassw(IUser userD, IUser newpassw)
         {
-            // TODO Develop enum + classes with const in DTO
             RestParameters bodyParameters = new RestParameters()
-                .AddParameters("token", userD.Token)
-                .AddParameters("oldpassword", userD.Password)
-                .AddParameters("newpassword", newpassw.Password);
+                .AddParameters(RestParametersKeys.Token, userD.Token)
+                .AddParameters(RestParametersKeys.OldPassword, userD.Password)
+                .AddParameters(RestParametersKeys.NewPassword, newpassw.Password);
             SimpleEntity simpleEntity = userpasswresource.HttpPutAsObject(null, null, bodyParameters);
             Console.WriteLine("ResultChangePasww = " + simpleEntity.content);
             //userD.Password = newpassw.Password;
@@ -153,7 +136,7 @@ namespace Rest414Test.Services
         public List<ItemTemplate> GetAllItems()
         {
             RestParameters urlParameters = new RestParameters()
-                .AddParameters("token", user.Token);
+                .AddParameters(RestParametersKeys.Token, user.Token);
             SimpleEntity simpleEntity = allItemsResource.HttpGetAsObject(urlParameters, null);
             Console.WriteLine(simpleEntity.content);
             List<string> list = new List<string>(simpleEntity.content

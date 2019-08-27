@@ -3,8 +3,8 @@ namespace Rest414Test.Data
 {
     public class ItemTemplate
     {
-        public string Item { get; private set; }    // Required
-        public string Index { get; private set; }   // Required
+        public string Item { get; private set; }
+        public string Index { get; private set; }
 
         public ItemTemplate(string item, string index)
         {
