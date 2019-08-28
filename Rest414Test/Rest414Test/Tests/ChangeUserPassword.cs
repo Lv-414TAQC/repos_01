@@ -17,7 +17,8 @@ namespace Rest414Test.Tests
         [TearDown]
         public void TearDown()
         {
-            userService.ChangePassw(newPassw,simpleUser);
+            //userService.ChangePassw(newPassw,simpleUser);
+            userService.ResetSystem();
         }
 
         [Test]

@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using Rest414Test.Data;
 using Rest414Test.Services;
@@ -7,6 +10,8 @@ using System;
 
 namespace Rest414Test.Tests
 {
+    [AllureNUnit]
+    [AllureDisplayIgnored]
     [TestFixture]
     class LogginedTest
     {
@@ -20,14 +25,9 @@ namespace Rest414Test.Tests
             new object[] { UserRepository.Get().Admin() }
         };
 
-        private static readonly object[] NewUsers =
+        private static readonly object[] ExistUsers =
         {
-            new object[] { UserRepository.Get().NewUser() }
-        };
-
-        private static readonly object[] ExistUser_NewUser =
-        {
-            new object[] { UserRepository.Get().ExistUser(), UserRepository.Get().NewUser() }
+            new object[] { UserRepository.Get().ExistUser() }
         };
 
         private static readonly object[] IncorrectFromCSV =
@@ -36,17 +36,17 @@ namespace Rest414Test.Tests
         [OneTimeSetUp]
         public void BeforeAllMethods()
         {
-            guestService = new GuestService();    
+            guestService = new GuestService();
         }
 
         [OneTimeTearDown]
         public void AfterAllMethods()
         {
-           
+
         }
 
-       [SetUp]
-       public void SetUp()
+        [SetUp]
+        public void SetUp()
         {
             adminService = guestService.SuccessfulAdminLogin(UserRepository.Get().Admin());
             adminService.CreateUser(UserRepository.Get().NewUser());
@@ -56,29 +56,28 @@ namespace Rest414Test.Tests
         [TearDown]
         public void TearDown()
         {
-            adminService = guestService.SuccessfulAdminLogin(UserRepository.Get().Admin());
-
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
-                guestService.logger.Info("TestContext.CurrentContext.Result.StackTrace = " + TestContext.CurrentContext.Result.StackTrace);
+                guestService.logger.Info("TestContext.CurrentContext.Result.StackTrace = " +
+                    TestContext.CurrentContext.Result.StackTrace);
             }
-           
+
             // Return to Previous State
+            adminService = guestService.SuccessfulAdminLogin(UserRepository.Get().Admin());
             if ((adminService != null) && (adminService.IsLogged()))
             {
                 //Delete created user
                 adminService.RemoveUser(UserRepository.Get().NewUser());
-                adminService.GetAllUsers();
                 adminService.Logout();
             }
-            
+
         }
 
-        [Test, TestCaseSource("NewUsers")]
+        [Test, TestCaseSource("ExistUsers")]
         public void CheckLoginLogoutUser(IUser user)
         {
             guestService.logger.Info("Start test CheckLoginLogoutUser");
-     
+
             userService = guestService.SuccessfulUserLogin(user);
             Assert.IsTrue(userService.IsLogged());
             userService.Logout();
@@ -88,6 +87,17 @@ namespace Rest414Test.Tests
         }
 
         [Test, TestCaseSource("Admins")]
+        [AllureTag("Regression_Tag")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureIssue("ATQCNET-171")]
+        [AllureTms("TMS-12")]
+        [AllureOwner("User_Owner")]
+        [AllureParentSuite("With_parameters_ParentSuite")]
+        [AllureSuite("Passed_Suite")]
+        [AllureSubSuite("NoAssert_SubSuite")]
+        [AllureEpic("Retry_Epic")]
+        [AllureFeature("RetrySmall_Feature")]
+        [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
         public void CheckLoginLogoutAdmin(IUser admin)
         {
             guestService.logger.Info("Start test CheckLoginLogoutAdmin");
@@ -100,13 +110,11 @@ namespace Rest414Test.Tests
             guestService.logger.Info("End test CheckLoginLogoutAdmin");
         }
 
-        [Test, TestCaseSource("ExistUser_NewUser")]
-        public void CheckLoginUserAsAdmin(IUser firstUser, IUser secondUser)
-        {
-            userService = guestService.SuccessfulUserLogin(firstUser);
-            Assert.IsTrue(userService.IsLogged());
-    
-            Assert.Throws<Exception>(() => guestService.SuccessfulAdminLogin(secondUser));
+        [Test, TestCaseSource("ExistUsers")]
+        public void CheckLoginUserAsAdmin(IUser existUser)
+        { 
+            Assert.Throws<Exception>(() => guestService.SuccessfulAdminLogin(existUser));
+            guestService.logger.Info("Test CheckLoginUserAsAdmin: throw expected exception");
         }
 
        
