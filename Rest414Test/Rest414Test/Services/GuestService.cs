@@ -16,6 +16,7 @@ namespace Rest414Test.Services
         protected UserAuthorizedResource userAuthorizedResource;
         protected TokenLifetimeResource tokenLifetimeResource;
         protected UserPasswordResource userpasswresource;
+        protected ResetResource resetResource;
 
         public GuestService() : base()
         {
@@ -23,6 +24,7 @@ namespace Rest414Test.Services
             userAuthorizedResource = new UserAuthorizedResource();
             tokenLifetimeResource = new TokenLifetimeResource();
             userpasswresource = new UserPasswordResource();
+            resetResource = new ResetResource();
         }
 
         // Atomic
@@ -67,7 +69,11 @@ namespace Rest414Test.Services
             return this;
 
         }
-    
+        public void ResetSystem()
+        {
+            SimpleEntity simpleEntity = resetResource.HttpGetAsObject(null, null);
+            Console.WriteLine(simpleEntity.content);
+        }
 
         public UserService SuccessfulUserLogin(IUser user)
         {
@@ -76,8 +82,7 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Password, user.Password);
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             user.Token = simpleEntity.content;
-            Console.WriteLine("LoginName = " + user.Name);
-            Console.WriteLine("LoginPassword = "+user.Password);
+            logger.Info("UserLogin = " + simpleEntity.content);
             return new UserService(user);
         }
 

@@ -148,14 +148,6 @@ namespace Rest414Test.Data
                 .Build();
         }
 
-        //public IUser NewPasswordForUser()
-        //{
-        //    return User.Get()
-        //        .SetName("")
-        //        .SetPassword("999")
-        //        .Build();
-        //}
-
         public IUser OldPasswordForUser()
         {
             return User.Get()
