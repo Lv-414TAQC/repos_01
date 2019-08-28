@@ -9,7 +9,7 @@ namespace Rest414Test.Services
 {
     public class GuestService : BaseService
     {
-        private const int LengthToken = 32;
+        protected const int LengthToken = 32;
 
         public string ResultStatus { get; set; }
         protected AdminAuthorizedResource adminAuthorizedResource;
@@ -76,8 +76,6 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Password, user.Password);
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             user.Token = simpleEntity.content;
-            Console.WriteLine("LoginName = " + user.Name);
-            Console.WriteLine("LoginPassword = "+user.Password);
             return new UserService(user);
         }
 
@@ -88,7 +86,6 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Password, adminUser.Password);
             SimpleEntity simpleEntity = adminAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             adminUser.Token = simpleEntity.content;
-            logger.Info("AdminLogin = " + simpleEntity.content);
             return new AdminService(adminUser);
         }
     }
