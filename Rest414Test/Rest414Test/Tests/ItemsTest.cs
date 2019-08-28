@@ -1,4 +1,7 @@
-﻿using NLog;
+﻿using Allure.Commons;
+using NLog;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
@@ -6,6 +9,8 @@ using Rest414Test.Tools;
 
 namespace Rest414Test.Tests
 {
+    [AllureNUnit]
+    [AllureDisplayIgnored]
     [TestFixture]
     public class ItemTest
     {
@@ -34,6 +39,17 @@ namespace Rest414Test.Tests
         }
 
         [Test, TestCaseSource("UsersCsv")]
+        [AllureTag("Regression_Tag")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureIssue("ATQCNET-53")]
+        [AllureTms("TMS-12")]
+        [AllureOwner("User_Owner")]
+        [AllureParentSuite("With_parameters_ParentSuite")]
+        [AllureSuite("Passed_Suite")]
+        [AllureSubSuite("NoAssert_SubSuite")]
+        [AllureEpic("Retry_Epic")]
+        [AllureFeature("RetrySmall_Feature")]
+        [AllureLink("Rest_Application_Link", "https://localhost:8181/")]
         public void AddItemTest(IUser admin)
         {
             logger.Info("Start AddItemTest");
