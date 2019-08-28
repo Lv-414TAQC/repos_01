@@ -37,7 +37,7 @@ namespace Rest414Test.Tests
                 adminService.Logout();
             }
             else userService.Logout();
-            
+            adminService.ResetSystem();
         }
 
         [Test, TestCaseSource("UsersCsv")]
@@ -82,10 +82,10 @@ namespace Rest414Test.Tests
             logger.Info("Start AdminAccessItemsTest");
             userService = guestService.SuccessfulUserLogin(user);
             userService.AddItems(ItemsRepository.UserListItems());
-            userService.GetAllItems();
+            Assert.IsTrue(userService.IsLogged());
             userService.Logout();
             adminService = guestService.SuccessfulAdminLogin(adminUser);
-            
+            Assert.IsTrue(adminService.IsLogged());
             Assert.IsEmpty(adminService.GetAllItems());
             logger.Info("End AdminAccessItemsTest");
         }
@@ -95,7 +95,9 @@ namespace Rest414Test.Tests
         {
             logger.Info("Start UpdateItemTest");
             adminService = guestService.SuccessfulAdminLogin(adminUser);
+            adminService.AddItems(ItemsRepository.ListItems());
             adminService.UpdateItem(existItem, updatedItem);
+            adminService.GetAllItems();
             Assert.IsTrue(adminService.IsUpdateItem(updatedItem, adminService.GetAllItems()));
             logger.Info("End UpdateItemTest");
         }
