@@ -31,11 +31,13 @@ namespace Rest414Test.Tests
         [TearDown]
         public void TearDown()
         {
+            
             if (adminService.IsLogged())
             {
                 adminService.Logout();
             }
             else userService.Logout();
+            
         }
 
         [Test, TestCaseSource("UsersCsv")]
@@ -64,10 +66,28 @@ namespace Rest414Test.Tests
         public void UserAccessItemsTest()
         {
             logger.Info("Start UserAccessItemsTest");
+            adminService = guestService.SuccessfulAdminLogin(adminUser);
+            adminService.AddItems(ItemsRepository.ListItems());
+            Assert.IsTrue(adminService.IsLogged());
+            adminService.Logout();
             userService = guestService.SuccessfulUserLogin(user);
             Assert.IsTrue(userService.IsLogged());
             Assert.IsEmpty(userService.GetAllItems());
             logger.Info("End UserAccessItemsTest");
+        }
+
+        [Test]
+        public void AdminAccessItemsTest()
+        {
+            logger.Info("Start AdminAccessItemsTest");
+            userService = guestService.SuccessfulUserLogin(user);
+            userService.AddItems(ItemsRepository.UserListItems());
+            userService.GetAllItems();
+            userService.Logout();
+            adminService = guestService.SuccessfulAdminLogin(adminUser);
+            
+            Assert.IsEmpty(adminService.GetAllItems());
+            logger.Info("End AdminAccessItemsTest");
         }
 
         [Test]
