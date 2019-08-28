@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
+using Rest414Test.Tools;
 using System;
 
 namespace Rest414Test.Tests
@@ -13,15 +14,15 @@ namespace Rest414Test.Tests
         Logger logger = LogManager.GetCurrentClassLogger();
         AdminService adminService;
         
-        IUser UserForLock = UserRepository.Get().UserForLock();
+        //IUser UserForLock = UserRepository.Get().UserForLock();
         IUser IncorrectUserForLock = UserRepository.Get().IncorrectUserForLock();
         IUser adminUser = UserRepository.Get().Admin();
 
         [SetUp]
         public void SetUp()
         {
-            
-            GuestService guestService = new GuestService();
+
+        GuestService guestService = new GuestService();
             adminService = guestService
                 .SuccessfulAdminLogin(adminUser);
         }
@@ -45,8 +46,14 @@ namespace Rest414Test.Tests
             currentCoolDownime = CoolDownTimeRepository.GetDefault();
             logger.Info("Change CoolDownTime done.");
         }
-        [Test]
-        public void CheckLockingOfUser()
+        //DataProvider
+        private static readonly object[] UserForLockCSV =
+            ListUtils.ToMultiArray(UserRepository.Get().UserForLockCsv());
+
+
+        [Test, TestCaseSource("UserForLockCSV")]
+        //[Test]
+        public void CheckLockingOfUser(IUser UserForLock) 
         {
             GuestService guestService = new GuestService();
             adminService = guestService
@@ -65,9 +72,9 @@ namespace Rest414Test.Tests
             logger.Info("List of locked users: " + adminService.GetLockedUsers());
             logger.Info("Check locking of user done.");
         }
-
-        [Test]
-        public void UnlockOfUser()
+        [Test, TestCaseSource("UserForLockCSV")]
+        //[Test]
+        public void UnlockOfUser(IUser UserForLock)
         {
             logger.Info("Unlock of user started.");
             adminService.UnlockUser(UserForLock);

@@ -5,6 +5,9 @@ using Rest414Test.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Timers;
 
 namespace Rest414Test.Services
 {
@@ -18,6 +21,7 @@ namespace Rest414Test.Services
         protected UsersResource usersResource;
         protected LockedUsersResource lockedusersResource;
         protected LockedUserResource lockeduserResource;
+        protected TokensResource tokensResource;
 
         public AdminService(IUser adminUser) : base(adminUser)
         {
@@ -29,6 +33,7 @@ namespace Rest414Test.Services
             cooldowntimeResource = new CoolDownTimeResource();
             lockedusersResource = new LockedUsersResource();
             lockeduserResource = new LockedUserResource();
+            tokensResource = new TokensResource();
            
             CheckService(!IsAdmin(adminUser),
                 "Admin " + adminUser.ToString() + "Login Unsuccessful.");
@@ -160,7 +165,7 @@ namespace Rest414Test.Services
             RestParameters bodyParameters = new RestParameters()
                 .AddParameters(RestParametersKeys.Token, user.Token);
             RestParameters pathVariables = new RestParameters()
-                .AddParameters(RestParametersKeys.Name, user1.Name); //?????
+                .AddParameters(RestParametersKeys.Name, user1.Name); 
             
             SimpleEntity simpleEntity = lockeduserResource
                 .HttpPutAsObject(null, pathVariables, bodyParameters);
@@ -244,6 +249,14 @@ namespace Rest414Test.Services
                 listUsers.Add(new User(u));       
             }
             return listUsers;
+        }
+
+        public string GetAliveTokens()
+        {
+            RestParameters urlParameters = new RestParameters()
+                .AddParameters(RestParametersKeys.Token, user.Token);
+            SimpleEntity simpleEntity = tokensResource.HttpGetAsObject(urlParameters, null);
+            return simpleEntity.content;
         }
     }
 }
