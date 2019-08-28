@@ -9,7 +9,7 @@ namespace Rest414Test.Services
 {
     public class GuestService : BaseService
     {
-        private const int LengthToken = 32;
+        protected const int LengthToken = 32;
 
         public string ResultStatus { get; set; }
         protected AdminAuthorizedResource adminAuthorizedResource;
