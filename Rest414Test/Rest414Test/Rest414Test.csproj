@@ -137,6 +137,7 @@
     <Compile Include="Tests\CoolDownTimeTest.cs" />
     <Compile Include="Tests\CreateUser.cs" />
     <Compile Include="Tests\DeleteUser.cs" />
+    <Compile Include="Tests\GettingTokenLifeTimeTests.cs" />
     <Compile Include="Tests\ItemsTest.cs" />
     <Compile Include="Tests\LogginedTest.cs" />
     <Compile Include="Tests\PosibilityToChangeTokenLifeTimeTests.cs" />
@@ -145,7 +146,6 @@
     <Compile Include="Tools\ExcelReader.cs" />
     <Compile Include="Tools\ExternalReader.cs" />
     <Compile Include="Tools\ListUtils.cs" />
-    <Compile Include="Tools\OnTimedEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="allureConfig.json" />

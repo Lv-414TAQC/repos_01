@@ -3,10 +3,6 @@ using NUnit.Framework.Interfaces;
 using Rest414Test.Data;
 using Rest414Test.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Rest414Test.Tests
 {
@@ -60,12 +56,28 @@ namespace Rest414Test.Tests
         }
 
         [Test, TestCaseSource("TokenLifeTimes")]
+        public void CheckPosibilityToChangeTokenLifeTimeWithValidAdminToken(Lifetime newTokenlifetime)
+        {
+            adminService = adminService.UpdateTokenlifetime(newTokenlifetime);
+            Lifetime currentTokenlifetime = adminService.GetCurrentTokenLifetime();
+            Assert.AreEqual(LifetimeRepository.LongTokenLifetime, currentTokenlifetime.Time);
+        }
+
+        [Test, TestCaseSource("TokenLifeTimes")]
+        public void CheckPosibilityToChangeTokenLifeTimeWithInvalidAdminToken(Lifetime newTokenlifetime)
+        {
+            adminService = new AdminService(UserRepository.Get().FakeAdmin());
+            adminService.UpdateTokenlifetime(newTokenlifetime);
+            Lifetime currentTokenlifetime = adminService.GetCurrentTokenLifetime();
+            Assert.AreNotEqual(LifetimeRepository.LongTokenLifetime, currentTokenlifetime.Time);
+        }
+
+        [Test, TestCaseSource("TokenLifeTimes")]
         public void CheckPosibilityToChangeTokenLifeTimeToCorrentValue(Lifetime newTokenlifetime)
         {
             adminService = adminService.UpdateTokenlifetime(newTokenlifetime);
             Lifetime currentTokenlifetime = adminService.GetCurrentTokenLifetime();
-            Assert.AreEqual(LifetimeRepository.LongTokenLifetime,
-                        currentTokenlifetime.Time, "Long Time Error");
+            Assert.AreEqual(LifetimeRepository.LongTokenLifetime, currentTokenlifetime.Time);
         }
 
         [Test, TestCaseSource("IncorrectTokenLifeTimes")]

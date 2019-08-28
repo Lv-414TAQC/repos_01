@@ -257,22 +257,6 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Token, user.Token);
             SimpleEntity simpleEntity = tokensResource.HttpGetAsObject(urlParameters, null);
             return simpleEntity.content;
-            
-        }
-
-        public async void GetAliveTokensAfterWait()
-        {
-            int i = 0;
-            do {
-                i++;
-                TimeSpan timeSpan = new TimeSpan(9500);
-                await Task.Delay(timeSpan);
-                Console.WriteLine("Alive tokens : " + this.GetAliveTokens());
-                if (i == 1) break;
-            }
-            while (true);
-            
-            //result = this.GetAliveTokens();
         }
     }
 }
