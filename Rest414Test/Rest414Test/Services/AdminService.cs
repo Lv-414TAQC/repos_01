@@ -160,7 +160,7 @@ namespace Rest414Test.Services
             RestParameters bodyParameters = new RestParameters()
                 .AddParameters(RestParametersKeys.Token, user.Token);
             RestParameters pathVariables = new RestParameters()
-                .AddParameters(RestParametersKeys.Name, user1.Name); //?????
+                .AddParameters(RestParametersKeys.Name, user1.Name); 
             
             SimpleEntity simpleEntity = lockeduserResource
                 .HttpPutAsObject(null, pathVariables, bodyParameters);

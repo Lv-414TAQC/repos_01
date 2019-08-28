@@ -102,7 +102,17 @@ namespace Rest414Test.Data
 
         public IList<IUser> FromCsv(string filename)
         {
-            Console.WriteLine("Run FromCsv filename = " + filename);
+            //Console.WriteLine("Run FromCsv filename = " + filename);
+            return User.GetAllUsers(new CSVReader(filename).GetAllCells());
+        }
+
+        public IList<IUser> UserForLockCsv()
+        {
+            return UserForLockCsv("UseForLock.csv");
+        }
+
+        public IList<IUser> UserForLockCsv(string filename)
+        {
             return User.GetAllUsers(new CSVReader(filename).GetAllCells());
         }
 

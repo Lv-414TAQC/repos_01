@@ -57,15 +57,9 @@ namespace Rest414Test.Services
             while (i < 4)
             {
                 UnsuccessfulLogin(user);
-                //ResultStatus = "error, user not found";
                 i++;
             }
-            //UnsuccessfulLogin(user);
-            
-                //ResultStatus = "error, user locked";
-            
             return this;
-
         }
     
 
