@@ -169,7 +169,6 @@ namespace Rest414Test.Services
 
         public AdminService UpdateTokenlifetime(Lifetime lifetime)
         {
-            Console.WriteLine("lifetime = " + lifetime + "   User = " + user);
             RestParameters bodyParameters = new RestParameters()
                 .AddParameters(RestParametersKeys.Token, user.Token)
                 .AddParameters(RestParametersKeys.Time, lifetime.Time);

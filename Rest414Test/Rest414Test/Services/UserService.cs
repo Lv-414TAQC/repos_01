@@ -26,11 +26,10 @@ namespace Rest414Test.Services
                 "User " + user.ToString() + " Login Unsuccessful.");
         }
 
-        // Atomic
 
         public bool IsLogged()
         {
-            return (user != null) && (!string.IsNullOrEmpty(user.Token) && !user.Token.Contains("ERROR, user not found"));
+            return (user != null) && (!string.IsNullOrEmpty(user.Token));
         }
 
         public ItemTemplate GetItem(ItemTemplate itemTemplate)
@@ -95,7 +94,6 @@ namespace Rest414Test.Services
                 {
                     result = true;
                 }
-                else Console.WriteLine("NOOOO");
             }
             return result;
         }
@@ -130,7 +128,6 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.NewPassword, newpassw.Password);
             SimpleEntity simpleEntity = userpasswresource.HttpPutAsObject(null, null, bodyParameters);
             logger.Info("ChangePassw = " + simpleEntity.content);
-            //userD.Password = newpassw.Password;
             return this;
         }
         public List<ItemTemplate> GetAllItems()
@@ -138,7 +135,6 @@ namespace Rest414Test.Services
             RestParameters urlParameters = new RestParameters()
                 .AddParameters(RestParametersKeys.Token, user.Token);
             SimpleEntity simpleEntity = allItemsResource.HttpGetAsObject(urlParameters, null);
-            Console.WriteLine(simpleEntity.content);
             List<string> list = new List<string>(simpleEntity.content
                 .Split(new string[] { "\n", "\t", " \t"}, StringSplitOptions.None));
             foreach (string i in list) Console.WriteLine("Element-"+i);
