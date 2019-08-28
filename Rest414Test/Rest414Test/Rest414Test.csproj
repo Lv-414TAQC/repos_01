@@ -116,6 +116,7 @@
     <Compile Include="Resources\LockedUsersResource.cs" />
     <Compile Include="Resources\LoggedInAdminsResource.cs" />
     <Compile Include="Resources\LogoutResource.cs" />
+    <Compile Include="Resources\ResetResource.cs" />
     <Compile Include="Resources\TokenLifetimeResource.cs" />
     <Compile Include="Resources\TokensResource.cs" />
     <Compile Include="Resources\UserAuthorizedResource.cs" />

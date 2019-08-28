@@ -193,6 +193,16 @@ namespace Rest414Test.Dto
                 .AddPutUrl("")
                 .AddDeleteUrl("");
         }
+
+        public static RestUrl Reset()
+        {
+            return new RestUrl()
+                .AddBaseUrl(Server)
+                .AddGetUrl("/reset")
+                .AddPostUrl("")
+                .AddPutUrl("")
+                .AddDeleteUrl("");
+        }
     }
 
 }

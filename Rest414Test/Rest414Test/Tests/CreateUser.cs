@@ -2,6 +2,8 @@ using NLog;
 using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
+using Rest414Test.Tools;
+using System;
 
 namespace Rest414Test.Tests
 {
@@ -11,8 +13,10 @@ namespace Rest414Test.Tests
         private GuestService guestService = new GuestService();
         private AdminService adminService;
 
-        IUser adminUser = UserRepository.Get().Admin();
         IUser simpleUser = UserRepository.Get().CreateNewUser();
+
+        private static readonly object[] UsersCsv =
+            ListUtils.ToMultiArray(UserRepository.Get().FromCsv());
 
         [TearDown]
         public void TearDown()
@@ -20,8 +24,8 @@ namespace Rest414Test.Tests
             adminService.RemoveUser(simpleUser);
         }
 
-        [Test]
-        public void CreateNewUserTest()
+        [Test, TestCaseSource("UsersCsv")]
+        public void CreateNewUserTest(IUser adminUser)
         {
             guestService.logger.Info("Start test CreateNewUSer ");
             adminService = guestService.SuccessfulAdminLogin(adminUser);
