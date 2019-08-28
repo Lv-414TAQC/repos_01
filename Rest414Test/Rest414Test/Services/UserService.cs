@@ -26,11 +26,10 @@ namespace Rest414Test.Services
                 "User " + user.ToString() + " Login Unsuccessful.");
         }
 
-        // Atomic
 
         public bool IsLogged()
         {
-            return (user != null) && (!string.IsNullOrEmpty(user.Token) && !user.Token.Contains("ERROR, user not found"));
+            return (user != null) && (!string.IsNullOrEmpty(user.Token));
         }
 
         public ItemTemplate GetItem(ItemTemplate itemTemplate)
@@ -95,7 +94,6 @@ namespace Rest414Test.Services
                 {
                     result = true;
                 }
-                else Console.WriteLine("NOOOO");
             }
             return result;
         }
@@ -129,7 +127,6 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.OldPassword, userD.Password)
                 .AddParameters(RestParametersKeys.NewPassword, newpassw.Password);
             SimpleEntity simpleEntity = userpasswresource.HttpPutAsObject(null, null, bodyParameters);
-            Console.WriteLine("ResultChangePasww = " + simpleEntity.content);
             //userD.Password = newpassw.Password;
             return this;
         }
