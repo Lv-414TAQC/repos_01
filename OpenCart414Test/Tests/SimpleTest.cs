@@ -78,6 +78,14 @@ namespace OpenCart414Test.Tests
                 // Clear Cache
                 //driver.Navigate().GoToUrl("http://10.26.34.233/opencart/upload/");
             }
+            //if (File.Exists(sourcePath))
+            //{
+            //    if (File.Exists(runtimePath + ALLURE_CONFIG))
+            //    {
+            //        File.Delete(runtimePath + ALLURE_CONFIG);
+            //    }
+            //    File.Copy(sourcePath, runtimePath + ALLURE_CONFIG);
+            //}
         }
 
         protected void TakesScreenshot(string filePath)

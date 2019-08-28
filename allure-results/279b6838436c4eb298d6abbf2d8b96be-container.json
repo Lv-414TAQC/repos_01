@@ -1,0 +1,76 @@
+{
+  "uuid": "1aae90ab-fa22-4d22-b487-5bd1b2e1df46-tc-0-1000",
+  "name": "OpenCart414Test.Tests.SimpleTest.SoftserveAcademy",
+  "children": [
+    "beb6d297-a622-41b8-b6a7-41523c9f6a38-tr-0-1001"
+  ],
+  "befores": [
+    {
+      "name": "BeforeAllMethods",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1566989678103,
+      "stop": 1566989678103
+    },
+    {
+      "name": "SetUp",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1566989678104,
+      "stop": 1566989678104
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1566989678104,
+      "stop": 1566989678104
+    },
+    {
+      "name": "AfterAllMethods",
+      "status": "none",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "It's not possible to get status of OneTimeTearDown",
+        "trace": "See Allure.NUnit wiki"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1566989678104,
+      "stop": 1566989678104
+    }
+  ],
+  "links": [],
+  "start": 1566989665268,
+  "stop": 1566989678170
+}
