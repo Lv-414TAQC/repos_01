@@ -183,6 +183,16 @@ namespace Rest414Test.Dto
                 .AddPutUrl("")
                 .AddDeleteUrl("");
         }
+
+        public static RestUrl GetTokens()
+        {
+            return new RestUrl()
+                .AddBaseUrl(Server)
+                .AddGetUrl("/login/tockens")
+                .AddPostUrl("")
+                .AddPutUrl("")
+                .AddDeleteUrl("");
+        }
     }
 
 }

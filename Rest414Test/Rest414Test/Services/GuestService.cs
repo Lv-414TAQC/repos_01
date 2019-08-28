@@ -75,6 +75,7 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Name, user.Name)
                 .AddParameters(RestParametersKeys.Password, user.Password);
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
+            Console.WriteLine("content : " + simpleEntity.content);
             user.Token = simpleEntity.content;
             Console.WriteLine("LoginName = " + user.Name);
             Console.WriteLine("LoginPassword = "+user.Password);

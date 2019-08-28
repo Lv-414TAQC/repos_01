@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Timers;
 
 namespace Rest414Test.Services
 {
@@ -19,6 +21,7 @@ namespace Rest414Test.Services
         protected UsersResource usersResource;
         protected LockedUsersResource lockedusersResource;
         protected LockedUserResource lockeduserResource;
+        protected TokensResource tokensResource;
 
         public AdminService(IUser adminUser) : base(adminUser)
         {
@@ -30,6 +33,7 @@ namespace Rest414Test.Services
             cooldowntimeResource = new CoolDownTimeResource();
             lockedusersResource = new LockedUsersResource();
             lockeduserResource = new LockedUserResource();
+            tokensResource = new TokensResource();
            
             CheckService(!IsAdmin(adminUser),
                 "Admin " + adminUser.ToString() + "Login Unsuccessful.");
@@ -254,9 +258,25 @@ namespace Rest414Test.Services
         public string GetAliveTokens()
         {
             RestParameters urlParameters = new RestParameters()
-                .AddParameters("token", user.Token);
-            SimpleEntity simpleEntity = usersResource.HttpGetAsObject(urlParameters, null);
+                .AddParameters(RestParametersKeys.Token, user.Token);
+            SimpleEntity simpleEntity = tokensResource.HttpGetAsObject(urlParameters, null);
             return simpleEntity.content;
+            
+        }
+
+        public async void GetAliveTokensAfterWait()
+        {
+            int i = 0;
+            do {
+                i++;
+                TimeSpan timeSpan = new TimeSpan(9500);
+                await Task.Delay(timeSpan);
+                Console.WriteLine("Alive tokens : " + this.GetAliveTokens());
+                if (i == 1) break;
+            }
+            while (true);
+            
+            //result = this.GetAliveTokens();
         }
     }
 }

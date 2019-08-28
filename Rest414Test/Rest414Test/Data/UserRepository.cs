@@ -183,5 +183,13 @@ namespace Rest414Test.Data
                 .SetToken("DT2ES1AHRY5Y09MMC6A5XSQ500W74E3E")
                 .Build();
         }
+
+        public IUser TestUser()
+        {
+            return User.Get()
+               .SetName("TestUser")
+               .SetPassword("11121")
+               .Build();
+        }
     }
 }

@@ -47,12 +47,12 @@ namespace Rest414Test.Tests
             {
                 Console.WriteLine("TestContext.CurrentContext.Result.StackTrace = " + TestContext.CurrentContext.Result.StackTrace);
             }
-            if ((adminService != null) && (adminService.IsLoggined()))
+            if ((adminService != null) && (adminService.IsLogged()))
             {
                 Lifetime currentTokenlifetime = LifetimeRepository.GetDefault();
                 adminService = adminService.UpdateTokenlifetime(currentTokenlifetime);
             }
-            if ((adminService != null) && (adminService.IsLoggined()))
+            if ((adminService != null) && (adminService.IsLogged()))
             {
                 guestService = adminService.Logout();
                 adminService = null;
@@ -64,7 +64,7 @@ namespace Rest414Test.Tests
         {
             adminService = adminService.UpdateTokenlifetime(newTokenlifetime);
             Lifetime currentTokenlifetime = adminService.GetCurrentTokenLifetime();
-            Assert.AreEqual(LifetimeRepository.LONG_TOKEN_LIFETIME,
+            Assert.AreEqual(LifetimeRepository.LongTokenLifetime,
                         currentTokenlifetime.Time, "Long Time Error");
         }
 

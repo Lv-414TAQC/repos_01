@@ -102,6 +102,7 @@
     <Compile Include="Resources\LoggedInAdminsResource.cs" />
     <Compile Include="Resources\LogoutResource.cs" />
     <Compile Include="Resources\TokenLifetimeResource.cs" />
+    <Compile Include="Resources\TokensResource.cs" />
     <Compile Include="Resources\UserAuthorizedResource.cs" />
     <Compile Include="Resources\RestCrud.cs" />
     <Compile Include="Resources\RestQueries.cs" />
@@ -125,11 +126,11 @@
     <Compile Include="Tests\LogginedTest.cs" />
     <Compile Include="Tests\PosibilityToChangeTokenLifeTimeTests.cs" />
     <Compile Include="Tests\RealLifeTimeTokenTests.cs" />
-    <Compile Include="Tests\SecondTest.cs" />
     <Compile Include="Tools\CSVReader.cs" />
     <Compile Include="Tools\ExcelReader.cs" />
     <Compile Include="Tools\ExternalReader.cs" />
     <Compile Include="Tools\ListUtils.cs" />
+    <Compile Include="Tools\OnTimedEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\additionalAdmins.csv" />
