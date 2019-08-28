@@ -3,8 +3,6 @@ using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
 using Rest414Test.Tools;
-using System;
-using System.Collections.Generic;
 
 namespace Rest414Test.Tests
 {
