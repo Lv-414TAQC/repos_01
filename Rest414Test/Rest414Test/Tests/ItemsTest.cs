@@ -14,13 +14,13 @@ namespace Rest414Test.Tests
     [TestFixture]
     public class ItemTest
     {
-        private Logger logger = LogManager.GetCurrentClassLogger();
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         private static readonly object[] UsersCsv =
             ListUtils.ToMultiArray(UserRepository.Get().FromCsv());
 
-        IUser adminUser = UserRepository.Get().Admin();
         GuestService guestService = new GuestService();
-        AdminService adminService;
+        IUser adminUser = UserRepository.Get().Admin();
+        AdminService adminService;       
 
         UserService userService;
         IUser user = UserRepository.Get().ExistUser();
@@ -44,7 +44,6 @@ namespace Rest414Test.Tests
         [AllureTag("Regression_Tag")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureIssue("ATQCNET-53")]
-        [AllureTms("TMS-12")]
         [AllureOwner("User_Owner")]
         [AllureParentSuite("With_parameters_ParentSuite")]
         [AllureSuite("Passed_Suite")]
