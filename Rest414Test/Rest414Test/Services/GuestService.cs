@@ -51,6 +51,7 @@ namespace Rest414Test.Services
                 logger.Error("Custom exception: entered valid login in UnsuccessfulLogin method");
                 throw new Exception("Valid login"); 
             }
+            ResultStatus = "true";
             return this;
         }
         public GuestService LockingUser(IUser user)
@@ -65,7 +66,7 @@ namespace Rest414Test.Services
         }
         public void ResetSystem()
         {
-            SimpleEntity simpleEntity = resetResource.HttpGetAsObject(null, null);
+            resetResource.HttpGetAsObject(null, null);
         }
 
         public UserService SuccessfulUserLogin(IUser user)
@@ -88,6 +89,16 @@ namespace Rest414Test.Services
             SimpleEntity simpleEntity = adminAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             adminUser.Token = simpleEntity.content;
             return new AdminService(adminUser);
+        }
+
+        public GuestService TryUpdateTokenlifetime(Lifetime lifetime, UserService admin)
+        {
+            RestParameters bodyParameters = new RestParameters()
+                .AddParameters(RestParametersKeys.Token, admin.GetToken())
+                .AddParameters(RestParametersKeys.Time, lifetime.Time);
+            SimpleEntity simpleEntity = tokenLifetimeResource.HttpPutAsObject(null, null, bodyParameters);
+           
+            return this;
         }
     }
 }

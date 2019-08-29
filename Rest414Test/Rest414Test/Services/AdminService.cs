@@ -172,14 +172,24 @@ namespace Rest414Test.Services
             return this;
         }
 
+
+        public AdminService LockUser(IUser user1)
+        {
+            RestParameters bodyParameters = new RestParameters()
+                .AddParameters(RestParametersKeys.Token, user.Token);
+            RestParameters pathVariables = new RestParameters()
+                .AddParameters(RestParametersKeys.Name, user1.Name);
+
+            SimpleEntity simpleEntity = lockeduserResource
+                .HttpPostAsObject(null, pathVariables, bodyParameters);
+            return this;
+        }
         public AdminService UpdateTokenlifetime(Lifetime lifetime)
         {
             RestParameters bodyParameters = new RestParameters()
                 .AddParameters(RestParametersKeys.Token, user.Token)
                 .AddParameters(RestParametersKeys.Time, lifetime.Time);
             SimpleEntity simpleEntity = tokenLifetimeResource.HttpPutAsObject(null, null, bodyParameters);
-            CheckService(!simpleEntity.Equals(true),
-                "Tokenlifetime " + lifetime.ToString() + " was not Updated.");
             return this;
         }
         public AdminService UpdateCoolDowntime(CoolDownTime cooldowntime)
