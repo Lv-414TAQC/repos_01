@@ -47,8 +47,8 @@
     <Reference Include="AllureCSharpCommons, Version=0.1.0.29896, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AllureCSharpCommons.0.2.0\lib\net40\AllureCSharpCommons.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
@@ -61,14 +61,14 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.4.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="MimeTypesMap, Version=1.0.3.0, Culture=neutral, PublicKeyToken=1b320cc08ad5aa89, processorArchitecture=MSIL">
-      <HintPath>..\packages\MimeTypesMap.1.0.3\lib\net45\MimeTypesMap.dll</HintPath>
+    <Reference Include="MimeTypesMap, Version=1.0.8.0, Culture=neutral, PublicKeyToken=1b320cc08ad5aa89, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeTypesMap.1.0.8\lib\net452\MimeTypesMap.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.6.6\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\packages\NLog.4.6.7\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="NUnit.Allure, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.Allure.1.0.6\lib\net45\NUnit.Allure.dll</HintPath>
@@ -131,16 +131,17 @@
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\GuestService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Tests\ChangeUserPasswordTest.cs" />
+    <Compile Include="Tests\CreateUserTest.cs" />
+    <Compile Include="Tests\DeleteUserTest.cs" />
     <Compile Include="Tests\AdminTests.cs" />
     <Compile Include="Tests\AdminTestExternalData.cs" />
     <Compile Include="Tests\ChangeUserPassword.cs" />
     <Compile Include="Tests\CheckCoolDownTimeTest.cs" />
     <Compile Include="Tests\CoolDownTimeTest.cs" />
-    <Compile Include="Tests\CreateUser.cs" />
-    <Compile Include="Tests\DeleteUser.cs" />
     <Compile Include="Tests\GettingTokenLifeTimeTests.cs" />
     <Compile Include="Tests\ItemsTest.cs" />
-    <Compile Include="Tests\LogginedTest.cs" />
+    <Compile Include="Tests\LoggedTest.cs" />
     <Compile Include="Tests\PosibilityToChangeTokenLifeTimeTests.cs" />
     <Compile Include="Tests\RealLifeTimeTokenTests.cs" />
     <Compile Include="Tools\CSVReader.cs" />
@@ -150,7 +151,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="allureConfig.json" />
-    <None Include="allureConfig.Template.json" />
     <None Include="app.config" />
     <None Include="Assets\additionalAdmins.csv" />
     <None Include="Assets\additionalAdmins.xlsx" />
@@ -180,6 +180,10 @@
   <PropertyGroup>
     <PostBuildEvent>copy /b $(ProjectDir)\Assets\*.* $(TargetDir)
 copy /b $(ProjectDir)\allureConfig.json $(TargetDir)</PostBuildEvent>
+    <PostBuildEvent>
+      copy /b $(ProjectDir)\Assets\*.* $(TargetDir)
+      copy /b $(ProjectDir)\allureConfig.json $(TargetDir)
+    </PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\MSTest.TestAdapter.1.4.0\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.1.4.0\build\net45\MSTest.TestAdapter.targets')" />
   <PropertyGroup>

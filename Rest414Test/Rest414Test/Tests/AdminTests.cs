@@ -39,8 +39,7 @@ namespace Rest414Test.Tests
         [Test]
         [AllureTag("Regression_Tag")]
         [AllureSeverity(SeverityLevel.normal)]
-        [AllureIssue("ATQCNET-53")]
-        [AllureTms("TMS-12")]
+        [AllureIssue("ATQCNET-202")]
         [AllureOwner("User_Owner")]
         [AllureParentSuite("With_parameters_ParentSuite")]
         [AllureSuite("Passed_Suite")]
@@ -57,6 +56,16 @@ namespace Rest414Test.Tests
         }
 
         [Test]
+        [AllureTag("Regression_Tag")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureIssue("ATQCNET-203")]
+        [AllureOwner("User_Owner")]
+        [AllureParentSuite("With_parameters_ParentSuite")]
+        [AllureSuite("Passed_Suite")]
+        [AllureSubSuite("NoAssert_SubSuite")]
+        [AllureEpic("Retry_Epic")]
+        [AllureFeature("RetrySmall_Feature")]
+        [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
         public void CheckLoggingInAdmin()
         {
             logger.Info("Checking logging admin in started.");
@@ -67,6 +76,16 @@ namespace Rest414Test.Tests
         }
 
         [Test]
+        [AllureTag("Regression_Tag")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureIssue("ATQCNET-204")]
+        [AllureOwner("User_Owner")]
+        [AllureParentSuite("With_parameters_ParentSuite")]
+        [AllureSuite("Passed_Suite")]
+        [AllureSubSuite("NoAssert_SubSuite")]
+        [AllureEpic("Retry_Epic")]
+        [AllureFeature("RetrySmall_Feature")]
+        [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
         public void CheckLoggingOutAdmin()
         {
             logger.Info("Checking logging admin out started.");
@@ -80,6 +99,16 @@ namespace Rest414Test.Tests
         }
 
         [Test]
+        [AllureTag("Regression_Tag")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureIssue("ATQCNET-205")]
+        [AllureOwner("User_Owner")]
+        [AllureParentSuite("With_parameters_ParentSuite")]
+        [AllureSuite("Passed_Suite")]
+        [AllureSubSuite("NoAssert_SubSuite")]
+        [AllureEpic("Retry_Epic")]
+        [AllureFeature("RetrySmall_Feature")]
+        [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
         public void CheckRemovingAdmin()
         {
             logger.Info("Checking removing admin started.");
@@ -92,6 +121,16 @@ namespace Rest414Test.Tests
         }
 
         [Test]
+        [AllureTag("Regression_Tag")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureIssue("ATQCNET-206")]
+        [AllureOwner("User_Owner")]
+        [AllureParentSuite("With_parameters_ParentSuite")]
+        [AllureSuite("Passed_Suite")]
+        [AllureSubSuite("NoAssert_SubSuite")]
+        [AllureEpic("Retry_Epic")]
+        [AllureFeature("RetrySmall_Feature")]
+        [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
         public void CheckRemovingLoggedInAdmin()
         {
             logger.Info("Checking removing logged in admin started.");
@@ -107,6 +146,16 @@ namespace Rest414Test.Tests
         }
 
         [Test]
+        [AllureTag("Regression_Tag")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureIssue("ATQCNET-207")]
+        [AllureOwner("User_Owner")]
+        [AllureParentSuite("With_parameters_ParentSuite")]
+        [AllureSuite("Passed_Suite")]
+        [AllureSubSuite("NoAssert_SubSuite")]
+        [AllureEpic("Retry_Epic")]
+        [AllureFeature("RetrySmall_Feature")]
+        [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
         public void CheckAdminRemovingHimself()
         {
             logger.Info("Checking removing admin by himself started.");
@@ -121,6 +170,16 @@ namespace Rest414Test.Tests
         }
 
         [Test]
+        [AllureTag("Regression_Tag")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureIssue("ATQCNET-208")]
+        [AllureOwner("User_Owner")]
+        [AllureParentSuite("With_parameters_ParentSuite")]
+        [AllureSuite("Passed_Suite")]
+        [AllureSubSuite("NoAssert_SubSuite")]
+        [AllureEpic("Retry_Epic")]
+        [AllureFeature("RetrySmall_Feature")]
+        [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
         public void CheckAddingSameNameUser()
         {
             logger.Info("Checking adding a user with the same name as previously removed admin's started.");

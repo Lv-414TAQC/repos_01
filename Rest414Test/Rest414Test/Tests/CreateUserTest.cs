@@ -1,15 +1,20 @@
-using NLog;
 using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
 using Rest414Test.Tools;
-using System;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using Allure.Commons;
+using NLog;
 
 namespace Rest414Test.Tests
 {
+    [AllureNUnit]
+    [AllureDisplayIgnored]
     [TestFixture]
-    class CreateUser
-    {        
+    class CreateUserTest
+    {
+        public Logger logger = LogManager.GetCurrentClassLogger();
         private GuestService guestService = new GuestService();
         private AdminService adminService;
 
@@ -21,19 +26,26 @@ namespace Rest414Test.Tests
         [TearDown]
         public void TearDown()
         {
-            adminService.RemoveUser(simpleUser);
+            adminService.ResetSystem();
         }
 
         [Test, TestCaseSource("UsersCsv")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureIssue("ATQCNET-214")]        
+        [AllureOwner("DomashovetsDmytro")]
+        [AllureParentSuite("CreateUserTest")]
+        [AllureSuite("Main_Suit")]
+        [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
         public void CreateNewUserTest(IUser adminUser)
         {
-            guestService.logger.Info("Start test CreateNewUSer ");
+            logger.Info("Start test CreateNewUSer ");
             adminService = guestService.SuccessfulAdminLogin(adminUser);
             Assert.IsTrue(adminService.IsLogged());
             //
             adminService.CreateUser(simpleUser);
-            Assert.IsTrue(adminService.GetAllUsers().Contains(new User(simpleUser.Name)));
-            guestService.logger.Info("End test CreateNewUSer");
+            Assert.IsTrue(adminService.GetAllUsers()
+                .Contains(simpleUser));
+            logger.Info("End test CreateNewUSer");
 
         }
     }

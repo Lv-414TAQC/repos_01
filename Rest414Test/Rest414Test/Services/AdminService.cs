@@ -190,8 +190,6 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Token, user.Token)
                 .AddParameters(RestParametersKeys.Time, lifetime.Time);
             SimpleEntity simpleEntity = tokenLifetimeResource.HttpPutAsObject(null, null, bodyParameters);
-            CheckService(!simpleEntity.Equals(true),
-                "Tokenlifetime " + lifetime.ToString() + " was not Updated.");
             return this;
         }
         public AdminService UpdateCoolDowntime(CoolDownTime cooldowntime)
@@ -228,7 +226,7 @@ namespace Rest414Test.Services
                 .HttpDeleteAsObject(urlParameters, null, null);
             CheckService(!simpleEntity.Equals(true),
                 "User " + newAdmin.ToString() + "was not Removed.");
-            logger.Info("RemoveUser = " + simpleEntity.content);
+            //logger.Info("RemoveUser = " + simpleEntity.content);
             return this;
         }
         public UserService CreateUser(IUser newUser)
@@ -240,7 +238,7 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Rights, ParamFalse);
             SimpleEntity simpleEntity = userResource
                 .HttpPostAsObject(urlParameters, null, null);
-            logger.Info("CreateUser = " + simpleEntity.content);
+            //logger.Info("CreateUser = " + simpleEntity.content);
             return this;
         }
 

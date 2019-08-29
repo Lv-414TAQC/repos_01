@@ -48,9 +48,10 @@ namespace Rest414Test.Services
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             if (simpleEntity.content.Length == LengthToken)
             {
-                logger.Error("Custom exception: entered valid login in UnsuccessfulLogin method");
+                //logger.Error("Custom exception: entered valid login in UnsuccessfulLogin method");
                 throw new Exception("Valid login"); 
             }
+            ResultStatus = "true";
             return this;
         }
         public GuestService LockingUser(IUser user)
@@ -74,9 +75,7 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Name, user.Name)
                 .AddParameters(RestParametersKeys.Password, user.Password);
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
-            Console.WriteLine("content : " + simpleEntity.content);
             user.Token = simpleEntity.content;
-            logger.Info("UserLogin = " + simpleEntity.content);
             return new UserService(user);
         }
 
@@ -88,6 +87,16 @@ namespace Rest414Test.Services
             SimpleEntity simpleEntity = adminAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             adminUser.Token = simpleEntity.content;
             return new AdminService(adminUser);
+        }
+
+        public GuestService TryUpdateTokenlifetime(Lifetime lifetime, UserService admin)
+        {
+            RestParameters bodyParameters = new RestParameters()
+                .AddParameters(RestParametersKeys.Token, admin.GetToken())
+                .AddParameters(RestParametersKeys.Time, lifetime.Time);
+            SimpleEntity simpleEntity = tokenLifetimeResource.HttpPutAsObject(null, null, bodyParameters);
+           
+            return this;
         }
     }
 }

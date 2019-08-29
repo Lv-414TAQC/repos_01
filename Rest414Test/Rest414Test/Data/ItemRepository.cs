@@ -16,6 +16,14 @@ namespace Rest414Test.Data
         {
             return new ItemTemplate("my second information", "2345");
         }
+        public static ItemTemplate UserItemFirst()
+        {
+            return new ItemTemplate("first user item", "888");
+        }
+        public static ItemTemplate UserItemSecond()
+        {
+            return new ItemTemplate("second user item", "999");
+        }
         public static ItemTemplate UpdateItem()
         {
             return new ItemTemplate("updated information", "123");

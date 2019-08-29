@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
-using System;
 using System.Threading.Tasks;
 using Allure.Commons;
 using NLog;
@@ -43,14 +42,14 @@ namespace Rest414Test.Tests
                 adminService.CreateUser(UserRepository.Get().TestUser());
                 UserService testUser = guestService.SuccessfulUserLogin(UserRepository.Get().TestUser());
                 string userToken = testUser.GetToken();
-                logger.Info("userToken : {0}", userToken);
+                logger.Info("   userToken : {0}", userToken);
                 await Task.Delay(9500);
                 string aliveTokensBeforeTimeEnd = adminService.GetAliveTokens();
-                logger.Info("aliveTokensBeforeTimeEnd : {0}", aliveTokensBeforeTimeEnd);
+                logger.Info("   aliveTokensBeforeTimeEnd : {0}", aliveTokensBeforeTimeEnd);
                 adminService = guestService.SuccessfulAdminLogin(UserRepository.Get().Admin());
                 await Task.Delay(1000);
                 string aliveTokensAfterTimeEnd = adminService.GetAliveTokens();
-                logger.Info("aliveTokensAfterTimeEnd : {0}", aliveTokensAfterTimeEnd);
+                logger.Info("   aliveTokensAfterTimeEnd : {0}", aliveTokensAfterTimeEnd);
                 Assert.IsTrue(aliveTokensBeforeTimeEnd.Contains(userToken));
                 Assert.IsFalse(aliveTokensAfterTimeEnd.Contains(userToken));
             }).Unwrap();
