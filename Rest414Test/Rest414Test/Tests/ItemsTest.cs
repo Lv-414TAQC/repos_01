@@ -31,12 +31,6 @@ namespace Rest414Test.Tests
         [TearDown]
         public void TearDown()
         {
-            
-            if (adminService.IsLogged())
-            {
-                adminService.Logout();
-            }
-            else userService.Logout();
             adminService.ResetSystem();
         }
 
