@@ -1,0 +1,44 @@
+{
+  "uuid": "011409f0-2d96-4813-9bda-0bb64d8b1374-tc-0-1008",
+  "name": "Rest414Test.Tests.AdminTests.CheckLoggingInAdmin",
+  "children": [
+    "f7cc02c2-9a8c-4275-b261-a2365b0e6102-tr-0-1010"
+  ],
+  "befores": [
+    {
+      "name": "SetUp",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112229913,
+      "stop": 1567112229913
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112229913,
+      "stop": 1567112229913
+    }
+  ],
+  "links": [],
+  "start": 1567112229898,
+  "stop": 1567112229918
+}

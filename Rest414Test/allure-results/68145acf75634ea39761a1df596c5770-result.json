@@ -1,0 +1,63 @@
+{
+  "uuid": "ac142eaf-4c13-477d-ba3d-2c7768b34536-tr-0-1036",
+  "historyId": "Rest414Test.Tests.ItemTest.UpdateItemTest",
+  "fullName": "Rest414Test.Tests.ItemTest.UpdateItemTest",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ALENA"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.ItemTest"
+    },
+    {
+      "name": "testMethod",
+      "value": "UpdateItemTest"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.ItemTest"
+    }
+  ],
+  "links": [],
+  "name": "UpdateItemTest",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "UpdateItemTest",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "735325ea37db463db54007305550aa62-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567112230414,
+      "stop": 1567112230433
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1567112230414,
+  "stop": 1567112230433
+}

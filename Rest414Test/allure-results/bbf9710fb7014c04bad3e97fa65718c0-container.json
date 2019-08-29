@@ -1,0 +1,44 @@
+{
+  "uuid": "8d3d951b-0a1f-4f0e-b762-64651932dc20-tc-0-1008",
+  "name": "Rest414Test.Tests.AdminTests.CheckAddingSameNameUser",
+  "children": [
+    "8e1b5405-49c7-4aac-8ce5-e060c30428a4-tr-0-1015"
+  ],
+  "befores": [
+    {
+      "name": "SetUp",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112931737,
+      "stop": 1567112931737
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112931737,
+      "stop": 1567112931737
+    }
+  ],
+  "links": [],
+  "start": 1567112931642,
+  "stop": 1567112931749
+}

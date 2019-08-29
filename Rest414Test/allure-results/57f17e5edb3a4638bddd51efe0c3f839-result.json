@@ -1,0 +1,106 @@
+{
+  "uuid": "f7cc02c2-9a8c-4275-b261-a2365b0e6102-tr-0-1010",
+  "historyId": "Rest414Test.Tests.AdminTests.CheckLoggingInAdmin",
+  "fullName": "Rest414Test.Tests.AdminTests.CheckLoggingInAdmin",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ALENA"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.AdminTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "CheckLoggingInAdmin"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.AdminTests"
+    },
+    {
+      "name": "tag",
+      "value": "Regression_Tag"
+    },
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "owner",
+      "value": "User_Owner"
+    },
+    {
+      "name": "parentSuite",
+      "value": "With_parameters_ParentSuite"
+    },
+    {
+      "name": "suite",
+      "value": "Passed_Suite"
+    },
+    {
+      "name": "subSuite",
+      "value": "NoAssert_SubSuite"
+    },
+    {
+      "name": "epic",
+      "value": "Retry_Epic"
+    },
+    {
+      "name": "feature",
+      "value": "RetrySmall_Feature"
+    }
+  ],
+  "links": [
+    {
+      "name": "ATQCNET-203",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-203",
+      "type": "issue"
+    },
+    {
+      "name": "Rest_Application_Link",
+      "url": "https://localhost:8080/",
+      "type": "link"
+    }
+  ],
+  "name": "CheckLoggingInAdmin",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "CheckLoggingInAdmin",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "164f9b543ce846138e5076f7cee4ca6c-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567112229898,
+      "stop": 1567112229914
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1567112229898,
+  "stop": 1567112229914
+}

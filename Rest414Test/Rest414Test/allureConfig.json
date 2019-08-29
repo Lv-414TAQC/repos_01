@@ -1,6 +1,7 @@
 ﻿{
   "allure": {
-    "directory": "C:/Users/alena/repos_01/Rest414Test/allure-results/",
+    //"directory": "C:/Users/alena/repos_01/Rest414Test/allure-results/",
+    "directory": "allure-results",
     "links": [
       "{link}",
       "https://testrail.com/browse/{tms}",

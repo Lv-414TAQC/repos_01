@@ -1,0 +1,59 @@
+{
+  "uuid": "6ef7fc4e-ee3b-400f-bcaf-5c75d0862359-tc-0-1037",
+  "name": "Rest414Test.Tests.LoggedTest.CheckLoginUserAsAdmin([Name: akimatc, Password: qwerty, Token: ])",
+  "children": [
+    "1c296c60-7473-44dd-8c55-671ba40e23a7-tr-0-1042"
+  ],
+  "befores": [
+    {
+      "name": "BeforeAllMethods",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112932646,
+      "stop": 1567112932646
+    },
+    {
+      "name": "SetUp",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112932646,
+      "stop": 1567112932646
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112932646,
+      "stop": 1567112932646
+    }
+  ],
+  "links": [],
+  "start": 1567112932628,
+  "stop": 1567112932671
+}

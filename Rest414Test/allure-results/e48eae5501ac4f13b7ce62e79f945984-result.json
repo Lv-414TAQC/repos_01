@@ -1,0 +1,90 @@
+{
+  "uuid": "30124b80-b61b-4cda-8def-826a6243a1f6-tr-0-1001",
+  "historyId": "Rest414Test.Tests.ChangeUserPasswordTest.ChangePassworddTest",
+  "fullName": "Rest414Test.Tests.ChangeUserPasswordTest.ChangePassworddTest",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ALENA"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.ChangeUserPasswordTest"
+    },
+    {
+      "name": "testMethod",
+      "value": "ChangePassworddTest"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.ChangeUserPasswordTest"
+    },
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "owner",
+      "value": "DomashovetsDmytro"
+    },
+    {
+      "name": "parentSuite",
+      "value": "ChangeUserPasswordTest"
+    },
+    {
+      "name": "suite",
+      "value": "Main_Suit"
+    }
+  ],
+  "links": [
+    {
+      "name": "ATQCNET-216",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-216",
+      "type": "issue"
+    },
+    {
+      "name": "Rest_Application_Link",
+      "url": "https://localhost:8080/",
+      "type": "link"
+    }
+  ],
+  "name": "ChangePassworddTest",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "ChangePassworddTest",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "e43c6b2a08244131a49aafe2a24c6de5-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567112931896,
+      "stop": 1567112931906
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1567112931896,
+  "stop": 1567112931906
+}

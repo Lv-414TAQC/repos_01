@@ -1,0 +1,111 @@
+{
+  "uuid": "861aa5ea-0398-487b-a8a2-1ee867cbcc2d-tr-0-1024",
+  "historyId": "Rest414Test.Tests.CheckCoolDownTimeTest.LockOfUser([Name: user, Password: 123456, Token: ])",
+  "fullName": "Rest414Test.Tests.CheckCoolDownTimeTest.LockOfUser([Name: user, Password: 123456, Token: ])",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ALENA"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.CheckCoolDownTimeTest"
+    },
+    {
+      "name": "testMethod",
+      "value": "LockOfUser"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.CheckCoolDownTimeTest"
+    },
+    {
+      "name": "tag",
+      "value": "Regression_Tag"
+    },
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "owner",
+      "value": "Alena Basanets"
+    },
+    {
+      "name": "parentSuite",
+      "value": "With_parameters_ParentSuite"
+    },
+    {
+      "name": "suite",
+      "value": "Passed_Suite"
+    },
+    {
+      "name": "subSuite",
+      "value": "NoAssert_SubSuite"
+    },
+    {
+      "name": "epic",
+      "value": "Retry_Epic"
+    },
+    {
+      "name": "feature",
+      "value": "RetrySmall_Feature"
+    }
+  ],
+  "links": [
+    {
+      "name": "ATQCNET-53",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-53",
+      "type": "issue"
+    },
+    {
+      "name": "Rest_Application_Link",
+      "url": "https://localhost:8080/",
+      "type": "link"
+    }
+  ],
+  "name": "LockOfUser([Name: user, Password: 123456, Token: ])",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "LockOfUser([Name: user, Password: 123456, Token: ])",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "a8d4642e471146c888f91e0da94b01cd-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567112230089,
+      "stop": 1567112230131
+    }
+  ],
+  "attachments": [],
+  "parameters": [
+    {
+      "name": "Param #0",
+      "value": "[Name: user, Password: 123456, Token: ]"
+    }
+  ],
+  "start": 1567112230089,
+  "stop": 1567112230131
+}

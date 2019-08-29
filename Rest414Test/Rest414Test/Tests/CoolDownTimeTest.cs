@@ -36,13 +36,9 @@ namespace Rest414Test.Tests
         [Test]
         [AllureTag("Regression_Tag")]
         [AllureSeverity(SeverityLevel.normal)]
-        [AllureIssue("ATQCNET-53")]
+        [AllureIssue("ATQCNET-218")]
         [AllureOwner("Alena Basanets")]
-        [AllureParentSuite("With_parameters_ParentSuite")]
-        [AllureSuite("Passed_Suite")] //change names
-        [AllureSubSuite("NoAssert_SubSuite")]
-        [AllureEpic("Retry_Epic")]
-        [AllureFeature("RetrySmall_Feature")]
+        [AllureParentSuite("CoolDownTimeTest")]
         [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
         public void ChangeCoolDownTime()
         {

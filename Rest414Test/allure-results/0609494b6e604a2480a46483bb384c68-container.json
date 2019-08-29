@@ -1,0 +1,59 @@
+{
+  "uuid": "d8f09874-1985-48fc-8213-e3993e6b235f-tc-0-1037",
+  "name": "Rest414Test.Tests.LoggedTest.CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
+  "children": [
+    "c5ad69cd-ba34-41ad-a21f-8af60c4947dd-tr-0-1040"
+  ],
+  "befores": [
+    {
+      "name": "BeforeAllMethods",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112932587,
+      "stop": 1567112932587
+    },
+    {
+      "name": "SetUp",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112932587,
+      "stop": 1567112932587
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112932587,
+      "stop": 1567112932587
+    }
+  ],
+  "links": [],
+  "start": 1567112932567,
+  "stop": 1567112932594
+}

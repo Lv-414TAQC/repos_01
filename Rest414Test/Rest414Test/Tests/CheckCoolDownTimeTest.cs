@@ -43,13 +43,9 @@ namespace Rest414Test.Tests
         [Test, TestCaseSource("UserForLockCSV")]
         [AllureTag("Regression_Tag")]
         [AllureSeverity(SeverityLevel.normal)]
-        [AllureIssue("ATQCNET-53")]
+        [AllureIssue("ATQCNET-218")]
         [AllureOwner("Alena Basanets")]
-        [AllureParentSuite("With_parameters_ParentSuite")]
-        [AllureSuite("Passed_Suite")] //change names
-        [AllureSubSuite("NoAssert_SubSuite")]
-        [AllureEpic("Retry_Epic")]
-        [AllureFeature("RetrySmall_Feature")]
+        [AllureParentSuite("CheckCoolDownTimeTest")]
         [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
         public void CheckLockingOfUser(IUser userForLock)  
         {
@@ -74,13 +70,9 @@ namespace Rest414Test.Tests
         [Test, TestCaseSource("UserForLockCSV")]
         [AllureTag("Regression_Tag")]
         [AllureSeverity(SeverityLevel.normal)]
-        [AllureIssue("ATQCNET-53")]
+        [AllureIssue("ATQCNET-218")]
         [AllureOwner("Alena Basanets")]
-        [AllureParentSuite("With_parameters_ParentSuite")]
-        [AllureSuite("Passed_Suite")] //change names
-        [AllureSubSuite("NoAssert_SubSuite")]
-        [AllureEpic("Retry_Epic")]
-        [AllureFeature("RetrySmall_Feature")]
+        [AllureParentSuite("CheckCoolDownTimeTest")]
         [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
         public void UnlockOfUser(IUser userForLock)
         {
@@ -94,13 +86,9 @@ namespace Rest414Test.Tests
         [Test, TestCaseSource("UserForLockCSV")]
         [AllureTag("Regression_Tag")]
         [AllureSeverity(SeverityLevel.normal)]
-        [AllureIssue("ATQCNET-53")]
+        [AllureIssue("ATQCNET-218")]
         [AllureOwner("Alena Basanets")]
-        [AllureParentSuite("With_parameters_ParentSuite")]
-        [AllureSuite("Passed_Suite")] //change names
-        [AllureSubSuite("NoAssert_SubSuite")]
-        [AllureEpic("Retry_Epic")]
-        [AllureFeature("RetrySmall_Feature")]
+        [AllureParentSuite("CheckCoolDownTimeTest")]
         [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
         public void LockOfUser(IUser userForLock)
         {

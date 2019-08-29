@@ -1,0 +1,95 @@
+{
+  "uuid": "acf72e0a-8696-4618-bb0c-c7762af4ad87-tr-0-1003",
+  "historyId": "Rest414Test.Tests.CreateUserTest.CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
+  "fullName": "Rest414Test.Tests.CreateUserTest.CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ALENA"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.CreateUserTest"
+    },
+    {
+      "name": "testMethod",
+      "value": "CreateNewUserTest"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.CreateUserTest"
+    },
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "owner",
+      "value": "DomashovetsDmytro"
+    },
+    {
+      "name": "parentSuite",
+      "value": "CreateUserTest"
+    },
+    {
+      "name": "suite",
+      "value": "Main_Suit"
+    }
+  ],
+  "links": [
+    {
+      "name": "ATQCNET-214",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-214",
+      "type": "issue"
+    },
+    {
+      "name": "Rest_Application_Link",
+      "url": "https://localhost:8080/",
+      "type": "link"
+    }
+  ],
+  "name": "CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "6d969bf687e4461a80234f509088020b-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567112230232,
+      "stop": 1567112230241
+    }
+  ],
+  "attachments": [],
+  "parameters": [
+    {
+      "name": "Param #0",
+      "value": "[Name: admin, Password: qwerty, Token: O9KE99SL7TRRXYSE18YUGLLBAVIOR8MU]"
+    }
+  ],
+  "start": 1567112230232,
+  "stop": 1567112230242
+}

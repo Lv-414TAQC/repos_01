@@ -1,0 +1,110 @@
+{
+  "uuid": "c6167a74-2772-4165-9fff-a854bf2017ca-tr-0-1012",
+  "historyId": "Rest414Test.Tests.AdminTests.CheckRemovingAdmin",
+  "fullName": "Rest414Test.Tests.AdminTests.CheckRemovingAdmin",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ALENA"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.AdminTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "CheckRemovingAdmin"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.AdminTests"
+    },
+    {
+      "name": "tag",
+      "value": "Regression_Tag"
+    },
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "owner",
+      "value": "User_Owner"
+    },
+    {
+      "name": "parentSuite",
+      "value": "With_parameters_ParentSuite"
+    },
+    {
+      "name": "suite",
+      "value": "Passed_Suite"
+    },
+    {
+      "name": "subSuite",
+      "value": "NoAssert_SubSuite"
+    },
+    {
+      "name": "epic",
+      "value": "Retry_Epic"
+    },
+    {
+      "name": "feature",
+      "value": "RetrySmall_Feature"
+    }
+  ],
+  "links": [
+    {
+      "name": "ATQCNET-205",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-205",
+      "type": "issue"
+    },
+    {
+      "name": "Rest_Application_Link",
+      "url": "https://localhost:8080/",
+      "type": "link"
+    }
+  ],
+  "name": "CheckRemovingAdmin",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "  Expected: False\r\n  But was:  True\r\n",
+    "trace": "   в Rest414Test.Tests.AdminTests.CheckRemovingAdmin() в C:\\Users\\alena\\repos_01\\Rest414Test\\Rest414Test\\Tests\\AdminTests.cs:строка 116\r\n"
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "CheckRemovingAdmin",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "  Expected: False\r\n  But was:  True\r\n",
+        "trace": "   в Rest414Test.Tests.AdminTests.CheckRemovingAdmin() в C:\\Users\\alena\\repos_01\\Rest414Test\\Rest414Test\\Tests\\AdminTests.cs:строка 116\r\n"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "bd702ba9b58e43b484a83c55c3ccff74-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567112229955,
+      "stop": 1567112229966
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1567112229955,
+  "stop": 1567112229967
+}

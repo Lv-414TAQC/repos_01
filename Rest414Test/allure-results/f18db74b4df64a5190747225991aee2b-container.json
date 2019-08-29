@@ -1,0 +1,44 @@
+{
+  "uuid": "9ba7c323-da4d-4779-8886-5532543cfc48-tc-0-1008",
+  "name": "Rest414Test.Tests.AdminTests.CheckLoggingOutAdmin",
+  "children": [
+    "fa9c87ff-b565-485a-bbfb-247ce3d19fb3-tr-0-1011"
+  ],
+  "befores": [
+    {
+      "name": "SetUp",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112931829,
+      "stop": 1567112931829
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112931829,
+      "stop": 1567112931829
+    }
+  ],
+  "links": [],
+  "start": 1567112931808,
+  "stop": 1567112931834
+}

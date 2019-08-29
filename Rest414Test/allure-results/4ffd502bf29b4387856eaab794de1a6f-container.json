@@ -1,0 +1,28 @@
+{
+  "uuid": "4ecf3543-9b2f-48ff-8f3c-74680c3a604e-tc-0-1000",
+  "name": "Rest414Test.Tests.ChangeUserPasswordTest.ChangePassworddTest",
+  "children": [
+    "30124b80-b61b-4cda-8def-826a6243a1f6-tr-0-1001"
+  ],
+  "befores": [],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112931905,
+      "stop": 1567112931905
+    }
+  ],
+  "links": [],
+  "start": 1567112931896,
+  "stop": 1567112931912
+}

@@ -1,0 +1,111 @@
+{
+  "uuid": "bf1aa998-87c0-495c-8063-16196248c152-tr-0-1032",
+  "historyId": "Rest414Test.Tests.ItemTest.AddItemTest([Name: admin, Password: qwerty, Token: ])",
+  "fullName": "Rest414Test.Tests.ItemTest.AddItemTest([Name: admin, Password: qwerty, Token: ])",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ALENA"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.ItemTest"
+    },
+    {
+      "name": "testMethod",
+      "value": "AddItemTest"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.ItemTest"
+    },
+    {
+      "name": "tag",
+      "value": "Regression_Tag"
+    },
+    {
+      "name": "severity",
+      "value": "minor"
+    },
+    {
+      "name": "owner",
+      "value": "User_Owner"
+    },
+    {
+      "name": "parentSuite",
+      "value": "With_parameters_ParentSuite"
+    },
+    {
+      "name": "suite",
+      "value": "Passed_Suite"
+    },
+    {
+      "name": "subSuite",
+      "value": "NoAssert_SubSuite"
+    },
+    {
+      "name": "epic",
+      "value": "Retry_Epic"
+    },
+    {
+      "name": "feature",
+      "value": "RetrySmall_Feature"
+    }
+  ],
+  "links": [
+    {
+      "name": "ATQCNET-217",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-217",
+      "type": "issue"
+    },
+    {
+      "name": "Rest_Application_Link",
+      "url": "https://localhost:8181/",
+      "type": "link"
+    }
+  ],
+  "name": "AddItemTest([Name: admin, Password: qwerty, Token: ])",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "AddItemTest([Name: admin, Password: qwerty, Token: ])",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "a1f212dcd19d4409b8a9858c2e205deb-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567112932221,
+      "stop": 1567112932251
+    }
+  ],
+  "attachments": [],
+  "parameters": [
+    {
+      "name": "Param #0",
+      "value": "[Name: admin, Password: qwerty, Token: 6PILKFLMRIAL7CWOUO37A32BHMTGS0RF]"
+    }
+  ],
+  "start": 1567112932221,
+  "stop": 1567112932251
+}

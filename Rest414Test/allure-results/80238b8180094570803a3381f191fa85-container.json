@@ -1,0 +1,28 @@
+{
+  "uuid": "c065abf7-183e-4514-ab51-91d86791325d-tc-0-1031",
+  "name": "Rest414Test.Tests.ItemTest.AdminAccessItemsTest",
+  "children": [
+    "466e1ffa-9438-4917-939c-7bc454ed829a-tr-0-1035"
+  ],
+  "befores": [],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567112230405,
+      "stop": 1567112230405
+    }
+  ],
+  "links": [],
+  "start": 1567112230385,
+  "stop": 1567112230410
+}
