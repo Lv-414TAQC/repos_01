@@ -118,6 +118,7 @@
     <Compile Include="Resources\LogoutResource.cs" />
     <Compile Include="Resources\ResetResource.cs" />
     <Compile Include="Resources\TokenLifetimeResource.cs" />
+    <Compile Include="Resources\TokensResource.cs" />
     <Compile Include="Resources\UserAuthorizedResource.cs" />
     <Compile Include="Resources\RestCrud.cs" />
     <Compile Include="Resources\RestQueries.cs" />
@@ -130,15 +131,17 @@
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\GuestService.cs" />
     <Compile Include="Services\UserService.cs" />
-    <Compile Include="Tests\AdminTests1.cs" />
-    <Compile Include="Tests\AdminTests2.cs" />
-    <Compile Include="Tests\AdminTests3.cs" />
     <Compile Include="Tests\ChangeUserPasswordTest.cs" />
-    <Compile Include="Tests\CoolDownTimeTest.cs" />
     <Compile Include="Tests\CreateUserTest.cs" />
     <Compile Include="Tests\DeleteUserTest.cs" />
+    <Compile Include="Tests\AdminTests.cs" />
+    <Compile Include="Tests\AdminTestExternalData.cs" />
+    <Compile Include="Tests\CoolDownTimeTest.cs" />
+    <Compile Include="Tests\GettingTokenLifeTimeTests.cs" />
     <Compile Include="Tests\ItemsTest.cs" />
-    <Compile Include="Tests\LogginedTest.cs" />
+    <Compile Include="Tests\LoggedTest.cs" />
+    <Compile Include="Tests\PosibilityToChangeTokenLifeTimeTests.cs" />
+    <Compile Include="Tests\RealLifeTimeTokenTests.cs" />
     <Compile Include="Tools\CSVReader.cs" />
     <Compile Include="Tools\ExcelReader.cs" />
     <Compile Include="Tools\ExternalReader.cs" />
@@ -149,6 +152,7 @@
     <None Include="app.config" />
     <None Include="Assets\additionalAdmins.csv" />
     <None Include="Assets\additionalAdmins.xlsx" />
+    <None Include="Assets\UserForLock.csv" />
     <None Include="Assets\users.csv" />
     <None Include="Assets\users.xlsx" />
     <Content Include="NLog.config">
@@ -172,9 +176,10 @@
     <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.15.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.15.0\build\net35\NUnit3TestAdapter.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>copy /b $(ProjectDir)\Assets\*.* $(TargetDir)
-
-copy /b $(ProjectDir)\allureConfig.json $(TargetDir)</PostBuildEvent>
+    <PostBuildEvent>
+      copy /b $(ProjectDir)\Assets\*.* $(TargetDir)
+      copy /b $(ProjectDir)\allureConfig.json $(TargetDir)
+    </PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\MSTest.TestAdapter.1.4.0\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.1.4.0\build\net45\MSTest.TestAdapter.targets')" />
   <PropertyGroup>

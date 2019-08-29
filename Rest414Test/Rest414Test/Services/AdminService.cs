@@ -5,6 +5,9 @@ using Rest414Test.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Timers;
 
 namespace Rest414Test.Services
 {
@@ -18,6 +21,7 @@ namespace Rest414Test.Services
         protected UsersResource usersResource;
         protected LockedUsersResource lockedusersResource;
         protected LockedUserResource lockeduserResource;
+        protected TokensResource tokensResource;
 
         public AdminService(IUser adminUser) : base(adminUser)
         {
@@ -29,6 +33,7 @@ namespace Rest414Test.Services
             cooldowntimeResource = new CoolDownTimeResource();
             lockedusersResource = new LockedUsersResource();
             lockeduserResource = new LockedUserResource();
+            tokensResource = new TokensResource();
            
             CheckService(!IsAdmin(adminUser),
                 "Admin " + adminUser.ToString() + "Login Unsuccessful.");
@@ -160,21 +165,31 @@ namespace Rest414Test.Services
             RestParameters bodyParameters = new RestParameters()
                 .AddParameters(RestParametersKeys.Token, user.Token);
             RestParameters pathVariables = new RestParameters()
-                .AddParameters(RestParametersKeys.Name, user1.Name); //?????
+                .AddParameters(RestParametersKeys.Name, user1.Name); 
             
             SimpleEntity simpleEntity = lockeduserResource
                 .HttpPutAsObject(null, pathVariables, bodyParameters);
             return this;
         }
 
+
+        public AdminService LockUser(IUser user1)
+        {
+            RestParameters bodyParameters = new RestParameters()
+                .AddParameters(RestParametersKeys.Token, user.Token);
+            RestParameters pathVariables = new RestParameters()
+                .AddParameters(RestParametersKeys.Name, user1.Name);
+
+            SimpleEntity simpleEntity = lockeduserResource
+                .HttpPostAsObject(null, pathVariables, bodyParameters);
+            return this;
+        }
         public AdminService UpdateTokenlifetime(Lifetime lifetime)
         {
             RestParameters bodyParameters = new RestParameters()
                 .AddParameters(RestParametersKeys.Token, user.Token)
                 .AddParameters(RestParametersKeys.Time, lifetime.Time);
             SimpleEntity simpleEntity = tokenLifetimeResource.HttpPutAsObject(null, null, bodyParameters);
-            CheckService(!simpleEntity.Equals(true),
-                "Tokenlifetime " + lifetime.ToString() + " was not Updated.");
             return this;
         }
         public AdminService UpdateCoolDowntime(CoolDownTime cooldowntime)
@@ -244,6 +259,14 @@ namespace Rest414Test.Services
                 listUsers.Add(new User(u));       
             }
             return listUsers;
+        }
+
+        public string GetAliveTokens()
+        {
+            RestParameters urlParameters = new RestParameters()
+                .AddParameters(RestParametersKeys.Token, user.Token);
+            SimpleEntity simpleEntity = tokensResource.HttpGetAsObject(urlParameters, null);
+            return simpleEntity.content;
         }
     }
 }

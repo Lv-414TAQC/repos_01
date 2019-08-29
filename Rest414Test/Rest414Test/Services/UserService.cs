@@ -137,7 +137,6 @@ namespace Rest414Test.Services
             SimpleEntity simpleEntity = allItemsResource.HttpGetAsObject(urlParameters, null);
             List<string> list = new List<string>(simpleEntity.content
                 .Split(new string[] { "\n", "\t", " \t"}, StringSplitOptions.None));
-            foreach (string i in list) Console.WriteLine("Element-"+i);
             List<ItemTemplate> listItems = new List<ItemTemplate>();
             for (int i = list.Count - 2; i > 0; i -= 2)
             {
@@ -149,6 +148,11 @@ namespace Rest414Test.Services
                     .Info("Item- " + template.Item);
             }
             return listItems;
+        }
+
+        public string GetToken()
+        {
+            return user.Token;
         }
     }
 }

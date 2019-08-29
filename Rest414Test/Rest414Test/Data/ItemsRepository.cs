@@ -15,5 +15,12 @@ namespace Rest414Test.Data
             list.Add(ItemRepository.GetSecond());
             return list;
         }
+        public static List<ItemTemplate> UserListItems()
+        {
+            List<ItemTemplate> list = new List<ItemTemplate>();
+            list.Add(ItemRepository.UserItemFirst());
+            list.Add(ItemRepository.UserItemSecond());
+            return list;
+        }
     }
 }
