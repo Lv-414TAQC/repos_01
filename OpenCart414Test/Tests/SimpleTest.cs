@@ -31,7 +31,14 @@ namespace OpenCart414Test.Tests
         [OneTimeSetUp]
         public void BeforeAllMethods()
         {
-            driver = new ChromeDriver();
+            // Chrome Without UI
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("--no-proxy-server");
+            options.AddArguments("--ignore-certificate-errors");
+            options.AddArguments("--headless");
+            driver = new ChromeDriver(options);
+            // Chrome Typical
+            //driver = new ChromeDriver();
             //driver = new FirefoxDriver();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20); // by default 0
         }
