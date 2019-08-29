@@ -1,19 +1,24 @@
-﻿using NLog;
+﻿using Allure.Commons;
+using NLog;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
-using Rest414Test.Tools;
 using System;
-using System.Collections.Generic;
 
 namespace Rest414Test.Tests
 {
+    [AllureNUnit]
+    [AllureDisplayIgnored]
     [TestFixture]
-    public class AdminTests3
+    public class AdminTests
     {
         Logger logger = LogManager.GetCurrentClassLogger();
 
         AdminService adminService;
+        IUser adminForTest;
+
         [SetUp]
         public void SetUp()
         {
@@ -21,20 +26,63 @@ namespace Rest414Test.Tests
             GuestService guestService = new GuestService();
             adminService = guestService
                 .SuccessfulAdminLogin(adminUser);
+            adminForTest = UserRepository.Get().AdminForTest();
+            adminService.AddAdmin(adminForTest);
         }
 
         [TearDown]
         public void TearDown()
         {
-            adminService.Logout();
+            adminService.ResetSystem();
+        }
+
+        [Test]
+        [AllureTag("Regression_Tag")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureIssue("ATQCNET-53")]
+        [AllureTms("TMS-12")]
+        [AllureOwner("User_Owner")]
+        [AllureParentSuite("With_parameters_ParentSuite")]
+        [AllureSuite("Passed_Suite")]
+        [AllureSubSuite("NoAssert_SubSuite")]
+        [AllureEpic("Retry_Epic")]
+        [AllureFeature("RetrySmall_Feature")]
+        [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
+        public void CheckAddingAdmin()
+        {
+            logger.Info("Checking adding admin started.");
+            Assert.IsTrue(adminService.IsAdmin(adminForTest));
+            logger.Info("Is admin: " + adminService.IsAdmin(adminForTest));
+            logger.Info("Checking adding admin done.");
+        }
+
+        [Test]
+        public void CheckLoggingInAdmin()
+        {
+            logger.Info("Checking logging admin in started.");
+            adminService.SuccessfulAdminLogin(adminForTest);
+            Assert.IsTrue(adminService.IsLoggedInAdmin(adminForTest));
+            logger.Info("Is logged in admin: " + adminService.IsLoggedInAdmin(adminForTest));
+            logger.Info("Checking logging admin in done.");
+        }
+
+        [Test]
+        public void CheckLoggingOutAdmin()
+        {
+            logger.Info("Checking logging admin out started.");
+            adminService.SuccessfulAdminLogin(adminForTest);
+            adminService.Logout(adminForTest);
+            Assert.IsTrue(adminService.IsAdmin(adminForTest));
+            logger.Info("Is admin: " + adminService.IsAdmin(adminForTest));
+            Assert.IsFalse(adminService.IsLoggedInAdmin(adminForTest));
+            logger.Info("Is logged in admin: " + adminService.IsLoggedInAdmin(adminForTest));
+            logger.Info("Checking logging admin out done.");
         }
 
         [Test]
         public void CheckRemovingAdmin()
         {
             logger.Info("Checking removing admin started.");
-            IUser adminForTest = UserRepository.Get().AdminForTest();
-            adminService.AddAdmin(adminForTest);
             adminService.RemoveUser(adminForTest);
             Assert.IsFalse(adminService.IsAdmin(adminForTest));
             logger.Info("Is admin: " + adminService.IsAdmin(adminForTest));
@@ -47,8 +95,6 @@ namespace Rest414Test.Tests
         public void CheckRemovingLoggedInAdmin()
         {
             logger.Info("Checking removing logged in admin started.");
-            IUser adminForTest = UserRepository.Get().AdminForTest();
-            adminService.AddAdmin(adminForTest);
             adminService.SuccessfulAdminLogin(adminForTest);
             adminService.RemoveUser(adminForTest);
             Assert.IsFalse(adminService.IsLoggedInAdmin(adminForTest));
@@ -64,8 +110,6 @@ namespace Rest414Test.Tests
         public void CheckAdminRemovingHimself()
         {
             logger.Info("Checking removing admin by himself started.");
-            IUser adminForTest = UserRepository.Get().AdminForTest();
-            adminService.AddAdmin(adminForTest);
             AdminService anotherAdminService = adminService
                 .SuccessfulAdminLogin(adminForTest);
             anotherAdminService.RemoveUser(adminForTest);
@@ -76,22 +120,15 @@ namespace Rest414Test.Tests
             logger.Info("Checking removing admin by himself done.");
         }
 
-        // DataProvider
-        private static readonly object[] AdminFromCSV =
-            ListUtils.ToMultiArray(UserRepository.Get().AdminsFromCsv());
-        //private static readonly object[] AdminFromExcel =
-        //    ListUtils.ToMultiArray(UserRepository.Get().AdminsFromExcel());
-
-        [Test, TestCaseSource("AdminFromCSV")]
-        //[Test, TestCaseSource("AdminFromExcel")]
-        public void CheckLoggingInRemovedAdmin(IUser anotherAdmin)
+        [Test]
+        public void CheckAddingSameNameUser()
         {
-            logger.Info("Checking logging removed admin in started.");
-            adminService.AddAdmin(anotherAdmin);
-            adminService.RemoveUser(anotherAdmin);
-            Assert.Throws<Exception>(()=>adminService.SuccessfulAdminLogin(anotherAdmin));
+            logger.Info("Checking adding a user with the same name as previously removed admin's started.");
+            adminService.RemoveUser(adminForTest);
+            adminService.CreateUser(adminForTest);
+            Assert.Throws<Exception>(() => adminService.SuccessfulAdminLogin(adminForTest));
             logger.Info("Expected exception is thrown.");
-            logger.Info("Checking logging removed admin in done.");
+            logger.Info("Checking adding a user with the same name as previously removed admin's done.");
         }
     }
 }
