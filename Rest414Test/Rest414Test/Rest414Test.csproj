@@ -150,9 +150,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="allureConfig.json" />
+    <None Include="allureConfig.Template.json" />
     <None Include="app.config" />
     <None Include="Assets\additionalAdmins.csv" />
     <None Include="Assets\additionalAdmins.xlsx" />
+    <None Include="Assets\UserForLock.csv" />
     <None Include="Assets\users.csv" />
     <None Include="Assets\users.xlsx" />
     <Content Include="NLog.config">

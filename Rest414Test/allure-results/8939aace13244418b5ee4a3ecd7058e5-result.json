@@ -1,0 +1,111 @@
+{
+  "uuid": "8a067d9f-b4b1-48d8-a555-20a9f7d9da90-tr-0-1001",
+  "historyId": "Rest414Test.Tests.AdminTests1.CheckAddingAdmin",
+  "fullName": "Rest414Test.Tests.AdminTests1.CheckAddingAdmin",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ALENA"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.AdminTests1"
+    },
+    {
+      "name": "testMethod",
+      "value": "CheckAddingAdmin"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.AdminTests1"
+    },
+    {
+      "name": "tag",
+      "value": "Regression_Tag"
+    },
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "owner",
+      "value": "User_Owner"
+    },
+    {
+      "name": "parentSuite",
+      "value": "With_parameters_ParentSuite"
+    },
+    {
+      "name": "suite",
+      "value": "Passed_Suite"
+    },
+    {
+      "name": "subSuite",
+      "value": "NoAssert_SubSuite"
+    },
+    {
+      "name": "epic",
+      "value": "Retry_Epic"
+    },
+    {
+      "name": "feature",
+      "value": "RetrySmall_Feature"
+    }
+  ],
+  "links": [
+    {
+      "name": "ATQCNET-53",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-53",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-12",
+      "url": "https://testrail.com/browse/TMS-12",
+      "type": "tms"
+    },
+    {
+      "name": "Rest_Application_Link",
+      "url": "https://localhost:8080/",
+      "type": "link"
+    }
+  ],
+  "name": "CheckAddingAdmin",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "CheckAddingAdmin",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "6548603fb30d4c0588b6f2ef6af29065-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567026453029,
+      "stop": 1567026453448
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1567026453027,
+  "stop": 1567026453453
+}
