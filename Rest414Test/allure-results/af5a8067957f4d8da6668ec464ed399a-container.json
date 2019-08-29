@@ -1,0 +1,59 @@
+{
+  "uuid": "271eb038-d295-4bc4-8b28-eb5a73f9a064-tc-0-1000",
+  "name": "Rest414Test.Tests.LoggedTest.CheckIncorrectLogin([Name: admin1, Password: erew32, Token: ])",
+  "children": [
+    "f556da26-f04a-4aca-a4c4-e60e94004f64-tr-0-1005"
+  ],
+  "befores": [
+    {
+      "name": "BeforeAllMethods",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567093951437,
+      "stop": 1567093951437
+    },
+    {
+      "name": "SetUp",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567093951437,
+      "stop": 1567093951437
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567093951437,
+      "stop": 1567093951437
+    }
+  ],
+  "links": [],
+  "start": 1567093951387,
+  "stop": 1567093951449
+}

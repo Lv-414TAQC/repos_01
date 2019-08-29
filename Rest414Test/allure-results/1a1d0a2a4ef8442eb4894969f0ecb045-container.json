@@ -1,0 +1,59 @@
+{
+  "uuid": "c9a743f0-39f2-4df5-bb4d-9755a4fa4f0b-tc-0-1000",
+  "name": "Rest414Test.Tests.LoggedTest.CheckIncorrectLogin([Name: nazar, Password: parol, Token: ])",
+  "children": [
+    "09407166-531e-4214-b1a2-a964e54cbc47-tr-0-1001"
+  ],
+  "befores": [
+    {
+      "name": "BeforeAllMethods",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567093950915,
+      "stop": 1567093950915
+    },
+    {
+      "name": "SetUp",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567093950916,
+      "stop": 1567093950916
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567093950916,
+      "stop": 1567093950916
+    }
+  ],
+  "links": [],
+  "start": 1567093950213,
+  "stop": 1567093951058
+}

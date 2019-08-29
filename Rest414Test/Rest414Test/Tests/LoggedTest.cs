@@ -42,12 +42,6 @@ namespace Rest414Test.Tests
             guestService = new GuestService();
         }
 
-        [OneTimeTearDown]
-        public void AfterAllMethods()
-        {
-
-        }
-
         [SetUp]
         public void SetUp()
         {
@@ -78,7 +72,7 @@ namespace Rest414Test.Tests
         [AllureOwner("KukliakT")]
         [AllureParentSuite("LoggedTest")]
         [AllureSuite("Main_Suite")]
-        [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
+        [AllureLink("Rest_Application_Link", "localhost:8080/")]
         public void CheckLoginLogoutUser(IUser user)
         {
             logger.Info("Start test CheckLoginLogoutUser");
@@ -97,7 +91,7 @@ namespace Rest414Test.Tests
         [AllureOwner("KukliakT")]
         [AllureParentSuite("LoggedTest")]
         [AllureSuite("Main_Suite")]
-        [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
+        [AllureLink("Rest_Application_Link", "localhost:8080/")]
         public void CheckLoginLogoutAdmin(IUser admin)
         {
             logger.Info("Start test CheckLoginLogoutAdmin");
@@ -116,7 +110,7 @@ namespace Rest414Test.Tests
         [AllureOwner("KukliakT")]
         [AllureParentSuite("LoggedTest")]
         [AllureSuite("Main_Suite")]
-        [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
+        [AllureLink("Rest_Application_Link", "localhost:8080/")]
         public void CheckLoginUserAsAdmin(IUser existUser)
         { 
             Assert.Throws<Exception>(() => guestService.SuccessfulAdminLogin(existUser));
@@ -130,12 +124,12 @@ namespace Rest414Test.Tests
         [AllureOwner("KukliakT")]
         [AllureParentSuite("LoggedTest")]
         [AllureSuite("Main_Suite")]
-        [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
+        [AllureLink("Rest_Application_Link", "localhost:8080/")]
         public void CheckIncorrectLogin(IUser incorrectUser)
         {
             logger.Info("Start test CheckIncorrectLogin");
             guestService = guestService.UnsuccessfulLogin(incorrectUser);
-            Assert.AreEqual(guestService.ResultStatus, "true");
+            Assert.AreEqual(guestService.ResultStatus, );
             logger.Info("End test CheckIncorrectLogin");
         }
 
