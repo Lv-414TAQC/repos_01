@@ -65,8 +65,7 @@ namespace Rest414Test.Services
         }
         public void ResetSystem()
         {
-            SimpleEntity simpleEntity = resetResource.HttpGetAsObject(null, null);
-            Console.WriteLine(simpleEntity.content);
+            resetResource.HttpGetAsObject(null, null);
         }
 
         public UserService SuccessfulUserLogin(IUser user)
