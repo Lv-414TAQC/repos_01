@@ -127,7 +127,7 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.OldPassword, userD.Password)
                 .AddParameters(RestParametersKeys.NewPassword, newpassw.Password);
             SimpleEntity simpleEntity = userpasswresource.HttpPutAsObject(null, null, bodyParameters);
-            //userD.Password = newpassw.Password;
+            logger.Info("ChangePassw = " + simpleEntity.content);
             return this;
         }
         public List<ItemTemplate> GetAllItems()
@@ -149,6 +149,11 @@ namespace Rest414Test.Services
                     .Info("Item- " + template.Item);
             }
             return listItems;
+        }
+
+        public string GetToken()
+        {
+            return user.Token;
         }
     }
 }

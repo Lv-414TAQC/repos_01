@@ -44,14 +44,6 @@ namespace Rest414Test.Data
                 .Build();
         }
 
-        public IUser AnotherAdmin()
-        {
-            return User.Get()
-                .SetName("anotherAdmin")
-                .SetPassword("qwerty")
-                .Build();
-        }
-
         public IUser ExistUser()
         {
             return User.Get()
@@ -102,7 +94,17 @@ namespace Rest414Test.Data
 
         public IList<IUser> FromCsv(string filename)
         {
-            Console.WriteLine("Run FromCsv filename = " + filename);
+            //Console.WriteLine("Run FromCsv filename = " + filename);
+            return User.GetAllUsers(new CSVReader(filename).GetAllCells());
+        }
+
+        public IList<IUser> UserForLockCsv()
+        {
+            return UserForLockCsv("UseForLock.csv");
+        }
+
+        public IList<IUser> UserForLockCsv(string filename)
+        {
             return User.GetAllUsers(new CSVReader(filename).GetAllCells());
         }
 
@@ -148,14 +150,6 @@ namespace Rest414Test.Data
                 .Build();
         }
 
-        //public IUser NewPasswordForUser()
-        //{
-        //    return User.Get()
-        //        .SetName("")
-        //        .SetPassword("999")
-        //        .Build();
-        //}
-
         public IUser OldPasswordForUser()
         {
             return User.Get()
@@ -174,6 +168,22 @@ namespace Rest414Test.Data
         {
             return User.GetAllUsers(new CSVReader(filename).GetAllCells());
         }
-       
+
+        public IUser FakeAdmin()
+        {
+            return User.Get()
+                .SetName("FakeAdmin")
+                .SetPassword("1234")
+                .SetToken("DT2ES1AHRY5Y09MMC6A5XSQ500W74E3E")
+                .Build();
+        }
+
+        public IUser TestUser()
+        {
+            return User.Get()
+               .SetName("TestUser")
+               .SetPassword("11121")
+               .Build();
+        }
     }
 }

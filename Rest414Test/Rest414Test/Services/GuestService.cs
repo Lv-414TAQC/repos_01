@@ -16,6 +16,7 @@ namespace Rest414Test.Services
         protected UserAuthorizedResource userAuthorizedResource;
         protected TokenLifetimeResource tokenLifetimeResource;
         protected UserPasswordResource userpasswresource;
+        protected ResetResource resetResource;
 
         public GuestService() : base()
         {
@@ -23,6 +24,7 @@ namespace Rest414Test.Services
             userAuthorizedResource = new UserAuthorizedResource();
             tokenLifetimeResource = new TokenLifetimeResource();
             userpasswresource = new UserPasswordResource();
+            resetResource = new ResetResource();
         }
 
         // Atomic
@@ -58,17 +60,14 @@ namespace Rest414Test.Services
             while (i < 4)
             {
                 UnsuccessfulLogin(user);
-                //ResultStatus = "error, user not found";
                 i++;
             }
-            //UnsuccessfulLogin(user);
-            
-                //ResultStatus = "error, user locked";
-            
             return this;
-
         }
-    
+        public void ResetSystem()
+        {
+            resetResource.HttpGetAsObject(null, null);
+        }
 
         public UserService SuccessfulUserLogin(IUser user)
         {
@@ -76,7 +75,9 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Name, user.Name)
                 .AddParameters(RestParametersKeys.Password, user.Password);
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
+            Console.WriteLine("content : " + simpleEntity.content);
             user.Token = simpleEntity.content;
+            logger.Info("UserLogin = " + simpleEntity.content);
             return new UserService(user);
         }
 
