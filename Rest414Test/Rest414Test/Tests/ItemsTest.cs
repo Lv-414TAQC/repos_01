@@ -36,8 +36,8 @@ namespace Rest414Test.Tests
 
         [Test, TestCaseSource("UsersCsv")]
         [AllureTag("Regression_Tag")]
-        [AllureSeverity(SeverityLevel.normal)]
-        [AllureIssue("ATQCNET-53")]
+        [AllureSeverity(SeverityLevel.minor)]
+        [AllureIssue("ATQCNET-217")]
         [AllureOwner("User_Owner")]
         [AllureParentSuite("With_parameters_ParentSuite")]
         [AllureSuite("Passed_Suite")]

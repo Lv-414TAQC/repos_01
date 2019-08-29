@@ -1,0 +1,28 @@
+{
+  "uuid": "776ae0dd-d477-4e6b-b023-2ee97f5136de-tc-0-1018",
+  "name": "Rest414Test.Tests.CreateUserTest.CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
+  "children": [
+    "ed6b24b7-4d95-4c74-8ab1-9601bf19769f-tr-0-1019"
+  ],
+  "befores": [],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567095567845,
+      "stop": 1567095567845
+    }
+  ],
+  "links": [],
+  "start": 1567095567448,
+  "stop": 1567095567924
+}

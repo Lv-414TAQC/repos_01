@@ -127,7 +127,7 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.OldPassword, userD.Password)
                 .AddParameters(RestParametersKeys.NewPassword, newpassw.Password);
             SimpleEntity simpleEntity = userpasswresource.HttpPutAsObject(null, null, bodyParameters);
-            logger.Info("ChangePassw = " + simpleEntity.content);
+            //logger.Info("ChangePassw = " + simpleEntity.content);
             return this;
         }
         public List<ItemTemplate> GetAllItems()

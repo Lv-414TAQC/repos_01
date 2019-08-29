@@ -1,0 +1,116 @@
+{
+  "uuid": "ed6b24b7-4d95-4c74-8ab1-9601bf19769f-tr-0-1019",
+  "historyId": "Rest414Test.Tests.CreateUserTest.CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
+  "fullName": "Rest414Test.Tests.CreateUserTest.CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-PMROFN9"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.CreateUserTest"
+    },
+    {
+      "name": "testMethod",
+      "value": "CreateNewUserTest"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.CreateUserTest"
+    },
+    {
+      "name": "tag",
+      "value": "Regression_Tag"
+    },
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "owner",
+      "value": "Dima"
+    },
+    {
+      "name": "parentSuite",
+      "value": "With_parameters_ParentSuite"
+    },
+    {
+      "name": "suite",
+      "value": "Passed_Suite"
+    },
+    {
+      "name": "subSuite",
+      "value": "NoAssert_SubSuite"
+    },
+    {
+      "name": "epic",
+      "value": "Retry_Epic"
+    },
+    {
+      "name": "feature",
+      "value": "RetrySmall_Feature"
+    }
+  ],
+  "links": [
+    {
+      "name": "ATQCNET-214",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-214",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-12",
+      "url": "https://testrail.com/browse/TMS-12",
+      "type": "tms"
+    },
+    {
+      "name": "Rest_Application_Link",
+      "url": "https://localhost:8080/",
+      "type": "link"
+    }
+  ],
+  "name": "CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "dc134792d0384ee2a15f67293c3f3974-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567095567453,
+      "stop": 1567095567850
+    }
+  ],
+  "attachments": [],
+  "parameters": [
+    {
+      "name": "Param #0",
+      "value": "[Name: admin, Password: qwerty, Token: LWLDPEV7WGM27AVXIITFFOIGPKUB4DEV]"
+    }
+  ],
+  "start": 1567095567452,
+  "stop": 1567095567856
+}

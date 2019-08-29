@@ -226,7 +226,7 @@ namespace Rest414Test.Services
                 .HttpDeleteAsObject(urlParameters, null, null);
             CheckService(!simpleEntity.Equals(true),
                 "User " + newAdmin.ToString() + "was not Removed.");
-            logger.Info("RemoveUser = " + simpleEntity.content);
+            //logger.Info("RemoveUser = " + simpleEntity.content);
             return this;
         }
         public UserService CreateUser(IUser newUser)
@@ -238,7 +238,7 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Rights, ParamFalse);
             SimpleEntity simpleEntity = userResource
                 .HttpPostAsObject(urlParameters, null, null);
-            logger.Info("CreateUser = " + simpleEntity.content);
+            //logger.Info("CreateUser = " + simpleEntity.content);
             return this;
         }
 

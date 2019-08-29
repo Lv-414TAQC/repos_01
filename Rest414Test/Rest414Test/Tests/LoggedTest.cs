@@ -76,12 +76,10 @@ namespace Rest414Test.Tests
         public void CheckLoginLogoutUser(IUser user)
         {
             logger.Info("Start test CheckLoginLogoutUser");
-
             userService = guestService.SuccessfulUserLogin(user);
             Assert.IsTrue(userService.IsLogged());
             userService.Logout();
             Assert.IsFalse(userService.IsLogged());
-
             logger.Info("End test CheckLoginLogoutUser: ");
         }
 
@@ -95,12 +93,10 @@ namespace Rest414Test.Tests
         public void CheckLoginLogoutAdmin(IUser admin)
         {
             logger.Info("Start test CheckLoginLogoutAdmin");
-
             adminService = guestService.SuccessfulAdminLogin(admin);
             Assert.IsTrue(adminService.IsLogged());
             adminService.Logout();
             Assert.IsFalse(adminService.IsLogged());
-
             logger.Info("End test CheckLoginLogoutAdmin");
         }
 

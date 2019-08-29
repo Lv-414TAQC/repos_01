@@ -48,7 +48,7 @@ namespace Rest414Test.Services
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             if (simpleEntity.content.Length == LengthToken)
             {
-                logger.Error("Custom exception: entered valid login in UnsuccessfulLogin method");
+                //logger.Error("Custom exception: entered valid login in UnsuccessfulLogin method");
                 throw new Exception("Valid login"); 
             }
             ResultStatus = "true";
