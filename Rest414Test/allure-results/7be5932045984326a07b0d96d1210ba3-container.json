@@ -1,8 +1,8 @@
 {
-  "uuid": "7332500e-3ea2-4336-a4b3-12c3504ccb17-tc-0-1029",
-  "name": "Rest414Test.Tests.LogginedTest.CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
+  "uuid": "8b91c7c2-9706-4313-8976-cafe8558821b-tc-0-1029",
+  "name": "Rest414Test.Tests.LoggedTest.CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
   "children": [
-    "f107e552-86be-46da-968f-62ff0fda1fef-tr-0-1032"
+    "a1825c57-96ed-49ba-a562-9bfa8ce368dd-tr-0-1032"
   ],
   "befores": [
     {
@@ -17,8 +17,8 @@
       "steps": [],
       "attachments": [],
       "parameters": [],
-      "start": 1567014522936,
-      "stop": 1567014522936
+      "start": 1567090040760,
+      "stop": 1567090040760
     },
     {
       "name": "SetUp",
@@ -32,8 +32,8 @@
       "steps": [],
       "attachments": [],
       "parameters": [],
-      "start": 1567014522938,
-      "stop": 1567014522938
+      "start": 1567090040763,
+      "stop": 1567090040763
     }
   ],
   "afters": [
@@ -49,8 +49,8 @@
       "steps": [],
       "attachments": [],
       "parameters": [],
-      "start": 1567014522939,
-      "stop": 1567014522939
+      "start": 1567090040763,
+      "stop": 1567090040763
     },
     {
       "name": "AfterAllMethods",
@@ -66,11 +66,11 @@
       "steps": [],
       "attachments": [],
       "parameters": [],
-      "start": 1567014522939,
-      "stop": 1567014522939
+      "start": 1567090040763,
+      "stop": 1567090040763
     }
   ],
   "links": [],
-  "start": 1567014522301,
-  "stop": 1567014523113
+  "start": 1567090040182,
+  "stop": 1567090040973
 }

@@ -137,7 +137,7 @@
     <Compile Include="Tests\CreateUser.cs" />
     <Compile Include="Tests\DeleteUser.cs" />
     <Compile Include="Tests\ItemsTest.cs" />
-    <Compile Include="Tests\LogginedTest.cs" />
+    <Compile Include="Tests\LoggedTest.cs" />
     <Compile Include="Tools\CSVReader.cs" />
     <Compile Include="Tools\ExcelReader.cs" />
     <Compile Include="Tools\ExternalReader.cs" />
@@ -177,7 +177,7 @@ copy /b $(ProjectDir)\allureConfig.json $(TargetDir)</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\MSTest.TestAdapter.1.4.0\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.1.4.0\build\net45\MSTest.TestAdapter.targets')" />
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>copy /b $(ProjectDir)\Assets\*.* $(TargetDir)
+copy /b $(ProjectDir)\allureConfig.json $(TargetDir)</PreBuildEvent>
   </PropertyGroup>
 </Project>

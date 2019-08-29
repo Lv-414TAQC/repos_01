@@ -49,6 +49,7 @@ namespace Rest414Test.Services
                 logger.Error("Custom exception: entered valid login in UnsuccessfulLogin method");
                 throw new Exception("Valid login"); 
             }
+            ResultStatus = "true";
             return this;
         }
         public GuestService LockingUser(IUser user)

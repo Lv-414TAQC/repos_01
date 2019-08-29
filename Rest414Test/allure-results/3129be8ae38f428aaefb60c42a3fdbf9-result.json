@@ -1,7 +1,7 @@
 {
-  "uuid": "f107e552-86be-46da-968f-62ff0fda1fef-tr-0-1032",
-  "historyId": "Rest414Test.Tests.LogginedTest.CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
-  "fullName": "Rest414Test.Tests.LogginedTest.CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
+  "uuid": "a1825c57-96ed-49ba-a562-9bfa8ce368dd-tr-0-1032",
+  "historyId": "Rest414Test.Tests.LoggedTest.CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
+  "fullName": "Rest414Test.Tests.LoggedTest.CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
   "labels": [
     {
       "name": "thread",
@@ -13,7 +13,7 @@
     },
     {
       "name": "testClass",
-      "value": "Rest414Test.Tests.LogginedTest"
+      "value": "Rest414Test.Tests.LoggedTest"
     },
     {
       "name": "testMethod",
@@ -21,11 +21,7 @@
     },
     {
       "name": "package",
-      "value": "Rest414Test.Tests.LogginedTest"
-    },
-    {
-      "name": "tag",
-      "value": "Regression_Tag"
+      "value": "Rest414Test.Tests.LoggedTest"
     },
     {
       "name": "severity",
@@ -33,39 +29,22 @@
     },
     {
       "name": "owner",
-      "value": "User_Owner"
+      "value": "KukliakT"
     },
     {
       "name": "parentSuite",
-      "value": "With_parameters_ParentSuite"
+      "value": "LoggedTest"
     },
     {
       "name": "suite",
-      "value": "Passed_Suite"
-    },
-    {
-      "name": "subSuite",
-      "value": "NoAssert_SubSuite"
-    },
-    {
-      "name": "epic",
-      "value": "Retry_Epic"
-    },
-    {
-      "name": "feature",
-      "value": "RetrySmall_Feature"
+      "value": "Main_Suite"
     }
   ],
   "links": [
     {
-      "name": "ATQCNET-171",
-      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-171",
+      "name": "ATQCNET-211",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-211",
       "type": "issue"
-    },
-    {
-      "name": "TMS-12",
-      "url": "https://testrail.com/browse/TMS-12",
-      "type": "tms"
     },
     {
       "name": "Rest_Application_Link",
@@ -95,13 +74,13 @@
       "attachments": [
         {
           "name": "Console Output",
-          "source": "8ca055d5891d4df3b5b8df3fa21c0586-attachment.txt",
+          "source": "c08c169f321b451ab6e6255a5ae445a8-attachment.txt",
           "type": "text/plain"
         }
       ],
       "parameters": [],
-      "start": 1567014522309,
-      "stop": 1567014522947
+      "start": 1567090040188,
+      "stop": 1567090040769
     }
   ],
   "attachments": [],
@@ -111,6 +90,6 @@
       "value": "[Name: admin, Password: qwerty, Token: ]"
     }
   ],
-  "start": 1567014522306,
-  "stop": 1567014522962
+  "start": 1567090040186,
+  "stop": 1567090040779
 }
