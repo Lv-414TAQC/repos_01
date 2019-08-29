@@ -44,14 +44,6 @@ namespace Rest414Test.Data
                 .Build();
         }
 
-        public IUser AnotherAdmin()
-        {
-            return User.Get()
-                .SetName("anotherAdmin")
-                .SetPassword("qwerty")
-                .Build();
-        }
-
         public IUser ExistUser()
         {
             return User.Get()
