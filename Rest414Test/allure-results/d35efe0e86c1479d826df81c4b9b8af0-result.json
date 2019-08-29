@@ -1,0 +1,95 @@
+{
+  "uuid": "4f036f93-95df-45ed-a8e6-915d0b3408f0-tr-0-1038",
+  "historyId": "Rest414Test.Tests.LoggedTest.CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
+  "fullName": "Rest414Test.Tests.LoggedTest.CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-VR9B7E0"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.LoggedTest"
+    },
+    {
+      "name": "testMethod",
+      "value": "CheckLoginLogoutAdmin"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.LoggedTest"
+    },
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "owner",
+      "value": "KukliakT"
+    },
+    {
+      "name": "parentSuite",
+      "value": "LoggedTest"
+    },
+    {
+      "name": "suite",
+      "value": "Main_Suite"
+    }
+  ],
+  "links": [
+    {
+      "name": "ATQCNET-211",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-211",
+      "type": "issue"
+    },
+    {
+      "name": "Rest_Application_Link",
+      "url": "localhost:8080/",
+      "type": "link"
+    }
+  ],
+  "name": "CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "bfd7eae849bb43bf9fccea886ee15159-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567097147011,
+      "stop": 1567097147629
+    }
+  ],
+  "attachments": [],
+  "parameters": [
+    {
+      "name": "Param #0",
+      "value": "[Name: admin, Password: qwerty, Token: ]"
+    }
+  ],
+  "start": 1567097147009,
+  "stop": 1567097147663
+}

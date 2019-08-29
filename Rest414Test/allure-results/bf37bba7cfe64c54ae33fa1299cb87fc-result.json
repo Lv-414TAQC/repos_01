@@ -1,0 +1,95 @@
+{
+  "uuid": "9b907803-c905-462c-b4db-80dbe73d0658-tr-0-1003",
+  "historyId": "Rest414Test.Tests.LoggedTest.CheckIncorrectLogin([Name: ivan, Password: , Token: ])",
+  "fullName": "Rest414Test.Tests.LoggedTest.CheckIncorrectLogin([Name: ivan, Password: , Token: ])",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-VR9B7E0"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.LoggedTest"
+    },
+    {
+      "name": "testMethod",
+      "value": "CheckIncorrectLogin"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.LoggedTest"
+    },
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "owner",
+      "value": "KukliakT"
+    },
+    {
+      "name": "parentSuite",
+      "value": "LoggedTest"
+    },
+    {
+      "name": "suite",
+      "value": "Main_Suite"
+    }
+  ],
+  "links": [
+    {
+      "name": "ATQCNET-212",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-212",
+      "type": "issue"
+    },
+    {
+      "name": "Rest_Application_Link",
+      "url": "localhost:8080/",
+      "type": "link"
+    }
+  ],
+  "name": "CheckIncorrectLogin([Name: ivan, Password: , Token: ])",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "CheckIncorrectLogin([Name: ivan, Password: , Token: ])",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "4e239aa434894926b2240b16c4098247-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567101376846,
+      "stop": 1567101376963
+    }
+  ],
+  "attachments": [],
+  "parameters": [
+    {
+      "name": "Param #0",
+      "value": "[Name: ivan, Password: , Token: ]"
+    }
+  ],
+  "start": 1567101376846,
+  "stop": 1567101376963
+}

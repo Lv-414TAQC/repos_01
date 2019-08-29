@@ -1,0 +1,59 @@
+{
+  "uuid": "5e9b041a-f203-4a49-804e-911298de26b2-tc-0-1000",
+  "name": "Rest414Test.Tests.LoggedTest.CheckIncorrectLogin([Name: ivan, Password: adsf5, Token: ])",
+  "children": [
+    "e88c404e-0aa6-49e3-99ea-231d87d0b9a0-tr-0-1002"
+  ],
+  "befores": [
+    {
+      "name": "BeforeAllMethods",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567097287490,
+      "stop": 1567097287490
+    },
+    {
+      "name": "SetUp",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567097287490,
+      "stop": 1567097287490
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567097287490,
+      "stop": 1567097287490
+    }
+  ],
+  "links": [],
+  "start": 1567097287362,
+  "stop": 1567097287504
+}

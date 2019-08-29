@@ -70,7 +70,7 @@ namespace Rest414Test.Tests
         [AllureSeverity(SeverityLevel.normal)]
         [AllureIssue("ATQCNET-210")]
         [AllureOwner("KukliakT")]
-        [AllureParentSuite("LoggedTest")]
+        [AllureParentSuite("LoggedTest_Suite")]
         [AllureSuite("Main_Suite")]
         [AllureLink("Rest_Application_Link", "localhost:8080/")]
         public void CheckLoginLogoutUser(IUser user)
@@ -89,7 +89,7 @@ namespace Rest414Test.Tests
         [AllureSeverity(SeverityLevel.normal)]
         [AllureIssue("ATQCNET-211")]
         [AllureOwner("KukliakT")]
-        [AllureParentSuite("LoggedTest")]
+        [AllureParentSuite("LoggedTest_Suite")]
         [AllureSuite("Main_Suite")]
         [AllureLink("Rest_Application_Link", "localhost:8080/")]
         public void CheckLoginLogoutAdmin(IUser admin)
@@ -108,7 +108,7 @@ namespace Rest414Test.Tests
         [AllureSeverity(SeverityLevel.normal)]
         [AllureIssue("ATQCNET-217")]
         [AllureOwner("KukliakT")]
-        [AllureParentSuite("LoggedTest")]
+        [AllureParentSuite("LoggedTest_Suite")]
         [AllureSuite("Main_Suite")]
         [AllureLink("Rest_Application_Link", "localhost:8080/")]
         public void CheckLoginUserAsAdmin(IUser existUser)
@@ -122,7 +122,7 @@ namespace Rest414Test.Tests
         [AllureSeverity(SeverityLevel.normal)]
         [AllureIssue("ATQCNET-212")]
         [AllureOwner("KukliakT")]
-        [AllureParentSuite("LoggedTest")]
+        [AllureParentSuite("LoggedTest_Suite")]
         [AllureSuite("Main_Suite")]
         [AllureLink("Rest_Application_Link", "localhost:8080/")]
         public void CheckIncorrectLogin(IUser incorrectUser)
