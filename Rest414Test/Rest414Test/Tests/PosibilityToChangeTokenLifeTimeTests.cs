@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using NLog;
+using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using Rest414Test.Data;
 using Rest414Test.Services;
@@ -11,6 +12,7 @@ namespace Rest414Test.Tests
     {
         GuestService guestService;
         AdminService adminService;
+        Logger logger = LogManager.GetCurrentClassLogger();
 
         private static readonly object[] TokenLifeTimes =
         {
@@ -21,7 +23,8 @@ namespace Rest414Test.Tests
         {
             new object[] { LifetimeRepository.GetLifeTimeWithLetters() },
             new object[] { LifetimeRepository.GetLifeTimeWithSymbols() },
-            new object[] { LifetimeRepository.GetNegetiveLifeTime()}
+            new object[] { LifetimeRepository.GetNegetiveLifeTime()},
+            new object[] { LifetimeRepository.GetZeroLifeTime()}
         };
 
         [OneTimeSetUp]
@@ -39,10 +42,6 @@ namespace Rest414Test.Tests
         [TearDown]
         public void TearDown()
         {
-            if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
-            {
-                Console.WriteLine("TestContext.CurrentContext.Result.StackTrace = " + TestContext.CurrentContext.Result.StackTrace);
-            }
             if ((adminService != null) && (adminService.IsLogged()))
             {
                 Lifetime currentTokenlifetime = LifetimeRepository.GetDefault();
@@ -53,43 +52,47 @@ namespace Rest414Test.Tests
                 guestService = adminService.Logout();
                 adminService = null;
             }
-        }
+            guestService.ResetSystem();
 
-        [Test, TestCaseSource("TokenLifeTimes")]
-        public void CheckPosibilityToChangeTokenLifeTimeWithValidAdminToken(Lifetime newTokenlifetime)
-        {
-            adminService = adminService.UpdateTokenlifetime(newTokenlifetime);
-            Lifetime currentTokenlifetime = adminService.GetCurrentTokenLifetime();
-            Assert.AreEqual(LifetimeRepository.LongTokenLifetime, currentTokenlifetime.Time);
         }
 
         [Test, TestCaseSource("TokenLifeTimes")]
         public void CheckPosibilityToChangeTokenLifeTimeWithInvalidAdminToken(Lifetime newTokenlifetime)
         {
-            adminService = new AdminService(UserRepository.Get().FakeAdmin());
-            adminService.UpdateTokenlifetime(newTokenlifetime);
+            logger.Info("CheckPosibilityToChangeTokenLifeTimeWithInvalidAdminToken test started");
+            UserService fakeAdmin = new UserService(UserRepository.Get().FakeAdmin());
+            guestService.TryUpdateTokenlifetime(newTokenlifetime, fakeAdmin);
             Lifetime currentTokenlifetime = adminService.GetCurrentTokenLifetime();
+            logger.Info("   try to change token life time to : {0}", newTokenlifetime);
+            logger.Info("   actual token lifetime : {0}", currentTokenlifetime);
             Assert.AreNotEqual(LifetimeRepository.LongTokenLifetime, currentTokenlifetime.Time);
+            logger.Info("CheckPosibilityToChangeTokenLifeTimeWithInvalidAdminToken test done");
         }
 
         [Test, TestCaseSource("TokenLifeTimes")]
         public void CheckPosibilityToChangeTokenLifeTimeToCorrentValue(Lifetime newTokenlifetime)
         {
+            logger.Info("CheckPosibilityToChangeTokenLifeTimeToCorrentValue test started");
             adminService = adminService.UpdateTokenlifetime(newTokenlifetime);
             Lifetime currentTokenlifetime = adminService.GetCurrentTokenLifetime();
+            logger.Info("   expected token lifeTime : {0}", newTokenlifetime);
+            logger.Info("   actual token lifeTime : {0}", currentTokenlifetime);
             Assert.AreEqual(LifetimeRepository.LongTokenLifetime, currentTokenlifetime.Time);
+            logger.Info("CheckPosibilityToChangeTokenLifeTimeToCorrentValue test started");
         }
 
         [Test, TestCaseSource("IncorrectTokenLifeTimes")]
         public void CheckPosibilityToChangeTokenLifeTimeToIncorrentValue(Lifetime newTokenLifeTime)
         {
+            logger.Info("CheckPosibilityToChangeTokenLifeTimeToIncorrentValue test started");
             Lifetime currentTokenlifetimeBeforeChange = adminService.GetCurrentTokenLifetime();
-            Console.WriteLine("currentTokenlifetimeBeforeChange.Time = " + currentTokenlifetimeBeforeChange.Time);
+            logger.Info("   currentTokenlifetimeBeforeChange.Time = ", currentTokenlifetimeBeforeChange.Time);
             adminService = adminService.UpdateTokenlifetime(newTokenLifeTime);
             Lifetime currentTokenlifetimeAfterChange = adminService.GetCurrentTokenLifetime();
-            Console.WriteLine("currentTokenlifetimeAfterChange.Time = " + currentTokenlifetimeAfterChange.Time);
+            logger.Info("   currentTokenlifetimeAfterChange.Time = ", currentTokenlifetimeAfterChange.Time);
             Assert.AreEqual(currentTokenlifetimeBeforeChange.Time, currentTokenlifetimeAfterChange.Time);
             Assert.AreNotEqual(currentTokenlifetimeAfterChange.Time, newTokenLifeTime.Time);
+            logger.Info("CheckPosibilityToChangeTokenLifeTimeToIncorrentValue test done");
         }
     }
 }
