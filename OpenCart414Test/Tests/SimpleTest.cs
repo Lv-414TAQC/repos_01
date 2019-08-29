@@ -107,7 +107,7 @@ namespace OpenCart414Test.Tests
             File.WriteAllText(filePath, pageSource);
         }
 
-        [Test]
+        [Test(Description = "GO_Softserve_Academy_Test")]
         [AllureTag("Regression_Tag")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureIssue("ATQCNET-53")]
@@ -118,7 +118,7 @@ namespace OpenCart414Test.Tests
         [AllureSubSuite("NoAssert_SubSuite")]
         [AllureEpic("Retry_Epic")]
         [AllureFeature("RetrySmall_Feature")]
-        [AllureLink("softserve_ITA_Link", "https://softserve.academy/")]
+        [AllureLink("softserve_ITA_Link", "https://go.softserve.academy/")]
         public void SoftserveAcademy()
         {
             //log.Info("START SoftserveAcademy");
