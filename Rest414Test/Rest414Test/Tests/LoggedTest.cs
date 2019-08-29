@@ -129,7 +129,7 @@ namespace Rest414Test.Tests
         {
             logger.Info("Start test CheckIncorrectLogin");
             guestService = guestService.UnsuccessfulLogin(incorrectUser);
-            Assert.AreEqual(guestService.ResultStatus, );
+            Assert.AreEqual(guestService.ResultStatus, "true");
             logger.Info("End test CheckIncorrectLogin");
         }
 
