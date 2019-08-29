@@ -1,7 +1,7 @@
 {
-  "uuid": "f107e552-86be-46da-968f-62ff0fda1fef-tr-0-1032",
-  "historyId": "Rest414Test.Tests.LogginedTest.CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
-  "fullName": "Rest414Test.Tests.LogginedTest.CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
+  "uuid": "ed6b24b7-4d95-4c74-8ab1-9601bf19769f-tr-0-1019",
+  "historyId": "Rest414Test.Tests.CreateUserTest.CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
+  "fullName": "Rest414Test.Tests.CreateUserTest.CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
   "labels": [
     {
       "name": "thread",
@@ -9,19 +9,19 @@
     },
     {
       "name": "host",
-      "value": "DESKTOP-VR9B7E0"
+      "value": "DESKTOP-PMROFN9"
     },
     {
       "name": "testClass",
-      "value": "Rest414Test.Tests.LogginedTest"
+      "value": "Rest414Test.Tests.CreateUserTest"
     },
     {
       "name": "testMethod",
-      "value": "CheckLoginLogoutAdmin"
+      "value": "CreateNewUserTest"
     },
     {
       "name": "package",
-      "value": "Rest414Test.Tests.LogginedTest"
+      "value": "Rest414Test.Tests.CreateUserTest"
     },
     {
       "name": "tag",
@@ -33,7 +33,7 @@
     },
     {
       "name": "owner",
-      "value": "User_Owner"
+      "value": "Dima"
     },
     {
       "name": "parentSuite",
@@ -58,8 +58,8 @@
   ],
   "links": [
     {
-      "name": "ATQCNET-171",
-      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-171",
+      "name": "ATQCNET-214",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-214",
       "type": "issue"
     },
     {
@@ -73,7 +73,7 @@
       "type": "link"
     }
   ],
-  "name": "CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
+  "name": "CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
   "status": "passed",
   "statusDetails": {
     "known": false,
@@ -83,7 +83,7 @@
   "stage": "finished",
   "steps": [
     {
-      "name": "CheckLoginLogoutAdmin([Name: admin, Password: qwerty, Token: ])",
+      "name": "CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
       "status": "passed",
       "statusDetails": {
         "known": false,
@@ -95,22 +95,22 @@
       "attachments": [
         {
           "name": "Console Output",
-          "source": "8ca055d5891d4df3b5b8df3fa21c0586-attachment.txt",
+          "source": "dc134792d0384ee2a15f67293c3f3974-attachment.txt",
           "type": "text/plain"
         }
       ],
       "parameters": [],
-      "start": 1567014522309,
-      "stop": 1567014522947
+      "start": 1567095567453,
+      "stop": 1567095567850
     }
   ],
   "attachments": [],
   "parameters": [
     {
       "name": "Param #0",
-      "value": "[Name: admin, Password: qwerty, Token: ]"
+      "value": "[Name: admin, Password: qwerty, Token: LWLDPEV7WGM27AVXIITFFOIGPKUB4DEV]"
     }
   ],
-  "start": 1567014522306,
-  "stop": 1567014522962
+  "start": 1567095567452,
+  "stop": 1567095567856
 }

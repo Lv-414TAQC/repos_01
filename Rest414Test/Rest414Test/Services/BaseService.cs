@@ -5,8 +5,7 @@ namespace Rest414Test.Services
 {
     public class BaseService
     {
-        public Logger logger = LogManager.GetCurrentClassLogger();
-
+        
         private const string NotSupportService = "Service {0} Error. {1}";
         public const string ParamTrue = "true";
         public const string ParamFalse = "false";

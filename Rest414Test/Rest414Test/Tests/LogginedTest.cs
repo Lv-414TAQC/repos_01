@@ -58,8 +58,8 @@ namespace Rest414Test.Tests
         {
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
-                guestService.logger.Info("TestContext.CurrentContext.Result.StackTrace = " +
-                    TestContext.CurrentContext.Result.StackTrace);
+               // guestService.logger.Info("TestContext.CurrentContext.Result.StackTrace = " +
+                //TestContext.CurrentContext.Result.StackTrace);
             }
 
             // Return to Previous State
@@ -76,14 +76,14 @@ namespace Rest414Test.Tests
         [Test, TestCaseSource("ExistUsers")]
         public void CheckLoginLogoutUser(IUser user)
         {
-            guestService.logger.Info("Start test CheckLoginLogoutUser");
+           // guestService.logger.Info("Start test CheckLoginLogoutUser");
 
             userService = guestService.SuccessfulUserLogin(user);
             Assert.IsTrue(userService.IsLogged());
             userService.Logout();
             Assert.IsFalse(userService.IsLogged());
 
-            guestService.logger.Info("End test CheckLoginLogoutUser: ");
+           // guestService.logger.Info("End test CheckLoginLogoutUser: ");
         }
 
         [Test, TestCaseSource("Admins")]
@@ -100,30 +100,30 @@ namespace Rest414Test.Tests
         [AllureLink("Rest_Application_Link", "https://localhost:8080/")]
         public void CheckLoginLogoutAdmin(IUser admin)
         {
-            guestService.logger.Info("Start test CheckLoginLogoutAdmin");
+            //guestService.logger.Info("Start test CheckLoginLogoutAdmin");
 
             adminService = guestService.SuccessfulAdminLogin(admin);
             Assert.IsTrue(adminService.IsLogged());
             adminService.Logout();
             Assert.IsFalse(adminService.IsLogged());
 
-            guestService.logger.Info("End test CheckLoginLogoutAdmin");
+            //guestService.logger.Info("End test CheckLoginLogoutAdmin");
         }
 
         [Test, TestCaseSource("ExistUsers")]
         public void CheckLoginUserAsAdmin(IUser existUser)
         { 
             Assert.Throws<Exception>(() => guestService.SuccessfulAdminLogin(existUser));
-            guestService.logger.Info("Test CheckLoginUserAsAdmin: throw expected exception");
+            //guestService.logger.Info("Test CheckLoginUserAsAdmin: throw expected exception");
         }
 
        
         [Test, TestCaseSource("IncorrectFromCSV")]
         public void CheckIncorrectLogin(IUser incorrectUser)
         {
-            guestService.logger.Info("Start test CheckIncorrectLogin");
+           // guestService.logger.Info("Start test CheckIncorrectLogin");
             guestService = guestService.UnsuccessfulLogin(incorrectUser);
-            guestService.logger.Info("End test CheckIncorrectLogin");
+            //guestService.logger.Info("End test CheckIncorrectLogin");
         }
 
     }

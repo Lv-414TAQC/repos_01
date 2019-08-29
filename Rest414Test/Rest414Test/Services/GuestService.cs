@@ -48,7 +48,7 @@ namespace Rest414Test.Services
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             if (simpleEntity.content.Length == LengthToken)
             {
-                logger.Error("Custom exception: entered valid login in UnsuccessfulLogin method");
+                //logger.Error("Custom exception: entered valid login in UnsuccessfulLogin method");
                 throw new Exception("Valid login"); 
             }
             return this;
@@ -71,8 +71,7 @@ namespace Rest414Test.Services
         }
         public void ResetSystem()
         {
-            SimpleEntity simpleEntity = resetResource.HttpGetAsObject(null, null);
-            Console.WriteLine(simpleEntity.content);
+            resetResource.HttpGetAsObject(null, null);
         }
 
         public UserService SuccessfulUserLogin(IUser user)
@@ -82,7 +81,7 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Password, user.Password);
             SimpleEntity simpleEntity = userAuthorizedResource.HttpPostAsObject(null, null, bodyParameters);
             user.Token = simpleEntity.content;
-            logger.Info("UserLogin = " + simpleEntity.content);
+            //logger.Info("UserLogin = " + simpleEntity.content);
             return new UserService(user);
         }
 
