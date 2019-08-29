@@ -51,6 +51,7 @@ namespace Rest414Test.Services
                 logger.Error("Custom exception: entered valid login in UnsuccessfulLogin method");
                 throw new Exception("Valid login"); 
             }
+            ResultStatus = "true";
             return this;
         }
         public GuestService LockingUser(IUser user)
@@ -59,19 +60,13 @@ namespace Rest414Test.Services
             while (i < 4)
             {
                 UnsuccessfulLogin(user);
-                //ResultStatus = "error, user not found";
                 i++;
             }
-            //UnsuccessfulLogin(user);
-            
-                //ResultStatus = "error, user locked";
-            
             return this;
-
         }
         public void ResetSystem()
         {
-            SimpleEntity simpleEntity = resetResource.HttpGetAsObject(null, null);
+            resetResource.HttpGetAsObject(null, null);
         }
 
         public UserService SuccessfulUserLogin(IUser user)
