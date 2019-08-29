@@ -136,7 +136,6 @@
     <Compile Include="Tests\DeleteUserTest.cs" />
     <Compile Include="Tests\AdminTests.cs" />
     <Compile Include="Tests\AdminTestExternalData.cs" />
-    <Compile Include="Tests\ChangeUserPassword.cs" />
     <Compile Include="Tests\CheckCoolDownTimeTest.cs" />
     <Compile Include="Tests\CoolDownTimeTest.cs" />
     <Compile Include="Tests\GettingTokenLifeTimeTests.cs" />

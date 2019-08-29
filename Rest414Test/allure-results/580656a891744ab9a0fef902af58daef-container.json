@@ -1,0 +1,28 @@
+{
+  "uuid": "7ef4ce7f-63a4-4eda-972a-d8f2a297d775-tc-0-1031",
+  "name": "Rest414Test.Tests.ItemTest.AddItemTest([Name: admin, Password: qwerty, Token: ])",
+  "children": [
+    "a142aaf1-bef7-476a-a784-ba50c626f26c-tr-0-1032"
+  ],
+  "befores": [],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1567109693566,
+      "stop": 1567109693566
+    }
+  ],
+  "links": [],
+  "start": 1567109693548,
+  "stop": 1567109693572
+}

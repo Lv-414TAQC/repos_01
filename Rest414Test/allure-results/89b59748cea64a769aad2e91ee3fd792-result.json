@@ -1,0 +1,95 @@
+{
+  "uuid": "9c5cc148-e221-4a41-b03e-14418d5b4709-tr-0-1042",
+  "historyId": "Rest414Test.Tests.LoggedTest.CheckLoginUserAsAdmin([Name: akimatc, Password: qwerty, Token: ])",
+  "fullName": "Rest414Test.Tests.LoggedTest.CheckLoginUserAsAdmin([Name: akimatc, Password: qwerty, Token: ])",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ALENA"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.LoggedTest"
+    },
+    {
+      "name": "testMethod",
+      "value": "CheckLoginUserAsAdmin"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.LoggedTest"
+    },
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "owner",
+      "value": "KukliakT"
+    },
+    {
+      "name": "parentSuite",
+      "value": "LoggedTest_Suite"
+    },
+    {
+      "name": "suite",
+      "value": "Main_Suite"
+    }
+  ],
+  "links": [
+    {
+      "name": "ATQCNET-217",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-217",
+      "type": "issue"
+    },
+    {
+      "name": "Rest_Application_Link",
+      "url": "localhost:8080/",
+      "type": "link"
+    }
+  ],
+  "name": "CheckLoginUserAsAdmin([Name: akimatc, Password: qwerty, Token: ])",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "CheckLoginUserAsAdmin([Name: akimatc, Password: qwerty, Token: ])",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "627ba28d89fe4c1ca97b4c3df446547b-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567109694037,
+      "stop": 1567109694055
+    }
+  ],
+  "attachments": [],
+  "parameters": [
+    {
+      "name": "Param #0",
+      "value": "[Name: akimatc, Password: qwerty, Token: 5F402LWGNW779TTRSFN05QSIQJMKI2TN]"
+    }
+  ],
+  "start": 1567109694037,
+  "stop": 1567109694055
+}

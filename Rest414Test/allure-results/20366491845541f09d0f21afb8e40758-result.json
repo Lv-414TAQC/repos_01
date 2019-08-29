@@ -1,0 +1,95 @@
+{
+  "uuid": "44f2b768-a526-47d5-b454-7bcf330afbe3-tr-0-1047",
+  "historyId": "Rest414Test.Tests.LoggedTest.CheckIncorrectLogin([Name: , Password: qwerty, Token: ])",
+  "fullName": "Rest414Test.Tests.LoggedTest.CheckIncorrectLogin([Name: , Password: qwerty, Token: ])",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ALENA"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.LoggedTest"
+    },
+    {
+      "name": "testMethod",
+      "value": "CheckIncorrectLogin"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.LoggedTest"
+    },
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "owner",
+      "value": "KukliakT"
+    },
+    {
+      "name": "parentSuite",
+      "value": "LoggedTest_Suite"
+    },
+    {
+      "name": "suite",
+      "value": "Main_Suite"
+    }
+  ],
+  "links": [
+    {
+      "name": "ATQCNET-212",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-212",
+      "type": "issue"
+    },
+    {
+      "name": "Rest_Application_Link",
+      "url": "localhost:8080/",
+      "type": "link"
+    }
+  ],
+  "name": "CheckIncorrectLogin([Name: , Password: qwerty, Token: ])",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "CheckIncorrectLogin([Name: , Password: qwerty, Token: ])",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "57e1bb8d86cf4d3081e0420ae4c70b75-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567109693856,
+      "stop": 1567109693873
+    }
+  ],
+  "attachments": [],
+  "parameters": [
+    {
+      "name": "Param #0",
+      "value": "[Name: , Password: qwerty, Token: ]"
+    }
+  ],
+  "start": 1567109693856,
+  "stop": 1567109693873
+}

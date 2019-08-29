@@ -1,0 +1,95 @@
+{
+  "uuid": "be497170-63ef-4f66-bf8c-87df968ddb1d-tr-0-1044",
+  "historyId": "Rest414Test.Tests.LoggedTest.CheckIncorrectLogin([Name: nazar, Password: parol, Token: ])",
+  "fullName": "Rest414Test.Tests.LoggedTest.CheckIncorrectLogin([Name: nazar, Password: parol, Token: ])",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ALENA"
+    },
+    {
+      "name": "testClass",
+      "value": "Rest414Test.Tests.LoggedTest"
+    },
+    {
+      "name": "testMethod",
+      "value": "CheckIncorrectLogin"
+    },
+    {
+      "name": "package",
+      "value": "Rest414Test.Tests.LoggedTest"
+    },
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "owner",
+      "value": "KukliakT"
+    },
+    {
+      "name": "parentSuite",
+      "value": "LoggedTest_Suite"
+    },
+    {
+      "name": "suite",
+      "value": "Main_Suite"
+    }
+  ],
+  "links": [
+    {
+      "name": "ATQCNET-212",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-212",
+      "type": "issue"
+    },
+    {
+      "name": "Rest_Application_Link",
+      "url": "localhost:8080/",
+      "type": "link"
+    }
+  ],
+  "name": "CheckIncorrectLogin([Name: nazar, Password: parol, Token: ])",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "CheckIncorrectLogin([Name: nazar, Password: parol, Token: ])",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "33143d537dbf43f8b7b806d0f987e1a3-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1567109693655,
+      "stop": 1567109693710
+    }
+  ],
+  "attachments": [],
+  "parameters": [
+    {
+      "name": "Param #0",
+      "value": "[Name: nazar, Password: parol, Token: ]"
+    }
+  ],
+  "start": 1567109693655,
+  "stop": 1567109693710
+}

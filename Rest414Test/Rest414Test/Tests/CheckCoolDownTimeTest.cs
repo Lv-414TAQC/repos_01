@@ -1,6 +1,7 @@
 ﻿using Allure.Commons;
 using NLog;
 using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using Rest414Test.Data;
 using Rest414Test.Services;
@@ -9,7 +10,8 @@ using System;
 
 namespace Rest414Test.Tests
 {
-        
+    [AllureNUnit]
+    [AllureDisplayIgnored]
     [TestFixture]
     class CheckCoolDownTimeTest
     {
@@ -42,7 +44,7 @@ namespace Rest414Test.Tests
         [AllureTag("Regression_Tag")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureIssue("ATQCNET-53")]
-        [AllureOwner("User_Owner")]
+        [AllureOwner("Alena Basanets")]
         [AllureParentSuite("With_parameters_ParentSuite")]
         [AllureSuite("Passed_Suite")] //change names
         [AllureSubSuite("NoAssert_SubSuite")]
@@ -73,7 +75,7 @@ namespace Rest414Test.Tests
         [AllureTag("Regression_Tag")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureIssue("ATQCNET-53")]
-        [AllureOwner("User_Owner")]
+        [AllureOwner("Alena Basanets")]
         [AllureParentSuite("With_parameters_ParentSuite")]
         [AllureSuite("Passed_Suite")] //change names
         [AllureSubSuite("NoAssert_SubSuite")]
@@ -93,7 +95,7 @@ namespace Rest414Test.Tests
         [AllureTag("Regression_Tag")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureIssue("ATQCNET-53")]
-        [AllureOwner("User_Owner")]
+        [AllureOwner("Alena Basanets")]
         [AllureParentSuite("With_parameters_ParentSuite")]
         [AllureSuite("Passed_Suite")] //change names
         [AllureSubSuite("NoAssert_SubSuite")]

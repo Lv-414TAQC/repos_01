@@ -1,7 +1,7 @@
 {
-  "uuid": "ed6b24b7-4d95-4c74-8ab1-9601bf19769f-tr-0-1019",
-  "historyId": "Rest414Test.Tests.CreateUserTest.CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
-  "fullName": "Rest414Test.Tests.CreateUserTest.CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
+  "uuid": "fbb97c28-83ef-483a-9a26-a9ea30adc096-tr-0-1011",
+  "historyId": "Rest414Test.Tests.AdminTests.CheckLoggingOutAdmin",
+  "fullName": "Rest414Test.Tests.AdminTests.CheckLoggingOutAdmin",
   "labels": [
     {
       "name": "thread",
@@ -9,19 +9,19 @@
     },
     {
       "name": "host",
-      "value": "DESKTOP-PMROFN9"
+      "value": "ALENA"
     },
     {
       "name": "testClass",
-      "value": "Rest414Test.Tests.CreateUserTest"
+      "value": "Rest414Test.Tests.AdminTests"
     },
     {
       "name": "testMethod",
-      "value": "CreateNewUserTest"
+      "value": "CheckLoggingOutAdmin"
     },
     {
       "name": "package",
-      "value": "Rest414Test.Tests.CreateUserTest"
+      "value": "Rest414Test.Tests.AdminTests"
     },
     {
       "name": "tag",
@@ -33,7 +33,7 @@
     },
     {
       "name": "owner",
-      "value": "Dima"
+      "value": "User_Owner"
     },
     {
       "name": "parentSuite",
@@ -58,14 +58,9 @@
   ],
   "links": [
     {
-      "name": "ATQCNET-214",
-      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-214",
+      "name": "ATQCNET-204",
+      "url": "http://ssu-jira.softserveinc.com/browse/ATQCNET-204",
       "type": "issue"
-    },
-    {
-      "name": "TMS-12",
-      "url": "https://testrail.com/browse/TMS-12",
-      "type": "tms"
     },
     {
       "name": "Rest_Application_Link",
@@ -73,7 +68,7 @@
       "type": "link"
     }
   ],
-  "name": "CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
+  "name": "CheckLoggingOutAdmin",
   "status": "passed",
   "statusDetails": {
     "known": false,
@@ -83,7 +78,7 @@
   "stage": "finished",
   "steps": [
     {
-      "name": "CreateNewUserTest([Name: admin, Password: qwerty, Token: ])",
+      "name": "CheckLoggingOutAdmin",
       "status": "passed",
       "statusDetails": {
         "known": false,
@@ -95,22 +90,17 @@
       "attachments": [
         {
           "name": "Console Output",
-          "source": "dc134792d0384ee2a15f67293c3f3974-attachment.txt",
+          "source": "bf50fbf6359d46b8bb0556418475120f-attachment.txt",
           "type": "text/plain"
         }
       ],
       "parameters": [],
-      "start": 1567095567453,
-      "stop": 1567095567850
+      "start": 1567109693206,
+      "stop": 1567109693226
     }
   ],
   "attachments": [],
-  "parameters": [
-    {
-      "name": "Param #0",
-      "value": "[Name: admin, Password: qwerty, Token: LWLDPEV7WGM27AVXIITFFOIGPKUB4DEV]"
-    }
-  ],
-  "start": 1567095567452,
-  "stop": 1567095567856
+  "parameters": [],
+  "start": 1567109693206,
+  "stop": 1567109693226
 }

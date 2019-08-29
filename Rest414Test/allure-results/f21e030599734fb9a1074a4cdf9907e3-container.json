@@ -1,10 +1,10 @@
 {
-  "uuid": "0-1018-ignored",
+  "uuid": "0-1002-ignored",
   "name": "Rest414Test.Tests.CreateUserTest",
   "children": [],
   "befores": [],
   "afters": [],
   "links": [],
-  "start": 1567095567436,
-  "stop": 1567095567940
+  "start": 1567109693473,
+  "stop": 1567109693490
 }
