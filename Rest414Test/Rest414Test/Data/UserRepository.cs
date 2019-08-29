@@ -80,7 +80,7 @@ namespace Rest414Test.Data
         public IUser IncorrectUserForLock()
         {
             return User.Get()
-               .SetName("user1")
+               .SetName("user")
                .SetPassword("12345678")
                .Build();
         }
@@ -100,7 +100,8 @@ namespace Rest414Test.Data
 
         public IList<IUser> UserForLockCsv()
         {
-            return UserForLockCsv("UseForLock.csv");
+           
+            return UserForLockCsv("UserForLock.csv");
         }
 
         public IList<IUser> UserForLockCsv(string filename)
