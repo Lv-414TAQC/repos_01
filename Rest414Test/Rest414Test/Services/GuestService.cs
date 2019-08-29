@@ -88,5 +88,15 @@ namespace Rest414Test.Services
             adminUser.Token = simpleEntity.content;
             return new AdminService(adminUser);
         }
+
+        public GuestService TryUpdateTokenlifetime(Lifetime lifetime, UserService admin)
+        {
+            RestParameters bodyParameters = new RestParameters()
+                .AddParameters(RestParametersKeys.Token, admin.GetToken())
+                .AddParameters(RestParametersKeys.Time, lifetime.Time);
+            SimpleEntity simpleEntity = tokenLifetimeResource.HttpPutAsObject(null, null, bodyParameters);
+           
+            return this;
+        }
     }
 }

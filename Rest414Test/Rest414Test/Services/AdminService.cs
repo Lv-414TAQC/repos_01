@@ -190,8 +190,6 @@ namespace Rest414Test.Services
                 .AddParameters(RestParametersKeys.Token, user.Token)
                 .AddParameters(RestParametersKeys.Time, lifetime.Time);
             SimpleEntity simpleEntity = tokenLifetimeResource.HttpPutAsObject(null, null, bodyParameters);
-            CheckService(!simpleEntity.Equals(true),
-                "Tokenlifetime " + lifetime.ToString() + " was not Updated.");
             return this;
         }
         public AdminService UpdateCoolDowntime(CoolDownTime cooldowntime)
